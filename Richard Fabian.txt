@@ -1,0 +1,1068 @@
+Anne van Ede  4:59  
+Hello
+
+Richard Fabian  4:59  
+Can you hear me?
+
+Anne van Ede  5:00  
+I can hear you.
+
+Richard Fabian  5:02  
+Excellent. How do you do?
+
+Anne van Ede  5:06  
+I'm fine. Thank you. How are you?
+
+Richard Fabian  5:09  
+It is a very cold morning here at the moment. The heating is turned off last night, which was to have a holiday.
+
+Anne van Ede  5:14  
+Oh, yeah. Yeah. Well, it's supposed to be very cold tomorrow here, but today, it's just raining. So. 
+
+Richard Fabian  5:23  
+Okay. So I read your email. That sounds like weirdly good timing actually. With something I've been working on, on a different project. 
+
+Anne van Ede  5:39  
+Oh, that's pretty cool
+
+Richard Fabian  5:41  
+Yeah. I might have, can so far for design patterns, or data oriented design, which might help with the whole idea of how do you move from one stage to another, like, object oriented to ECS style? Yeah, could be. So you're gonna say you read the questions? What steps do you take to decide? Do you want to do just go through the questions or any other plans?
+
+Anne van Ede  6:13  
+Well, um, I have more questions. Those are just the topics. So I have some separate questions from them. I have a whole bunch of them.
+
+Richard Fabian  6:24  
+How many have you done already?
+
+Anne van Ede  6:26  
+This is my second. But because it's for my, my research, there are some rules. So I have to ask everyone pretty much the same question. So I'll just go through all of it to scientific method. So first, the short introduction, while you already have read my email. So you know, I'm researching from data oriented to ECS design. I got interested in data oriented and ECS, about two years ago, but then I noticed while I thought it was awesome, and lots of benefits. Other companies and programmers did not agree because it was so different from the standard op design. So they don't switch because they don't know it. So I want to create something to help those developers and then the companies behind them switch from data from object oriented to data oriented, specifically ECS design. From for that, I created a tool that both creates a design from object oriented code, but also educates them in the process so that they can do it themselves later on, or at least understand why the choices are made. But if I want to create a tool, I should make a good tool, like a good plan. And for that, I'm interviewing you guys, to help me figure out what a good plan is, because there's lots of opinions going on. But well, I can just ask my next door neighbor. So based on that, I created this interview, I created some open questions. But because I'm going to be interviewing a lot of different people, also from different backgrounds, there might be some questions that don't entirely fit you. Just tell me so or answered a question how it fits for you. Yeah, sure. Um, if you have any questions, if they're related to the question I asked, please ask them immediately. If there are some other questions, you can wait until the end. And the same for remarks. What do you think of? we scheduled this for an hour but my last interview went slightly longer, like an hour and a half to to get a couple of hours. Okay, perfect. Also, because this for my research, I would like to be able to call you by name my research so they know that I you know, interviewed proper people. It's okay. And I would like to record this video god.
+
+Richard Fabian  8:42  
+Oh, I can see. 
+
+Anne van Ede  8:43  
+Oh, yeah, I I put it on. So I couldn't forget it.
+
+Richard Fabian  8:48  
+That's fine, just for I was actually looking for it.
+
+Anne van Ede  8:52  
+Yeah, it's just easier to type it out
+
+Richard Fabian  8:53  
+It is easer to recapture the notes that way.
+
+Anne van Ede  8:56  
+Yeah. Yes, indeed. I actually have a double recording, so I don't trust Zoom. I mean, I last time, 
+
+Richard Fabian  9:08  
+Neither do I, but for different reasons.
+
+Anne van Ede  9:10  
+It took about four hours before it's finished transcribing the entire video, so I don't trust that it works every time. So that's that. Any questions you have for me before we start?
+
+Richard Fabian  9:30  
+No, but I'm sure I'll have some later.
+
+Anne van Ede  9:32  
+Okay. So the questions that I sent you are just a general questions. So if you wanted, you can think up front. The kinds of questions I want to ask if you want to think of some examples or something, if not necessarily just thought some people would like that. So this that's what I've been told. So that's why I did it. And the first questions are just warming up. So can you tell me how you first got started with data oriented science/ ECS?
+
+Richard Fabian  10:02  
+So ECS was the first for me, really, because I came to the design of it on my own. And this is back when I was working in a very, very different games company have always worked in games companies, the whole time. But I got a little bit of inspiration from a blog post by I can't remember the name of the games company, it did dungeon, something, and they had these game objects things. And I liked the idea of it. But I thought that it wasn't quite abstract enough to allow for people to make new things while the game was still running. So I decided to try and find out if there was a way of doing that. So I could make something brand new, without even stopping the game from running at all. And that's when I kind of invented a little, not quite ECS, as it's known now. But that entity is merely an ID, everything else is tacked on afterwards as processable things. And so that's where I started. Yeah,
+
+Anne van Ede  11:16  
+Just a second year really loud in my earphones, I'm going to just, I already did my my computer audio, but it doesn't seem to work. So it's just a sec. Before my ears give out. Um, can you say something now?
+
+Richard Fabian  11:32  
+Yes.
+
+Anne van Ede  11:33  
+Oh, yeah, that's much better. Yeah. Okay. Thank you. Can tell me how you currently use ECS. Let's just go with ECS.
+
+Richard Fabian  11:46  
+very sadly, I am not able to use it at work, because I'm working at a place that does not do data oriented design, or ECS. However, they do have something that they call an entity component system. But it's actually just a scene graph. So it's very sad for me because I joined there. And they were telling me about how they're doing this lovely entity component systems like, Oh, this is excellent. And then I get there and like, this isn't actually at all, no. And your cost is way high on your graph. Because it's the graph. Let me explain. That's how we do things around here. And that is the kind of thing you're coming across, isn't it? You're saying that people don't want to change the way they're thinking. They might even change the name of what they're using, but they still don't really change the way they think about it. They get stuck.
+
+Anne van Ede  12:37  
+And in addition, there's also what I noticed when I was researching because I already did my literature research. That's why I, you know, got this. It's the only book on the on the subject.
+
+Richard Fabian  12:51  
+It is I think that's why it's doing so well.
+
+Anne van Ede  12:53  
+Yeah. There's also different, like, you have the entity component system, but the way you write it but like dashes in between some places can also point to different implementation. So there's the Entity dash component space system, and then the Entity dash component dash system, some are different.
+
+Richard Fabian  13:13  
+There is no standardized nomenclature. So we're stuck with so what is it? Yeah, every level? Yeah,
+
+Anne van Ede  13:20  
+You say this, but what's the implementation and did you write it the right way.
+
+Richard Fabian  13:28  
+but for your time, we have Oh, this is just like unity there. So Ah, this was before all of the dots says like, cut No. No, yeah, I was, I was doing all this. I was revising this stuff. And writing up how to do it even better when I went to frontier in 2009, late 2010, early. So I went from the the early thing, when I was at broadsoft, with I actually self invented and then learning about the word the term data oriented from the original blog post by Noel Llopis. And then listening to Mike Acton, I realized there was a bigger call for this kind of stuff. And I started looking at all other kinds of things related to it. But it kept on feeding back into the ECS stuff that Oh, you could do that better, if. You do that better if
+
+Anne van Ede  14:25  
+Um, can you tell me in one or two sentences, the biggest advantage you see of ECS?
+
+Richard Fabian  14:36  
+No. It's too good for two sentences.
+
+Anne van Ede  14:42  
+Just short them. 
+
+Richard Fabian  14:43  
+Right. I think it helps you reduce coupling between L objects and entities. Because when you think ECS you're thinking about how an aspect of all the entities interacts with that aspect of all the other entities or with other aspects of all the other entities, you're no longer constrained to thinking about object to object mappings, you're thinking about system to system mappings. And that can lead to less coupling between the entities themselves, which is good because you don't get the n squared problems that often handshake the n squared handshake problem we have with interactions. And also it means you can tend to reuse the code with which you do interact between pieces more likely, because each component is more more likely to have a similar communication patterns as another one that does a similar kind of communication, for a reason. Like whether it's nearby physically or it's nearby in time or it's nearby, we've been similar logical basis. There's reuse possibilities there more frequently, I find when I've looked at using that, just because you're looking at it from system level, rather than object level.
+
+Anne van Ede  16:09  
+And the same way, can you tell me shortly then, the biggest disadvantage of ECS?
+
+Richard Fabian  16:20  
+Mostly, I think it's political in that people are expecting an object oriented design. So when they look at it, it feels alien to them. But another disadvantage is we have a lot of people saying that it's amazing, powerful, useful thing. And people who have very specific things to solve, say, Oh, so ECS solves that then does it? And the answer is sometimes No. And then they get this amazing feeling that ha ECS is rubbish after all, I told you so. But it's just tools for jobs. If they keep on thinking that everything is solved by ECS, then they're wrong. But we're not saying that either. We're saying ECS is a really good solution to massive numbers of heterogeneous entity types. 
+
+Anne van Ede  17:11  
+Yes. That was it for the introduction questions. When we go into the next question, there are two remarks I want to make. One is, please assume I know nothing. I just answer it like I'm five.
+
+Richard Fabian  17:26  
+Yeah, I was gonna say yeah,
+
+Anne van Ede  17:27  
+yeah, exactly. Obviously, I know some because I read your book.
+
+Richard Fabian  17:32  
+Yeah. But it helps. Yeah,
+
+Anne van Ede  17:34  
+exactly. There might be things that you think are so obvious that you skip over them. While there might be exactly what I need to make my tool of success. The second thing is, I got into ECS using unity.
+
+Richard Fabian  17:47  
+I don't use unity at all. So I don't know the language of it. So
+
+Anne van Ede  17:51  
+that's fine. Oh, I skipped a question. I just see it right there. I'll ask it afterwards. So I based these questions mostly on that I have some other questions mixed into it. But if there's a question like, Oh, this doesn't entirely suit the implementation, I'm used to then that might be because of that. The question I forgot to ask was, what ECS implementations Have you used? Because that's important.
+
+Richard Fabian  18:15  
+Only my own invented ones. Sorry,
+
+Anne van Ede  18:17  
+only invented ones. Okay.
+
+Richard Fabian  18:19  
+Yeah. So I had two engines. One of them was ECS, as a bolt on thing later, just for the rendering layer, where I trumped I translated, the scene graph at runtime, based on observer style systems into an ECS in the render layer, which gave a huge improvement in rendering, but then had this kind of dangling graph that was useless. But it meant I proved out that it was worth doing. The second one was a small project that worked on with Pete Manu, who got us we used ECS. There. It wasn't called ECS. internally. But that's the reason why we were allowed to do it. I think it's because I kept on telling them, oh, you should put this in a list out of here of these similar archetypes. And this thing over there, oh, yeah. Ah, put a list of those. And don't worry about it. And if it goes from this to that they just triplet, which move which list it's in, it's fine. And they didn't even know I was doing ECS. But they just follow it on as well. Yes, it's working great. Well, tthey didn't notice a pattern. So yeah, sometimes the politics argument is really important. 
+
+Anne van Ede  19:27  
+Yeah. I noticed that you said, Oh, well, there goes my voice. Um, that's not the internet connection. That's my voice right now. Um, you said archetype. So that's the underlying technique you use.
+
+Richard Fabian  19:39  
+Yeah. So I try to use a language that I've heard people use using. I don't really consider it as a fundamental thing about data oriented design or even ECS. But I do appreciate it's a very good solution. And it really does fit in very well with the types being identified by the containers they're in. It's a lovely solution. It's actually a, it's an old design pattern that came from the state design pattern. But I don't know if anybody recognized it before they wrote it that way in dots. It's nice how things all come mixed together like this. Yes, it's a design pattern of state. States, in containers I come up with a real name phrase is basically, the state of an object is defined by which list it's in. And an archetype is what my class is, is defined by which list I'm in. So yeah, it's the same kind of thing, really. 
+
+Anne van Ede  20:36  
+Yeah, because there are multiple implementations of ECS and components. So that's why I asked so I know when I you know, sort through the results that I know which, 
+
+Richard Fabian  20:47  
+So my implementation in Goddess was more of a class is defined by which list you're in approach, like archetype. But I know other people have ECS, where the class is defined by where all the components might be registered or something.
+
+Anne van Ede  21:03  
+Yes. Okay. Then we are finished with the introduction question. So the next questions are about general ECS design. And when you're making an ECS design, I, again, I don't know of all the questions are applicable, but we'll just go through them anyway. And when you're making an ECS, design for, for Goddess, or for another game, or, can you walk me through the steps you use to design. So where do you start? What do you do next? And where do you finish? What kinds of things do you think are important?
+
+Richard Fabian  21:38  
+I think, for me, because I've never had that a framework to work in. The first step for ECS design for me is recognizing the need for it at a point. So we realized there was a need for ECS style, when we had a large number of followers in the world doing different things. The solution for this was, I said, Yeah, this follower doesn't actually need to even exist, because it doesn't have any information. So I'm going to say we don't need the component of the walking around bit, in my head, I said, Oh, we'll just put it in the house. And they're like, Oh, yeah, I guess you just put it in the house. Well, that meant that they were now instead of being archetyped, if it's unity, speak, into their bucket, it will now just tagged as possible at all somewhere else. And they didn't really even have any data. So that was the step of recognizing that thinking changes its class, at runtime, and going, I now need an ECS then start implementing it in whatever way you need to implement it. And so that's that first step, that's definitely the first step, recognize a need start is always start with everything is the same. You're coding up a game, or whatever you're coding up, you'll generally have a whole bunch of objects that are the same class, if you're doing object oriented design, you'll have a big thing. And it'll be Oh, I need to sometimes change this. So it starts to be a virtual call or. Sometimes you don't do something at all. So the update will turn off something or turn something on based on some Boolean you have inside it. When you start to see that happen, you say, actually, this isn't really behaving the same. That Boolean said my behavior is now this. But but because behavior is also the class. You can say, Well, actually, lets just change class instead. What do you recognize the things country's class? That's the split point. 
+
+Anne van Ede  23:44  
+Yeah. So when you're splitting? What do you split at? So you say, when you change class, so 
+
+Richard Fabian  23:55  
+Requirements, I split up requirements. So let's take the following example. It's a nice easy one, again, the follower has a requirement of when it's a brand walking around the map, it has a position. What it's rendering, animation frames, it has all sorts of other things to do with rendering. Yeah, but it also might have health. But as soon as they go into a house, they're healed. So don't need health. They don't need a position, they just need which house they're in. Maybe, maybe they, they might need to know the animation frame. They won't need to know this stuff so far away. That's the split point that says, Oh, this is the information for in world and what's the information for just me, my what data, not data, what domain driven design, you might call the entity aspect of it, the identifiable, unique aspect of it. And when it comes to the follower, the identifiable unique stuff wasn't really real, but we kept it anyway to start with. So We have these little entity objects that were just follower ID. Because at one point there was this idea that the all the entities would have names. Yeah. And so there was every single entity had a name, they could follow it around. Turned out even that was optional.
+
+Anne van Ede  25:19  
+Yeah.
+
+Richard Fabian  25:20  
+So. But the point is, they're an object that has identity of I am this character name. And then the rest of it is all just a world. So the split is there. What must be in the house, what is needed after the house to make it do walking around? They just split. So that's the two components at that point. That's fine. That's enough. And you can just throw everything that isn't to do with the identity. And then only that goes into the kind of semi permanent that the the entities identity. 
+
+Anne van Ede  25:54  
+Yeah. When you, started with ECS, is a fun question, what was the biggest misconception, you had something you thought, Oh, this is going to work or this will be doing that. And it turned out it didn't.
+
+Richard Fabian  26:11  
+My biggest problem, I think, was when I first built it, I was trying to make components talk to other components and finding a way about getting them to find other entities and do work with them. So I think a lot of people have met the same problem. When I first started back when I was like, when I first invented it, it's at broadsword. It was more of a Oh, no, this is going to be really slow. I'm constantly looking up other entities to find out whether or not I can interact with them or so. Yeah, it's a misconception. The more experienced I have in it, the more I realized that that's because I was expecting the entities to be looking outwards. Whereas in reality, because you're thinking system level now. It's actually the system telling the entities, what they see. So you're told about the world, and you're given their given are given that information. And so you don't have the don't have the n squared problem so much. So that's, that's for me, the probably the biggest misconception is that they have to talk to each other by finding each other by by some entity ID. And that leads to a whole bunch of people complaining that How can this be faster? I'm always looking up things by ID, how can that be quicker than just going by the pointer or whatever? just calling a virtual? And the answer I have to give them is? Well, that would be slow. But we don't do that. And then they go, Well, how can you do this? And it's like, let me invite you in?
+
+Anne van Ede  27:43  
+Yeah. There's lots of thing, lots of misconceptions. So it's always fun to figure out which is? Is there something you can tell me that I absolutely have to avoid when making an ECS design?
+
+Richard Fabian  28:03  
+Avoid, trying to split everything, without reason. I see it actually, outside ECS, even with data oriented design approaches a bunch of people splitting things just because they've heard that a struct array is better than an array of structs. And they split things like the x, y and z positions, rather than thinking Well, no, these are actually atomic things. Now, these are real things that we always refer to as a group. And these are the units that we're working with. So yeah, I think ECS is suffers the same problem. If people are naive about it. They end up possibly putting every single separate piece of their objects that they care about in a different component, imagine a component for the x coordinate, and then one for the y coordinate. It's, it's something you could do. shouldn't! Anybody who experiences they, anybody with experience outside ECS says, That's crazy. And they're right. And everybody inside ECS says, Yeah, that's crazy. And here's why. Yeah, so definitely, that's a pitfall people think more componentsbetter. No, not more components. More separation between unrelated things better. 
+
+Anne van Ede  29:21  
+Yeah. Actually, my next part comes into that. It's because my tool will mostly be looking at component design. So to help split it up. I don't define the split points. Yeah, exactly. And this is the funny thing you say, don't split up too much. But in your book, you say it helps to explode all parts first, and then see about putting them back together. Yeah. So where's the difference between that?
+
+Richard Fabian  29:51  
+So when I say explode all the parts, I actually haven't read the book. But I wrote in a while now. I'm assuming what I've said. you're meant to kind of fully relational database style explode. That's almost always true. But because when you talk about relations, you're saying there's an N, one to N or N to one or an N to N relationship. At that point, there already is a reason why you should be splitting it, because you've identified that this isn't always reliant on that. And all that hasn't always been. But going further. The reason why you would split everything and start with is so that you can say, No, these are always accessed together, you can identify that. I don't see any cases where I pull this in, but don't pull that in. And maybe you can't see that unless you've already exploded it. If you've left it as a lump, it sometimes might not be so obvious that you're not accessing something. It's always easier to disprove something, isn't it? So you just prove the fact that you've ever read this thing without other things nearby? Hmm. I don't know what the book says about that one.
+
+Anne van Ede  31:07  
+Well, it basically, for components. In this case, we use splitting up data, you you say to you first, the book says let's just give it a look. And then 
+
+Richard Fabian  31:18  
+two years ago, it's in person now. Oh, my goodness.
+
+Anne van Ede  31:23  
+Oh, yeah. Right. It's 2021. Yeah. Then did you first explain it entirely. And then you look at what is consistently used together? And then you group that back together?
+
+Richard Fabian  31:33  
+So the same as I just said, Really? Yeah. pattern of?
+
+Anne van Ede  31:37  
+Yeah, that's why I thought it was funny that you said don't split it all up, because you need to look at what is used together. And then in the book, you said, explode so know how to get back together. So that's the
+
+Richard Fabian  31:51  
+best thing is I do it a bit differently than I explain because I think I'm trying to explain to you, how do you do it to prove to bring it in? Whereas I've got that experienced eye of, I can see a bool, I know straight away. I can see a split point here. Where is that? Huh? I can smell it. Yeah, it's easier for someone who doesn't understand it, and has lacking experience to go against everything. Let's see what drags in.
+
+Anne van Ede  32:19  
+Yeah. Okay. That's a
+
+Richard Fabian  32:22  
+Mike Acton is the same way. He sees a bool and he goes, What's wrong here?
+
+Anne van Ede  32:28  
+Yeah, there's lots of lots of things. But that's a very good answer. So now I can I can put this next to each other. Because the, the last person I interviewed he also said, like, No, you only split it, when you see he goes the other way around. So he has all data. And he first splits it on domains. And so position and movement and stuff. And then only when he sees that something is used, for example, in multiple systems or not used all the way so and then he splits it only then does he split it up, not splitting it as much, and then only splitting when necessary. So you you end up with as few components as possible. And then the not experienced version is split everything and put it back together. 
+
+Richard Fabian  33:13  
+See what comes? Yeah, see what Yeah, naturally falls back to peace back in the same places. Yeah. I think I don't know which one was actually going to be a better approach. And I think that also might be it might be easier to learn patterns by starting by exploding everything. Because then you kind of you watch things happen. Yeah, these are always these are always Okay, I recognize this now. But it might be hard. I think it's one of those things where I've been programming for 20 plus years now. So in games for 20 plus years, and I see these things quite easily. I see problems, and everybody is going What? So I'm, I have to try and find ways to help people. See observability is of the issues. If they can't see it, then they can't act on it. And yeah, so raising things like if you see that this position is used in multiple systems, that's a way of saying this visibility. So that the other person that came before me not splitting things and then saying look for things that are joining together, things that may be unnecessary. Definitely an approach definitely approach. I don't know which one's better.
+
+Anne van Ede  34:32  
+I know, which I think is easier to implement in my tool. That's the split.
+
+Richard Fabian  34:37  
+Last split, possibly easier. 
+
+Anne van Ede  34:39  
+No, no, I think the exploding because I'm using syntax and semantic analysis like the compiler is using to get all the data from it. So I will get like a giant graph of every every object with its data fields and its methods and then I will split all the data apart and then I will look for every method that uses more than one and
+
+Richard Fabian  35:01  
+you're building that kind of methods and data and mappings.
+
+Anne van Ede  35:05  
+Yeah, exactly. Yeah, the exploding and then when I, I'm looking into
+
+Richard Fabian  35:11  
+everything common tuples.
+
+Anne van Ede  35:13  
+Exactly database normalization rules to make sure that everything is nice and tight. So I think I'll probably go from the exploding part but when I explain it to the user, then I can think about how, how I'm going to display it. So either from exploding to being or like the last one said like the other way around. So this is a the the process but the next few questions I don't know if they're that relevant. But when you It says put together but also split up, I suppose. What do you focus on other than you said the word? You didn't say responsibility? You said something else that I forgot the word. What do you focus on when you split or put together components? What's the deciding factor?
+
+Richard Fabian  36:09  
+dependency? responsibility? Yes, dependencies, dependencies, dependencies are based on behavior. But behavior itself can change. So this is what I think about the splitting tool you're talking about is that you've not only got to look out for dependencies on the elements that are. So the, what's the right word for this the attribute data. But you've also got the control flow data. So this is where the bool thing comes in. Actually, so a behavior of a method is dependent on attributes that are about state or that kind of thing, where traffic is where the thing is, from a gaming point of view, have some entity is in an aggressive mode or passive mode, that is a state attribute. Whether it's a bool, an enum, or in ECS terms, it might be a different archetype group. That's a split point, because that changes which attributes are required. But if you're doing analysis of components by what things are used, commonly together and say methods, you might find that a method that changed what it was doing, based on this attribute data, said the attribute data always called in this or that. So it might be necessary to build a tool that understands almost like a functional as in the value driven connections, rather than the data connections, but the value driven connections. So for all the Booleans, you want to be checking if it's true, what data is accessed, if it's false, what data was accessed. And that could be a split point, too.
+
+Anne van Ede  38:10  
+So you'd say I just just just to see if I understood you correctly. So you say, if my tool does not do what you say it would call in, for example, its speed, and if its speed is high enough, it would be active. And if it's low enough, it will be passive, just to have an example. Yeah. And if the system then says, Okay, if high enough that data and if low enough that data you would have to have, you have to be able to split your components. So that those two are not grouped together. But they're because they're separate.
+
+Richard Fabian  38:46  
+But they're only going to be split, based on the actual data value, not on the member, because a member was accessed in both cases, your speed was accessed in both cases, wasn't it? And that's what I say about sometimes I like to, I can smell something bad here, because there's an if in here, it branches what it does completely it changes behavior based on this. And behavior is a driver about how you should split.
+
+Anne van Ede  39:10  
+It's going to be an interesting thing
+
+Richard Fabian  39:14  
+is very, very difficult if you don't have access to the the ASP, I think is the right term for it. The syntax tree. Yeah. If you can do that, then maybe you can chase any ifs that have big blocks of code and then go all this data was accessed on this. And that could be a new format split point.
+
+Anne van Ede  39:34  
+Yeah, I'm definitely Yeah, I do use the syntax tree. It's the only way I could think of to get enough information from the code.
+
+Richard Fabian  39:45  
+I'm stuck in c++ land, I can't play around with this kind of stuff easily.
+
+Anne van Ede  39:49  
+I am lucky enough to be C sharp. So
+
+Richard Fabian  39:53  
+I've heard lots of good things about digging deep into how that compiler does things.
+
+Anne van Ede  39:58  
+Yeah.
+
+Richard Fabian  40:00  
+But that is definitely a thing to keep in mind is it's not just grouped by data. It's grouped by values.
+
+Anne van Ede  40:08  
+Yeah, yeah. another layer underneath my...
+
+Richard Fabian  40:13  
+It's a really important one, and it's one that's often missed. It gives you the biggest improvements, because then you end up with things like, all the passive creatures don't do anything that you put away in physics systems all the time is I'm not moving. So I'm in the static doesn't bother checking for my physical boundaries. It's completely true that this is how we've been doing it for years. except we're normalizing it with scientific thing it. 
+
+Anne van Ede  40:39  
+Yeah. There's also a, I'll just skip ahead to that question. Because there are different approaches like the archetypes, they have the problem that if you change components a lot, they have to be swapping archetypes a lot. Which means that that's a heavy copy costs, because they have to switch arrays. But there's also a sparse set that does it differently. It has like a compacted array of every component, and then as a sparse array that says, Okay, this entity has that component, and it's placed in that place in the factory. So there's different implementations that have drawbacks. So do you consider, what do you consider about archetypes, and about their drawbacks when you're designing?
+
+Richard Fabian  41:38  
+I don't know what they do in unity. So I didn't know there was a performance cost first wishing I thought they were just as quick as the way I'd been writing stuff. Which was they didn't really do much copying it all. The way I Yeah, exactly. So the way I've been writing components is that to move them from one container to the other has actually been quick, because I know why I do it a lot. So my, my containers have been more like a container of references to components or chunk components with flags for running through them in sequences or sub sequences. I guess that actually then, if dots archetype system is slower at copying around, then maybe you can't so easily do the kind of things I prefer to do.
+
+Anne van Ede  42:33  
+I don't know necessarily, if they're slow at copying, but other implementations like the c++ in ENTT library, because they use the different approach for sparse sets. They don't copy around, so they don't need some that it's slower. 
+
+Richard Fabian  42:52  
+They will be faster at doing the quick state switching stuff I use.
+
+Anne van Ede  42:55  
+Exactly. So I don't know necessarily if archetypes is or a unity archetype is slow, but it's slower because the other one doesn't do it.
+
+Richard Fabian  43:03  
+Well. I say what everybody who data oriented background will say you should measure it. 
+
+Anne van Ede  43:15  
+I know. 
+
+Richard Fabian  43:19  
+When it comes to that, if we're saying that if your measurements come in and it's slow, then there'll be a design. Your tool should say, yeah, change this Boolean if the frequency of its change is under a certain threshold. And that's another thing to analyze. Can you analyze the running game?
+
+Anne van Ede  43:46  
+And not in my scope. No. I have like,
+
+Richard Fabian  43:51  
+yeah, we might add new, either. For example, I've said work for work of monitoring these data points for frequency of fluctuation. Yeah, if they fluctuate under a certain threshold. Hey, more improvement.
+
+Anne van Ede  44:09  
+That is something that I really wanted to do originally, but I had to, you know, cut it down. But yeah, yeah, a lot.
+
+Richard Fabian  44:17  
+But you're already aware of this. So yeah.
+
+Anne van Ede  44:24  
+Right. So when you're working in a team, it's important to make sure that the other developers also understand what's going on in your code. So how do you keep your component design readable for the other developers when you said, like, I secretly put it into their code? How do you make sure that they can still read it afterward?
+
+Richard Fabian  44:44  
+I didn't secretly put it into the code. I secretly put it into their minds. I didn't even know they were doing ECS. And that was the thing. I told them, Oh, you don't need that data. And they agreed. And they didn't know they were doing it. So yeah, that's it's not so much readable code, it's more of a understandable decisions. So readability is just not being surprised by stuff. So if you just put in the Oh, we don't need this for this at this point. That should be enough way I work at work with other people. It's always try and code things so that the obvious interpretation is the actual correct interpretation. I think that applies for every programming paradigm, really not just data oriented.
+
+Anne van Ede  45:39  
+It's good advice, though. Do you take a low level stuff into account when you're doing it? So like readwrite separation, hot, cold separation or cache line?
+
+Richard Fabian  45:52  
+Definitely. Yeah. So sometimes not so much for components, designed for an ECS because often I find that the conceptual model of what should be related is close enough to performance limits that we care about. And that's another thing to remember is performance only matters, if it's worse than what you want it to be. And when it's better than what it needs to be, then you're just wasting time on yourself, right, you're wasting your time. Although you might be saving battery.
+
+Anne van Ede  46:29  
+That's true. Although it might be because you're doing different operations, it might actually be taking more power from your CPU, there's actually a trade off there somewhere.
+
+Richard Fabian  46:40  
+The thing that was the thing that I think about generally, though, is yes, do what did this data needs to be read from while this data needs to be written to what of this data needs to be read from and written to, which is different. When it comes to ECS, though, again, if that thing of if it's actually a component, and I need access to read and write all the same thing, I'll keep that same thing together. Because it's easier for people to read the code when they see all the operations contained in one block. Even if it does mean you waste a little bit of time. It's better because its already fast anyway. And we're not really after performance as our main goal here. We're often reducing complexity. ECS, for me, was about reducing complexity, and increasing flexibility for people at runtime. It turned into performance when I realized that it was faster that I came at this from a flexibility point of view. Originally, I wasn't even really a guy who did optimization massively. It just accidentally end up that way, because people get from pulling it in as Oh, you can do that. Yeah, I can. But actually, so yeah, flexibility was the most important thing. Boxing together concepts that we're actually related, not just tied together by some kind of loose coherence of an object somewhere. So position and velocity for me, are happy to sit in the same box, other people would say no position. that's separate from velocity. But rather think about it and never going to really be touching one without the other apart from maybe some kind of weird situation where I'm just making sure that something isn't somewhere, it's doing a bounced check on something. Because even when it comes to rendering things, nowadays, we're doing velocity on screen, you're doing motion blur, we're doing motion fields. I don't know what they're all called. I don't really write much about rendering. But I know that we're using the motion of objects to do things. It actually even in VR, we were doing things like this, where if an object was moving, you would move it differently to how you would move other things in the world, because you want to make it look like it's matching the camera motion. Yeah, so to me, it's like, what do you really need to see together? That's my limit. I don't I think about the hardware, yes. But it has to still get the data to where it's needed. Most of the time, it has to be the most common case. The most common case for some of these things is more data than you expected. It goes back to that thing like the x, the y and zs all separate. Why would you do that? You never want the x and the y and the z separate because because the common case is all three.
+
+Anne van Ede  49:39  
+Yeah. I actually use this example in my in my report. Yeah, yeah.
+
+Richard Fabian  49:45  
+Did I write about that in my book?
+
+Anne van Ede  49:49  
+I think you briefly mentioned it but I need I wrote it out a little bit more to explain.
+
+Richard Fabian  49:54  
+I will get angry if people will keep on doing it.
+
+Anne van Ede  49:59  
+Yeah, Yeah, it's a it's a, it's one of the misconceptions that I see a lot. One is ECS equals performance. And ECS always only performance. In Unity it's also ECS is parallelization, which is DOTS. ECS, that's a funny one to try and get out of their heads is very difficult. And also in the split it up, just split it up, that those three are the ones I found most. It's funny interviewing a, do this research at a company, and they use unity. So that's how I got there, interviewing my co workers who have sort of looked at it. It's an interesting experience. Some of them are really up to date on whats essential, 
+
+Richard Fabian  50:47  
+Make sure you have a bunch of people who are very object oriented mindset or don't like ECS at all, don't limit yourself to people who invented it. Or love it. Because it's really important that there's negative points as well.
+
+Anne van Ede  51:03  
+Yeah, in this case, the
+
+Richard Fabian  51:05  
+not so much from people who don't like things.
+
+Anne van Ede  51:08  
+The Yes, that's where my co workers came in. And the reason I'm interviewing experts is to get like, what should they be doing? Like, like, if I if I, if I ask an object oriented person, how he would design an ECS and I follow that advice, then I don't think I can ever show my face again. So if you had to put it down to a few rules, how you design components? First, you need to make sure that does this. And then after What's that? What would be the rules you would say are most important?
+
+Richard Fabian  51:53  
+My personal rules? Personal rules? Yeah, my personal rules are look for the behavior changes. First look for I think, actually, the word for this, Mike Acton uses is move the decision making further back. Yeah, bringing those ifs out. Bring the ifs out of the functions. And when you do that, you start to see what is in each stateful-ness of the the objects that end up being these N components made from these N possible behaviors. That's where I begin, I begin there, because that's the one that immediately leads you to the just do this one method on this array of stuff. Because I don't really come from a framework component system, like history, my history is I turn objects into components, actually, but in the code that underlie that. See that that's definitely the first big step is look for the look for the data, the value driven changes, value driven behavior, the value driven responsibilities and dependencies.
+
+Anne van Ede  53:14  
+If I'm not mistaken. Yes. existence based?
+
+Richard Fabian  53:22  
+Pretty much. Yeah.
+
+Anne van Ede  53:25  
+I think you're somewhere there.
+
+Richard Fabian  53:28  
+I think I called it existential in the last update. 
+
+Anne van Ede  53:30  
+That one! 
+
+Richard Fabian  53:31  
+It used to be called exististence base. But that was like the 2013 book thing. Yeah, I hate the name, existence space. It's so bad. 
+
+Anne van Ede  53:39  
+So I didn't know. I didn't know the actual word to use. I just knew like, it was because of existence in it like so. Yeah.
+
+Richard Fabian  53:48  
+Why? Why does it exists? Because the idea being that
+
+Unknown Speaker  53:54  
+it's run because it exists
+
+Richard Fabian  53:56  
+that behavior exists to that point. Yeah. So that's the thing is, I don't do the work, if at all, I don't even check, because you're over there. You're in that list, you do that work. It's much faster, it would reduce remove that removes, it reduces the size of the object itself, because the object no longer has to have that attribute saying it's going to do it. So actually save size. It's not just performance, it's mental decoupling of things. Because no longer actually doing multiple stuff in the same function, which everybody's gonna say it's a good idea. You don't want long functions full of stuff. It's faster, and it saves space.
+
+Anne van Ede  54:38  
+Then I have a question for you. I just mentioned in in this case, I'm going with Unity, unity also use existential processing because you can do a system
+
+Richard Fabian  54:48  
+I guess the archetypes are.
+
+Anne van Ede  54:50  
+Exactly so you can give which components you want, and only the entities with those components are run and if you put that against the fact that if you change archetypes, you have to copy everything. And if you do a lot of changes, on the one hand, you do a lot of copies. But on the other hand, you save a lot of checking in the systems, because the components are not there. So they're not run . Yeah, if you have that thing, what would you think would be the best approach,
+
+Richard Fabian  55:25  
+I think the best approach there is to start thinking about what changes. So I'm imagining in the real world, a certain number of entities will be changing state. So changing archetype. And the likelihood of you changing archetype will probably be higher, if you've recently changed archetype, then if you've been the same architect for a long time. So there might be a strategy for keeping long lived, haven't changed archetypes, a long time, entities in a certain set of archetype buckets, I think they're like the 64k chunks, I think I've heard of keep those in buckets than the ones that are changing all the time. So actually have a kind of live state changing section of the buckets, that is expecting the archetypes to keep changing on these objects, because they have recently changed. So my, my approach is, look at the data that you have about the entities themselves. If they do change all the time, randomly, like really randomly, then maybe an archetype change is not a valid choice, because it's slower to change than it is to react, per instance. Now, that does happen, I've seen situations where I've been looking at, oh, this is very similar, it's based on that and, and putting it in different lists based on the value doesn't help because you spend all your time at the end of the frame, moving things between lists. But I think I found there's like a general sweet spot of depending on the size of the object, sweet spot of around about, if less than 10% of the objects change state that frame, it's quicker to move between lists of different sizes, the number is gonna go down further, smaller sizes, it might be much, much higher, it might be like, if as long as less than 50% have changed, then it's best to move from complete lists. Okay, I didn't know that. But I'd check it. So that's it, look for that threshold, and then change your design based on whether or not it really is better. Maybe there needs to be a maybe it needs to be an idea of which components are the ones that are changing. And you could have it so that if an archetype could or could not have this component, and that component is sparsely there. Inside the otherwise densely packed set of components. There's all sorts of positions I can come up with. I don't know how dots work. So
+
+Anne van Ede  58:22  
+unfortunately, unity controls pretty much all of that. So right. And you can
+
+Richard Fabian  58:27  
+see your component would have to be the sparse thing itself.
+
+Anne van Ede  58:31  
+Yeah, yeah. There's no way to control how the components are stored in the list. So
+
+Richard Fabian  58:39  
+you have to have a component that had a little bool, saying whether or not it should be this. Yeah. Okay.
+
+Anne van Ede  58:46  
+Yeah, but that's 
+
+Richard Fabian  58:47  
+not quite as good. But yeah, you can measure and you can say, whether its better to put the bool in the component or to move component out and let the switch between architypes. you measure it, you'd be happy.
+
+Anne van Ede  58:57  
+There's a not only unity use archetype. So there are other implementations that also use archetypes, but that have more
+
+Richard Fabian  59:04  
+big data, one that go with the term. I'm happy for that. I'm happy to say it's  unitys name. Other people can use the same system.
+
+Anne van Ede  59:13  
+Yeah, well, it's just the underlying technique archetype. So it's just it's that it that they use it. So there, but that's an interesting thought to look at the ratio of change request. Yeah.
+
+Richard Fabian  59:29  
+Yeah. So again, it's still basic data oriented stuff. Again, it keeps coming back to this. It's still, if you don't analyze it, you don't know you're not really doing data oriented design you're doing. You're just doing ECS. Yeah, ECS doesn't have to be performant. It has to be really slow if you want it to be. ECS is an approach to data oriented design or it's a tool in its tool belt,
+
+Anne van Ede  59:58  
+and also the other way around. I like You said that data oriented design is a way to do ECS. So you can do ECS on an object oriented way, and it will turn out horribly. But if you do it with a data oriented design in mind with a mindset,
+
+Richard Fabian  1:00:14  
+yeah, then you can do a better solution. Yeah.
+
+Anne van Ede  1:00:18  
+Yeah. I like that the way that, that you said that. Right. So we have, do you have any other rules that you apply? So you use the dependency and the value change? Is there anything else you use?
+
+Richard Fabian  1:00:36  
+for deciding what should be a component?
+
+Anne van Ede  1:00:38  
+Yes.
+
+Richard Fabian  1:00:40  
+Let me think what should be in the component should be not in a component. I should try and not put anything that is only ever read and not written? I shouldn't put that in a component that should be a tag. If you're talking about unity style stuff. If it's possible. 
+
+Anne van Ede  1:01:09  
+I don't think that's possible, but not yet at least there's a lot of missing still,
+
+Richard Fabian  1:01:12  
+there's these components that don't have any data, isn't there? components that have no data are tag components. Right. And the idea there is that the tag says whether or not it is that component. And that's all it does. So I say, I look at that kind of thing. I say, if this data is read, as a kind of a setting configuration, like I'm red, or I am, I'm the player, that is never going to change in the game, at the runtime. So the entity shouldn't have that value. Inside a component. That value might be some kind of tagging, like a component used for saying whether it belongs to a set. But it's not got any data. It shouldn't be in the component. 
+
+Anne van Ede  1:02:08  
+So existential 
+
+Richard Fabian  1:02:09  
+It is. But it's that recognition that if the data doesn't change, it's not information that you should act on each time you run through your processing list. And so that that's I mean, if you're looking at data that is never changing, you shouldn't be reading it. Because you already know it. Yeah, yeah. You should be act on that data much earlier, somewhere else. So I try to remove that data from the components by can. So don't split on that stuff. Or, or do split on it, but split much, much higher. Anything else I can think of? Should you join? What should you join? database, de-normalization techniques are important too. So performance reasons, database engineers will often go in and ruin the relational qualities of the database or duplicate lines. This is also very important. If you're doing components, and you know that a component always needs some value. It's okay to put that value in more than one component. Don't assume that a value of a class if you've got a normal object oriented style class with all its fields in it, don't assume that when you split it up, every field will go to one component, sometimes I feel will go to two components, and will have to be updated twice. Because it's more like one of them will be doing reading and writing on that information. And the other will be referring to it. This is how you can really improve the decoupling of things because you're saying this is a component over here that is in charge of data. And this component over here just needs to refer to it. So yeah, it's okay to do that. Okay, duplicate members, you're saving memory elsewhere anyway, so you end up paying for one with the other. But yeah, don't don't ignore the opportunity to put a single value in multiple places.
+
+Anne van Ede  1:04:30  
+That's one I haven't heard
+
+Richard Fabian  1:04:31  
+We do it a lot. Actually, in old school game design where we had to fit things on CD ROMs. You may have heard about putting the same assets multiple positions on the disk. Because if you load level one, it might include the user interface and you want to load the whole thing in one block. A Level two also needs the user interface. So you load that all in one block. Level three didn't need the user interface because it was just like some kind of weird sub game so it had a different user interface load that in. fourth level includes the user interface from level two and one. So they include it again, it's all up above. The idea being, you really care about doing the work as quick as possible. You put it all together. But sometimes it means you have to carry the same information multiple times. And that is not illegal. It's not just banned completely. Just Just be aware thats something you might want to do it has value. 
+
+Anne van Ede  1:04:33  
+Yeah. Okay. Is there anything else you want to add?
+
+Richard Fabian  1:05:34  
+I can't think of right now.
+
+Anne van Ede  1:05:36  
+Okay, then we'll go on to them. And the last question of this section, is there anything I should absolutely avoid that you haven't mentioned already in the components, and it can be like big things or a pet peeves?
+
+Richard Fabian  1:05:54  
+Well, I already mentioned accessing other entities from entities. Yeah, don't do looking outwards. That's, that's generally it, you always look inwards, don't look outwards, you use the data you've received. emit requests. Don't hunt for data. You should already know what data you need, by the time you've been told to do something with it. So yeah, an ECS, shouldn't go outwards and say, give me these things, and then do work on it, it should just be handed it because something had already informed the external system. So now, if you are finding, you have to do that, maybe your component doesn't belong in an ECS, it could be part of some kind of pre pass of this state of the system has to be some kind of external review of the data in the whole system, and then sent down to the lower layers. If you're finding you have to reach out to other entities, probably doesn't fit. I think a big problem with a lot of the way people have looked at ECS is in the past is the they've assumed you can do that. And wondered why it's fast anyway. Whereas the answer is you shouldn't do that. That's why it's fast. And when you need to, which is less often than a lot of people assume you should revert back to doing it from the outside in, in a very special edge case situation. But a lot of people don't know how often you can get away with not looking out as well, because they think that you have to always go and find a friend to do an answer to a question. So yeah, I think that's a common pitfall when you're learning it.
+
+Anne van Ede  1:07:49  
+Good one. Right, then the next section is about converting from object oriented to ECS. In these cases, if you haven't had this situation yet, just give an answer that you think will be applicable. So you already mentioned it a little bit, but how do you decide when to port a subsystem or part of a program to ECS?
+
+Richard Fabian  1:08:25  
+I don't think I've ever actively made the decision. It's just followed out of this feels right? So I'm not very good person to ask. I don't know my reasoning, really. It's just, that's the right answer.
+
+Anne van Ede  1:08:50  
+And can you tell me, why that was the right answer? What do you take out this? This is wrong? Because
+
+Richard Fabian  1:09:00  
+I think it's just I look at the code that's running and I got a lot we got, like 10,000 views. We're only doing like 300. Can we just like move that? Yeah. And it's that. I'm looking at it. And I look at the performance profiles on things or I say, Oh, the frame or the frame times gone bad and fast. What are you doing? What's going on here? And I'm like, yeah, that's you don't need to do that. You don't need to do, you don't need to do that. That's my thing in my head. You don't need to do that. And that will be the link to so something is behaving when it shouldn't be behaving. What's it behaving because of? That's the split point.
+
+Anne van Ede  1:09:45  
+So you split at, stuff that's doing something that doesn't need to be doing?
+
+Richard Fabian  1:09:50  
+Yeah, pretty much. Yeah. That's the high level one. That's the first ones that come across usually is like, oh, it shouldn't even be doing that. Why are you updating Why are you updating?Why are you doing anything?
+
+Anne van Ede  1:10:04  
+ Okay? Any anything any step lower you can go with that. We realize, okay, this this is not doing is it's doing something and it shouldn't be doing something. 
+
+Richard Fabian  1:10:17  
+This is complicated. That's another one. This is complicated. Do all these checks to see if we need to be doing this then that then that this frame, why are we even looking for this data? Inside this entity when it doesn't really need it until it's got somewhere else? Like, was it? Oh? You got characters running around the world? Checking button prompts, why are you checking button prompts? in case somebody presses A and wants to pick up the box? There's no boxes in this level? And there's like 10,000 characters all trying to do? They're not even players? What are you doing? Okay. So at the lower level, it's more like, and what was big function that's full of ifs doing stuff. And most of the time, they're not valid. So maybe we shouldn't put the ifs inside here. But put the ifs inside some different form, like, oh, they're there in the list of things to compare, actually bother doing button checks. So yeah, the lower level it sometimes the function looks long, could this be a problem? That solve by moving it out to registration with different lists of things to do? Okay. Guess the first one was, it lacked an if in the first place. And the second one is, is too many ifs.
+
+Anne van Ede  1:11:56  
+That's a, that's a good description. Right? So, um, when you're going from a non ECS, to ECS approach, how do you split the conversion into steps. So to keep it manageable? Like what you split out at systems, or components
+
+Richard Fabian  1:12:16  
+just do one at a time in one component out of the object at a time. One, so one, just split one off, peel one piece out.
+
+Anne van Ede  1:12:28  
+And then myself system for that. And then when it's all running, you go back to the next component.
+
+Richard Fabian  1:12:33  
+Do I need to do any more? Yeah, it's always peel one piece off. Now. When I first started, it was obviously around. When I first started back in broadsword before I knew about the data oriented design stuff. It was, I need a position, I need a mover, I need an animation, they need a skin thing. And so I started building up all these components. And then I started to use them completely the other way around from now. So yeah, that was my component thing back then was I built the components first and then tried to use them. Now it's more of I've got a data lump that I'm using to represent something an entity in the world. And I'm finding that I don't need all that data all the time. Now I split it into pieces. So the answer is, I used to by now is find us there. Another thing is that the data oriented design approach for me has always been build something first and then review how it behaves. Because you can't really make decisions up front about something that has behavior, because you can never be completely sure until you see it running. You need that feedback.Yeah,
+
+Anne van Ede  1:13:55  
+Yeah. How do you interface between the ECS part and the non ECS part without losing performance in the coupling, like in the interfacing?
+
+Richard Fabian  1:14:11  
+The idea of a coupling between them doesn't make sense to me.
+
+Anne van Ede  1:14:14  
+Well, in this just keep it. You say that. For example, you have the UI 
+
+Richard Fabian  1:14:21  
+Oh, wait a minute. I think I know what you mean. Okay. Is I've just watched the video last year, that the Unreal unreal Fest, I think it was, and there's a guy talking about how he had implemented ECS inside unreal. And what he was doing was he was building an ECS that was doing all the transformation stuff in reacting and he was, uploading the transformations back into the Unreal normal actor position data. Does that so that's the kind of coupling isn't it?
+
+Anne van Ede  1:14:59  
+Yes. That kind of coupling. Yeah, like that some parts you cannot port 
+
+Richard Fabian  1:15:03  
+I cant answer that question because I have not done it. But you might want to chase that person down. That's actually that's the Unreal fest there's a person that did a video or talk on ECS in Unreal
+
+Anne van Ede  1:15:19  
+I am going to haunt him.
+
+Richard Fabian  1:15:25  
+Could be an amazing piece of news. I'd love to hear that. Yeah, I I did watch it. But I didn't kind of get like what the impact was. So I didn't know the expectations. I didn't know if he was expecting it to be super fast or super slow. But I know he was happy. In the end, he reached his goal. And that's usually the main thing.
+
+Anne van Ede  1:15:46  
+Yeah, in my case, I've seen it. There was a crowd simulation and characters of the simulation, they were completely ECS. But the areas like the spawn area and the goal area and stuff, they couldn't be created in ECS because there was a c++ Library underneath it that needed to talk to it. And that's why there was like a separate layer, like there was the characters and the non characters. Right? That and they needed to talk, obviously, because the spawn areas needed to create characters and the trigger areas needed to know when an characters entered. And there was a whole whole system that they created there. So there are application areas for interfacing, yeah, also UI. If you're using a different UI, or predefined UI, it's not always ECS. So you cannot change it. Because it's separate UI.
+
+Richard Fabian  1:16:37  
+UI tends to be a problem for every methodology I've ever heard. Because it's Yeah, I mean, I've written quite a few bits of UI in my life. But I've managed more people who've done UI than I've done UI myself. And I know they've all been really upset about how to do it every time. But the problem of the UI is it's it's all very real time react-y is very on screen, everything is a unique thing. So it's it doesn't really fit very well with the idea of a grand scheme of stuff simulating. It's, it's a very structured thing. So I don't think that actually suits ECS at all UI just because of like the fact that everything is so tethered together, the whole idea of a thing is inside a thing, it's a grid of stuff, it's all related to each other, every entity wants talk to every other neighboring entity all the time, I can imagine an ECS would have a big problem trying to work with that, because it's Yeah, you need to be able to, like find relationship data all the time. Or you're gonna have to rely on some kind of horrible hacks to just get things to work each frame, like IMGUI is very much a it's a hack, as well as being an amazing system for rendering. But you can't easily turn that into something that people can do beautiful artwork all over, because you have to think code to build it. So yeah. interfacing between them, then if you're talking about something like the classmate, or let's say a c++ library that does network traffic, and it's object oriented, and you're trying to interconnect it with your ECS, which is your ECS, because you're doing it correctly. And the network library is saying, oh, there's the incoming information for entity 4512. And it's going to talk straight away to the entity. Well, I'd say that's the lie right there. It doesn't have to talk straight away. Because we're not doing real time programming. So I said the interface my answer to the interface layer is, it's not real time, stop hoping for it, work around it, post messages, the messages then become outside information that goes into the ECS, ECS can post messages back and the object oriented interface layer can then reveal those messages back out to the object of the interface layer can reveal the message back out to the object layer. So real time doesn't exist. The outside layer will still talk to the ECS as if this is the world information. And yeah, it should solve it. But I can't talk from experience of doing that myself. That's just how I'd approach it.
+
+Anne van Ede  1:17:13  
+That's okay. That's the, and then the next question I think you already answered. So I am going to see if I if I. My next question was one, is the code too complex to convert to ECS? But your answer was basically, if it's too complex, you need to convert to ECS.
+
+Richard Fabian  1:20:19  
+If it's too complex, you can't convert to anything.
+
+Anne van Ede  1:20:22  
+Okay, if it's
+
+Richard Fabian  1:20:23  
+Yeah, you have to reduce the complexity first.
+
+Anne van Ede  1:20:25  
+Yeah. Did you reduce complexity partially by
+
+Richard Fabian  1:20:28  
+I reduce by applying ECS concepts or data design concepts? Yes, I reduce complexity by looking at ways to untether things from each other. And often it does end up accidentally doing what I would say is existential processing, or the other forms of removing the unnecessary relationships between things. And normalizing them.
+
+Anne van Ede  1:20:59  
+Like you haven't,
+
+Richard Fabian  1:21:00  
+we're moving the don't repeat yourself stuff. You come across the term don't repeat yourself. The idea of being okay, Eli five, this one, don't repeat yourself being if you find you've written something twice in code, you should put it into one function. Yeah, well, sometimes that's the wrong choice. Sometimes it's better to repeat yourself, because you might want to change the abilities, the functions, the the the the scope of that function, but then you're changing the scope of that function for 2, 3, 7, code cites, whereas actually, you did need two different versions of that thing. So you should be prepared to break them up, simplification can come from taking that function, and taking it and turning it into two separate functions. In fact, again, I gotta say this, look at the Booleans. If there's a Boolean in there, in the argument list, check to see if that Boolean can be turned into an extension of the name of the function. If it can, you can drop it into two separate functions. One, which does one set of things, one, which does another one, yes, it's coded application, but then you'll find that one whole, lots of code uses the false. And maybe two or three functions use the true, you've actually improved clarity of the code. you've reduced complexity, things aren't collected together anymore. It's simplified. You think about vectors or string libraries. I don't want a massive regular expression parser in my UI, string renderer. But I don't want formatting character with proportional spacing in my terminal emulator. Because it doesn't use it. But you don't want multiple string libraries, do you? Well, yes, you do. They have different jobs. So that's I reduced the complexity for us by looking at what is really common between the commonly used things start disentangling them, duplicating the code if necessary to make it so. And then you can start looking at this can be compartmetalized, maybe. Got it?
+
+Anne van Ede  1:23:18  
+So the next question is, can you tell me some things to avoid when you convert from one to the other?
+
+Richard Fabian  1:23:28  
+Don't, don't do it if it doesn't seem necessary. But that's it. If you're doing it just for the sake of doing it, that's the wrong reason. I don't start ECS. I start with what data do I need to do this operation to get it on screen? And then later on when the design has been revealed, to me by constant iteration, a lot people say that the design of programs changes over time. It doesn't. The design is just slowly revealed. It looks like change, because people didn't realize it. But as the as the design study revealed, you recognize that there are some errors and assumptions, which now need rectifying, which introduces a necessity of change. The design hasn't changed. You've just realized that it was wrong in the first place.
+
+Anne van Ede  1:24:30  
+That's a way of looking at it. Yeah. Okay. Are there any coding or naming conventions that you use for ECS? Or than youve seen?
+
+Richard Fabian  1:24:42  
+I use whatever people come up with, or what's in my book, really? I've used the stuff that unitys decided to cool things archetypes, like I love the name. I think it's cool. But other than that, I just go it's the right way to do a thing. And I don't really have much in the way of things other than I, when I talk about components, I always mean, a component which is operated on by a system that manages it. Yeah, I never think of a component as being an object. It's always a chunk of data that has an associated meaning. Because it's being operated on by a system, the data itself has no meaning.
+
+Anne van Ede  1:25:30  
+And when you name that you need to create a name for the component
+
+Richard Fabian  1:25:35  
+component is that combination of the meaning the system, and the data operates
+
+Anne van Ede  1:25:39  
+on, I mean, literally, in your code. When you're coding, you have to give it a name, like the position component, or just position or position comp.
+
+Richard Fabian  1:25:51  
+I don't know, I, I use singular nouns, no special prefixes or suffixes for them.
+
+Anne van Ede  1:25:59  
+Just position, velocity. Okay,
+
+Richard Fabian  1:26:03  
+yeah. And when you add meaning, further meaning to things, then I'll expand the name to fully encapsulate that meaning. So if it's position of the entity, and only position of an entity, then it gets the name position. But if it's suspected position, if you're doing a network game, and you got some kind of guess about where the future of the character is, I might put in extrapolated position or suspected position as the component, which could be separate from position. But I wouldn't like add a special component underscore position, I would always use the name that most matches what it really is. And I'd use namespace namespaces and scoping things to make sure that it was hidden away from duplication. 
+
+Anne van Ede  1:26:54  
+And the same question for us
+
+Richard Fabian  1:26:56  
+language specific really, isn't it?
+
+Anne van Ede  1:26:59  
+Yeah, but I'm just collecting the the bunch of different implementations in difference. And then I can compile a list and maybe they're all the same. And when you're creating systems, do you, you name the system something? Do you make anything special to make sure that they notice its a system?
+
+Richard Fabian  1:27:18  
+No, havent needed to despite me again? Because I've kind of hidden it from people as I've implemented it, so they don't know that they're doing it. But it's the unaware surviving Really. Yeah, I've not worked at a games company yet that actually does data oriented design on purpose. just sneak it in. They don't know. No, there's no real name for them. They just end up being something something processor, something something manager. They might be. Yeah, and system. And it just, it sounds right for what it's doing. And then it just does what an ECS should do, which is it goes through this lists of things that it cares about and does the operations. So yeah, naming convention of them. In fact, almost an anti naming convention for them. 
+
+Anne van Ede  1:28:21  
+You're not the only one. Right? Do you use any other kind of coding or naming conventions when you work with ECS. And then we're to the last two questions. Is there anything you have seen someone use for if you use yourself in the beginning that I should absolutely avoid like Please don't do that ever, ever.
+
+Richard Fabian  1:28:56  
+Don't confuse entities with nodes in a graph.
+
+Anne van Ede  1:29:05  
+I can feel your hurt all the way over here.
+
+Richard Fabian  1:29:12  
+Yeah. Yeah. That's that's the biggest error and it's it's helped me the most over the years. Yeah. But that then redefines the whole thing and you can't really fix it from there. Youve lost, the game is done. 
+
+Anne van Ede  1:29:35  
+Okay. Anything else? Maybe less dramatic.
+
+Richard Fabian  1:29:45  
+Things to avoid. Ask the question again.
+
+Anne van Ede  1:29:49  
+Is there anything that you've seen or done yourself before that I absolutely need to avoid?
+
+Richard Fabian  1:29:56  
+Done myself
+
+Anne van Ede  1:30:00  
+I mean, I know my, I know some code of when I was, like 15. And like, I never want to look at that code again, something.
+
+Richard Fabian  1:30:07  
+No, I'm thinking something that I did nothing knowing I was right turned out to be wrong.
+
+Anne van Ede  1:30:11  
+Oh, that's so good one.
+
+Richard Fabian  1:30:15  
+Oh, yeah. So I'm trying to fix a scene graph problem. And I said, Okay, the problem here is doing is massive traversal. It's really expensive, looking memory up and stuff. And I'm always like, we should be moving this to like an ECS style thing, at least, maybe what we can do is we can capture all the nodes in this graph, and we can put in one list and we can just run through them, then it might run faster. And like, I knew I was right. Yeah, do it. It's same speed. Because I hadn't done the memory analysis of what work it was doing per node in the graph. And it turned out that traversing the graph would access the same cache lines as the V table. And they were making three virtual calls. And two accesses to some other of this memory later on. So the traversal was actually pre loading the V table. And in fact, I just wasted time by collecting them up into a list, they were already broken, the entities were already impossible to make faster, they were already doing four random cache line reads for every single entity. And so the mistake I made, there was nothing to avoid there is actually figure out where the real cost is before you go changing things. Because it could be that an ECS can't solve it. But even going to a straightforward lookup is not going to work because there's other later work that destroys the performance. So anyway, yeah. Yeah, do look out for the real work being done. And I was really sad about that. Because like, I'd said that this is gonna be fast. And it wasn't, you know, just because I'd forgotten to, like, actually look at everything that was accessing.
+
+Anne van Ede  1:32:12  
+That's the one thing that makes me a little sad that the tool I'm making can't help with a decision whether or not to do it, because that's just out of my scope. And the only thing it can do is like, if you decide like, okay, I wanted this, how can you do it best? That's the only thing that makes me a little sad. Okay, I would very, very much like to do you know, that other part as well, just to help you start from scratch, they get not only like, how do you do it, when think it's going to be effective, but also, how do you decide if it's going to be effective. But for that, I would have to do like a PhD or something. And I'm not ready for that. 
+
+Richard Fabian  1:32:52  
+The problem I was facing was, what I realized is I've now lost faith with everybody who said, who's like, Oh, this guy can fix it, make it faster? I Oh, yeah, I can make it faster here, do this. And I did this. I was like, Oh, no, I've got to do that, that and that as well to make it faster. But that means a massive change. They should have put in right at the beginning. Yeah. And now I've proven that I don't know what I'm talking about, because there was no improvement. So my next request is going to be denied. Even though I've got all the information to back it up. Yeah. So yeah, yeah. Yeah. Don't Don't make false assertdo to lack of data. Prove your improvements first.
+
+Anne van Ede  1:33:44  
+Maybe it's not applicable to this situation. But you also say, ECS can reduce complexity. So even if it's not actually faster,
+
+Richard Fabian  1:33:53  
+whether it was a way to see what's going on, I mean, in fact, I could actually tell what was wrong with it was because I'd done an ECS style approach to it.
+
+Anne van Ede  1:34:00  
+So sometimes, even though it might not improve performance, it might still be the way to go
+
+Richard Fabian  1:34:04  
+It improves your ability to make the performance better later. So it also reduces the difficulty of understanding what I was doing. Because I went from thinking, Oh, it's just a massive graph to Oh, my goodness is 114,000 of these things. So I had numbers.
+
+Anne van Ede  1:34:21  
+Right. But you see, don't port unless it's necessary. But
+
+Richard Fabian  1:34:26  
+yes, it was necessary. But the thing is, yeah, so how do you prove is valuable.
+
+Anne van Ede  1:34:31  
+Exactly. So how do you decide when it's not valuable? Like, when does it
+
+Richard Fabian  1:34:37  
+You cant can you?
+
+Anne van Ede  1:34:39  
+neither complexity reducing,
+
+Richard Fabian  1:34:42  
+you can't prove it!
+
+Anne van Ede  1:34:45  
+You can only like,
+
+Richard Fabian  1:34:47  
+you can only prove it is valuable?
+
+Anne van Ede  1:34:49  
+Yeah. And you can prove it. It's not valuable after you've done it. Yes, and it doesn't improve any complexity. It's still a mess.
+
+Richard Fabian  1:34:57  
+Yeah, because the best you can do is Have a small test case to prove the process works and through the results of that. And so yeah, there is no way of proving that it's worthwhile until you've done it. Because there's all sorts of other reasons why it could fail.
+
+Anne van Ede  1:35:16  
+Including your own capabilities.
+
+Richard Fabian  1:35:18  
+Yeah, you might miss something terrible. And yeah, my case my ability to think that actually, there's more going on here. Yeah. Yeah. So yeah, I don't think you can prove before you do it. I mean, that's, that is proof isn't that really proof is in the result, you can definitely get some very, strong pointers telling you which way you should be going. But that's all you can get is pointers. You can get metrics, metrics, heuristics, heuristics, thats the best word, heuristics of the direction to go in. Yeah. But never proof. 
+
+Anne van Ede  1:35:59  
+No. That takes me to my last question of my formal interview. Is there anything you consider important when ECS or component designing that I haven't asked you about?
+
+Richard Fabian  1:36:24  
+Things I consider important about component design is that components should be about something there should be about a meaning and interpretation of the data. So the data oriented design is always saying the data is devoid of meaning completely. Because the data is devoid of meaning, the component must be the meaning. And so you start to identify that the component then becomes that kind of bracketing around the data, an interpretation of it. So everything kind of stems from that, for me is that every component-style thing that I design is always based around its behavior, its interpretation, at a current point in time at one point in time, and that can change over time, that can change by where it is, it's rated for things like in positions in space, or it can be the progression of a character for a storyline, the component might need to change based on something else, like how much is left of some limited resource, anything. But its meaning like a health pack means more to you when you are low on health. So a component in that sense is a component means that if you if you have, you could have it such that when you're low on health in the game, all the health packs start popping up in little icons, they have a meaning to you, as a player, they means it to you. And only the ones nearby matter. Again, it's that what does, that has a meaning to you. I think I touched on this on the hierarchal level of detail chapter. Yes, yeah. So components are always about meaning. That means that if they don't have meaning, for some reason, get rid of them. Turn them, it's something else that stashes away the actual necessary pieces for later. component design should be about what it means. And meaning, again, meaning is only ever relevant to the end result inside the brain of the person using the software. Right, it has to reach right in here somewhere. There has to be a pathway from the component to what it means inside the head of the person using it, you have to have some kind of conceptual link all the way down to the position component matters, because it's rendered, because it can be colliding with stuff. collisions matter to the person because they think about things touching each other. They think about the rendered object on screen has to be rendered. So it has to reach here. But they won't care about something like a health packs value, unless they can see it. So don't even bother putting a component in for it. It doesn't matter to them. Yeah, if there is no meaning to the end user doesn't need to be there. Now, the end user doesn't have to be the person that's using the software, when it's finally published. It can also be the developer. So there can be components that are debug only. Because that's a valuable, meaningful component for someone who's trying to debug something, but it's still meaning it means something to someone. So if you can't find that mapping, be aware it might not be a real component. It might just be something you think you need.
+
+Anne van Ede  1:39:55  
+Like you like the example you gave with the followers and the houses like their Not there's no meaning to having a health to the follower when it's your house because it's always healed. It's always healed and you don't care is player that there's no
+
+Richard Fabian  1:40:12  
+pop out again, they're fully healed. So that's fine having meaning them because they can be hurt. They can't be hurt inside the house has no meaning for it. Yeah, sure, yes. Good. Yeah.
+
+Anne van Ede  1:40:20  
+Okay, then I, then I understand that's then the end for my for my questions. So first before I forget, thank you for your time on a Saturday no less.
+
+Richard Fabian  1:40:35  
+We could have.
+
+Anne van Ede  1:40:36  
+Yeah, but I really appreciate you taking this time. Because literally my reaction when you emailed back, like, Oh, yeah, sure, Yes!
+
+Richard Fabian  1:40:48  
+I am a massive fan of sharing knowledge. The whole reason why the book is available for free is because I think everybody should know everything I know, please. And let them feed it back to me so that I can get better, too. And so I'm very happy to help out with this kind of stuff. And I hope that I can promote your work when it's finished. If you're able to put it out publicly.
+
+Anne van Ede  1:41:13  
+I don't know that I'm just a master student. So it's not like,
+
+Richard Fabian  1:41:18  
+well, I had another person doing a master's thesis on data or to design and he was training him for a while. And then when it was all published, I was like, Yeah, cool. I'll retweet it. I'll share this around. The website dataorienteddesign.com is a bit dead. I work too much. But no, if you want me to push anything of yours up on there as well, that's fine. But I will retweet things as well if you want to get any distance on it. But I'd be glad to incorporate anything. I'd say sharing knowledge with the world is important to me. I mean, my next book is all about design patterns. And it's going to be a bit of a doozy. Because I've learned so much about how they've been misused. I need to share this information. That's the driver for me was I started on this journey because I'm like, they are terrible I need to tell people why bad they are. And the more I learned, like, Oh, god, these have been so misused. They're terrible. But I can fix it. The drive to fix things is very big, amazing. Yeah.
+
+Anne van Ede  1:42:31  
+Anything I should know, on those design patterns that I should avoid,
+
+Richard Fabian  1:42:36  
+avoid. Try and avoid the design patterns book by the Gang of Four. It's possibly the worst book on design patterns. Now, I've read it a few times, and all the other ones around it. It's probably the worst one for understanding what they really are.
+
+Anne van Ede  1:42:53  
+The Gang of Four
+
+Richard Fabian  1:42:54  
+is called design patterns of reusable object oriented. So yeah,
+
+Anne van Ede  1:43:02  
+I can see it in my Google elements of reusable object oriented.
+
+Richard Fabian  1:43:07  
+Everybody loves that book. However, that's the worst one.
+
+Anne van Ede  1:43:11  
+I have never seen it before.
+
+Richard Fabian  1:43:13  
+Okay, well, yeah. But that one's the one that everybody's talking about with strategies and factories and Singleton's and stuff. That's where it all comes from.
+
+Anne van Ede  1:43:23  
+Do you know the book by I think Robert Nystrom. Think him
+
+Richard Fabian  1:43:30  
+Game design patterns. Yeah, magnificent, Bob. Yes. Yeah. I've I've read I've skimmed that book and read a few bits. And he actually mentioned me in it.
+
+Anne van Ede  1:43:40  
+Yeah, I know.
+
+Richard Fabian  1:43:43  
+That's cool. Yeah. But yeah, that's actually nice. That's quite good. I that one, it's, again, it's not design patterns. And it's actually common solutions. And it's a big problem with design patterns movement is that almost all of it has been based around the bad book that described design patterns as common solutions to problems, pattern problems. Whereas in reality, design patterns, or the pattern languages, from the architect, Christopher Alexander, are more about understanding the problems. And defining how a solution will look but not showing you a solution. That's good. Whoa, wait a minute, what's going on here in my head, hang on. This is much more useful stuff, I can actually generate personalized solutions within constraints with this extra wisdom given to me by these design pattern languages. And so that's, that's why I'm really sad about where it went. So if you want any one book to read on the subject, I would see if I can get hold of a copy of patterns, pattern oriented software architecture, volume five, if you care about design patterns itself is pattern oriented software pattern oriented software, Article five, is, in my opinion, the book that really explains design patterns, as well as it can do in software engineering is the closest I found to a really good design patterns book. However, even that one's missing something.
+
+Anne van Ede  1:45:31  
+So basically I need to get the book you're not yet publishing.
+
+Richard Fabian  1:45:36  
+I Havent finished writing yet. This one's huge, though. Unfortunately, the the data design is actually quite a short book 80 something 1000 words. It's quite nice and short and gets to the point in most places, I hope I'm already 200,000 words on the new one. I gotta trim that back. But yeah, I was already 
+
+Anne van Ede  1:46:12  
+Yeah. Right.
+
+Richard Fabian  1:46:20  
+Oh, yeah, I was gonna mention at the beginning, I said, I came across four design patterns of data oriented design. And I can repeat them to you, if nothing else at the moment. So you've got an idea of where I'm going with data oriented design, revision two. So design patterns are in the design patterns book, that's bad solutions. So we're gonna go that style for this one. Because these are patterns that you apply to apply design, data oriented design, some of these might actually work for component stuff dont know if they will. So the first one was moving. Move to batch actions. That's actually the that is ECS really isn't it, a lot of time. Your common case is not a single action. We have to backtrack. So if your common case isn't. If the common case is entity do something, entity do something, entity do something. The answer is move that do something to a component and dispatch them.
+
+Anne van Ede  1:47:31  
+Yeah, that's Yeah. So right, instead of one subject at a time just do one function for all objects.
+
+Richard Fabian  1:47:37  
+That's right. Yeah, yeah. So that's one design pattern that I've written down and try to put these in a design pattern form for the the new book that actually has a design pattern section now. All the new version of data oriented design will have a design pattern section. That's why it's changed the orientation of lookup. So you look up things by entity, you might be looking up to the entity. But there are some situations where you can look up some different way. So try to get a really good example this one. So you got a deck of cards. You can shuffle the cards in the array of deck of cards numbered, not progressed, not 51, or 53, if you can trigger and that array tells you the card value at each position in the deck. But the opposite can also be true. You could have an array that tells you at what position in the deck, the card that has that value is.
+
+Anne van Ede  1:48:49  
+Wait, you're going to have to explain it I don't follow. 
+
+Richard Fabian  1:48:52  
+So position zero, Ace of Spades. Yeah. If I have a position 10, the value zero, that could be interpreted as meaning the ace of spades is at the 10th position in the array in the deck. Or it could mean that the 10 of spades is at position zero in the deck. Because the index is also
+
+Anne van Ede  1:49:20  
+right, so instead of like index, array index array value, you flip them around to the value becomes the index.
+
+Richard Fabian  1:49:30  
+Yes, that is a change that can improve the situation. Consider it for your case, because your list be organized by the value rather than position of it in the thing.
+
+Anne van Ede  1:49:46  
+So you can instantly find your entity entities. Instead of inserting the entire list and figuring out which has the space you just look okay, I need the ace of spades. Look for Ace space and then tell me which entity is behind it.
+
+Richard Fabian  1:50:03  
+Yes. Hmm. So that can be a good optimization step. That's a way of potentially changing the way you look at the world. Mm hmm. Yeah. So that's cool that might like change the orientation of the lookup. And you know, I don't know, it's an inversion of meaning, index to value value to index.
+
+Anne van Ede  1:50:22  
+Yeah, exactly. That's, that's what, because that's a big problem. Find one entity on like in unity, you can just find one object and you can select it. And that's easy. But finding an entity is difficult. So if you flip it around, then you can find the entity by value, and then you can figure out yeah, that's
+
+Richard Fabian  1:50:42  
+maybe useful. The other one is the one I mentioned earlier, make decisions earlier, when you find your switching flow based on last minute decision, do that decision back early in the process, lots of different sub strategies for this one, you've got the actual ECS itself, you've got sorting things in arrays by the answer to the question. So when I use it work, which they don't know, by the way, is that I sort an array based on the result of if. But that means then I just run the first set the expensive operation. And then the second set, I run the others expensive operation, but it's all the same, then it's just, it's like having an ECS. But with two components, and I never have to move the components around. I just like to slide around inside the vector.
+
+Anne van Ede  1:51:35  
+Yeah, you get
+
+Richard Fabian  1:51:37  
+very expensive. Yeah, yeah. The Yeah. So that's, that's one strategy. The other strategy is actually move it to ECS completely. Another strategy will be to do things like prepare your data so that it's got the right values in it in the first place. There's lots of different sub strategies for this one. The fourth one is, look at the data you have and ask if it's in the right shape for how it's used. If it's not change it, it is a bit vague, I'm sorry,
+
+Anne van Ede  1:52:11  
+related to the x, y, z Zed, like, yeah, how you're using it instead of how you would like magically change it, just look at how it's used? 
+
+Richard Fabian  1:52:20  
+Well, yes, it is. But it's also things like imagine, you're trying to render a lot of stuff, and you've got it stored as matrices, transformations, matrices, but then somewhere else, you're always checking to see if the player is looking somewhere. So if they're trying to figure out whether the player is looking at something, you want the matrix information, they don't own all of it, you might just want their position and the facing direction vector. So maybe you should store the data for the lookups for that kind of query as just a couple of vectors. So that query can be done faster. And that's like, Well, I didn't want the full matrix in that other one, I just wanted this bit. And then you might ask another question that might require a different subset data or data in different configuration for quicker, quicker answer to the question. So anytime you're modifying your data, just in time to answer a question, think, can I move that modification back into where I'm storing the data, so that I never need to do that at runtime, I can do it at compile time, or when it's created. We might see that kind of thing. When you're saying I want to look up an entity by its name. You might go, okay, that means running through all the entities and comparing by string. That's not the right data. I don't want that. I might want to say, I'm gonna look up by name. But I know that it's always going to be spelled 100% correct. Which means I can look up by a string hash. And I can put that string hash in some kind of hash lookup. So now, I can go hash the look up string, look in the map, find the entity straight away, rather than running through them to check if the strings change the data to what it needs to be to solve the real problem.
+
+Anne van Ede  1:54:27  
+With the impression that you mentioned earlier, because you you invert how you look for the data
+
+Richard Fabian  1:54:34  
+I guess that one's a sub strategy of this one? Yeah, its a sub solution, isn't it? So maybe that's the thing. Like the patterns are meant to be elevations of different ideas, some high level, some low level, so maybe that's actually really important. Thank you for that. I will consider that I'm very new to the idea of putting these design patterns in data oriented design. I've already started thinking about over the last couple of weeks, literally just in time, the
+
+Anne van Ede  1:55:06  
+the way you're thinking about data oriented design many people, because they're still new to it, they do something, just just do something. But if you, like you said before, if you really use data oriented design mindset, when you're creating these things, then there are some kind of patterns that emerge. Or you're talking about because
+
+Richard Fabian  1:55:27  
+yeah, they're just patterns of changes that you make to a codebase. And make it better. Exactly. That's coupled, less complex, faster, cheaper,
+
+Anne van Ede  1:55:36  
+a, the only word I can think of amalgamation is right, put together of all the experience you have when creating date or in design, like, this is something you should do, and this is
+
+Richard Fabian  1:55:50  
+what design patterns should have been.
+
+Anne van Ede  1:55:52  
+And then then you're like, Okay, so if I always need to mind this, then maybe there's a reason behind it. And you figure out what's like a driving force. Exactly. And if you flip, like you said, You You mind how the data is used. And there are several things that follow from that. Basically, data oriented design is looking at how data is used. So when you keep that in mind, you go down into specific situations, like how do I need to mind how the data is used in this situation? And then there's
+
+Richard Fabian  1:56:23  
+Yeah, I keep on having to remind you of that data is the values too, the values are used. Yeah. So I was trying to tell someone the other day, do you do any c++?
+
+Anne van Ede  1:56:35  
+A bit? Yes.
+
+Richard Fabian  1:56:37  
+Okay. So there's a thing in c++, modern c++ called constexpr, which is the ability to make functions, try to compile themselves down to the absolute smallest possible piece of code. And sometimes it can end up with a const exper function being turned into just the return value and nothing else. Okay. Yeah, this is very powerful technique for making really optimal code. Because you end up with, if you have a function that says, this is a really dumb example, a context expr of int, add int a int, B, return a plus b, would compile right down to the result of a plus b. If you put two constants in, if you put in five and four into the function call, you would actually get it compiled down to nine. In the calling code, it wouldn't ever actually call the function at all. Yeah, so Oh, no, I've lost where I was going with this. What are we talking about? rewind, rewind.
+
+Anne van Ede  1:57:57  
+How the data is used, how the value is used and 
+
+Richard Fabian  1:57:59  
+value? Sorry, yes, values. So values. In that case, were constant are literals, the values were literals, there were five and four, if you put variables in has to call the function who doesn't know what the values are. But you're a programmer who might know the values, even though the program itself doesn't so you might be a a, I know the value of this, it's always going to be greater than three. And you can say, Well, if it's always greater than three, then this part is always going to be false. And then I can collapse that function back. Yeah. So you can you can carry in your head, you can look for the code. A data oriented programmer thinks I've seen the data is never outside this range. What does that mean for the functions that are called using this data, and you can strip away the unnecessary pieces.
+
+Anne van Ede  1:58:54  
+It's the same way with vectorization. Cindy, is possible in the compiler. But if the compiler doesn't know that it's aligned, then it cantdo it. But if you know it's aligned, then you can do it for him. And so we tell him that it's Yeah, yeah, exactly. If you can tell him this is aligned this will always be aligned, and fix it for me, then he can do it. But if if the compiler doesn't know it, he cant do it for you.
+
+Richard Fabian  1:59:20  
+Yeah. Or it might try and do it with a massive preamble and post amble fix up sections. Yeah, it can get very hairy in there. Yeah, yeah. So that's, that's it, we know much more, and we should apply our knowledge of the values of the data. Not just, it's connected. The code can't know it has to have the data to work on to know. Again, that's why you will have to measure to be sure whether your work was really valuable. Because you don't know the values until you run it for. Oh yeah, I have one last design pattern which was avoid storing data references as pointers. There are too high resolution, they contain too much padding. This one's more specific, again to the c++ I think, I don't know, maybe it's not. But in c++, especially with 64 bit, that being so normal nowadays, eight bytes gone, just to something is more expensive than an index into a table of stuff. Because an index can be as big as it needs to be to store a table. So when I think about data oriented design, I also think about reducing unnecessary, like memory usage as well. Because if you have if everything fits in a much smaller amount of memory, you're all going to be in the cache anyways. Yeah, if your objects are tiny, and they're all in the one array, because that's all you really needed. Don't worry about how cleverly you put it together, because it's just there. Yeah, so the idea here is stop trying to store pointers to stuff, store indexes into tables of stuff, because then you increase contiguous memory, and you also reduce your costs of even storing reference in the first place. Yeah, it's a pattern. I've used it. I know Casey Muratore been using it. Oh, well. Yeah. Casey Muratore. Handmade hero. Handmade is a good series of stuff by him. Molly rocket. Yeah, if you don't know, the handmade, handmade hero is a series of talk videos while he's making a game showing people how to make stuff. He also worked on the witness for a while with Jonathan Blow. But he's done blog stuff there. He's done some lovely stuff. You can interview him too.
+
+Anne van Ede  2:02:03  
+Interesting. I'll definitely
+
+Richard Fabian  2:02:07  
+that's the only five I have right now.
+
+Anne van Ede  2:02:10  
+Well, it's already the one about about flipping it around. But that really was a really interesting one. I would never have thought of that.
+
+Richard Fabian  2:02:20  
+And I don't often think about it myself, which is why I'm writing it down to make sure I remember. I mean, I'm getting older.
+
+Anne van Ede  2:02:28  
+And that, that makes sense. I mean, my thesis is just for future me, I suppose.
+
+Richard Fabian  2:02:35  
+Yeah, I mean, maybe I'm writing these books. I can remember what I'm doing.
+
+Anne van Ede  2:02:39  
+I was like the write code like you need to read it tomorrow. Okay. Yeah, I have one last question. You already mentioned. One person, I wrote it down. The one from the Unreal fest. Is there anything else you know that I should talk to?
+
+Richard Fabian  2:03:00  
+Have you got any responses from anybody at Unity? There's one in particular, because he's really good to remember where I saw it. 
+
+Anne van Ede  2:03:23  
+ugliness, Mike Acton is now director of dots.
+
+Richard Fabian  2:03:27  
+Oh, yeah.
+
+Anne van Ede  2:03:29  
+I am currently still stalking him.
+
+Richard Fabian  2:03:39  
+I think I can find his name here. Maybe not. I have a feeling His name is Brian will. But not sure. Come on. This is a shame because I'll email it once I found it later. But yeah, yeah. And I'm have your email address now so I can send you anything else I can think of in the future. 
+
+Anne van Ede  2:04:12  
+Yeah. Woud you like me to send you my thesis once it's finished.
+
+Richard Fabian  2:04:18  
+I would be willing to review it before it's finished if you want. So any anything I did for the other guy as well. So
+
+Anne van Ede  2:04:26  
+that would be very nice. My teacher is optimization, but not is yes. So I sometimes know more on the subject than him. So it would be nice to have someone else look at it.
+
+Richard Fabian  2:04:36  
+Yeah, sure.
+
+Anne van Ede  2:04:37  
+That was very nice. Also, can I add you on LinkedIn?
+
+Richard Fabian  2:04:42  
+Yeah. I mean, it's just a place
+
+that will never know.
+
+Anne van Ede  2:04:48  
+You never know how you can network.
+
+Richard Fabian  2:04:51  
+Yeah, that's why don't forget to follow me on Twitter.
+
+Anne van Ede  2:04:57  
+I don't have Twitter
+
+Richard Fabian  2:04:59  
+What? Do you like the terrible toxic noise a site makes? It's a lovely place to go and get depressed. It's it's not a good place.
+
+Anne van Ede  2:05:10  
+I have enough on Facebook and 9gag and reddit, so
+
+Richard Fabian  2:05:15  
+reddit, Oh, not sure we can be friends.
+
+Anne van Ede  2:05:20  
+Well, they're so nice talks about terrible bosses and pro revenge and stuff. I usually stick to those
+
+Richard Fabian  2:05:27  
+terrible bosses I can definitely get on side with. Yeah, I have
+
+Anne van Ede  2:05:30  
+Tales from tech support. subreddits. And they're fun to read how people come back at our boses and just complains and stuff like that. And this that's basically what I stick to. I read I don't post. Yeah, yeah, it's good stories. And whether they are true or not
+
+Richard Fabian  2:05:49  
+if they if they enjoyable, then their stories. 
+
+Anne van Ede  2:06:00  
+I don't know.
+
+Richard Fabian  2:06:02  
+What is the truth in a story? 
+
+Anne van Ede  2:06:04  
+The truth in a story, 
+
+Richard Fabian  2:06:06  
+the truth of the story is not the fact that it happened. The truth of the story is that the moral has value.
+
+Anne van Ede  2:06:13  
+Well, maybe that's more the meaning of a story.
+
+Richard Fabian  2:06:16  
+I mean, that's the real truth behind it.
+
+Anne van Ede  2:06:18  
+Yeah, the truth is the the meaning.
+
+Richard Fabian  2:06:20  
+Yeah, yeah. The meaning is gonna be true stories, even if they didn't happen.
+
+Anne van Ede  2:06:25  
+Yeah, the truth of their stories is, mannagers suck. And people don't know how to use technology
+
+Richard Fabian  2:06:35  
+Except. But I'm one
+
+Anne van Ede  2:06:39  
+most most.
+
+Richard Fabian  2:06:42  
+Yeah. Yeah. All right. Cool.
+
+Anne van Ede  2:06:45  
+Thank you very much for your time. You're welcome. I learned a lot. Oh, I'm
+
+Richard Fabian  2:06:50  
+glad to hear it.
+
+Anne van Ede  2:06:51  
+Yeah, there's a
+
+Richard Fabian  2:06:52  
+I always love it. Like it when someone gets something out of anything I can do help with.
+
+Anne van Ede  2:06:58  
+Yeah, it was very, very helpful. So thank you for that. Um, and I'll definitely take you up on the offer probably for a review. Yeah. And
+
+Richard Fabian  2:07:13  
+I won't promise actually, when When are you planning on finishing?
+
+Anne van Ede  2:07:17  
+July? Yeah, July? So a couple of months? Would it be okay
+
+Richard Fabian  2:07:24  
+Dont do 200,000 was like I do I like that. 
+
+Anne van Ede  2:07:28  
+No, I don't hope so. I'm not planning on it. There's a strict limit of like, 50 pages, and I'm hoping I'm going nowhere near that. So.
+
+Richard Fabian  2:07:40  
+Yeah, that's, that's not very long at all really.
+
+Anne van Ede  2:07:42  
+Yeah. It's long for me. So I'm hoping to go nowhere over 30. So that should be fine. Um, have a lovely weekend then. But yeah, good luck with writing.
+
+Richard Fabian  2:07:59  
+Yeah, well, luckily, I've been collecting notes for the last couple of years while I've been reading. So mostly, it's converting those notes into the full thing. And then when I'm fully finished with that lot, then it's right now, what does the reader care about each step? Cut it into the real thing. It's not how I wrote data oriented design, as you can tell, because data oriented design does meander quite a bit. But now this one's gonna be much more. Right? You care about this? I'm going to answer it Ding, ding, ding, then you care about this. I'm going to be doing Yeah. It's going to be a long but compelling, read hope.
+
+Anne van Ede  2:08:38  
+I don't know if it would be something you want or need. But if you want feedback for your writing, then I'd be happy to help you if I can. Yep.
+
+Richard Fabian  2:08:50  
+Yeah. I mean, I know data or design isn't written very well. So I'm planning on revising the whole kind of structure of it when I do my second edition. Because I feel like I put a lot of readers off by having a massive rant at the beginning. bad place for it.
+
+Anne van Ede  2:09:10  
+If it makes you feel better, it's been very helpful for me. I mean, the whole idea to use database normalization on
+
+Richard Fabian  2:09:18  
+to break that barrier of object oriented thinking,
+
+Anne van Ede  2:09:21  
+exactly. That was completely new to me. And it's the basis for my research. The book I read, I had some ideas like what I want to do, and then I read the book and like, Oh, I'm going to do it this way. And I'm going to aply because that is sort of missing, then I use syntax analysis. And then that's how I put that in. So your book was basically I took pivotal, Yes, exactly. I was planning on reading it in like a few days. And it turned into like, almost two weeks, because every time I read a chapter that I can use this and then I wrote out how to use it. And then I wrote the next but I know I have to change this and then that's basically I went through the book and at the end I had my methodology
+
+Richard Fabian  2:10:00  
+Nice. Oh really? Oh yeah.
+
+Anne van Ede  2:10:02  
+Thank you. That's basically how it went there.
+
+Richard Fabian  2:10:05  
+Another person that Zig Lang just mentioned that he made a massive bunch of savings in his parser by reading my book. Oh, that's nice. Thanks. I do love hearing this. Yeah. big ego stroker here.
+
+Anne van Ede  2:10:18  
+Well, it's it's the truth. It's it's Yeah.
+
+Richard Fabian  2:10:21  
+It's was helpful? Yeah, it's very it's very I'm hoping I do the same thing with a design pattern stuff. change people's minds. Give them the benefits. Yeah. All right, then. Okay, well, yeah, you to have a good Have a good weekend. Okay.
+
+Unknown Speaker  2:10:35  
+Bye bye.
+
+Transcribed by https://otter.ai

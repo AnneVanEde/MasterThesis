@@ -1,0 +1,628 @@
+Sander Mertens  0:52  
+Hey goeie morgen. 
+
+Anne van Ede  1:07  
+Goede avond. Bedankt voor de tijd
+
+Sander Mertens  1:07  
+Ja geen probleem, geen probleem. Ik had een beetje doorgelezen wat je had gestuurd en het ziet er echt super interessant uit.
+
+Anne van Ede  1:07  
+Ik weet eigenlijk niet of ik dit in het Engels of in het Nederlands moet gaan doen
+
+Sander Mertens  1:18  
+Nederlands is prima
+
+Anne van Ede  1:21  
+Ja ik heb het helemaal in het Engels voorbereid. Dus de vragen zullen wel helemaal in het Engels zijn, maar de antwoorden
+
+Sander Mertens  1:27  
+Als je het in het Engels wil doen is dat ook prima, its up to you
+
+Anne van Ede  1:33  
+Misschien wel handiger, want ik moet het ook soort van in mijn Appendix bijvoegen anders moet ik het helemaal gaan vertalen. Welcome thank you for your time. It got, ik had dit nooit verwacht. Ik dacht wel, dat klinkt wel Nederlands, maar je weet nooit hoe iets loopt, en toen opeens, ja ik ben ook Nederlands.
+
+Sander Mertens  2:00  
+Ja, het is ook wel geinig, er zijn meer Nederlanders bezig met ECS of game development dan ik had gedacht. Maar inderdaad ik zag ook jou naam en dacht ah dat kan bijna niet missen.
+
+Anne van Ede  2:12  
+Nee, nee inderdaad.
+
+Sander Mertens  2:13  
+Je weet het nooit helemaal zeker, omdat we in Amerika ook veel mensen wonen die geimmigreert zijn, vroeger, en die hebben dan vaak  namen die heel erg Nederlands klinken. Maar ja, ja, wel grappig inderdaad.
+
+Anne van Ede  2:27  
+um, so like I explained in my email, but my text I'm researching conversion from object oriented code to data oriented code, specifically component based or ECS. And I got interested in this two years ago when I was doing an internship, and I found a unity ECS. I thought, this is cool. But in Utrecht University, they don't really teach object data oriented. So I was basically the only one who knew this, but also in the programmers, I was the only one who knew this. So I thought it was really cool. But they were hesitant to do merge, because one, they didn't know it, and two, it's not that easy to switch. And I thought, what if I can help them move from one to the other because it has so many benefits. So two years later, I do my thesis on the subject, so and my tool will create help in two ways. One, it will take the object oriented code, and it will create a plan to make the conversion to component base, it won't convert the code, it will just create a plan. And then the second part, it will educate the developers on why this is good plan so they can learn in practice, and also, you know, maintain the model. But important, I need a good plan. So Im talking to as many people as possible to figure out what they think is a good plan to see if there's a common denominator. For this, I created some open questions, but because I'm speaking to quite a broad range of people, the questions might be not suited to your situation. Just tell me so we can alter the question or answer the question, however is fit for you. If you have any questions, just ask them and we'll get to them. Right, is it okay if I record this video strictly so I could type it out later?
+
+Sander Mertens  4:32  
+Of course, no problem.
+
+Anne van Ede  4:33  
+Okay. And is it also okay if I name use your name in my report, so they know that I didn't ask my next door neighbor
+
+Sander Mertens  4:40  
+Yeah
+
+Anne van Ede  4:41  
+well actually sort of my next door neighbor. Yeah, country neighbor. This was
+
+Sander Mertens  4:49  
+Wait, wait which University is this for?
+
+Anne van Ede  4:52  
+Utrecht University.
+
+Sander Mertens  4:53  
+Okay, cool. All right.
+
+Anne van Ede  4:55  
+I'm studying the games and media technology. Yeah, the games master. Uhm, right, so I know it's late for you. But sometimes I ran a little long, so it might take a little more than an hour, but we'll see. Okay, um, do you have any questions for me before we get started?
+
+Sander Mertens  5:21  
+Um, no, not really questions, but I think it's really timely. And so I'm kind of curious. I mean, maybe afterwards after, after you've asked all the questions. I'm kind of curious what your findings are so far, if you have any, or what you've heard so far, because, yeah, I'm actually working with it with a couple of people addressing or, or I should say, identifying some of the shortcomings in ECS. Like, one of the things that you'll see in object oriented programming is that there's like a vast body of knowledge, and best practices and languages and tools and all of that stuff. Right. And I mean, ECS has, like, you know, breadcrumbs here and there. And so I think that, that one of the main challenges that we have is to or a challenge, I mean, it's a big word, but you know, is to turn ECS from like a tool, what it is today into, let's say, like a proper paradigm, right, a proper way to, to write your code. And I don't think that we're there yet. But, but yeah, I think it's, it's potentially possible, right. And so I think that that that the research that you're doing, probably is going to hit some of that, because you're going from something that has a lot of patterns, and a lot of like, knowledge and design patterns to something that does not have that. So yeah, I'm really curious to see where it goes. And but I'm also really interested to see where it goes.
+
+Anne van Ede  6:41  
+Yeah, um, that I spoke to the one who wrote the data oriented sign book, Richard Fabian, and he's actually working on part two, and he's going to include some design pattern in it.
+
+Sander Mertens  6:52  
+Nice.
+
+Anne van Ede  6:53  
+it's on its way. Yeah. 
+
+Sander Mertens  6:55  
+Awesome. Yeah. Yeah.
+
+Anne van Ede  6:57  
+Um, so let's get started with that. Okay, tell me how you first got started with ECS?
+
+Sander Mertens  7:03  
+I think the same way that many people did, I was actually. I mean, the way I got introduced to it was through unity. Right. So they started, I think it was 2018, late 2018, I think that they really started to push it and push out tutorials and, and make videos about it and right it right around that time, I was also getting sort of interested in game development. And so I was looking at Unity resources. And then I found this thing called ECS. And, and I saw it like three or four times, and I ignored it. And then that's one day, I didn't have anything better to do when I figured out I'll just watch the tutorial. And actually thought it was really cool. So I actually was working like I'm not I wasn't working in game development at a time at all. But the like, the ideas and concepts of ECS. Like if they vibe with me, and it seemed like it would solve a bunch of problems that I was having in in the job that I was in at that moment, which was not Game Dev related at all. So so that caused me to start experimenting with it a little bit. And and you know, one day, I figured, well, what the heck, let me just write an ECS framework and see where I can take this, I'm just going to keep it like very small. You know, I know I want to I don't want to spend more than a month on it. And let's see, let's see where it goes. And obviously, that got a little bit out of hand. But that's sort of how I got into it.
+
+Anne van Ede  8:21  
+Okay, and can you tell me how you currently use ECS?
+
+Sander Mertens  8:25  
+Well, so I'm an auth like an author of a library, right. So I'm not really building any games with it. Although I am using it in my current job, but not for game development. So let me see how much I can say about this. So basically, what I'm what I'm doing with ECS is I'm using it as sort of a metrics collection back end. And that might sound like something that's completely different than what you see in game development. But it was actually funny is that there are a lot of similarities between something that needs to periodically collect metrics, and some and like, again, because both are processes that need to run at a certain tick rate. You know, they're mostly concerned with data. It's all about, you know, data, mutations, doing derivations on the data and then making the data available to something that can render that data or in my case, presenting it as like an API to something else. So that that is that the primary way in which in which I'm using ECS today, as a user, as as an author of a library, of course, I'm busy with all sorts of stuff. But But yeah, but when it comes to using it, that's, that's what I do.
+
+Anne van Ede  9:32  
+Okay, um, what ECS implementations have you worked with and you can include the one you created?
+
+Sander Mertens  9:39  
+Flecs, which is my, which is my implementation. I've had some experience so yes, a flecs is obviously the first one, but then I had some experience with with an ENTT. So you, I think, you know, that framework, right? It's, it's, I guess, one of the more popular ones, and, and I've also worked somewhat with Unity Dots. So, and that was more sort of like, experimentation and see how it worked within like a proper engine, I ended up not liking it at all. I mean, I've worked with Unity before that. And it was like, super easy. And then I tried to use the ECS stuff and nothing worked. Like that doesn't work, I have to write everything out in code. So that was like a bit of a shock. But it was very fast. So that's good. But let me see anything else that I've used? Oh, yeah, I actually used Aframe for a while. So Aframe is this web based ECS framework. It's it's not that well, knowing but it's quite cool. It. It's mostly optimized for VR applications. So if you build like a scene in Aframe, then you can basically just run it and it will, it gives you automatically the option to do like a split screen thing. Which is, it's kind of cool. Slow as hell because it's on the web. But it's very easy to use. And so I thought it was pretty cool. Yeah,
+
+Anne van Ede  10:59  
+yeah. Okay. I've noticed that every time I talk to someone from a certain library, they always give me a new one. So the guy yesterday gave me flecs. And I was like, Okay, let's go for there. Can you tell me in one or two sentences, the biggest advantages you see of ECS? 
+
+Sander Mertens  11:19  
+Hmm. Yeah, sure. So I think, by far, the biggest advantage, if you get it right, is code reuse. So I think that's one of the promises of object oriented programming, and it was that was never delivered on and I actually think that with ECS, there's a real opportunity to actually deliver on the promise of reusability. So that was actually the biggest thing that that when I got started with ECS, that was like the thing that I was excited about, because I saw this potential of being able to write reusable applications. I think that's definitely a big benefit. The other benefit is, I mean, I have to I have to say this because well, it's it's it's true, but it's I think it's overstated. Its performance. So obviously, a lot of people are super excited about ECS performance. I think it's important, but not that important. Because I think it's only one aspect of it. Like, you know, I think it's important to establish design principles first, and then you can think about performant ways to implement those. And ECS happens to be defined in such a way that you can actually provide very efficient implementations. But I think that sometimes the discussion is dominated by it. But But having said that, you know, being able to efficiently implement an ECS framework is obviously a clear advantage over, you know, doing something with object orientation. So I think that is important.
+
+Anne van Ede  12:39  
+Okay, and the same way can tell me very shortly, the biggest disadvantage, you see.
+
+Sander Mertens  12:45  
+So, yeah, oh, yeah. Oh, there's plenty. So the, the biggest disadvantage of ECS, woo, let me think it, the biggest disadvantage is that there aren't a lot of well established practices for doing common things. So for example, the by far the most common thing that people want to do in a game is build a scene graph, a hierarchy of entities. And there's no no guidance on how to do this. So everyone just invents their own way. And then there, there are a couple of ways that people have figured out how to do this. But I think that they're sometimes just plainly bad practice. And, and sometimes slow. And so you know, there's, there's different wheels being invented for it. And not all wheels are being created equal. That the other thing is, I mean, there's a list of things honestly. But our relationships within and between entities is a big one. So I go of being able to specify clear relationships is is a problem like in in object orientation, this is super easy, I just have a class with a member that points to another object. And by looking at the name of the member, I can see what kind of relationship it is, right? If I have a memory that's called sibling, then I'm pretty clear on what that what that kind of is, I mean, ECS, we don't have things like that. And what makes it harder is that we can also not express things like transitive relationships. You know, inheritance is something that is super common, in order to describe, you know, the world that we see around us. But in ECS, we don't have that. And so that leaves people with sort of, let's say, tools that are not really up to the job for describing the real world. And so I think, you know, that is obviously something that people have said, Well, you know, object orientation, tried to do that. And that was a bad idea. Like, you shouldn't try to describe the real world. But actually, I don't agree with that. Because if you build a game, you In fact, are describing a world and that is just plain information that you need to capture. And, you know, you shouldn't tie your behavior to that because that ends up being a big can of worms, but just the ability to be able to be able to describe that, I think is a big thing. And so that is a big lack of ECS I think the ability to the inability to generalize behavior is a problem. The inability to specialized behavior is also a problem. There is, yeah, there. I think there's Let me see I had a list here somewhere. If you're interested.
+
+Anne van Ede  15:21  
+You would almost think why are we using ECS at all?
+
+Sander Mertens  15:24  
+Yes. Well, all system organization, something that seems so I mean, you read the initial description of ECS. And you think like, Well, okay, I have entities components, and systems and systems are mathced with components. And if I just run those systems, then I have my game, but that's actually not the case, right? I mean, I have to actually order those systems in, I have to make sure that the dependencies are set up correctly, I have to make sure that they are scheduled correctly. And all of that somehow needs to be captured in the ECS. And if it's not captured in the ECS, then the user has to do it. And if the user has to do it then that adds a lot of complexity, so there's that that's a problem. And that's like super common, like you cannot get around it. So it's. But yeah, I think that's probably a good first initial list. It is a good point. Yeah. So why should we use ECS at all? I think that actually, that is, that is the strongest argument to make in favor of ECS that despite all of these problems, people are still very excited about it. And they're still generally pleasantly surprised when they first use it. Right. So I think there's a lot of things to fix. But even without fixing those things, you already have a pretty good base for you know, building something that people find useful.
+
+Anne van Ede  16:36  
+Yeah. Okay. Um, the next questions are more on the design process. So they are basically split into, like the overall design process that I can use to, you know, change the way my tool goes through the steps. And the other one is specific component design, and some, like low level things. So I can create a better design at the end. Keep in mind with these, just explain it to me like a five, because what you might think is so obvious, you won't mention it, this might actually be exactly that what I need to know. Okay. Um, right. So when you create an ECS design, uhm can you take me to the steps you use?
+
+Sander Mertens  17:20  
+Yeah. So the first step is definitely designing the components. Because everything else flows from that. If you don't design your components properly, then that is going to cause ripple effects through your applications later on. So that is a very important thing to get right. So you're asking me about the steps, right, not about how I actually do the steps. So so. So once I've established that. So once, once I have like a rough outline of the components, and there's like no way that you can do this exhaustively before, you know, at the start of your application, but you can come up with some some basics. And, and I guess, establish some sort of guidelines around how you want to design your components so that you have some sort of consistency, when you add or remove or change components. I think I continue with sort of thinking about which features I need, as I, as I like to group features together in in sort of reusable modules. And then within those modules, I can then start to think about, well, how do I like, which systems do I need for the implementation of this feature? Because usually, it's not just one system its not that simple, right? If you want to implement a collision detection system, then you don't need that you can't do that with one one system, you need a system that detects that needs a system that resolves that you need a system that clears it. And so there is there's usually multiple things that go into that. So that that is the second part. And then the third part, I dont know, is there a third part? I think that's probably that's probably it. And then And then from there, you just iterate? Yeah, I think like the, the important aspect here is the focus on reusability. And actually, let me let me get back to that, because I'm sure that we'll touch upon it.
+
+Anne van Ede  19:20  
+Yeah, it's okay. If you do it now. Like, I have these questions to get the information out of you know, because I need to, like these questions could be answered.
+
+Sander Mertens  19:29  
+Okay. So in that case, maybe I want to put a little bit more emphasis on the system design part. So so I think that that is probably one thing that a lot of people underestimate when they start with ECS. And that is what is causing a lot of the, let's say, initial friction, right? If you've seen some of the discussions between people that have used ECS, then generally the tendency is that they say, Well, I had to like completely rethink how I write my code. I didn't I wasn't able to fit everything neatly within the ECS pattern. But once I got there, I got these in these and such benefits. And I think that that initial hurdle is caused by a number of things. But the most important thing is that you have to sort of switch from a mindset from going to, I'm writing this piece of logic for this specific class for like a single object to Well, I'm writing this piece of logic that is going to be applied to this component, which can be distributed across many different entities of different kinds. And I have to write my system not for one entity, but I have to write it for a number of entities. And so that is like a polar opposite, right? And, and so that forces you to sort of like, put more design effort into the system, because if you get it wrong, then you don't just get that specific entity kind of wrong. But it's not that if I build a component for a boss entity, and I make a bug in that code that just my boss doesn't work. No, if I make a bug in the system, then it probably means that all of my entities are doing weird things. And sometimes those effects can be super, super subtle, subtle. So I mean, I wrote some like small games with ECS. And I found that this is challenging to to actually figure out, well, what is the scope of a system? How should I build this so that it can cooperate with coexist with other systems, but not like super tightly coupled with other systems? Right? And so that is something that that takes considerably more effort than just writing, let's say, a method in a class.
+
+Anne van Ede  21:32  
+I'll just go go on this. Can you tell me when you create a system? When do you think I need to split this? This is too much for one system? What kind of is the boundary? You set?
+
+Sander Mertens  21:53  
+Yeah, that's a good question the whether or not to split systems. I think there's, there's multiple things that go into that decision. And one thing is obviously, just plain code size. If I have a single system that has 400 lines of code, then probably I'm not doing something right. So it does have to have like a single responsibility. But even single responsibilities as a tricky word like it's, it's very easy to say, Well, you know, I have a targeting system analysis, single responsibility, well, actually, a targeting system needs to find the enemies and then it needs to reposition yourself, and then it needs to actually fire a bullet. So it's actually three different systems. But maybe the the finding the enemy system is split up in Well, I first have to build a spatial data structure, and then I need to do a query, and I need to set the targets, right. So you can sort of infinitely or not infinitely, but you can, like go down the level of granularity. And, and and like you can get lost there. So that is that is hard. So I guess like that is a long winded way of saying the actual process for splitting up systems intuition and convenience. So which isn't very, very nice. But what I mean is that it's it's very difficult to come up with a good description, that will tell you the right thing to do in any scenario. So like, have a single focus have a single, like, goal for your system, that's a good, good thing. But that, you know, there's many different ways in which you can do that. There's also the performance aspect. So sometimes having a system do many different things can cause for example, a lot of branching, like a lot of if statements, because you know, I have to account for all of these different scenarios. And sometimes it just makes more sense to split them up. And that way, you can reduce your brand split branches, and you can let the ECS take care of some of it. I think that's Yeah, that's probably I'm not sure if that's useful. But that's that's how it works in my head.
+
+Anne van Ede  23:57  
+That's okay. Um, then, what point would you consider that a system is too small, like I split this, this should not have been split? Hmm. What is too much?
+
+Sander Mertens  24:08  
+I'm not sure if there is such a thing, if you were able to split up the system into like a really tiny unit of, of, of code, then that probably means that the characteristics of that system are pretty favorable when it comes to performance and when it comes to reusability. So I actually think that that is a good goal to have. But the problem with that is that if you drive that to its extreme, then you can sort of overwhelm yourself. Like sometimes you and sometimes you just have to write something and then you can make it better later. So yeah, I don't I'm not sure if I think if I would say that there's something like a system that is too small thing that right basically just means that you did a good job. I think that the nice thing about systems is that you can write them It is very easy to split them up later, generally speaking. I mean, obviously there is, you know, if you have a very complicated project, then that might not be the case. But I would say that, in general, it's much easier to split up the system than it is to change your components, because then you have to change everything that touches those components. So, yeah, I think that starting with a largest system, then figuring out that maybe it does too much, and then splitting it up into smaller systems is usually the way to go. I've never found myself looking at a list of systems and thinking, he says, our systems are small, let me just pack them up into a bigger one that I have never done. So.
+
+Anne van Ede  25:40  
+Okay, um, right. What kind of information do you collect before you start designing?
+
+Sander Mertens  25:55  
+So yeah, okay. So so I have to, like, think a little bit about after like, go back to when I started the project. So yeah, the what. So what is important is to is that I have my my, like, concepts straight. So one of the really nice things in ECS, I think, is that a component is not just a type it has, it has semantics, it has very strong semantics, right? A position is not just a type with an x and a y no, it actually means this thing is in this position in the world. And so I think that before I start is very important to have those concepts straight. And, and so what I do is, I try to list all of the things that that have the like high level things that my, my, my process needs to know about. And then also, think about, well, what is the frequency at which I am writing this data? How many instances of this data do I expect to have? How often is this going to be read? When is this data going to be read? Then the next step once you have sort of general feel about that is to sort of divide up your application into different steps. And so you see, there's a lot of in game engines where you have these things like phases, like you have like a pre update phase, and on pdate phase, a post update phase, like a physics resolution, etc. And, and so I think that it's important to, to take that approach where you divide your application up into those different phases. And for each phase, you're basically going to think about well, in what is the contract for this component in this specific face? Has it been written hasn't been read? And is it going to be written? Or is it going to be read, and that gives you some initial ideas around? Well, if this component is going to be read in this phase, then it means that it has to be written before or it means that I have to schedule systems that need to read it afterwards. And so that I think is, is an important thing to know about. Yeah.
+
+Anne van Ede  28:08  
+Okay. Um, can you tell me the biggest misconception you had when you started ECS?
+
+Sander Mertens  28:16  
+Uhm? So many. So well, one misconception that I have, and I only actually very recently came to the conclusion that I was wrong, is that ECS comes in very distinct flavors. So once I started with ECS, I was like, Okay, well, this thing, this thing has entities, components and systems. And so if it's not, if it doesn't have that, then it's not an ECS. Well, then you learn about a framework like ENTT which doesn't have systems so that, you know, obviously, people are calling that an ECS, so obviously, something was wrong there. And then I then I started thinking, Well, okay, well, maybe we classify ECSes by their, by the way, they stored their data, like, you know, Unity DOTS has the archetypes ways, just kind of like a tables like approach where, you know, a framework like ENTT has a sparse sets and other frameworks have, like bitsset approaches and all and there's all sorts of exotic variants on those variations on those things. And, and so that's what well, maybe that's how we classify ECS frameworks. And and only recently I am because of a couple of people I was discussing with, like, they gave me some ideas. And it made me realize that actually, none of that is true. ECS is not an implementation or it's not really like a single design or single storage implementation. It is really the set of high level design concepts. And the way that you implement those is actually you can go wild there, like there are so many different techniques that you can use. And those techniques aren't really unique to a specific implementation. Like I've used So my framework looks very much like unity dots in the way that itstores its data. But I have used a lot of ideas from from ENTT, for example, on how it iterates entities and incorporated those. And so there are there are a lot of different techniques that you can combine and mix and match. And so there isn't really one ECS Yeah, there isn't really one one ECS kind, it's more of like a collection of techniques that you can use. The The other thing that I got wrong, and I think a lot of people got wrong is that it was all about performance. think is very important, because that's what people expect. But it's not. Like, it's not one, you know, I talked to a bunch of users, it's actually really useful. If you have the opportunity. There's this guy on the east, ECS labs, discord, live streaming and and actually is figuring out a lot of the ways of building with ECS as he is building his project. And it's actually really helpful. Because the challenges that he was running into, I joined one of his streams, none of them were performance. It was more about well, how do I model this? Like, how do I model an inventory system? Like no idea? And it turns out that there are ways that work in ways that don't work. And so it's like finding those those different patterns for building those different things.
+
+Anne van Ede  31:19  
+Do you know his name?
+
+Sander Mertens  31:24  
+Oh, so his name so is discord, I don't know his actually name but his discord name is rast0r. So he has, like, and yeah. I think if you look at the discord right now is like the last post is like, 
+
+Anne van Ede  31:37  
+yeah, I seen enough notifications from him going up. So I know who you are talking about, you know, so you're talking about? Yeah. Okay. Is there anything else you wanted to add?
+
+Sander Mertens  31:51  
+Um, I can probably think of think of more. But, yeah, we have to think a little longer. But yeah, maybe I'll come to it later.
+
+Anne van Ede  32:01  
+Is there something you think I should absolutely avoid? In ECS design?
+
+Sander Mertens  32:16  
+Yes, I think you should generally avoid large components. Just because this has something I mean, and I do this, I do this myself all the time. And I hate myself for it. But when I first designed my components, I always make them too large. And I always, always, always end up splitting them up. And it always causes me to do a lot of code rewriting. I've never, never ever combined components. Same as my systems, I never combined components, I always end up splitting them up. So yeah, I think people can do themselves a big service by just making components like into tiny atomic atomic units that really just describe one thing. And the reason for that is because there are really not that many penalties towards querying for a large number of components in an ECS. I mean, it varies between ECS implementations. But generally, there is no penalty. There's a huge penalty involved with splitting components up. So there are a lot of design principles that I think apply to all frameworks equally but this, I think is one of them. Yeah, the other thing that that I recommend to people is that you should try to do most if not all of your processing in systems. So obviously, in ECS, what you can do is you can just randomly access component data wherever you want, with like, methods or functions on the entity itself. But that is that that causes problems down the line. Because if you do that, that is not something that an ECS framework can reason about. And so that causes problems with scheduling. And and it's also less performant. Because if you have a system, that thing can be optimized to give you all the entities for that specific set of component. So yes, that's the other thing that is pretty generic, I think across frameworks. 
+
+Anne van Ede  34:19  
+Okay, uhm, then we're going to the more specific questions about component design. When you create components, you already answered a little bit, but I'm gonna ask anyway, how do you decide on how to split the data?
+
+Sander Mertens  34:37  
+Well, so if you look at sort of transform example, its great because it's very simple and everyone understands it, and exactly specifies what I mean. So transform, generally speaking is like a position, rotation and the scale. And so a lot of people just designed like that, right? But that is not an atomic unit of data, because there is a position rotation and scale and you can split those off. And so why would you split up? Well, because sometimes you don't need rotation. And sometimes you don't need scale. And there are performance disadvantages to having them all in one component because you have to load all the data into the cache. And additionally, like, it's just, I mean, I think it's, it's good practice to just only Subscribe for the stuff that you need, because that can also lead to better parallelization and whatnot. So I think I think that's so when I approach component design, I think that those things should be split up. But but it should be split up into a cohesive unit of information. So it doesn't make sense to create a component that just stores the x coordinates. That doesn't make sense. I mean, I can think of performance reasons why that would make sense. But honestly, I don't think that is very reasonable. Unless you're like building low level engine systems, in which case, you probably shouldn't be using ECS, anyway. So yeah, I think that is I think that's, that's what I that's what I. The other thing. Okay, so there's actually another topic here that I can mention, that is not widespread across frameworks at all, actually, I only know of one that actually implemented this, which is mine. And I know only have a few that are implementing it. So there's, there's this problem with components where sometimes you want to reuse, reuse the same system for different components. And that is not possible in ECS. So a very common example is when I, for example, have a game and my game is I don't know, maybe it's like an RPG. And in the RPG, I can apply buffs to my entities like, you know, maybe I can give them a health boost, or a stamina boosts or something like that, like an effect that has a certain duration. And like it expires, that's like densities. So I have different components for different buffs, I'd like a health buff, a stamina above, you know, minor buff. But those components generally behave all in the same way. I mean, they, they have different effects. But you know, it's something that I add, and it's something that expires after a certain time. And so what ECS forces me to do in like the vanilla definition of it is I have to write three different systems because I can't match a single system with three different components. And so I can't generalize that behavior. So one thing that I think is lacking in ECS, and that I think, but that I think is important when you're designing for an application is identifying those common pieces. And, and accommodate for that in the design so that you can actually reason about well, this is a health buff, which is a buff, and I can write a system that matches on a buff, and that will cause it to match health buff. So it's kind of like it feels a little bit inheritanc-y. But I think those kinds of relationships and being able to query for those that is useful to be able to do that. And it lets you write better code.
+
+Anne van Ede  38:06  
+Yeah that's actually. I've heard of this problem, but I didn't think that would be a solution.
+
+Sander Mertens  38:17  
+It's actually something that I run into, in, in my actual work where I use this where I was keeping track of a whole list of vehicles like real vehicles, and I was trying to keep track of whether they were like a stationary or not. And I did that by looking at the speed. And if the vehicle was not moving for a certain amount of time, then I added like a flag that's are tagged as stationary. But that is an effect that you need to keep track of. And sometimes you need to get rid of it. But I had a couple of those tags. And so I had like a list of like five or six systems that basically all had the same code. But yeah, I couldn't generalize it because they're all different components. So that is a thing that needs to be solved.
+
+Anne van Ede  39:01  
+Okay. When you're creating components, is there something specifically you focus on?
+
+Sander Mertens  39:09  
+Um, yes, so Well, okay, so we talked about granularity. I don't think I have to say more about that. The The other thing is, if whether a component should contain complex data. So for example, there there are, I mean, there are people I think that that can be very dogmatic and say that, well, ECS is all about, you know, simple components, they only should have like simple primitive members and nothing else. And I think that works well in most scenarios, but not in all scenarios. So but but when you are allowing for complex data structures in your components, you have to start asking yourself more interesting questions. For example, if I have a vector of something in a single component value, well, is that actually the right approach or should, in fact, there have been, you know, a list of child entities that I add to that to that entity. And so how do you decide whether to do one or the other? And so, one, one obvious reason for that would be well, do the elements in my, do the elements in my vector have their own lifecycle? You know, do I have to be able to delete them and create them as my application goes? Or are they more or less static? Or do I need to be able to use like ECS reactive systems? Like, if I set a component? Or if I set the value in that vector? Do I want other systems to be able to react to that? Or is it something that only I need to deal with? And so that can be a little bit of like a multi dimensional problem? And sometimes there's not a single good solution? Because I think, again, because of some of the, like, limited, primitive step that you have in ECS today. But, but yeah, I think that is an important decision. And there's also one that comes up a lot in the questions that I get on my Discord. So people will come to me many, many times over with the question, well, should I model this inside a component? Or should I just create child entities here? Or should I just group them in tags or stuff like that? And? Yeah, that's a complex question that really requires you to know more about the background of the application to be able to fully answer. Yeah, I think that's probably
+
+Anne van Ede  41:33  
+okay. Um, do you take into account low level stuff like readwrite separation or cache alignment when you create components?
+
+Sander Mertens  41:43  
+Yes, Yes, a lot. So I think it's very important to be able to annotate your systems with whether they are going to read or write your components. It doesn't necessarily mean that the ECS framework has to do much with it. But just having it there allows you allows the ECS framework to make certain optimizations down the line, that that can just make an application better and the Yeah, the other. The other thing that I think is lacking in the vanilla definition of ECS is this is the the ability to specify constraints on how you want to access your data. And so read write permissions is one of them, because it helps you. It helps you write code, especially if you have a large team of people working on the same components, is easier to be able to say, Well, you know, this should be read this should be write. And just to give people some some enforced guidance, basically. So yes, I think that's important. So when it comes to cache alignment, I think that's not necessarily an issue that should be front and center in the minds of the ECS, or the person that is developing with ECS. Although I mean, being totally oblivious to it is perhaps also not right. But but I think it like generally speaking and ECS framework should do whatever it can to make sure that your that your data access is aligned. And that it and that and that you optimally use your cache lines. Some ECS frameworks are optimized for this other ECS frameworks less so but but that's, that's a trade off. It's Yeah. 
+
+Anne van Ede  43:30  
+Okay. I don't know if this question is really good. Uhm, when there are multiple options, how do you decide which components? How do you know if you can split it two ways? How do you decide what where to split? 
+
+Sander Mertens  43:54  
+Right. So the simple answer to that is what I said before, which is just looking for the atomic unit of data. In practice, however, doesn't always work that way. Because if you like if you sometimes you just run into these these issues, where you need to split up a component and, and you could go all the way which causes you to rewrite half of your application or you could just split up the issue members and just do that. And, I mean, I I'm not embarrassed to say that I sometimes do the latter. The things that play that, that that that are important, I think in those considerations is can you, say, like sometimes you have to sometimes you have to synchronize systems in an ECS framework, or, like insert synchronization points in your frame to make sure That a write to a component is written to like a common data store before it can be read by a subsequent system. And sometimes by splitting up components, you can prevent those sync points. Because it reduces coupling between systems not not explicit coupling, but implicit coupling, right? If I have a very large component that is written by one system and then read by another system, then there's going to be a sync point, potentially. But if I can split this up so that this system is no longer writing that component, obviously, I don't have to do that. So I've run into a couple of scenarios where that actually can make a large difference in not just design, which invariably gets better, but but also the performance of an application. And that's not even considering the cache trashing that you do if you load a large component in your cache that you don't end up use. 
+
+Anne van Ede  45:53  
+Okay. Yeah. How do you keep component design legible and organized for yourself and others?
+
+Sander Mertens  46:05  
+Right. So I, yeah, so this is a good, good question. So what I what I do and what I strongly evangelize to anyone who is willing to listen, so you're now being evangelized to. Is that is that I think that components and as well, as I mentioned, systems, they should be organized in modules, where those modules say something about what I'm trying to achieve. So for example, I can send you a link later, if you're interested with with some modules that I've written for flecs, not really as a like a, something that I think everyone should use, but more as, like an experiment Well, with like, with, like, ECS design. And so I have component or system or modules for like, like transform components for physics components, input components, graphics components, and by organizing them into these different modules, I think you can achieve an ease of use that, that that helps a lot when you're writing an application. The other thing that I do is, I store metadata of these components in the application. So you can always request for any component, what is the name of it? And which module does it come from? And, and so that allows you to build tools, which can quickly give you insight in Well, okay, so I can get a pretty good sense of what this application is doing, just by looking at the names of the systems, the components and where they come from. So I think that that helps a lot. Because, I mean, obviously not not a big issue in small projects. But, but if you look at a talk, which you may have seen that the Overwatch talk on GDC, right? There are like they they discuss or if you haven't seen it, you should definitely Okay, it's definitely worthwhile. So it's basically this guy from was a desert, DESERT, right? That that worked on Overwatch. And they adopted ECS. And so they go into deep technical length about how they use it. And they have a couple of slides that just glance at how many components and systems they have. And it ranges in like 200 components easily. There's another guy that I'm talking with on the on the discord, and he's working on xeno knots two, which is also completely ECS based, and they have 800 components. Jesus, I mean, though, you know, if you if you have that, that that much stuff in your application, and you don't really have a way to organize it, and to sort of scroll through it, just by you know, starting up your game, or with tooling or whatever, it's going to be very, very difficult to, to to to figure out what's going on. The other thing that I want to do, but I haven't done yet, but I think is important, is to just add more metadata. So for example, I would like to add a description to every component in every system in my application, and that that is always queryable. Yeah, I think things like that can make it a lot easier for people to navigate large code bases, a lot easier than you could do in object oriented code base where everything is sort of, you know, knowledge is locked away in classes. And whatnot.
+
+Anne van Ede  49:26  
+if you had to put it to a few rules, what rules would you create for creating components?
+
+Sander Mertens  49:35  
+Hmm, um, I think the rules for that are pretty similar to what you would do in database normalization. I think there are some good techniques there that you can probably reuse when you're building an ECS application and the same principles apply in in some degrees. So I think so for example, I think, yeah, I think gennerally, generally think that normalization is a good thing, that you should try to find that the smallest atomic units of information. There's a lot of stuff that I could say about, about being able to store relationships in ECS. But that is really not something that you can read about much and most ECS frameworks aren't able to do it. And by is, it's very important because it opens up an entirely new field of designing stuff, which is not being captured right now. And so what I mean by that is, for example, if you have a crafting system, right, if you have a crafting system, then you have a list of ingredients, that list of ingredients can produce, or that can be used in different recipes. And those recipes produce other ingredients. And those ingredients you can use and other things. And so having that data stored somewhere in the ECS is basically sort of like a graph based storage, right? Where you have these entities and they're related to other entities. And if you combine them in different ways, then you can get other entities. Same thing with RPG where you know, you have a character, and that character has relationships with other characters, and those other characters might have items that you want, then those items, you know, might be located might be stored in this specific location. And so you have all these different relationships between entities that need to be queried, while you're building your game. And you need to design them. You need to design let's say that the relationships the kinds of relationships that you would want to see in your ECS. But how do you do that, is is hard. I don't know. I I don't have enough experience with it yet to see anything conclusive on it. But there are a lot of articles that I've read on creating semantic graphs, which I found very helpful. So there are for example, things like concept net worth net. What else are a couple more? All RDF? RDF is a big one semantic wrap is another one. And so they have they spent basically specify like a base level format for how to use How do you store relationships? How can you query relationships? What are the most common relationships that you see, in order to describe large portions of the world? What are the properties of those relationships? You know, are they Is it a transitive relationship? Or is it explicitly not a transitive relationship? Is it the opposite of another relationship? Like, if I like someone, then I probably don't hate that one, that one as well. Right? So I think able to capture that being able to specify constraints on those relationships is something that could be a very unique advantage for writing applications in ECS, because it provides you with a very rigid, but a very powerful framework for capturing game data. went on a tangent, which I'm not sure if that's going to be useful.
+
+Anne van Ede  53:07  
+Like I said, Before, I have these questions to try and get the information out of you guys. But the questions are just a guideline. So any anything, I'm still learning? So every guy, every interview I've had now I've learned something, and not always directly for my tool, but always something interesting. 
+
+Sander Mertens  53:26  
+Oh, I'm sure. Yeah, we disagree a lot amongst ourselves. So I'm sure that you get a lot of different perspectives, which is great.
+
+Anne van Ede  53:32  
+And it's also fun to see different viewpoints on the thing, though, the guy from ENTT he's very good at. Also explaining the basics, like the the archetypes, but sparse sets, and stuffy wrote blogs are about this, too. And then I talked to the guy from the book. And he he knew like the high level, but he didn't really know about the implementation. So I kind of told him about like, yeah, there's a difference between archetypes, sparse sets, and this is the bottleneck, and he was like, oh, okay, so he gave me a design pattern, or something. So, and for you the semantic graph, I should probably look into that. Because that sounds like something I could use to display my system. 
+
+Sander Mertens  54:28  
+Yeah. What was really fun though, is that the whole thing about archetypes and sparse sets is that that is going to be outdated, so soon. The that, like if you look, for example, at a couple of frameworks out there, like the Bevy ECS, which I'm not sure if you talked to the author of it, but you definitely should with the guys pretty smart. 
+
+Anne van Ede  54:46  
+Did you say Deaf ECS?
+
+Sander Mertens  54:48  
+a bevy so Bevy is this hot. I mean, they was just launched last year, but it really like took off like like a spaceship and then this popular now but the author is a super clever guy. And he also wrote his own ECS and has some really, really interesting ideas on how to write one. It's based on the archetype model. But But he is making some pretty interesting modifications to it, that I'm going to steal that. And, and then there's the sparse that stuff, and some of the sparse stuff is super applicable to some of the things that I'm doing in building a relationship storage. So it's really nice to see all of these different techniques and and sort of data storage algorithms and data structures come together.
+
+Anne van Ede  55:40  
+I am definitely going to talk to that guy. Or at least stalk him. Right, can you tell me something to absolutely avoid when I design components? You already mentioned, the, not too big, but anything else?
+
+Sander Mertens  55:58  
+Mm hmm. Yeah, make sure to have a single purpose. So I, I've had a few discussions with with people where they argued that a component derives its meaning from its context, context meaning, what kind of entity is it? And I strongly, strongly disagree with that.
+
+Anne van Ede  56:33  
+That sounds like the opposite of what ECS is trying to do.
+
+Sander Mertens  56:36  
+Yeah, okay. Well, it's good that you got that. Because very important point. And I think that's some, like some some of those points, you will hear from people that have worked with ECS. A lot of existing projects, they run into a problem, they fixed the problem in a way that was familiar with a lot of people. And so they ended up with something that sometimes is a little bit more OOP then ECS-y. And, yeah, so I think that's very important. Just make sure that the semantics are super, super clear. What else should we avoid when creating components? One that, so Okay, so I got into trouble about this before. But I have said this, and I sort of still stand by it, except in some really edge cases. But I also think that you shouldn't store things like function pointers in components. That seems like anti-..., like, it just makes things complicated. And I don't think that it belongs there. Like I think the there should be a really strong separation between the data and the logic. Because, you know, otherwise, we just end up with the same messed up that we started, we started with. So I think that's, that's probably important. What else? Well, don't store behavriour in components? Well, so Okay, so here's the thing. Actually, let me, let me explain that. So sometimes people add methods to components. And if you're, like, super dogmatic and pure, and you know, then you would say, Oh, that's like, That's bad. I should never do that as component to explain the data. And actually, I think that is not exactly true. So I think it's fine. As long as you have methods that only operate on the data of a component, it's probably fine. To do that, because it's just convenient, right? Maybe I want to, maybe I have one operation that sets three members, like I don't know, I have like a position. And I want to say that, well, what's a good example? I don't know. Maybe I want to move the position to in like an angle, right? And so I want to do to tri trichronometry have that in a function? Well, that's fine. Like, who cares about that if you do that in the method of a component. Also, things like constructors and destructors. If you do that in a component, that's also totally fine. It's super convenient, even in a lot of scenarios. So I'm not too too dogmatic about that. But everything else. So if you have components that like that actually do do stuff that have side effects, outside of the component itself, that's probably a bad thing, you shouldn't do that. The other thing that I would strongly discourage is to create components or tags that are very tightly coupled with systems. So this is something that you sometimes see, where people have like, Well, you know, I have this system, I have this logic, and I need to match it with this entity. But I can't write a generic, or if I just tried to do it with queries, and I'm also going to match all of these other entities. So you know what, I'm going to create a tag specific for the system. And that way, it only gets matched with that system. So sometimes that is the right thing to do. But the design process is wrong. I think you should start by thinking about well I don't want to create a tag that is specific for the system. What does this tag actually mean? Right? If I want this entity to match with the system, then maybe that is because this entity is a boss entity, or it is entity is I don't know, some special kind of vehicle that has this very specific behavior. And so then you create a tag for that vehicle, you don't create a tag to route to a system. And that seems that seems obvious sometimes. But I've heard people do the opposite. And so that I think is probably worth mentioning explicitly, that that's not something you should do.
+
+Anne van Ede  1:00:34  
+So you create a tag for identifying the entity and not for looping it through the system.
+
+Sander Mertens  1:00:43  
+Correct. So, and this again, it also goes back a little bit to the relationships, like you want to be able to almost like build up sort of a taxonomy of things that have things that you can expect in your game, right, I have things and I have, like characters are things and I have, like NPCs that are characters and have players that are characters. And I want to create a system that matches all the characters, but I want to have a system that matches all the players or I want to have a system that matches all the creatures. So I think by creating creating a taxonomy like that, and by specializing it, it allows you to in a very natural way, tailor your systems to only the things that you want them to match with. Now, that doesn't mean that you always should match systems to a taxonomy like that. But in some cases, you have to. And so I think that is a better approach where you sort of take a more rigid design approach about well, what do I have in my in my game, and things relate to each other? versus Oh, I have this system that I want to match with these in these entities? And, and well, let me just create a tag for that. Right, the end result is the same, but the process you get there is very different.
+
+Anne van Ede  1:02:01  
+Yeah. Okay. Right. So we already talked about the implementations for architectures and spars sets. And you also mentioned something that I didnt write down since I recorded it. And I also know big array, do you consider the limitations of the implementation you're using? When you're creating components?
+
+Sander Mertens  1:02:31  
+Hmm, ah, yeah, very good. Very good question. And it has a very complicated answer. So the. Yes, you should, but no, you shouldn't because which is super helpful. So I so you should, because I don't think that ECS frameworks are at a stage yet where you can totally ignore everything about them. It definitely helps especially, and Well, I mean, okay, so there, there are a couple of things like, if you have a small game, like candy crush, right? Who cares, it doesn't really matter, what you do anything is probably going to work and perform well. But if you have a game with, let's say, 1000 units right now that now it starts getting interesting. And and it definitely can influence the performance of your game a lot in the way you design your components. For example, if you have an archetype system, adding and removing components can be very expensive. And so if you design components in a way that you literally match behavior on a component being there or not, then that can cause like real problems, right? If you have lots of components on an entity, then then you have to copy all those components between different archetypes and that is caused a lot of trouble. So so you have to definitely take that into consideration. On the other hand, if you're using a sparse set, then there are other considerations, you need to actually make sure that you don't have too many components. Because if you create a query with lots of components than that means that you basically have to do like a branch and if statements for every single one of those components for every entity that you're iterating and you know, depending on the order in which you specify the components, and depending on the current state of the data in your game, such a query can either be super efficient or super inefficient, right. And so, in that scenario, you might actually have to combine components to make it more performant. Which I think is a bad thing, but that's what but that's the way it is. So, so that is why you really should consider the implementation of an ECS. Now, why I also argue the opposite, is because ECS frameworks are evolving and they're evolving fast. So you see that the the advantage of, let's say a sparse sets ECS are bleading into archetypes and the advantage of archetypes ECS are bleading it into sparse sets. And and I think that if you ask me the same question in a year from now, I can I can answer it without hesitation with a no, you don't have to. Because we will have arrived at a point where, regardless of what you which storage, you have, the storages can make sense of it in a way that is still going to be performant. And so I can, I can give you a couple of examples of that. So for example, unity DOTS, and, and flecs as well. And a few other frameworks that are working on this recently introduced a feature where you keep a bitset for a components optionally. And how does that work? Well, basically, you can just turn off an on components by just flipping a bit, for a specific entity and a specific component. Now, obviously, that has the same or a similar effect to removing the component, disabling it, but it's much cheaper, right, because I don't have to an archetype system, copy all of my components to another table if I remove the component. So that allows you to basically get the same behavior as a sparse set ECS, but at a greatly reduced cost. Another thing that is happening is, and this is one of the ideas that the Bevy author had, is to make a split between the, and I'm not sure how familiar you are with with the specifics of an archetype ECS. If not, I can, I can rerehearse, very quickly,
+
+Anne van Ede  1:06:33  
+I know the the implementations, okay with the tables, and you copy it over, and you search for tables where you are doing a query.
+
+Sander Mertens  1:06:41  
+Exactly, exactly. So and so if you have an archetype ECS, you have like, a table for every unique set of components. And, and some, like, sometimes you just want to add or remove tags, but and that causes the entity to move from one table to the next. But that's super wasteful, right? Because with a tag, I'm actually not adding any data, adding a component, so why should I have to move all the components between two archetypes. And so the Bevy author came up with an interesting solution to that is by basically splitting the table from the archetype, where an archetype still has the complete list of components and tags. But a table only has the data like the data components it doesn't have. And so you can have multiple archetypes that point to a single table. And that suddenly allows you to add and remove tags in constant time operation, because you don't have to copy the components anymore. So things like that suddenly eliminate a whole bunch of problems, you know, that you could have with an archetype system, because adding or removing tags is much more common than adding or removing components. And so that's very useful. Another thing that is that is coming down the line is the ability to indicate which components are static and which components are not. So something that you'll see a lot of games is did you have an entity, which I know is a player vehicle, building, whatever, right? It has a base set of components, and those components are never going to change, right? It's just that is what the entity is. Makes no sense to move those components every time I'm trying to add another component, right. So that is also something that you can if you can let the ECS framework know that that this is the design like this is these are your constraints, it can do clever things with that, that also optimize the performance. And so there's, like ECS authors are very aware of the limitations with their frameworks. And they're working very hard to address those. And so I think that in not too long from now, we'll have frameworks that allow you to care much less about, about how you should optimize for the for the storage, which allows you to be more pure in your design. And I think that is what we ultimately should move towards.
+
+Anne van Ede  1:09:02  
+I agree. There's some things like,  just curiosity, when you have multiple archetypes with tags that point to a single table, and it's not true that you lose some efficiency when querying because you cannot just run through a single table, but you have to run through the table and have an if statement, basically, 
+
+Sander Mertens  1:09:25  
+yeah. So okay, so yeah, that's a good question. And then so, we came up with a pretty efficient way to implement this. So queries in an archetype based ECS are generally very, very efficient. And the reason why they are efficient is because it can basically just cache the missing tables right? Or efficiency archetypes. So when you evaluate a query, you just iterate the archetypes and then you, you know, you iterate the entities in the archetype. Now, in this new model, there are basically two modes in which you can iterate and one is the last is the default mode, where you still just iterate all the entities in a table. If a query doesn't subscribe for tags, you can just iterate a table, right and iterate over the entity. However, if you have a tag, then that doesn't work, right, because not all the entities in the table have that tag. So what we do is we add an array of rows, to the archetype, that's, that basically refer to all the entities in the table, that have an tag. So, 
+
+Anne van Ede  1:10:34  
+So, you have like a separate list that you can just oh, I want that tag, just give me a look through the list of that tag. And then you point me to where I need to go as
+
+Sander Mertens  1:10:43  
+well. So it's actually not a list for the tag, but it's a list for the archetype, right? And the archetype can have many tags. So when when you have an archetype, which has all of these tags, or not, then then you have a list of rows. And those rows point to all the entities in the table, that the archetype points to, that that have those tags, right, that that have those exact components and tags are listed in the archetype. And so I mean, yes, you you do lose some efficiency, because you are not able to just iterate a raw array. But there's not that much, right, because you are basically one level of indirection away from the data that you need, and still and a constant time operation. And there's, you know, it's, you know, one, one comparison that I've made here is that if you think that a sparse ECS is fast enough for you, then this is definitely going to be fast enough for you. Because a sparse set has to discard entities as you're evaluating a query. Whereas here that never happens, right? You always have the exact list of entities that you need, always. And then so I think it's, it's still very efficient. For for queries. One other thing that I should add is that one, one thing that I expect to see more and more in frameworks is that you will be able to specify, like, rules or policies by up for lack of a better word, on components and tags, for example, and so and that would allow you to, for example, say, Well, I want this tag to split tables, because it's important, right? I want this thing to be super efficient. And I wanted to split the tables. Whereas this tag, I don't want that behavior, right. And so that is basically a completely transparent thing for the for the user who does the queries, but it does allow you to optimize certain parts of the storage by just flagging your components and tags.
+
+Anne van Ede  1:12:37  
+Now, the other thing I thought I just thought of that you could do is sort the table then you can still have like the list of archetypes, with the tags. But when you query them, they're more contigues in memory. Because if you don't, then you'll still be hopping in memory. And you're, but if you sort them from like, for each tag, you don't even need a list with like where theyree storage, you just need a start and  and end you can just iterate through it.
+
+Sander Mertens  1:13:06  
+So that's true. But there, there is a big downside with that approach. But but there is some, there's a definitely something that you can do, which has very few disadvantages, but but the disadvantage of storing all of the, let's say entities with different tags, but you sort them by the list of tags that they have in the same table is that if you now add or remove a tag, you need to move the entity still. And so now you reintroduce the copy of the components that you were trying to, to not have. So that is a that is a bit of a I mean, actually, so but I should say that there are actually there is an ECS framework that best is more or less, which is Legion from from the Amethyst engine. So what what Legion does, and this is what I've heard from the author, and this was a while ago, so I'm not sure if things have changed, but but he basically allowed for the merging of archetypes. And so basically what he did is he took a list of archetypes, he looked at the common components of those archetypes, he put those into a table into one big table. And then he sorted the entities based on the other components that they had, right? So you basically just append archetype to archetype to archetype. And then you have separate arrays that map to slices of that archetype. And that works extremely well, if you have components that are more or less constant, that don't move a lot. But if you have to move them, well, then you're you're in for for Well, I mean, you potentially have to move N entities across your sorted list to make sure that everything is still okay. Right. This, by the way, is also a very similar issue occurs with the entity groups. Right? If If Michelle explained groups to you that also is a way to sort of treat your sparse storage as a table storage Basically what he does is he allows you to define groups that's say position velocity, I want to, you know, iterate those entities as arrays. And basically what he does is he will move all of the values of all of the all of the component values for entities that both have position and velocity to the front of those arrays, and make sure that the entities align. And that way, you can just iterate them as arrays, which is really nice. However, that also introduced problems when or not, but but in efficiencies when you want to now move entities, right? If I add velociyt, if I remove velodity from an entity that is in the group, now I have to move position as well. And so there's Yeah, so there's those considerations. And generally, tables only have one way to implement them. And, I mean, it's just what it is, like, there's only one way that you can do that you can store aligned arrays and memory. And that's just what we have to deal with. And then everything else can be efficient, but it's cant, you know, can't be vectorized, or can be super efficient, okay. But the other thing that is that you can do. And so that's what I want to mention, because you mentioned sorting, you can actually sort the list of rows that you have in your archetype. Because if you sort the list of rows, then that means that you are going to iterate the table front the back. And that increases the chances that you are loading data into your cache that you are going to access at a later point in time. So that you can
+
+Anne van Ede  1:16:30  
+that's a very smart trick.
+
+Sander Mertens  1:16:33  
+There's so many things that you can do and infinite variations on all of these things. So that's what makes it fun.
+
+Anne van Ede  1:16:40  
+Yeah, it's indeed fun. Because I'm still at the user side, you your guys at the implementation side. So you guys think about all this 
+
+Sander Mertens  1:16:48  
+deep into it? 
+
+Anne van Ede  1:16:49  
+Yeah, like, all those clever things. And I'm just constantly amazed. That's so cool. Using ECS was cool. And now I get all the coolness from the framework side as well, so.
+
+Sander Mertens  1:17:04  
+yeah, there's, there's, I mean, I can I can talk for hours about this, there's also a really cool ways in which you can like organize your archetypes so that it becomes really efficient to move an entity from one to another, which has, you know, routing and graph theory and all of that. So yeah, there's, there's a whole thesis I'm sure to be written about that as well.
+
+Anne van Ede  1:17:23  
+It's a, it's a shame that it doesn't, it didn't happen yet. Like there's very little literature on data oriented, and then there is no non existent ECS literature. So
+
+Sander Mertens  1:17:40  
+trying to change that a little I should say that I just do it in the form of blogs, and not in the form of papers, which is what we really need. But well its is the start.
+
+Anne van Ede  1:17:49  
+I like the book, which is data oriented, and has a chapter on component based and then there's game programming patterns, which also has a chapter on data locality and one on component design. And then there's one paper who that was in pre release that I found. And that's about it. The rest is just circumstantial stuff that I can drag together or blog posts with exception of and Noel Llopis's, why you might be shooting yourself in the foot article, because it's a blog post, but it was actually published in a game design magazine. So that's actually published or I had to dig deep deep in the archives of GDC I think it was to find that, so it is actually published. So that was a nice find.
+
+Sander Mertens  1:18:47  
+I'm gonna grab a drink real quick. Talking too much.
+
+Anne van Ede  1:19:00  
+I came prepared.
+
+Sander Mertens  1:19:03  
+This is coffee, like the worst thing I should drink, but whatever.
+
+Anne van Ede  1:19:07  
+We should probably switch that then. Cause its morning here. So right? Thank you ever ordered a non ECS code base to ECS code base? Or a game or something that, you know was already existing?
+
+Sander Mertens  1:19:31  
+No, I haven't. tried to think why they're missing something. But No, I haven't. I have a couple of projects that I really would like to port over. Like I have I have I built this build system A while ago and build systems can be messy. But now that I sort of figured out how to design with ECS I actually think the build system would be really nice Use Case for something that is not a game. But, but that could be ECS-efied. But I haven't done it yet. So the answer is no.
+
+Anne van Ede  1:20:08  
+Then I'm going to skip the questions. Great. Do you use any naming conventions with components or systems?
+
+Sander Mertens  1:20:19  
+I do, yes. quite strong naming conventions, actually, I. But the reason of that the reason for that is not necessarily related to the design of the components itself, but has more to do with being able to, to share components across languages, and tools. So for example, it's it's very, I'd say, tempting to design component names that match with the conventions of say C, and everything is lowercase in snake case. If you design it in c++, well, I'm not sure if there's a simpler way to do things in c++. But people seem to generally favor things that are capitalized more camel case or Pascal case. A problem with that, of course, is that if you now have a code base that has both C and c++, which I think is something that is not entirely unthinkable, or you know, you have a game that needs to write certain things in scripting languages, or, you know, you need to write things in JavaScript, because you have like a front end with a monitoring tool or whatever. Having a very clear, definite, like, naming convention for components and systems helps a lot. If it's not language specific. So, yeah, I actually do have a set of very well established rules that I follow religiously.
+
+Anne van Ede  1:21:54  
+Could you share them with me? Because you're one of the few people who actually use naming conventions
+
+Sander Mertens  1:22:01  
+ are really, 
+
+Anne van Ede  1:22:03  
+or at least have like, them defined enough to? 
+
+Sander Mertens  1:22:07  
+Yeah, sure. So one thing that I do is I make all of my components camel case. And so the reason for that is that I can, well, they're very easily identifiable as a component. And, and it's just like a single rule across languages. My members in my components are lowercase. Any supporting types of the framework, or lowercase or snake case, I should say, system names are also camel case. Wait, is this camel case on Pascal case, the one where you write the initial capital A thing with a capital, I always mess up mess them up?
+
+Anne van Ede  1:22:51  
+Well, I originally learned it as camel case being lower capital, and upper camel case being upper upper. So Pascal case was something that I learned even later. So it's
+
+Sander Mertens  1:23:05  
+okay, well, I mean that the upper upper camel case. So I do my initial initial letters, I use capitals. So I do that for for components and systems. And then my modules, I have them all as lowercase. So modules are kind of like namespaces and namespaces, I think should be lowercase. So that way, you can always see when you have like a another modifier with a namespace part and then a component part or a system part. I also have naming conventions for my modules, which I evangelize a little bit less religiously, but I think can still be really useful if you follow them. And that is that I usually have components modules and systems modules. And they always have the word components or systems in their name as like a like a separate identifier, like a scope identifier. So for example, I have components, dot physics or components or input components or transform, etc. And the reason why I do that is well, first of all, it's good practice, because you can immediately see by looking at the module name, what you're going to get. And the other reason is that it has like it brings like a world of advantages to split up your components into modules and your systems into my into different modules because that means that for example, I can create a module that describes what a mesh looks like, what a square looks like, what the color is what the position is, you know, what my input data structures look like? What even things like what what does an HTTP server look like, you know, stuff that you can build an ECS and then I can provide an entirely different module that uses the for the systems that uses the components modules to implement those components. And that means that I can write my application entirely specifically to those components modules, and that I can plug and play the system's modules. So I can For example, say, Well, I'm going to write a game for all of these different components modules, and I'm gonna have graphics. And now I'm going to import the systems module that does my rendering. And maybe it uses SDL. But maybe at some point in the future, I don't like SDL anymore, and then I throw it away. And then I replace it with, you know, I don't know BG effects, and BG effects listens to the same components, but it implements them in a different way. And so that's really nice, because now I don't have to change my application implementation. But I can switch in and out things really easily. So that's sort of like a tangent on naming things. But if you name things that way, and if you organize things that way, I actually think that has some real tangible benefits.
+
+Anne van Ede  1:25:41  
+So you say you use component in name? Did you mean did you do that for components? Or for component modules?
+
+Sander Mertens  1:25:52  
+modules, modules.
+
+Anne van Ede  1:25:53  
+Okay, so the module is called components that physics and component itself is called physics or physics component, or,
+
+Sander Mertens  1:26:04  
+like position, rotation scale. And so it's 
+
+Anne van Ede  1:26:08  
+not a suffix? 
+
+Sander Mertens  1:26:09  
+Correct? Yeah. So So basically, what I do in my framework is I store the namespace and hierarchy of the modules, and I store the components in those modules or in those namespaces. So you can always look, you can always find like the complete fully scoped, fully qualified name of a component or of a system. The naming conventions for systems and components are similar, although I do make I they try to always have a system names be verbs, which I think is really useful. Oh, it should be move or target, or, you know, whatever, or shoot, you know, aim that, components are more like the properties, the attributes, or what what is. What, yeah, what, what, what is the thing that it stores, there's a, there's, by the way, for naming components, I'm starting to get a lot stricter on this. Because I, I'm sort of trying to define, and I'm working on all this relationship stuff, you actually have to think a lot about, well, what does it actually mean? You know, I add position to an entity. Well, what does that mean? Well, it means that entity has an instance of position, okay, so adding a component means adding an instance of something to an entity. But say that now I have a tag, and this tag is human. So I add human to my entity, well, what does that mean? I'm not adding an instance of human to my entity, because it's attack, it doesn't have value. So now actually, that seems to mean that I am adding, or I'm saying that the entity is an instance of human right. And so that's more or less the same, but it's also slightly different. So and so if you have those rules, clear in your head about what it actually conceptually means to add a component or add a tag, then it also influences the naming, right? Because you can say, if you add a tag, then I want to be able to create the sentence. Well, this is an instance of that, if I add a component, and I want to be able to say, well, this has an instance of that, right. And, and I think that that helps in figuring out, like, What the What names something should have.
+
+Anne van Ede  1:28:21  
+Okay, that's a very, very clear answer. Um, do you have any other naming conventions that you use it? I didn't ask about? Or you didnt speak about already?
+
+Sander Mertens  1:28:32  
+Um, I do, but they're more on that framework design side, and not so much. Not so much on the on the of the user design space, but I think it's less interesting, but it's more just to keep, you know, the users of my library sane
+
+Anne van Ede  1:28:52  
+then are almost at the end of my questions at least. Is there anything in general that you've seen in ECS that I absolutely need to avoid from things you did yourself that you went horribly wrong to pet peeves you've seen from others.
+
+Sander Mertens  1:29:12  
+Such a long time ago that I started with ECS but I'm sure I did a lot of things wrong.
+
+Anne van Ede  1:29:22  
+I need to grab my other bottle. I finished my water bottle, just had to grab another.
+
+Sander Mertens  1:29:34  
+Um, okay. So one thing to avoid with ECS. I think one thing to avoid with ECS is to not be deliberate about things, that is very vague. So always be deliberate about things that's probably advice in any any any aspect in your life, but the But what I see a lot of the times, and this is sort of necessary because of the limitations of what we have in ECS today, people fill in the gaps, and sometimes they do so haphazardly. And that usually comes to bite them later on. So for example, what I mean by that is, say you have an ECS framework like ENTT which does not have any notion of systems, you know, it doesn't have doesn't have systems, it doesn't tell you how to run them, it doesn't tell you in which order to run them. It only has, you know, queries, and there you go. I mean, it's very concise, it's very simple to understand. And it's very powerful. But it does give you a lot of responsibility. And if you just start coding with that with those concepts, and you'll leave everything else to chance, then eventually, you're going to come to a point where you're pretty confident that you're going to come to a point where you're like I should, that's, that's not going to work. So think identify the things that you need, that the library doesn't provide, and then be very deliberate about filling in those gaps before you actually start writing a lot of code is important. And so system ordering is, is I guess, the one thing that you will encounter most, but there are many things. Yeah.
+
+Anne van Ede  1:31:20  
+Okay. And
+
+Sander Mertens  1:31:21  
+yeah, so, to add to that, I guess all other things are and I saw that this question was recently also asked in the ENTT discord I found really interesting is, like, how do you generalize behavior across components? How do you how do you create relationships between different components, you know, you can expect just by looking at object oriented programming, and the kinds of features that you use over and over and over again, right, even sometimes it leads to bad code, sometimes it doesn't. But, you know, there is a reason why those features exist in object oriented programming. And, you know, there's like a whole laundry list of features that we have, that we, and in ECS... Like, we have like classes, inheritance polymorphism, we have, like interfaces, we have, you know, dynamic dispatching, we have references, you know, that list goes on. In ECS, we have entities, components and systems. So invariably, they're going to be things that you can't address with those three concepts. And identifying them in advance, just by looking at the things that you've done before is important. And then coming up with, you know, how can I map this two to a framework? I think is something that everyone should do. Nobody does, but I think it will be very helpful.
+
+Anne van Ede  1:32:33  
+Okay, is there anything else you consider important on  component or ECS design in general that I have not asked about? What do we do you? Do you hear my mothers vacuum cleaner? 
+
+Sander Mertens  1:32:48  
+No, I don't actually
+
+Anne van Ede  1:32:50  
+perfect. Then I don't have to do something. Okay.
+
+Sander Mertens  1:32:54  
+Yeah, no worries. Um, let me see. Other things that are important for ECS, that I haven't heard that I haven't talked about yet anything? Um, know what you're getting yourself into? So? And
+
+Anne van Ede  1:33:17  
+that's very omnious.
+
+Sander Mertens  1:33:20  
+Well, it's not I mean, like, if there, there's two schools of thought, so far, and we'll see where it goes. But basically, there's the people that say ECS is a tool. This is exactly the topic of my blog, which is why why comes to mind now, there's people that say, ECS is a tool. You know, it's like a data structure, I use it where I see a fit. And then there's people that say, well, ECS is a paradigm, and it influences every aspect of how I write my application. So figure out where on that spectrum you sit, because if you are of the latter kind, and you start with a framework that is from an author, that is not of the latter kind, then you're going to run into all sorts of interesting problems. where, you know, it's it's a, it's funny how, how similar or different different ECS frameworks are, because of this one, very, like, very, very important design consideration. And I think that a lot of people can end up feeling frustrated, or, you know, disillusionent or just feel unproductive because they were entering this adventure with the idea that is going to solve all the problems that they had an object orientation and is also going to hold off their performance problems. And then it does neither, which you know, that must be frustrating. So I think that's important to know in advance before getting into it and see what else we can come up with something that is a little bit less obvious. I should be able to do that. Let me see. Read, read a lot. Don't write your own ECs framework, God, don't do that. years of your life and you will never be able to write a game again. I've had this I've had, there was a guy on my discord and he was writing his own game engine at some point, he got the ECS fever and figured that he needed to add ECS to his engine. And he's like, Well, you know, I'm just gonna write my own because it's going to take me like two weeks, and then I'll be done with it. And two months later, he was still talking about how we're still figuring out how to write his ECS and, and I looked at his repository, and he had been working on it for four months. And that just invariably ends up happening. Like there's just too much there. It seems so so very simple to build it because it's just those three things, but actually to build something that is useful it I don't know if I would have started working on this if I knew this in advance. I mean, it's a lot of fun. Don't get me wrong, but I did this because at some point, I thought I was gonna make a game with it. And I don't know if that's ever gonna happen. Alright, so there's that don't don't don't repeat what others have done better. Let me see. I know it's very generic. But honestly, the question is very generic. So I think that's fine.
+
+Anne van Ede  1:36:16  
+Yes, that's totally fine. This is just closing thoughts. Anything you can throw my way? Yeah. cautionary tale apparently.
+
+Sander Mertens  1:36:26  
+Yes. What else? Yeah, who knows? Probably. I mean, yeah, with more time maybe I can come up with more things but I think it's reasonably reasonable answer.
+
+Anne van Ede  1:36:39  
+Yeah, then that's it for my questions. At least my formal questions so I want to before I forget thank you for your time your answers and you can switch back to Dutch I don't know what you prefer
+
+Sander Mertens  1:37:01  
+Maakt me niets uit, ik kan naar Nederlands overgaan of Engels. Na twee minuten denk ik er niet meer aan, waar ik mee bezig ben.
+
+Anne van Ede  1:37:09  
+Het kan bij mij misschien een beetje een mix worden, heel veel van die termen heb ik in het Engels en dan zeg je de term en dan ga je twee woorden door in het Engels en dan ga je weer terug naar het Nederlands.
+
+Sander Mertens  1:37:20  
+Laten we het in het Engels houden
+
+Anne van Ede  1:37:22  
+okay. Ik weet niet of je het leuk vindt om een keer in het Nederlands te praten, ik weet niet hoeveel kans je daarvoor krijgt.
+
+Sander Mertens  1:37:29  
+Meer dan je denkt. Ik heb wekelijks of tweewekelijks nog wel contact met familie. en, en grappig genoeg is er ook een, één, van de mensen waarmee ik aan het praten ben over het hele relatie verhaal is ook Nederlands en ik heb bijna dagelijks gesprekken met hem over hoe dat nou moet en das wel leuk.
+
+Anne van Ede  1:37:48  
+Ah we gaan gewoon in het Nederlands verder. Dat is het dus voor mijn vragen. Dan heb ik nog twee vragen voor jou, losse vragen. Één is mag ik je toevoegen op LinkedIn 
+
+Sander Mertens  1:38:08  
+sure 
+
+Anne van Ede  1:38:09  
+Wil je op de hoogte gehouden worden van mijn verslag seque het resultaat?
+
+Sander Mertens  1:38:16  
+Ja, absoluut. Ik ben daar super geinteressert in. Zeker omdat ik daar zelf allerlei interessante problemen zie. Ja, ik weet eigenlijk niet, hoe ver ben je al in het onderzoek en zijn er al wat preliminary things die je kan delen of inzichten die je hebt gehad gebaseerd op wat je al hebt gehoord?
+
+Anne van Ede  1:38:37  
+Um ik heb nu mijn literatuur studie afgerond, de Universiteit Utrecht heeft dat geimplementeerd dat je dus eerst je literatuur studie moet doen voor het eerste blok en de laatste twee blokken dan ga je echt bezig. Dus ik ben nu drie weken echt bezig, uhm, en ik ben nu dus ook aan het programmeren, maar mijn, ik vergeet altijd hoeveel ik in die samenvatting heb staan, mijn idee is dus inderdaad ook om database normalization te gebruiken om te splitsen, maar daar gebruik ik dus syntax analyse want ik zit in C sharp, Visual Studio en daar kan je gewoon de compiler IDE eruit trekken en dan kan je dus gewoon syntax and semantics analysis pakken en ik ben nu zover dat ik rederlijk het huidige programma in beeld kan brengen. Wel een beetje basic, want ik, vorige week ook interviews gehad die ik niet, zeg maar, ik dacht eigenlijk dat pas ik, dat het meer tijd zou kosten om interviews te plannen. Ik denk van, ik krijg geen reactie terug enzo. Maar dat gaat veel sneller dan ik denk, dus ik heb het programmeren iets minder kunnen doen dan ik had gehoopt. Dus ik heb nu redelijk in beeld, en mijn idee is zeg maar, ik heb dus classes en daarvan heb je base classes en hetzelfde dus voor methoden. En dat betekent dus dat je aan de hand van je classen en je base classen en je methoden die override kan je zowel zeggen, oke deze data zit in de base class maar niet in de child of andersom. Dat gaat natuurlijk niet alleen andersom. Hetzelfde voor methoden, deze data wordt gebruikt door die methoden, dus dat betekent dat die data bij elkaar gegroepeerd kan worden. En als je die twee naast elkaar hebt heb je dus een  split van aan de ene kant data in de klassen en aan de andere kant methodes die die data gebruiken en dan hoop ik dus dat ik lijnen ga zien en als ik die splits allemaal door trek, dat ik components heb die zowel uniek zijn, zegmaar, een entity uniek kunnen maken als  die systems-wise niet te veel data inladen want het wordt niet gebruikt. Om die splits door elkaar te trekken. Dat laatste stukje heb ik nog niet geimplementeerd, dus dat is nog een beetje zo nog. Maar ik denk dat het wel moet lukken als ik die twee naast, het lastigste wordt om de juiste data uit de code te trekken en dat met semantic analysis and syntax analysis eruit te trekken.  Ik heb daarvoor mijn eigen data framework gemaakt. Grappig genoeg data oriented, dus ik heb allemaal lijsten van al mijn klasses, methoden en variabelen en dan kan ik daar dus linkjes tussen zetten, dus van die is base class van die, en die is override, method overrides that method en dan kan je dus al die linkjes gaan leggen en dan hoop ik dus dat ik daar dus een soort database normalisatie, daar tussen kan trekken en daar dus components uit kan trekken, ik denk dat ik me voorlopig ga focusen op components. Wan dat is data en dat kan je mooi in een graph weergeven van hoe moet je het structureren. Systems, natuurlijk ook wel een beetje, want je gebruikt, je kijkt naar de methodes. Maar dat wordt lastiger, want het bedrijf waar ik nu mijn afstudeerstage doe, code refactor is iets waar ze geen tijd voor hebben. Dus ze hebben een gigantisch update method en daar wordt overheen gelooped. Dus de kanst dat ik daar splits uit kan trekken, dat ik systems mooi kan opstellen is miniscuul, denk ik. Ik kan wel de concepten die uit de components komen, kijken of ik die terug kan leiden naar systems, maar ik denk dat dat een tweede deel wordt waar minder informatie over gaat komen. Ik focus me voornamelijk op components nu.
+
+Sander Mertens  1:42:29  
+Ja, dat klinkt wel interessant ja. Ik had er zelf nog niet zo overnagedacht maar. Okay, dus wat je eigenlijk zegt, is dat je een soort van intersection maakt tussen, overlap in de data, of eigenlijk niet overlappende data, tussen verschillende classes in de class hierarchy. En gebruik je dan ook de methods om te kijken welke data soort van samen ge-accessed wordt en welke data, doe je er ook een soort analysis op? Om te zeggen, als bijvoorbeeld een method move alleen die twee, die twee members update dan is dat misschien een goed idee om die twee te groeperen in een component?
+
+Anne van Ede  1:43:05  
+Dat is wel de bedoeling, maar hoe ver ik daar in ga komen is dus nog de vraag aan de hand van hoe goed die methodes dus ook echt gesplitst zijn.
+
+Sander Mertens  1:43:15  
+En, dit ga je uitvoeren op een, op een daadwerkelijke, echte codebase? Ja dat is wel interessant ja.
+
+Anne van Ede  1:43:21  
+Ja, ja, dit is, wat ik zei, van, ik was dus twee jaar geleden was ik, ben ik met unity ECS in aanraking gekomen en dat was toen in combinatie met een crowd simulation software en toen het was zegmaar het afstudeerproject van mijn bachelor en in de zomer heb ik bij het bedrijf gewerkt die de software maakte en toen ben ik bij een ander bedrijf gekomen die de software gebruikte en die net begonnen waren met ECS en aangezien ik dus er toen al een half jaar mee bezig was, dit was, op dat moment juni/juli 2019 dus het was, unity vol op bezig met veranderingen en documentatie was non-existent. Dus ja, dus ik heb dat begin stukje ook meegekregen. Toen ben ik dus daar naartoe gegaan en dat is dus het bedrijf waar ik nu zit, want ik sprak dus toen met de lead programmer van ja super cool maar ja, onze hele code base, we zouden wel graag over willen want hij is sloom en we hebben heel veel dingen, maar ja, dat gaat gewoon never nooit niet gebeuren. En toen dacht ik daar moet toch iets voor te doen, iets mee te doen zijn, en dat ben ik dus nu aan het doen. Dus het is wel grappig, hoe, hoe ik hier terecht ben gekomen.
+
+Sander Mertens  1:44:31  
+Ja, ja, dat is wel super interessant, ik vraag me af of je daar ook meta conclusies uit kan trekken, als je, als je inderdaad straks het resultaat ziet van jou analyse op een object oriented code base en hoe je dat dan, dat dan transponeert naar ECS en als je dat dan legt naast, laat maar zeggen, een Greenfield approach, waar je je gewoon van scratch hetzelfde systeem of een soortgelijk systeem zou gaan bouwen, maar dan compleet geredeneerd vanuit het beginsel, ik ga dit doen in ECS en dan zien waar die diffs zitten, ik denk dat dat op zich wel een, klinkt super interessant.
+
+Anne van Ede  1:45:07  
+Het klinkt super interessant, alleen in dit geval, het is echt massive, zegmaar. Het het is echt geen, er gaat niemand in in z'n right mind, zegmaar, dit opnieuw bouwen. Een refactor zou al een meerdere jaren project zijn. Ze hebben zegmaar een een een hierarchy in, het is een trainingssimulatie voor bijvoorbeeld brandweers en dergelijken, maar ook voor politie en en allemaal, dus ze hebben heel veel verschillende mogelijkheden van mensen die ze erin kunnen zetten die dan dus geholpen moeten worden bijvoorbeeld of, dus ze hebben echt een hierarchy van echt 16 lagen diep erin zitten, zegmaar de cosmic base class dat hebben ze wel redelijk ja. Ja, dus als ik daar al orde in kan scheppen, door het van een gigantische hierarchy naar components te maken, dan denk ik dat het al een hele vooruitgang is voor hen. Maar de helft van de programmeurs die denkt dat dat heel goed gaat en de andere helft die zit dus een beetje vast in unitys performance by default, ECS equals performance, the end. Dus ja.
+
+Sander Mertens  1:46:22  
+wow, daar, dat is een beetje jammer inderdaad. Dat ze dat als eerste als een eerste tagline hebben. I mean, ik weet niet, misschien is dat de enige juiste manier om de techniek populair te maken.
+
+Anne van Ede  1:46:34  
+Het is wel hoe ik begonnen ben, maar het is niet, het is niet alles, het is, tenminste ik hoop dat ik aan het eind van mijn thesis dus in ieder geval die programmeurs over de streep kan trekken. Want iedereen die ik tot nu toe gesproken heb, is het eerste wat ze zeggen, hoe ben je begonnen of hoe gebruik je het, of wat is je je, the biggest advantage, zeggen ze allemaal flexibility, maintainability, readability en allemaal dat soort dingen. Gewoon het is zoveel logischer, het is beter gestructureerd, overzichterlijker, herbruikbaarder en oh ja, performance, op die manier echt dus, dus toen ik dat gister zei tegen die programmeur van dat is wat ze allemaal zeggen was hij heel verbaasd.
+
+Sander Mertens  1:47:14  
+Ja maar dat is ook echt, en het stelt je ook echt daadwerkelijk in staat om nieuwe dingen te doen die voorheen nooit echt mogelijk waren. Zoals bijvoorbeeld als je een, weet ik veel, duizenden objecten hebt en je wil snel een intersection maken van een object met bepaalde karakterastieken, nou ga daar maar eens aanzitten met een object oriented codebase, zonder dat je daar allemaal extra data structuren bij gaat bouwen is dat niet te doen, of is niet performant te krijgen en en dat soort dingen werken in ECS bijna out of the box en ik denk, denk dat daar, dat is ook iets waar waar waar ik in het begin heel enthousiast over werd, het het heeft zowel meer flexibiliteit als de potentie om dingen efficienter te doen en dat is een combinatie die je niet vaak ziet. Vaak is het het een of het ander. Dus ja,  cool.
+
+Anne van Ede  1:48:04  
+En ook door de manier waarop ECS gestructureerd is dwingt ie ook een bepaalde design af, die meteen netter en performant is. In mijn optiek in iedergeval, dus het is performant, maar het dwingt ook jou af om performant gaat schrijven. Je hebt gewoon bepaald restrictions die, waar je niet omheen kan en als je die volgt dan kom je uit bij een, een betere wereld.
+
+Sander Mertens  1:48:33  
+Dat is, dat is het ideaal. Ik denk niet dat we er volledig zijn. Ik denk dat die restricties nog lange na. Kijk al die, al die vragen die je vandaag stelden, ik denk, op sommige vragen kon ik een direct antwoord geven en andere vragen, ik denk, was het eigenlijk meer een beetje nou it depends en I dont know. Ik ik hoop uiteindelijk dat we dat we meer op kunnen schuiiven naar ECS behandelen als een paradigm. En dat zo'n mapping exercise die jij nu aan het doen bent, meer, hoe zeg je dat, een foundation heeft in het kunnen mappen van concepten tussen, say, object orientation en ECS, weet je wel, inheritance mapt naar dit en polymorphism mapt naar dat concept en dat hebben we op dit moment nog niet echt, dat is een beetje haphazard, I think. 
+
+Anne van Ede  1:49:24  
+Ja, dat. Ja, dat is best wel een gat hierin en ook, bijna iedereen heeft zijn eigen aanpak over, in ieder geval in blogs, zegmaar, iedereen heeft zijn eigen aanpak ove hoe die convert en converten wordt niet zo vaak gedaan meestal is het gewoon gezegd, dump it en start anew. Waardoor dus het het het converteren van object oriented, zeker in grote bedrijven is gewoon, eigenlijk gewoon iets wat nooit gaat gebeuren en daarom hoop ik dat ik daar kan helpen om met mijn tool, niet alleen zo te zorgen dat je een plan heb dat je kan volgen wat ook zorgt dat je het kan plannen en het kan structureren maar ook dat je dus als programmeur, stel ik zit bij een bedrijf en ik wil heel graag dat wij over gaan want ik zie, zoals jij zegt, ik zie heel veel benefits, maar ja hoe gaan we over. Dat ik deze tool kan pakken en hem runnen en dat ik kan zeggen, dit wordt het plan, zo lang gaat het duren, maar ook het wordt overzichtelijker, enzo, dus dat je een houvast heb om naar managment te gaan, om te zeggen, dit moeten we gaan doen en zo lang gaat het druren. Eigenlijk was mijn scope dus ook nog veel verder dat ik had gehoopt om te profilen en daaruit te kunnen zeggen, ik verwacht dat het zoveel sneller wordt, want er is wel literatuur over als je paralleliseert hoeveel sneller je verwacht dat het gaat, maar dat is veel te veel te veel om te doen. Dus dat heb ik er helaas er uit moeten gooien, maar ja. Ja er zijn zoveel, ik vind het heel interessant om te proberen houvast te geven aan programmeurs die over willen gaan maar die een heel log bedrijf mee moeten krijgen. Maar ook dus de teammates van diegene, want er een twee programmeurs willen heel graag over, eentje daarvan is mijn begeleider en de andere die is best goed ingelezen in ECS, hij was, het eerste wat hij zei was, ik wil er naar over want het wordt flexibeler en het gaat beter leesbaar worden, dat was het eerste wat hij zei, maar die weet dus waar hij het over heeft maar dus ook de andere programmeurs uitleggen van, ja, dit is het design wat we gaan volgen, maar dat doen we hier en hier en hierom want dit en dit is op die manier gesplitst en als je het aan wil passen, hou dan deze en deze regels aan bijvoorbeeld, splits ze alleen op als het echt nodig is. Dat is er eentje die ik weer van Michele Caini had van ja ik ik laat het zoveel mogelijk een component per system, tenzij het echt nodig is dan ga ik splitsen. Maar dat verschilt ook weer per implementatie wat je aanhoudt. En dus zon, ik wil ook een een soort profile in kunnen pluggen, dat ik kan zeggen, okay ik gebruik Unity ECS, okay dan moet je deze, deze en deze regels aan houden want deze heeft een archetypes dus components adden en removen is niet zo handig. Dus, okay ik gebruik sparse sets, hou er rekening mee dat je niet teveel components moet maken. Dat soort dingen er ook bij zetten. Zodat je dat als guideline kan gebruiken.
+
+Sander Mertens  1:52:39  
+Dat is erg lastig, denk ik en ik kan mij voorstellen dat op dit moment dat een overweging is maar het gaat zo hard, met ECS implementaties en de performance karakterastieken van een ECS, die veranderen, nou, bijna om het half jaar en je zou bijna een framework specific profiel moeten bouwen om dat om dat te kunnen doen.
+
+Anne van Ede  1:53:06  
+Dat is ook mijn bedoeling. Ik gebruik nu dus unity en het bedrijf gebruikt unity, dus ik maak nu een unity profile en de rest van de profiles, als iemand het wil doen, dat is zegmaar, future research en dus omdat ik dus de basis van de tool general wil houden, en dus dan de laatste parameter, eigenlijk door die profile wil inpluggen, dat je dus eigenlijk, ja, mijn idee is vrij makkelijk, zo'n profile in elkaar kan pluggen aan de hand van de characteristics die op dat momen van belang zijn voor jou, en die kan je dus inpluggen en dan kan je dus het plan specificeren naar wat er dan is. Het is ook mijn bedoeling om dat, daarom dat ik ook zo'n profile wil inpluggen zodat dat verandert kan worden en modulair is.
+
+Sander Mertens  1:53:48  
+Ja, ja dat zou erg cool zijn. Ja, ik ben heel benieuwd hoe dat vorm geeft. Ik ben eigenlijk voornamelijk super benieuwd naar naar de uitkomst van van de tool. Ik, dat lijkt me echt heel erg interessant om dat te zien. Ik ik zag een tijdje geleden een discussie op de ENTT discord, die je misschien ook wel hebt gezien, van een gast die de naam Redcode volgens mij, en die kwam ook aanzetten, hij is bezig me teen smart city project in Iran en daar zijn allemaal standaard data modellen voor data die je heen en weer wilt sturen tussen bijvoorbeeld smart buildings and whatnot, maar die data modelen zijn allemaal object oriented en voornamelijk gedefinieerd in UML. En hij was ook aan het kijken, van ja, kan ik nou niet met een genierek tool, eigenlijk precies wat jij ook zegt, kan ik nou niet met een generiek tool of met een generieke aanpak, die, dat OOP datamodel transformeren op de ene of andere manier, naar ECS. Ja ik vind, het is een interessante en met name ook in die hoek waarbij je al industry established data modellen hebt en als je eenmaal zon datamodel hebt, dan kost het vaak jaren om aanpassingen te maken, omdat je moet overleggen met allemaal bedrijven en je moet het eens worden met elkaar, en als je een soort van één op één transformatie hebt misschien met wat parameters hier en daar, dat zou volgens mij echt super, super nuttig kunnen zijn.
+
+Anne van Ede  1:55:11  
+Ja en ik hoop dus de user input put minimaliseren, maar er zal waarschijnlijk wel wat user input in moeten en dat is ook afhankelijk van hoe goed je code dus is, hoeveel je er uit kan halen of niet. Dus, dat, en inderdaad met parameters erbij hoop ik dat
+
+Sander Mertens  1:55:31  
+Één ding wat interessant is, ook, is hoe veel informatie je verliest in het proces wat onheroepelijk gaag gebeuren, omdat je kunt, je kunt niks erbij verzinnen maar wel dingen verliezen. En en ik denk dat, omdat je van, omdat je van die rijke semantiek van object oriented features gaat naar iets wat wat minder rich is, verlies je waarschijnlijk bepaalde semantiek, bijvoorbeeld wat je net zei, die verschillende relaties, de verschillende kinds of personen, dat je het net had over brandweer en en die inheritance hierarchy en ik neem aan dat ergens in die inheritance hierarchy ook een soort van notie is om verschillende personen of verschilldende rollen die mensen hebben en wat voor wat voor wat voor, hoe zeg je dat, wat voor, wat is het woord, ik vergeet ik vergeet mijn Nederlands soms, wat voor verantwoordelijkheid ze hebben, en die informatie is denk ik heel heel erg snel verloren als je gaat kijken naar alleen de members. En, lets say, de intersections tussen classes en de methods die de classes, die de methods schrijven. Als je dat, zou maar zeggen, normaliseert naar components dan verlies je de relaties tussen die components en ik denk en iets wat wat wat mij erg intereseert, maar goed dat dat is, dat zou nog weer toevoegen aan de scope van het project als dit en het is al een boel. Is van hoe kun je, hoe kun je er nou voor zorgen dat je die informatie behoud of dat je die ergens vastlegt, zodat je in de uiteindelijke applicatie nog steeds een manier hebt om die om die relaties en die dingen vast te kunnen leggen en te kunnen queryen en whatnot. Maar goed, dat. Ja, Dat is iets waar, wat ik zelf interessant vindt omdat ik zelf ook zie dat die in mijn eigen ECS applicaties, die relaties eigenlijk in mijn hoofd zitten en in een object oriented applicatie dan zijn die erg expliciet en dat is denk ik ook een challenge en ook iets waar mensen last, last, hoe zeg je dat, mee struggellen als ze als ze met ECS beginnen, omdat je heel erg die die urge hebben om dingen te structureren en dingen te klassificeren en op de proppen te komen met de bomen en relaties maar dan ECS dat eigenlijk niet echt faciliteerd, en soms ook niet moet, moet kunnen faciliteren, maar in sommige gevallen denk ik wel, maar goed. Maar was een beetje een tangent. 
+
+Anne van Ede  1:58:16  
+Ik gebruik nu om, hoe heet het, de graph die ik gebruik om de huidige structuur weer te geven, dus dat is een directional graph momenteel. Maar ik kreeg van Michele Caini die heeft dus ook dat hij klas, uhm, he gives a c++ class, dat, en daar heeft hij dus ook slides voor en daar liet hij zien dat hij dus de de verschillende object naast elkaar zette en daaronder de components en aan de zijkant de systems die daarbij hoorden, waardoor je dus een hele overzicht heb en als die bovenste als een soort directed graph geeft en dan dus gewoon lijntjes naar beneden zet, dus je hebt, character en dan heb je orc en wolf en de closet, en je mapt die naar beneden. En dan kan je dus boven de hierarchie weergeven en onder welke components er dus bijhoren. Zo hoop ik dus met het model dat ik eruit gooi ook te helpen met die overgang inderdaad. Dat als ze denken, eh hoe zat het ook al weer? Okay, ik pak mijn graph erbij, ik was opzoek naar mijn orc, okay, daar is de orc, oh deze components horen bij de orc. Want zijn parent heeft deze en deze components maar deze niet. Dus zo probeer ik ook inderdaad, dat is wel mijn doel om het visueel te maken zodat die overgang makkelijker is en dat je dus iets hebt om naar terug te verwijzen als je het even kwijt bent. Zodat je het dus niet in je hoofd moet houden voor degene die dat niet makkelijk afgaat. 
+
+Sander Mertens  1:59:51  
+Dat klinkt, dat lijk inderdaad wel een goed idee, zo had ik er nog niet over nagedacht. Je kan inderdaad gewoon de relaties bij houden.
+
+Anne van Ede  2:00:06  
+Nu moet ik het alleen nog doen.
+
+Sander Mertens  2:00:12  
+Ik moet eerlijk zeggen toen ik het voor de eerste keer las, en ook een beetje geinformeerd door een paar discussies die we hadden, oh oh, dat gaat een hele hoop werk worden. En ik denk nog steeds dat het een hele hoop werk gaat worden, maar ik zie wel een soort, licht aan het einde van de tunnel. Het klinkt wel als een, als een interessante aanpak, en als je dat op een beetje een codebase doet die ook maar enigzins gestructureerd is, dan zouden daar vast nog wel eens interessante dingen uit kunnen komen. Misschien is het niet direct één-op-één een plan wat je uiteindelijk wil gaan implementeren, maar het zou wel eens goede guidelines kunnen geven.
+
+Anne van Ede  2:00:54  
+Dus dat is mijn plan een beetje
+
+Sander Mertens  2:00:56  
+Ja er cool. En doe je het project alleen of heb je mensen waarmee je, waarmee je. alleen? okay.
+
+Anne van Ede  2:01:05  
+Nee, het is alleen. Ja.
+
+Sander Mertens  2:01:08  
+Okay.
+
+Anne van Ede  2:01:08  
+Ja, ja, ik heb wel natuurlijk mijn begeleider van het bedrijf, maar die is niet zo heel goed in ECS. En mijn begeleider van de universiteit is degene die in optimalisatie zit, maar ook niet goed is in ECS. Daarom was ik ook zo blij dat ik toegevoegd werd aan die discord groep. Ja, op mijn universiteit heb ik dus al degene die het meeste richting optimization en die heeft in zeg maar master optimization and vectorization klas, heeft hij één college gegeven over structs for arrays versus array of structs. En that's it. Dus, ik weet meer van ECS momenteel dan hij. Het is een hele goede begeleider, daar niet van, maar het is gewoon wat lastiger.
+
+Sander Mertens  2:02:05  
+Mocht je geïntereseerd zijn, ik heb een paar keer eerder een presentatie gegeven voor universiteiten over ECS met de achtergrond en, hangt een beetje af wat de audience is. Maar als je denk dat dat zinvol heeft, ofwel voor je begeleiders, of voor anderen die hiermee bezig zijn, laat maar weten. Dat is op zich best iets wat ik zou willen doen.
+
+Anne van Ede  2:02:27  
+Okay, nou ik zit wel te denken, ik zal op een gegeven moment een keer uit moeten gaan leggen aan begeleider wat ik aan het doen ben. Hij weet wel ongeveer wat ik aan het doen ben, maar niet precies hoe het allemaal samen gaat werken. Zou het mogelijk zijn dat ik, zegmaar, die slides krijg, want dan kan ik kijken hoe jij het opgezet hebt, om het uit te leggen, in welke stappen je het hebt gedaan, zodat als ik mijn thesis presentation moet gaan doen of aan de programmeurs moet gaan uitleggen wat ga doen dat ik een beetje een guideline heb van wat jij gedaan hebt.
+
+Sander Mertens  2:02:59  
+Yeah, absoluut, ik zal je die zo even opsturen.
+
+Anne van Ede  2:03:03  
+Dat zou fijn zijn, ja. Want ik probeer inderdaad, waar begin je, hoe, hoe, welke stappen zet je en de vorige keer dat ik zon presentatie gaf was het voor mensen die al een beetje naar ECS hadden gekeken, dus dan is het wat makkelijker om te beginnen, want, ja, je weet dat ze al wat weten, maar in dit geval weet ik dat ze niks weten.
+
+Sander Mertens  2:03:24  
+Ja, dat is inderdaad lastig. Ik heb een aantal presentaties gegeven en ik, dat is grappig, ik hamer er altijd op dat, dat ECS niet, niet om, of dat performance niet het belangrijkste is, maar je kan er ook eigenlijk niet omheen. Omdat als je wilt vertellen waarom ECS performant is, moet je ook eventjes er voor zorgen dat mensen een idee  hebben van, nou hoe werkt een cache en waarom is het uberhaupt belangrijk dat we over een cache nadenken, ik bedoel heb ik niet genoeg memory in mijn computer, waarom zou ik mij daar druk om moeten houden, druk om moeten maken. Dus ik probeer dat er altijd wel in te stoppen niet het hoofd topic van de presentatie te maken maar soort van een prerequisite knowledge voor dat je kan beredeneren over waarom iets goed werkt en andere dingen niet goed werken en waarom je uberhaupt zou moet nadenken om te switchen van object orientation naar, naar ECS.
+
+Anne van Ede  2:04:20  
+Ja, Ja, dat zou fijn zijn. Dan heb ik een beetje houvast. Okay.
+
+Sander Mertens  2:04:34  
+Okay. Het is een super interesante discussie en ik kijk uit naar, naar je bevindingen, klinkt erg interessant.
+
+Anne van Ede  2:04:42  
+Ja. Oh, ik heb nog wel een vraag. Ja, ik was hem bijna vergeten. Het is namelijk een vraag die ik niet erbij heb geschreven, zeg maar die ik uitgeprint heb, dus ik vergeet hem elke keer bijna te vragen. Zijn er nog mensen waarvan jij denkt dat ik met diegene moet praten? Je had al gezegd van Aframe, of nee Aframe gebruikte je, Bevy ECS was degene met wie ik moest praten.
+
+Sander Mertens  2:05:06  
+Ja, ik weet niet, de Aframe author ken ik helemaal niet, ik heb geen idee
+
+Anne van Ede  2:05:10  
+Nee, ik zat naar de verkeerde pagina te kijken.
+
+Sander Mertens  2:05:13  
+Ja, de Bevy author is absoluut iemand, even denken,  ik zou je op zich in contact kunnen stellen, met die gaast waar ik nu heel veel, discussies mee heb mee over dat relatie gebeuren. Hij is nu al drie jaar bezig met het bouwen van een game volledig in ECS en hij heeft ook een heel ander perspectief op, op wat een ECS is, das altijd interessant. Misschien, ik weet niet met wie je al hebt gesproken tot nu toe, maar hij heeft een soort van Entitas ECS gebruikt, eigen implementatie. En hij heeft ook allerlei ideeën over hoe dat moet werken en ik denk dat je daar ook een interessante discussie mee kan hebben. Hij woont in maastricht.
+
+Anne van Ede  2:05:55  
+Nederland is gewoon ECS land.
+
+Sander Mertens  2:06:04  
+Ja Nederland en Italië, om de een of andere reden.
+
+Anne van Ede  2:06:06  
+Ja, ja, dat had ik ook ja.
+
+Sander Mertens  2:06:10  
+Even denken, wie nog meer. Er zijn, ik had net nog iemand in gedachten die misschien ook wel interessant zou zijn, maar wie was dat nou. Ben het kwijt.
+
+Anne van Ede  2:06:23  
+Je noemde net, de van, Legion, Amethyst engine?
+
+Sander Mertens  2:06:28  
+Oh ja. Ik heb eigenlijk geen idee, the author, je zou kunnen proberen om met hem in contact te treden, maar hij is niet super actief op discord en ik weet eigenlijk niet waar hij wel actief is. Als je, als je zou, als je wil proberen om met hem in contact te komen dan zou ik eventjes op de Amethyst discord gaan zitten en daar heb je een ECS channel en daar zit hij af en toe, af en toe wel op. Maar ik moet even spieken wat ook weer is want die vergeet ik zijn gebruikersnaam is want die vergeet ik, oh hier, daar ja, daar is ie. Oh kijk hij is al aan het posten dus dat is goed. Dat is zijn username, hij is niet super actief op andere discords. Misschien, er is een student aan de universiteit in Breda en die is op het moment bezig met een internship voor Our Machinery, wat een nieuwe engine is, geschreven in C en daar zijn ze ook, of daar hebben ze ook een ECS implementatie. Ik weet niet hoe, hoe, hoe involved hij is met dat, met dat, hele project, marks how many 1000s username canister you
+
+Anne van Ede  2:07:41  
+Misschien kan hij mij, als hij niet mee involved is, doorsturen naar degene die dat wel is
+
+Sander Mertens  2:07:46  
+Ja precies. Nou weet ik alleen niet uit mijn hoofd wat zijn username is dus die zal ik even op moeten zoeken. Even denken. Ik weet niet of je al mensen geinterviewed heb van Entitas?
+
+Anne van Ede  2:07:59  
+Nee, die heb ik er inderdaad ook bijgeschreven nu.
+
+Sander Mertens  2:08:03  
+Ja, in dat geval zou je even kunnen checken of Maxim geintereseerd is,  ik denk het wel. Maxim is, die heb je misschien wel voorbij zien komen op de ECS Labs discord, die is is redelijk actief in discussies.
+
+Anne van Ede  2:08:16  
+Die heb ik inderdaad gezien ja. Mijn telefoon is nu dood, dus ik kan niet checken, maar die heb ik voorbij, dat is degene van Entitas?
+
+Sander Mertens  2:08:24  
+Ja, nou hij heeft veel aan Entitas gewerkt, ik weet niet precies wat hij op dit moment doet. Maar hij heeft daar veel met, daarmee gewerkt en games gebouwd volgens mij met ECS en reactive ECS, wat weer een hele andere aanpak is. Even denken. What else?
+
+Anne van Ede  2:08:41  
+Die Maxim is ook degene met wie je nu in contact bent?
+
+Sander Mertens  2:08:49  
+Maxim is is niet, niet degene waarmee ik nu. Niet, niet in direct contact in ieder geval. Ik heb wel een paar dicussies met hem gehad op de discord maar niet direct contact. Dus dat zijn drie mensen in totaal. Ik denk dat dat het wel een beetje is. Nou er zijn wel, zijn wel meer, als je nog meer mensen nodig heb kan ik nog wel eventjes zoeken. Er is nu  ook weer een nieuwe ECS implementatie net bij gekomen voor Godot. The the Open Source engine, ken je misschien wel, of niet. Uhm maar dat is een behoorlijke populaire  Open Source engine, ik denk misschien wel de populairste Open Source engine. g o d o t, en daar is nu net, daar zijn ze nu net begonnen met het schrijven van een ECS framework. Ik ken de author needs direct, maar ik heb wel een paar, een paar berichtjes met hem uitgewisselt op Twitter. Maar die is volgens mij ook redelijk actief in het  evangelize van ECS. Dus die zou misschien ook wel geintereseerd zijn om dingen te, om dingen te sharen. Ik kan wel even een invite naar je sturen. 
+
+Anne van Ede  2:09:53  
+Ik ben redelijk goed geworden in stalken
+
+Sander Mertens  2:09:56  
+Ja, succes, succesvol. Ik denk dat dat het wel is, ja.
+
+Anne van Ede  2:10:10  
+Okay.  Dat zijn inderdaad een aantal die ik denk, he daar moet ik inderdaad, mee gaan praten dan. Dan nogmaals, dankjewel voor je tijd.
+
+Sander Mertens  2:10:22  
+Ja graag gedaan, veel succes!
+
+Anne van Ede  2:10:31  
+Ik vind het nog steeds bizar. Gisteravond voor mij dus, om negen uur half tien en nu de volgende ochten hebben we een afspraak wat voor jou dus gewoon dezelfde dag is maar voor mij, gewoon, ik ga slapen, ik zie je morgen!
+
+Sander Mertens  2:10:48  
+Ik heb het wel een paar keer gehad, en het is inderdraad wel een bizar, bizar idee. Dus als ik, completely in like not cohesive klink dan komt dat omdat het laat is.
+
+Anne van Ede  2:11:01  
+Ja, dat is gewoon grappig. Dus, dat. Dan, ga ik die mensen stalken.
+
+Sander Mertens  2:11:13  
+Veel succes.
+
+Anne van Ede  2:11:13  
+Als je nog dingen hebt waarvan je dacht, oh, die had ik nog moeten zeggen, laat het dan alsjeblieft weten, daar heb ik altijd wat aan. En wie weet, spreken we elkaar nog een keer.
+
+Sander Mertens  2:11:27  
+Ja is goed en als je nog vragen hebt of dingen die je nog had willen vragen, don't hesitate, stuur me gewoon een berichtje, ik ben over het algemeen wel online op  Discord. 
+
+Anne van Ede  2:11:39  
+Oke, doei! 
+
+Sander Mertens  2:11:40  
+Doei!
+
+Transcribed by https://otter.ai

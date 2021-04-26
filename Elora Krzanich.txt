@@ -1,0 +1,518 @@
+Elora Krzanich  6:01  
+Hello,
+
+Anne van Ede  6:02  
+hello.
+
+Elora Krzanich  6:05  
+Yeah, I don't know what happened. But I had plugged in like my second monitor and suddenly my whole computer was frozen. And then the fan just kicked on and it restarted and I was like, oh, that doesn't that's not great. 
+
+Anne van Ede  6:17  
+Not good. Right? Yeah. Sometimes my audio just automatically, automagically just doesn't work anymore. And, and I switch between these headsets my other headsets on my webcam mic and sometimes my like when one works the other two don't. And when that switches around, so I have to figure out which of the three is working at the moment. Because I noticed 
+
+Elora Krzanich  6:40  
+A fun game. 
+
+Anne van Ede  6:41  
+Yeah, a fun game. Yeah. It's a it's a very good, very inspiring to see how much has happened in the last year how much is possible online? But yeah, not everything works perfectly. So for you, it's morning, right. So good morning.
+
+Elora Krzanich  7:02  
+Yes. Thank you. Yeah. Yes, I am Still still waking up a little bit. So
+
+Anne van Ede  7:14  
+We'll start off easy. That's okay. Right. What did you say?
+
+Elora Krzanich  7:20  
+I said, It's nice to meet you.
+
+Anne van Ede  7:21  
+Nice to meet you, too. Thank you very much for your time, even so early in the morning. And so like I said, in the Slack channel, I am researching conversion from object oriented to data oriented, specifically component design. I got interested in this about two years ago when I found unity ECS for a project. And this is awesome. But many of my fellow students and colleagues, they didn't want to, you know, switch because they didn't know anything about it, or it was difficult. It's very different from what is taught University. So the mental switch was just too hard for many. And then the companies they are at, they didn't want to switch either because their programmers couldn't or didn't want to. So I thought why is there not something to help them make that switch? Hello,
+
+Elora Krzanich  8:16  
+She will be joining. I would I have no choice.
+
+Anne van Ede  8:24  
+Right. So that's basically what I'm doing. Now, I'm creating a tool that takes the object oriented code and creates a plan for an component based design, it doesn't convert the code because there's too many irregularities for that. But it does create a first plan to get you started. So I also wanted in addition to creating the plan, I wanted to educate the developers on why it's a good plan. So those two together, but for that I need to know what a good plan is. So I'm talking to as many people as I can to find like a common denominator on these kinds of design choices, and hopefully get I guess, well, I already know that I have some common denominator. So it's working to get that so I created open questions for that. But because I speak to many people from many different backgrounds, so some from unity, but also from people who implement their own ECS engine. I create them as open as possible to fit everyone but try to make them still specific enough but if they're too specific for your situation, just tell me so we can change or skip the question altogether. I'll try to do that myself too. If I find out that it's not. We've scheduled an hour and a half. Is that like a hard deadline? Do we have something after what do I need? 
+
+Elora Krzanich  9:51  
+I do I do have something at yeah, 10 my time and I probably need like five minutes before that. So yeah. Sorry, that is a hard cut.
+
+Anne van Ede  10:01  
+No, that's okay, then then I can keep that in mind that we keep the conversation going if it's a problem. Right, so I have two, like organizational questions before we get started. One is, is it okay, if I need to that I use your name in my report because it's for my thesis that they know, I didn't ask my next door neighbor.
+
+Elora Krzanich  10:23  
+Yeah, I, I believe so. Um, let me just like double check with Fabrice, because I've never actually like, I've never done anything like this. Um, so I will, 
+
+Anne van Ede  10:36  
+He said it was okay, so I think if it's okay for him, then. 
+
+Elora Krzanich  10:39  
+Then its probably fine.
+
+Anne van Ede  10:43  
+I don't know if it will come up. I don't know if I how much I need to say maybe just a list of these other people I talked to probably the only specifics that I will say, Well, I either your name and the results from my questions. That's like your experience with ECS. So there won't be anything else. And can I record this interview just so I can type it out later? I want to read on the internet just so I don't have to speed type everything right now. Okay, do you have any questions for me? Before we get started? I will get distracted though, I think. 
+
+Elora Krzanich  11:19  
+Yeah, I'm sorry. She's, um, I have tried to like find a good solution to her being in all of my meetings, but it seems a lot easier to let her sit here. 
+
+Anne van Ede  11:31  
+Okay. Do you have any questions for me?
+
+Elora Krzanich  11:36  
+No. All right. Now, it's really exciting, though, like hearing what you're building and trying to give developers not only the plan, but also, like you said, the understanding of why you would want to do X over Y or, you know, things like that.
+
+Anne van Ede  11:55  
+So just some introductory questions. Um, can you tell me how you first got introduced and started with ECS?
+
+Elora Krzanich  12:04  
+Yeah, um, so I've been at Unity for four and a half years now. And the first time I saw it, our CTO was giving a presentation, like an internal presentation about the new, the new ECS and job system stuff that they were doing. in Copenhagen, it was all on the c++ side. But you know, the plan was that it was going to come to C sharp, and that it was going to like, change the world, right? Like, that's what we want to do. change the way that people can program and change the way that, make make things scalable. And it was just really inspiring. So I actually signed up internally for some r&d training to go to Copenhagen and like, spend the week there to do the training and learn about kind of what we were doing. Even though I was I was, I was in technical support. At that time, I was working on our monetization team. But my boss thought it was really cool that I was so interested and just wanted to do it. So I, I got to go and experience that. And it was really amazing to just kind of see the power of the thing and understand how how things were working. And it was, you know, it's just such a different way of thinking that, but it made sense in the in the week that we spend, right? And it's like, oh, this is gonna be this is really cool. This is I'm excited for this. So that was those were my first actual introduction to ECS specifically. 
+
+Anne van Ede  13:56  
+Okay, can you tell me how you currently use ECS?
+
+Elora Krzanich  14:01  
+I'm sorry, can you say that again? 
+
+Anne van Ede  14:02  
+How do you currently use ECS it's my mic too slow, too low. I can see if
+
+Elora Krzanich  14:06  
+No, I think I need to turn up my volume on my side. Um, and cat's. Um, yeah, so right now um, I am mostly programming for the package. I have not been except for except for doing doing a little like internal training and things like that. I have not been using it. I don't have any personal projects going on right now. Where I would use it but that's the plan after after quarantine after the pandemic to to actually go go build something and you know, be a be a user, like a, like a full user of the tools.
+
+So you, what do you mean with I'm building for the package?
+
+Yeah. So, um, the dots for unity is a, is package based. So we have like the entities package that is the entity component, or sorry. Yeah, the entity component system that we have. And that is primarily what I'm focused on. So I am working on various aspects of that. At Unity. 
+
+Anne van Ede  15:43  
+Okay, you can pick it, you can understand it, like I'm coding the package itself, or I'm coding on top of the package, like physics or something. So that's why I asked them, like, which of the two? Programming for the packackes on entities? 
+
+Elora Krzanich  15:56  
+I am working on entities, yeah.
+
+Anne van Ede  15:57  
+Yes. Okay. Um, have you worked with any other ECS implementations outside of unitys?
+
+Elora Krzanich  16:08  
+I haven't personally worked with other ECS. I've seen, like, I've seen a couple of really good talks, to kind of get to get the sense of what other people are just doing and what they found, as well. Um, but I haven't actually gone and used any of the other ones. And some of them are obviously proprietary. So you pick up those? Um, but no, I actually haven't.
+
+Anne van Ede  16:44  
+Okay, okay, tell me in one or two sentences, the biggest advantage you see of ECS? 
+
+Elora Krzanich  16:51  
+Yeah. So, one is going to be, let's see, how to form, form the advantages in just two sentences. The, the main thing that I see is data usage. So, and I guess, along those lines, like data understanding, like, you are trying to only get the data that you need, and only process the data that you need, and that you're not wasting the additional stuff. Like with what you do with game objects, right. So that is more streamlined. And then also memory layout is going to help you versus what we find with game objects. So I would say, that wasn't a very eloquent sentence, but
+
+Anne van Ede  17:56  
+I get the idea. It's the efficiency of your data layout and your memory layout.
+
+Elora Krzanich  18:03  
+Yeah, yeah, exactly.
+
+Anne van Ede  18:06  
+That's okay. It's still early for you. So, I'm, I'm like, it's almost five o'clock here. So I'm fullt awake. And before I fall asleep again, so I'm, I'm pretty good here. Right. So can you tell me in the same way, the biggest disadvantage? Well, speaking, its biggest disadvantage, you see?
+
+Elora Krzanich  18:33  
+Well, I think um, one, one thing that is just very apparent, is that it is a very different way of thinking. And so I think, as you found with your fellow students and, and other co workers and things like there's, there's a cost to switching, um, and it's not an it like, it's not something that you can't overcome by any means. It's just, you definitely need to have that, that buy-in from people and kind of have that person who's willing to take take the first plunge into the water, right, and kind of get their feet wet and understand things and then bring it back to to others. And I think that, you know, one of the things that we are, at least I care about a lot is how do we teach this to everyone so that it's not such a big hurdle so that their brain doesn't just totally break when they start trying to do this because like, my brain broke when I started doing it. A lot of people's do. Yeah, so I would say that's, that could be considered something just it's just a hurdle. It's a hurdle to entry. 
+
+Anne van Ede  20:00  
+Okay, now we're getting to the real question questions. And as for this, just explaining to me like, I'm fine, because what you might think is so obvious might be exactly what I still need to hear. But also, if you have in depth questions, this is my, I have eleventh interview now. So really deep in also. So if you think like, Oh, this is too deep, then just tell me, even if I can't use it for my interview, I'm still learning. So I've learned so much from these. Right. Um, I grew up this in like, four. Yes, four, I think on four categories. The first is, ECS design in general. The second is a little bit more specific on component design. The third is probably something we're going to skip, but it is on a code base conversion. So from object oriented to data oriented, and the last is coding and naming conventions in ECS. Again, if the question is this, there are some, like repeating questions or similar questions, but I found that sometimes people give a completely different answer to an almost similar question. So that's really been really helpful. Right, so when you're for you, in your case, when you're doing the training? I don't know. I hope it's not too long ago. Can you take me through the steps you take mentally from the data to the final design?
+
+Elora Krzanich  21:37  
+Yeah, so a lot of what I, I personally like to do is, usually in these kind of trainings, we are converting, like, one thing over to to another? And so I like to kind of outline like, what is the basic functionality that's happening here, like, can I get a sense for what the overall is, like implementation might be in terms of gameplay, or, or whatever? And then I start listing out like, okay, to make that possible, like, I kind of breaking down each feature, right? Like, to make that possible? What do I need? Like, what is? What is the bare minimum that I kind of need to get this working? Right? Like, if, you know, depending on the gameplay problems that you're trying to solve, right, kind of breaking down, breaking down that problem into what could be conceived? And like then combined into your actual components, right? So before I start, like, component design, or anything like that, I just really look at like, what data do I have? And then I start kind of grouping those together, as I find like, Okay, well, you know, here's the player's velocity. And where does that velocity need to be? Like, how is that velocity read and written to like, Is it always combined with these other things, like maybe I can combine them, right. And so kind of looking at that as a next step. And then the other thing that I really like to do just personally, is make a data flow graph, so that I then like, once I kind of start outlining my systems, I can say, Okay, if I have these components, like, what's being fed into the system, and what's been modified outside, like, what's been what's, what's the actual work that I'm asking the system to do, right? And then like, what's the output on the other side, and then just trying to kind of understand how I want my system dependencies to work, if there are dependencies, um, and just kind of that general flow of, here's the start, here's the end of my frame, like, here's everything that's happening in between. and, and that's, that's generally the process that I find helps me a lot. I mean, I really like whiteboards, and drawings, and like, you know, blocking things out. So I'm very visual that way. Yeah, I would say that that's the way before  I write any code. Yeah, I'm sorry. 
+
+Anne van Ede  24:26  
+Can you do everything on like a big whiteboard?
+
+Elora Krzanich  24:28  
+I so I have found in quarantine. That, um, I'll use like, I think it's like Google, like Google Drive has a Google drawings. That just lets you do like, you know, boxes and text and arrows. And that's like, you know, that's fine. If I want to be able to share, share it with someone, um, when I was in the office, Yes, absolutely. Like, go go for that whiteboard, whiteboard it out and then bring someone over and be like, hey, let's talk about this, like, Can I walk you through, can I walk you through this? Or does this make sense? And that was always really helpful.
+
+Anne van Ede  25:15  
+Okay, because I'm also, I need to visualize my results too, because that's the easiest way to have someone learn about ECS in general. And so that's why I'm asking, Do you maybe have like a picture or something of something like that you've done?
+
+Elora Krzanich  25:34  
+Yeah, I could see. I might. I can see if I have anything that I can share, instead of taking up time, yeah. So I can I can I want to make a note real quick. And see. I just made a note for myself.
+
+Anne van Ede  26:14  
+Okay, so when I heard you, you're first going make high level more abstract functionality, then you said, the bare minimum? I assume that's bare minimum functionality as I need to play a character the bare minimum is he can walk? Is that the?
+
+Elora Krzanich  26:31  
+Yeah. Like, before I try to necessarily solve all of the problems of of a more complicated solution, right? I'm trying to get that first like, what is what would make this playable? Right? Like, even if you can do all of the things what, what is the thing? So I guess walking would be a great example.
+
+Unknown Speaker  26:54  
+So functionality, bare minimum, what would be the implementation of that, and then you go to the data, the first go like functionality, data, and then back to systems. And then from there, you can group components together as the data is used together. Okay. Okay, um, when you started ECS, what was your biggest misconception? Something you thought this will absolutely work, or this will improve or something like that?
+
+Elora Krzanich  27:32  
+Oh, okay.
+
+Anne van Ede  27:35  
+Like a tiny myth busters section?
+
+Elora Krzanich  27:40  
+Yeah, that's a good question. I feel like my misconception that I had.  Let's see. Because I had started, I started on the team about two and a half years ago. And I remember, like, I was building my very, like, the first thing for, like, onboarding. And the way I was thinking about how my systems had to be broken out, like, I couldn't really, I couldn't quite wrap my head around, at first, how to break out my systems in a way that wasn't like going to just cause a bunch of dependencies on each other, like, parallelization that you can get from, from systems like my brain just hadn't really, that was like the last part that my brain hadn't really grasped. And it took, I would say, like, two iterations of doing it, of like, making that Dataflow kind of graph and, and talking to talking to co-workers that I was like, Wait a second, this is just a giant chain of work, like and i can i can do better kind of thing and kind of go back to the drawing board. And I'm not gonna say that, you know, my project was perfect by any means to onboard with but it definitely, it did take I think, like, the idea, the idea that a system, it was like, I couldn't break apart jobs and systems in my and this is probably more like a dots thing than necessarily entity, component, something but the, the way in which I had kind of designed my systems, I had kind of painted myself into a corner. And I was like, you don't need to do that. You can you can open this up, you can have multiple things, you know, happening in this single system, it doesn't have to be so like, system ABCD, right, and then just all the way down. So I would say, like, dependencies were, does that answer your question? I feel like that's not really a misconception, that's just a lack of understanding. on what's 
+
+Anne van Ede  30:29  
+That's okay, like these questions, I don't need like, okay, the perfect answer to this question, these questions aren't to get the information out of your heads. And any kind of information that gets out of your heads is fine by me. That's why I have like double questions and stuff like that. So if you answer this in a different direction, and the next question might be leading you in another direction, and I still get the answer I would otherwise have gotten for that. So it's absolutely fine. never apologize for your answer. I'm still learning. Right. You This is already the next question. But can you tell me something that I need to avoid when creating an ECS design?
+
+Elora Krzanich  31:13  
+when creating an ECS design, do you mean when you are building your own ECS? Or when you are implementing something within? Like, within ECS? Okay, 
+
+Anne van Ede  31:36  
+Either way. Something you've seen wrong gone wrong, like, please don't do that?
+
+Elora Krzanich  31:40  
+Sure. Um, well, I think that one thing that is just. I find it, it is hard to understand, potentially, or at first, but I think that one of the things that I see as kind of a issue is the amount of adding and removing of components that happens to create sync. So as people are implementing things like they kind of they want that immediate mode, often at first, because it's easier to understand, right? Like, if I asked this component to be there in the system, then you know, in my next system I can pick that up and start working. But that creates a lot of sync points, and can really get in the way of performance. So the thing that I would say to avoid is, or to do instead, is to just try to understand like, when do you actually need the data? So not necessarily just what data do you need? But with that data flow? It's also good to understand like, when might this actually be available? Is this available right after the system executes? Or is this going to be available at the end of the frame? Starting to the next frame? Like, Is it fine if it's available at the start of the next frame? Because if so, then deferring that and having a single sync point where you're doing a bunch of work is better. So that would that would probably be something that I would say like, it's easy to kind of trip over that when you start, especially because object oriented programming is so like, immediate mode. So that would be a recommendation. 
+
+Anne van Ede  34:07  
+Okay, then we're getting to the next segment, more specific about component design, because that's the most that what my thesis will focus on that there's much more but my thesis, yeah. Unfortunately, I cannot do everything that I want to do. Yeah, I really want to graduate at some point, too. So
+
+Elora Krzanich  34:26  
+That is important, right?
+
+Yeah.
+
+That's great.
+
+Anne van Ede  34:31  
+Yeah, it's not as expensive as in America, but it's still quite expensive. Right. So when you're creating components, when would be a point when you decide to split up a component into two.
+
+Elora Krzanich  34:50  
+The first thing that I would take into consideration is just how much of this component is being wasted when I'm going to use it. So are these things used together? Like? What is the frequency in which they're used together? If they're only ever used together once, but I end up using this component across 10 different systems. Split it out, like it is not. That's just being wasteful. So I would say that that is, that is typically the first thing. Yeah, the first thing that I consider.
+
+Anne van Ede  35:35  
+Okay, anything else, you said the first thing? So,
+
+Elora Krzanich  35:39  
+yeah, that's a good point. So I guess the The other thing, it kind of builds on, on that. But if you have, like, you know, system Aneeds to write to part of that component, and system B only needs to read from that component. And you kind of have that pattern across your, across your systems, for whatever reason. And then, like I said, like that is that is creating dependencies between the system. So if you have component data that will, like based off what you're doing is creating that hard dependency between systems, you can split it out, or at least you could think about splitting it out. Yeah, that would probably be the next thing that it's just maybe not not obvious. Since understanding system dependencies, I feel is challenging and difficult, like, especially without visualization. So yeah, 
+
+Anne van Ede  36:52  
+Yeah, I should write, I just realized that I don't think my tool right now. Takes reads and writes separation into account. I do, but my tool doesn't yet. So I need to make sure I don't think I have that on my list yet. So yeah, before I forget to implement it at the end. Right. So when do you decide to merge a component? Or two components into one component?
+
+Elora Krzanich  37:27  
+Yeah, so when I see that, the data is being used together. pretty much always, um, I don't have like a hard ratio, like or like a hard percentage of like, oh, it has to be used nine times out of 10, or, you know, something like that. But I just consider like, for the like, for the problems that this is going to encounter, right? Like the data solving various problems of say, your game? How, what is the likelihood that these two things will continue to be used together, because maybe they're only really used together in like your physics system, but then other than that, like other things are going to totally use it, like these components separately. So I would say like, looking more holistically at how often these two components are continuously used together. And yeah, just trying to get a sense of like, based off of what you have implemented and based off of what you plan to implement, like, because you don't want to combine the components. And then it's like, oh, I totally forgot about my, whatever system and now I have to split them back out because this is super wasteful or whatever. But I would say like, one of the things that I do is just always start small, like start with small components, because you can always combine them later. And yeah, splitting them back out I feel is the harder path. So
+
+Anne van Ede  39:15  
+Okay, yeah, um, I You already said you consider read-write separation, but do you consider other low level stuff like cache alignment or hot-cold separation?
+
+Elora Krzanich  39:29  
+Um, so I would say that, let's see in the projects that I have worked on, I haven't done too much of that, kind of like analysis. One of the things like the ordering of your data inside of a component is something to consider, right? Um, and And yeah, like it is, it is also important to think about like, what what is your? What, what is this going to look like, when you load it into your cache? Right. And I think having, having some kind of like, tool to help people really understand the system that they're working with, to make those decisions, like, would be great. So I think like, for me, that's something that I, on a larger project, I would probably take more into consideration and try to, like, build some kind of visualization to really understand like, how are these things being loaded? Um, but on the on the little, like, port projects that I've, that I've done for the team? I haven't haven't taken that too much into account.
+
+Anne van Ede  41:08  
+You say that the order in which you would, wow English is very difficult today. The order in which you put the data in the components matters. What do you mean by that?
+
+Elora Krzanich  41:23  
+Yeah. So the, the actual, like, laying out your types in the component is, is something that, I dont know, I feel like it, it feels like it can be like a small optimization, but I also feel like I've heard, you know, Andreas, give, give, like some really cool talks about, Andreas Fredrickson, give some really cool talks about just how, how the internals like pick things up and, and do. And English is also failing me.
+
+Anne van Ede  42:13  
+It's not even my first language. So I have an excuse.
+
+Elora Krzanich  42:18  
+You have an excuse. Yeah, just like, the, the way in which you are laying out the actual data of your component. So that you understand like, the, the bytes of memory that you are kind of stacking on top of each other? Yeah, that could be, again, it's not something that I like, again, if I'm doing like a smaller project, it's not my first thing that I go to, to look at. But it is something if you're planning to do something larger, or just if you have a lot of data, it's important to kind of know, like, Am I am I stacking them in such a way? That is going to be more beneficial, I guess. 
+
+Anne van Ede  43:16  
+And then we'd beneficial You mean that there's not gaps in between? Like, I always mess up the bit, byte thing. And the numbers like you don't have a three byte and then a bye empty and then four bytes something in.
+
+Elora Krzanich  43:33  
+Exactly like you can stack those in in a way that doesn't doesn't create that hole.
+
+Anne van Ede  43:40  
+Right. The padding. That's the word I'm looking for. That's the way Fabrice called it.
+
+Elora Krzanich  43:46  
+Yes,
+
+Anne van Ede  43:48  
+okay. Um, oh, yeah. This is um, how do you keep a component design organized and legible for the programmer? So, the code as well as the design
+
+Elora Krzanich  44:07  
+Keep component design eligible. Do you mean...?
+
+Anne van Ede  44:13  
+Eligible, I mean, legible. Eligible means something else right. Okay, legible, readable, understandable. I thought it meant something thing different, but this is the same word or not.
+
+Elora Krzanich  44:27  
+I might have misheard you. So I was like,
+
+Anne van Ede  44:29  
+I was questioning my own English knowledge, like eligible means something else right?
+
+Elora Krzanich  44:37  
+When you say legible, do you do you mean just like the ease of understanding like what this thing is trying to do? 
+
+Anne van Ede  44:47  
+Yes. Yes. 
+
+Elora Krzanich  44:48  
+Yeah. So I think um, I mean, naming the component something that that I mean, makes sense in the context. And also naming the components something that isn't, so it's like a, sorry, trying to perform this thought. It's something that's kind of like a delicate balance to strike, I think, especially with new people who are using ECS. As you want to name your data in such a way that it like makes sense for what you are going to be using it for. But not name it in such a way where they start to think of it as objects. Right? So like, I see, especially when you start, like a lot of people will, will break out like player position, and it's just the, you know, the float3, and it's like, player's, not the only thing with a position, what is this? What is this specifically that you're trying to, like, do here. And maybe this is their way that they've, you know, they've, as long as they have a reason for doing something like that, um, it's like, you kind of have to ask yourself a lot of times, like, does this need to be specific to these types of things in my game? Or can this be more general, and I find that naming convention like and how you name things is just, it helps with that. And then, of course, naming the data inside of it like that the actual fields inside of the data, something understandable to what they will do is good. 
+
+Anne van Ede  46:40  
+Okay, I'm just gonna jump for a minute. On naming conventions, let's just yeah, skip to the end. You say naming, it's something that makes sense. I hear that a lot.
+
+Elora Krzanich  47:02  
+I said it, and I was like, Ooh, that feels bad.
+
+Anne van Ede  47:05  
+Yeah. Yeah. It's just, it's true. It's, it's just the way it goes. That's one of the big reasons that my to only creates a plan and not the actual because the plan will say, Oh, these these data's this belong together in a component, please name the component.
+
+Elora Krzanich  47:27  
+You name the component
+
+Anne van Ede  47:28  
+Yeah, exactly. So I don't know if I can do that probably depends on how well the code bases work. Like, you can find a common denominator if everything ends, like on positions, you can find like every data type is position, and maybe you can name it position. I don't know. But I'm still like, I'm not there yet. But do you have any kind of coding or naming conventions? Other than just giving the name something sensible? Like, suffix or prefix or something? On on components and systems?
+
+Elora Krzanich  48:09  
+Yeah. Um, I think, let's see, I don't want to speak for for all of the dots team. 
+
+Anne van Ede  48:21  
+No this is just you.
+
+Elora Krzanich  48:23  
+Doing when I'm doing my own stuff, I, I don't like to use the word component inside of the component. It's just it's a long extra word that I think is a little obvious once you start, you know, using the data and working with it. So I tend to just Nix that right out of the right out of the name. But I don't mind system in the system name. Like it's a player movement system like that. That is a fine naming convention to me because then the jobs inside of that can can kind of always or the work inside of that can can be broken up into smaller pieces. Yeah. But I guess I'm also not like I am typing out the component name a lot more than I'm typing out the system name to be used. So like, whatever gets me to type less. I feel in a way that's still legible, but you know, just I don't I don't want as many words.
+
+Anne van Ede  49:36  
+I think of the 11 interviews including this one. I heard this exact reason the same like nine times or something. So yeah,
+
+Elora Krzanich  49:46  
+I'm glad that I'm at least on on brand.
+
+Anne van Ede  49:51  
+Like I don't mind I don't like component but I don't mind system. Yeah, I don't have to type system. I do have to type component. Yeah, I've heard this. A lot.
+
+Elora Krzanich  50:02  
+We're all on the same page.
+
+Anne van Ede  50:04  
+Yeah. I've talked to people from Europe, Israel, USA, and every programmer is the same, everywhere
+
+Elora Krzanich  50:20  
+We don't like to type that much.
+
+Anne van Ede  50:23  
+I mean, we have to talk enough when, like, we type three pages of text, but one extra word, no. Yeah. Right. Do you have any other kind of naming or coding conventions around ECS?
+
+Elora Krzanich  50:41  
+Um, let's see. You're talking about? Let's see, I'm trying to think of ones that are not necessarily just like, dots specific that I could think on. In terms of naming, I mean, yeah, really, it just comes down to like, what makes sense to you? I, I know that a lot of the times if if you have a component with only a single field, that field is usually defined as value, like I've seen, instead of giving it a different name, because the component data is probably more descript, like the name of the component is more descriptive than necessarily what the data needs to be. But once you have two or more fields, then start giving them a proper proper name to kind of break break them out. Yeah, I guess in terms of like, system names, I mean, trying to think of like, what does the system do? I know, that sounds probably pretty obvious. But like, if you have, say, your player movement system, but inside of that you have some job that randomly does something that is not related at all to player movement. I feel like that would be very confusing, right? So, um,
+
+Anne van Ede  52:44  
+I've seen that. Very confusing.
+
+Elora Krzanich  52:46  
+Yeah. And it's like, oh, why did you decide to do that? Okay, um, yeah, maybe this isn't your player movement system, maybe this is this is something else. Um, but just trying to really, like, name it in such a way that it creates that like umbrella of things that you might be doing within it. Which, again, can can be difficult, especially as things grow, and you start adding adding more stuff, right. But
+
+Anne van Ede  53:20  
+I've seen a system that had five different things in it. 
+
+Elora Krzanich  53:25  
+Not related to each other?
+
+Anne van Ede  53:27  
+Not related, they will, I mean, they all have to do with the same characters that were drawn on screen, but one decided its color and the other decided if it was moving, or standing still, and so on, like many different things that should have been split. And then some things were half in this system and half in another system, color was decided in two different systems. It was my job to fix that. So I did fix that it was very, very satisfying when I finally figured out what everything was doing. Yeah. But it took me like two weeks and multiple conversation with all programmers like what is this doing? What's that doing? What's that?
+
+Elora Krzanich  54:08  
+So I feel like that's where the data flow graph can really come in handy. where it's like, hey, you're actually modifying, like, sud, suddenly, you're modifying the player's position and like three different systems here. Why? Why? Why are we doing this? Like if there's a good reason? Great. I'd love to hear it. If not, it's probably just an oversight of like, I didn't know where to put it. It's like, Okay, well, that's fine. But let's you know, now we can kind of move things and make it more organized. 
+
+Anne van Ede  54:38  
+In my case, it was not a whiteboard. It was a big white wall with posters. behind my desk like there was like this whole big wall and it was completely filled with a graph. And I changed the graph as I change things in the code, was very satisfied and it was nice and clean.
+
+Elora Krzanich  54:57  
+I liked the idea of 
+
+Anne van Ede  54:58  
+It is so satisfying.
+
+Elora Krzanich  54:59  
+You can just kind of move around.
+
+Anne van Ede  55:01  
+Yeah, I also had like the I cut up post-its with arrows on it. So I could see the dependencies of the systems like which order it needed to go. And then it started with like this. Everything depends on everything. And it turned out into like four or five, and then one system dependent on another or something like that, it was very satisfying.
+
+Elora Krzanich  55:25  
+Yes.
+
+Anne van Ede  55:27  
+It just makes me happy, right. organized, that's why this question about how do you keep it organized so that I know where to put stuff. And not just dump it somewhere.
+
+Elora Krzanich  55:41  
+in terms of like, actual file organization, like a lot of times we like to create folders for component, like, you have a folder for your component data, you have a folder for your systems, that it's and then within those, you could potentially break it up further. But it's just, it's kind of a nice clean way to be like, put it in, put it in this folder, I want to be able to find all of my component data here. I know some people like to put multiple components in a single file. I think that's I personally think that that's fine. As long as you kind of name the file in a way that tells me that all of the all of the components related to this thing are going to be in here. But I do think that doing that creates that kind of like mental map back to objects, where it's like, oh, I have all of my, I don't know, enemy data in this thing. And it's like, well, hang on, like, Is any of that data, can any of that data be reused across non enemies? Like is, is that something that you're now kind of painting yourself into a corner with? 
+
+Anne van Ede  57:03  
+Yeah. Okay. Lets see? Yes, I asked everything on this page. If you have to, had to put it down to a few rules, like when you're creating components for us to this then do this then it is what would those rules be? I hope you are not hearing my mother in the hallway, it's?
+
+Elora Krzanich  57:29  
+Not at all. Okay. Um, okay. So, when you're creating components, what are like the steps or the rules that I take?
+
+Anne van Ede  57:40  
+Like this is most important to mind?
+
+Elora Krzanich  57:48  
+Yeah, I think. I mean, I tend to like the first step is always like I mentioned that breaking out that that functionality, like breaking apart and understanding what data do I need to solve this. And whether that's a single component or multiple components, again, I tend to leave them as multiple components until I'm kind of proven that I can use them as a single component. So, yeah, first thing is just always looking at what what is the actual problem that you were trying to solve? What is the data that you need to solve that problem? Um, then let's see is there, there are probably more steps after that, but I would say that that is that is like number one thing to consider when designing components. And sorry, my brain is like okay, whatever whatever train that thought was on has left.
+
+Anne van Ede  59:34  
+Yeah, right. Right. So um, yes. Can you tell me something to avoid specifically for components?
+
+Elora Krzanich  59:53  
+Don't try Don't try to just like replicate the objects with them. I mean, I know that sounds probably pretty obvious. But I have, I have also seen it like, time and again, where people are just putting putting data that relates to a certain thing in their game together. But those things aren't used together. And it becomes a an obvious picture that like, their mental model of like how these things fit together, is still thinking in terms of objects, and not just thinking in terms of the data. And so I would say like, that's another reason why I suggest people just break things out into the smallest pieces to start with, because it really gets you thinking in terms of like, this is, this is just a position, this is just a float3, you know, a lot of things can can access and update and read from this float3, and maybe I'll do some different things with, you know, the different types of, of things in my scene, but like, the, keeping things small, I think helps people remember that it is it is just data that you're working with.
+
+Anne van Ede  1:01:27  
+The next question is more technical, for lack of a better word, my brain is shutting down, I think. Right? So unity uses archetypes. And I've spoken to people who use something that's called sparse sets, a slightly different way of storing, but also searching through the components are things that you have to do or avoid, because unity is using archetypes specifically. I'm thinking about unity searches through archetypes. If you have too many archetypes. You have to search through many buckets, stuff like that. 
+
+Elora Krzanich  1:02:20  
+Yeah. So I mean, in our case, in particular, one thing that I would recommend doing is like bulk operations. Like a lot of times, I'll see people will like create an entity and then add a component and then add a component and then add a component and then maybe set some data. And it's like, oh, yeah, that is like, that is a way to do it. But what you've now done is you've created an initial archetype, you've modified it, and now we have an archetype with component A, now we have another iteration of archetypes, with components like component, A and B. And now we have another archetype with one A, B, and C. And so now, what you really cared about was the archetype with component, A, B and C, but what you have behind the scenes is archetype of A, archetype of A, B, and archetype with A, B,C. So, bulk operation of like, Nope, just add all three of these together, and we will, you know, we'll try to try to then find that matching archetype or create one for you, behind the scenes of what, what you're actually trying to end up with. So that's something that I've seen that, again, it's it's prompt like, this is that is something to consider if you're going to be doing this kind of all over your code, or if you're going to be doing this like at scale. Again, for like little ports that I've done, or things like that, it's like it's, I don't end up having that many archetypes, but you could, if you are doing doing something much bigger. So that's something that I would say like, is easily easily fixable, in user code.
+
+Anne van Ede  1:04:20  
+Okay. And then, when I saw you first, an hour ago, I thought you looked familiar. Like, I think I seen you before. I just found out you gave a united talk in Copenhagen about entity command buffer and I watched this like last summer, so it was like, aren't you the same person with that talk? So I looked at it, and you are!
+
+Elora Krzanich  1:04:48  
+So, I just I do want to just say like, I think you're the first person who's been like, oh, you're the one who gave the entity command buffer talk like no one else has ever recognized me.
+
+Anne van Ede  1:05:01  
+In your voice and the way you speak it like, everyone has a way of speaking. And so the way you're speaking like, looks really you're, but I am doing an interview, but I'm so curious. It is true, I guess, Yes. So, personally, yes. Wow. Yeah. It was really useful too, by the way. 
+
+Elora Krzanich  1:05:27  
+So I am so glad to hear that. Yeah. Thank you for that feedback.
+
+Anne van Ede  1:05:32  
+Yeah, it's,
+
+Elora Krzanich  1:05:33  
+I it something I would like to continue doing. I'm also I mean, conventions are down, you know, they're on pause. Yeah.
+
+Anne van Ede  1:05:46  
+That's the last, like what I just said, the systems that was messy. There was like, an internship that I did there. And to clean it up, one of the things was, watch this, this talk. So like, I heard something about it come over has and I was watching a bunch of the unite talks that I thought were interesting, you know, related to ECS. And then I found this like, right, you explain everything's like, this makes so much sense. This is so cool. But the the way you order stuff, so it's always there's a word for that. deterministic that, like, Wow, this is so cool. Like how you do everything. And still they're deterministic and I was like. So yeah. I really watched it twice. So that's why I recognized one of the
+
+Elora Krzanich  1:06:40  
+and that's where I think I'm like, so yeah, a lot of my work on entities specifically has been around the entity command buffer. Like, I wasn't the original author of that feature, but I definitely inherited it and tried to keep it on par with, you know, what we expect? And I think when when we talked about, like, you know, the immediate mode versus the deferred mode, and then having, having that pitfall of like, it's hard to wrap your head around deferred things, I think, especially at the start, but it can really beneficial to you once you do kind of get it right. Yeah. And and then you can leverage that to your to your advantage. And I love seeing when people kind of go to that stage. Yeah. 
+
+Anne van Ede  1:07:29  
+Yeah. Yeah. Right. So the next questions are about code base conversion. So have you at some point, taken an object oriented code base, so not just a sample project, but like a bigger project, and converted it?
+
+Elora Krzanich  1:07:48  
+I have not done that. Let's see. I have not done I've given I've given some people's, like, advice on, like, once they have done kind of the bulk of it, to look at like their components and say, Hey, this is, this is a pretty beefy component, like, tell me, tell me where it's used. Tell me how you use it. Tell me tell me how often these things are all used together inside of it. Um, so I've done kind of that, I would say, next step of like, converting. But I, except for the smaller projects that I have that I have touched, I haven't been the one to actually do.
+
+Anne van Ede  1:08:38  
+That's okay. See, if there are any questions that are relevant. No, we're just gonna skip those. Those are the naming conventions that we already did. Alright, so we're almost through. 
+
+Elora Krzanich  1:08:58  
+Oh, wow. Yeah, I guess. Yeah. Part of doing this early in the morning. I guess I don't have as much to say. We'll just go on for Yeah, for.
+
+Anne van Ede  1:09:13  
+Um, right. So just in general, these are the closing thoughts. You know, like the mop up questions. Is there anything else that you've seen? Some people do that I absolutely need to avoid people that made the same mistakes or something. You already said so like the entity command, not using the entity command buffer to do it immediately. Stuff like that. Some things to avoid?
+
+Elora Krzanich  1:09:39  
+I think Yeah. And just to be clear, like doing things immediately isn't bad, necessarily. I think you should just have a good reason for doing that. And like, I think Yeah, one of the things and is this sorry. The things you should avoid, do you mean in terms of your tool? Or in terms of your, like conversion? Or? 
+
+Anne van Ede  1:10:09  
+Like, the ECS design in general? So either component design, or it's just like this is the last question for any anything?
+
+Elora Krzanich  1:10:19  
+Yeah, so I think, yeah, big, big things to avoid is just don't try to do. Don't try to do too much at once, like, start small. Because as we talked about, like, it's it, you can always combine things later. And really just try to break that, that mental model of like, you know, one to one of like object to entity. Because I think that what we, what we find is that, like, the player representation in your game, in ECS, is probably going to be made up of multiple entities that all have different types of components based off of what you're actually doing with it. I think when you try to shove all of that onto a single entity is where you're going to run into a lot of trouble, right? And especially in in dots, that I can that I can speak to like, if you can only get four entities per chunk, because you just have so much data on them, right? Like, now you're going to have different different problems, right? We talked about cache line and things like that, right? Like just kind of blowing out your data. Because you want that one to one, I think is that can be a big pitfall for people. So thinking about breaking down, I don't want to say your objects, because that's my goes back. But just the things in your game, like the literal things that you want in your game, that functionality, breaking that down into multiple sets of component data, so that you can appropriately process not only the components individually, but kind of that grouping of data, if that makes sense.
+
+Anne van Ede  1:12:40  
+Yeah, I guess. Yeah. Right. Is there anything you consider important about ECS or component design that I haven't asked about?
+
+Elora Krzanich  1:12:57  
+Let's see. We talked about, we talked about how to break apart your components. systems. We talked about dependencies, which I think is really important. Um, I can't think of anything off the top of my head.
+
+Anne van Ede  1:13:26  
+That's basically means that I've done a good job with these question.
+
+Elora Krzanich  1:13:33  
+Yeah, if I do think of anything, I'll let you know. But yeah, right now I cannot. Okay, sorry. My cat, real quick, is gonna try to jump. Okay. Thank you. Yes.
+
+Anne van Ede  1:13:47  
+So that was actually my last question, or at least my last interview question. The last questions I have, aredo you want to be updated on my progress?
+
+Elora Krzanich  1:14:00  
+Yeah, that would be great. I was actually gonna ask, like, Where can I kind of follow follow what you're doing? And just like, I think this idea of a tool like this is really cool. So I'd be really curious to see kind of where you where you land on it. And what you find is, like, helpful for other people to start thinking in this way.
+
+Anne van Ede  1:14:25  
+Yeah. Now that I've done these interviews, I think I want to make like, my thesis has to be really formal. But I would like to make like a, I don't know when I'll be able to do this, but a summary of the interviews, there's so many different opinions, but some things align. And some things depend on the underlying technique like archetypes or sparse sets and stuff like that, or the kind of project you're doing. So like a summary of general opinions, that would be Pretty nice for people to start, because there's so many people out there screaming their opinion at you. Just seeing them next to each other would be, Yeah, kind of helpful, I think. So, the, can I add you on LinkedIn is the next one?
+
+Elora Krzanich  1:15:18  
+on LinkedIn. Yeah, absolutely,
+
+Anne van Ede  1:15:20  
+yeah, probably post something there. When I'm finished with my project or my thesis, I don't really have something to keep you updated regularly. Because I am too busy with everything right now. So interviews, working out interviews, coding my tool. I'm actually quite far with that. I, this morning, I had my first design. So I had my 
+
+Elora Krzanich  1:15:50  
+Congratulations. 
+
+Anne van Ede  1:15:51  
+my original class, and then a link to the entity type that it would be. So what would be the archetype for unity, and then every component that it used along with, in which other classes this entity would be used, so the full like links to each other suited? Very, very proud. To my, to my supervisor, so
+
+Elora Krzanich  1:16:15  
+yeah, congratulations. 
+
+Anne van Ede  1:16:17  
+Thank you. Yeah, so right now I only take into account base class and child class. And based on that I split the components and or at least, I look at every publicly declared data fields in a class, and I look for that specific, in which other classes it's used. And then when I've got that everything down, then I look at every field and see if there's other fields that have the same classes that it's used in. And then I combine them based on that. Yeah. If you have a parent class, it's used in the parent and a child class. So if I have two values that are used in both, then they are grouped together, the next step is to, but I am aware that depends on the, how clean the code is written. Look at the methods see where it's used to what would be eventually systems. But if it's just lumped in one big update loop, then it will be very hard.
+
+Elora Krzanich  1:17:26  
+Yeah,
+
+Anne van Ede  1:17:26  
+but see if I can do something with that.
+
+Elora Krzanich  1:17:30  
+Yeah, that's really exciting. Like, I I love that this is this is something that you're that you're building. And I yeah, again, I'm really excited to just kind of see, see where you take it and what you find, like, what, you know, how? Because I think like doing that on paper is at least for me was like a good exercise to kind of retrain my brain. And so like, given given the tool like and then helping people understand, like, all of the reasoning and all the decisions why, like, what what was the reasoning behind doing this and this right, like helping people understand. And then that way they can make their own decisions about you know, stuff moving forward. I think it's so great. So cool.
+
+Anne van Ede  1:18:22  
+Yeah, the design right now, right now, I haven't yet implemented like the reasoning. Right now, I'm just the basics. I haven't even like, you cant choose anything right now. It's just yeah, it goes. But when I like, work, through every interview that I had, I want to put like a few rules down and then maybe also some sort of sliders. Because I want to be able that people who want who use sparse sets, they want big components, because looping through components is very expensive. So they want to if even if the component is maybe not used entirely, at some point, they want to, you know, still merge them, stuff like that. So I want to be able to like you can plug in a profile and I'm using a unity profile, because that's the company I'm doing my internship at, or my thesis at, uses Unity. So for me, it's a unity profile. But I want to be able that you can plugin, but the the rules and the explanation. It's gonna depend how much time I have left to do that. Unfortunately, that's like they, for me, it's very important, but for my written thesis paper, yes, less so unfortunately. Right? 
+
+Elora Krzanich  1:19:42  
+Yeah. No, that makes sense. You have to prioritize
+
+Anne van Ede  1:19:46  
+fruit Also, you can prove that it's a good, like, explanation. So how would you say that like Yes, I've explained this properly. Difficult to Like determine in a scientific way, and that's the biggest problem with this entire that's why I'm doing these interviews, because then at the end, they can see if my plan is indeed a good one.
+
+Elora Krzanich  1:20:10  
+Yeah, yeah.
+
+Anne van Ede  1:20:13  
+meets the expectations.
+
+Elora Krzanich  1:20:16  
+That's awesome.
+
+Anne van Ede  1:20:18  
+And I've been wanting to do this for two years now. So yeah, actually, I came back to the company that first like, where I first saw this problem. So I was found unity ECS. I worked with it for half a year. And then I came to this company for a day to speak about my experiences with ECS. Because they were just starting and they were just like, we have this one project that we're using now. And it would be nice if we could do it for everything else. But that's not a possibility right now. And I want to help. Yeah. And two years later, I'm doing my thesis at that same company. 
+
+Elora Krzanich  1:20:52  
+Amazing. 
+
+Anne van Ede  1:20:53  
+That's really cool. Yeah, yeah.
+
+Elora Krzanich  1:20:56  
+That's, yeah. Congratulations. That's awesome. 
+
+Anne van Ede  1:21:00  
+Yeah, that is awesome. 
+
+Elora Krzanich  1:21:01  
+Come in and be able to, like make a difference for them. Right. And help them help them with that understanding. Yeah. Awesome.
+
+Anne van Ede  1:21:09  
+I see its almost time.
+
+Elora Krzanich  1:21:11  
+Yeah. Thank you for, I feel like we had a good conversation. I hope that it was helpful. 
+
+Anne van Ede  1:21:25  
+Very, 
+
+Elora Krzanich  1:21:26  
+I hope that my, my answers were not. Okay, sleep, sleep brain kind of thing. They weren't, like totally incoherent or?
+
+Anne van Ede  1:21:41  
+No they're fine, one thing that, like, some answers are the same. And that's good, because then you have a common denominator, that for every conversation, there's always one thing that I haven't thought about. So for this conversation, and one thing that really are in there are multiple things. But the one thing that I like, Oh, yeah, I have to put, I really have to put this in my tool, that you said that if a component has one data type in it, don't name the data type data type, they would value and use the component name. Of course, I can do that too. Because I have many components. I just have one value, and then I can give the component an actual name and just right. Yeah. So yeah, for every conversation, there's one thing that I thought about that before. So thank you. Thank you very much for your time.
+
+Elora Krzanich  1:22:28  
+Yes. Please add me on LinkedIn. And yeah, I'm really excited to, I hope, I hope actually, the rest of the like building the tool goes really well. Good luck. And yeah, good luck with your thesis. 
+
+Anne van Ede  1:22:44  
+Okay, so good luck with your next meeting. Goodbye.
+
+Elora Krzanich  1:22:52  
+Yeah, have a good day, or good evening. Bye
+
+Anne van Ede  1:22:57  
+Bye.
+
