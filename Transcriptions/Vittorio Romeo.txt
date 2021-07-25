@@ -1,0 +1,364 @@
+Vittorio Romeo  2:27  
+Hello, yeah. Hi Anne, can you hear me?
+
+Anne van Ede  2:31  
+Yes, I can hear you. Can you hear me?
+
+Vittorio Romeo  2:33  
+Yeah, that's good. How you doing?
+
+Anne van Ede  2:35  
+Perfect? Yeah, I'm good. How are you?
+
+Vittorio Romeo  2:37  
+Not too bad a bit of a long day's work. But this is a good distraction, you know?
+
+Anne van Ede  2:43  
+Yeah, same for me. Firstly, thank you for your time. I appreciate you talking to me. So like I said, in my email I am researching, converting from object oriented to data oriented, specifically ECS, component based basically. And, and I got interested in this like two years ago, when I first found the unity ECS. I thought like, Oh, this is awesome. This is so fast, but also logical and structurally, you know, just nice. But many of my colleagues both on the university and in the company, they were hesitant to convert, because they didn't know it a lot. And the companies, their programmers didn't know it a lot. So they didn't want to convert either. And I thought, why isn't there something to help them convert, and also to teach them? So that's basically what I'm doing, I'm creating a tool that does two things. One, it creates a plan from the object oriented code, not, it doesn't work the code, it just generates a plan for the port. And at the same time, I want to give it some feedback to the developers who are using the tool so that they can understand why it's a good plan and why this might help. So one hand it helps the conversion. And the other hand, it educates the developers at the same time, but a very important part of that is I need a good plan. So that's where I come to you guys. I've only been doing this for two years now. And I'm still starting. And there are many, many opinions about what a good plan is. So I'm trying to gather as many of those opinions as I can to find like a common denominator and create like an objectively good plan with my tool. So for that, I created a couple of open questions. But since I'm talking to many different people, and also people with different backgrounds, I created them quite, like, open open questions. And so if they don't suit your situation, just tell me so or answer how it suits your situation.
+
+Vittorio Romeo  4:49  
+Can I ask some questions to you first. In the tool you're mentioning, so what stage are you at with your research?
+
+Anne van Ede  4:57  
+Right now I'm programming my tool. So
+
+Vittorio Romeo  5:01  
+So you have actually something practical that works. I'm curious, like, what kind of situations does it work in? I can imagine, you know, when you talk about OOP it's, it's very broke, right? There's some games and software that are written with, you know, pointer spaghetti. And that seems like even the best way the world would probably figure it out, right? And order order code bases are kind of trivial to translate to ECS, you know, instead of iterating over every object, iterate over the array of competence offload that. So what kind of challenges and things have you solved so far? I'm quite interested. It's an interesting topic, of course,
+
+Anne van Ede  5:36  
+yes, I'm still make. For me, my programming part of the research is in two parts, one part is getting all the data out of the code. And the second part is generating a component design. I'm still working, I'm almost finished with the first part. So I haven't generated the design yet. I'm almost finished with all the data I need to get out of the code. I use syntax and semantic analysis of Visual Studios, compiler API. And that way I can, you know, I want to like a cross section of classes and their data, and the methods and how they use the data so that you can split the data, the components up that way. But I haven't generated a components on yet. However, I should mention. This is just my thesis. So I have like limited time. So there's a very complex situation that you talk about, this probably won't be able to be solved with my tool, yet. I need probably like, a PhD for me to solve, all of it
+
+Vittorio Romeo  6:41  
+do you envision it to be completely automatic? Because it for me would make sense, for example, the tool gives you some sort of like, intermediate output, and then the user selects some things like maybe with a UI or something like that. And then with some user guidance, you can convert things. I think it would be reasonable. I don't know what you're envisioning. But yeah, I mean, I wish you know, I wanted something like this when, a few years ago.
+
+Anne van Ede  7:07  
+No, the complete automation will probably, if it's possible, it's not going to be possible within my scope, my scope or my time, and so yeah, it will probably be like an intermediate result with the, like, for every choice, I ideally, I'd want to explain where the choice came from, with also, okay, if this doesn't really fit, or this, I cannot completely figure out because it's like, the code is spaghetti. But you could look at this and this and this, because that's are the rules of, you know, creating them. So focus on those if you're splitting up the parts that my tool can't. So yeah, it's, it's, I know, it's going to be a basis. And I would very much like to, you know, build on it later. But I know there's going to be edge cases or big edge cases that I have to ignore right now to, to graduate, really. Yeah.
+
+Vittorio Romeo  8:08  
+Fair enough. Cool. Ask away then.
+
+Anne van Ede  8:14  
+Yeah. So we scheduled about an hour and a half to two hours. That's usually what it takes. Is that okay, if we run a little long, what's your time frame?
+
+Vittorio Romeo  8:28  
+Um, I have a meeting in like, three hours.
+
+Anne van Ede  8:32  
+I hope to be done before that. Yeah. Right. So there's two things I want to ask before starting. Is it okay, that I use your name? So they know in my research, just in my report, so I know that I asked like, proper people and not my next door, neighbor? 
+
+Vittorio Romeo  8:51  
+Sure. 
+
+Anne van Ede  8:52  
+And can I record it just so I can type it out later? It won't be spread on the internet just. 
+
+Vittorio Romeo  8:57  
+Yeah
+
+Anne van Ede  8:57  
+Okay. Perfect. Well, you already asked your questions. But are there any other questions you have before we start?
+
+Vittorio Romeo  9:04  
+Ah, not really. Let's go ahead.
+
+Anne van Ede  9:07  
+Okay. I created this interview into like, a couple of themes, themes, subjects. So first is just to, to get started. Can you tell me how you got first started with ECS?
+
+Vittorio Romeo  9:23  
+Okay, so, so my research has, what's part of my my undergraduate studies, studies so I basically, always had this like, passion for game development since I was young. That's how I got into programming. And at first, you know, when I was younger and inexperienced, I used to just get it to work without really thinking about the architecture of the thing. And as soon as I run into problems, we know performance scale, or more also like flexibility of changing the game design and things like that, I started looking online for solutions. ECS was pretty prominently even like, about like 10 years ago, right? Everybody was talking about it. And I never found a real kind of like, single source of truth. Like for some people ECS is all about cache readiness for some people is all about, you know, the component based design doesn't even need it, it could be made with pointers, right? Nobody cares. As long as its components, it's easy to prick into stuff like that. So I experimented a lot, I had a few prototypes, the first one I played around with was pointer based. And I sold that first one out, and some things like that, which is not as fast as possible. But I really saw the benefits of like composing objects, in small pieces, rather than actually having to write all the code myself, then I started researching a bit about performance. And I figured out if I put these things in arrays, then I can iterate over them, and it's going to be nice for the CPU, bla, bla, bla, you know, all the usual stuff. And then I got a bit into multi threading, I was thinking, you know, since we have this design, which is based on entities, components, and systems, and it seems like systems are independent from each other, it seems like, I can find subsets of entities which do not depend on each other. This seems like a very trivial thing to parallelize. So I played around with it manually, you know, like parallizing systems myself, and like, say, Okay, this is a collision system is going to have 10,000 entities, I'm going to just split in two threads or something like that, right? It works. But I didn't like to do the manual work myself. And I figured out what if there was a way of having the compiler do that for me. And also, another thing I liked was, is really not easy to plan ahead on what's gonna be the best kind of like solution design. So for example, you know, if you have like your physics system, and you have velocity, acceleration and position or whatever, is it better to have every single component in a single array? Or is it better to have them together, what is going to be more performant, right. And I wished I had a way to simply experiment with these things easily, rather than having to write code all over, all over, or, you know, multiple times. So I tried to solve that with my research. And what I did was basically developed this this library in c++. And what you do is specify the set of components and systems at compile time. And then at compile time, you also specify how you want these things to be laid out in memory. So you don't have to do that before. And you can say, I have this position component philosophy component version one, they're just structs, you know, simple classes, there are separate. And then as a component setting, I can tell the system, hey, I want them to be each one individually array, or I want them to be packed together in the same array and things like that. So it's just like a single switch, you can turn on and off and see how that affects your performance. At the same time, you specify dependencies between systems at compiled time. So for example, if you had your collision system, which depends on the physics system, and then you have multiple game systems that all depend on the collision system, but they can be parallel between each other, you can specify it at a compile time. And what happens is that my library basically creates a graph of the dependencies and automatically parallizes when possible. So if two systems are going to be independent, they're going to be run into multiple threads, and stuff like that. And then also, inside an individual system, if you are expecting to have a lot of entities, you can also split the system itself into multiple tasks in parallel, automatically. And again, it's all tweakable. So one of the things I found interesting was, okay, I have this simulation of, you know, 10 million particles, seems quite fast. But what happens if I, for example, change the lay the memory layout of this component, so what happens if I turn this on or off in this particular system, so you could actually see the impact of those choices quite easily. And I think that was one of the main benefits of my approach that you could experiment without having to rewrite your code.
+
+Once I released that I played around with it a bit, you know, just keeping it updated over the course of the years, never really made a real game out of it, I made some stress test simulations and things like that. The obvious drawback is the computation time gets pretty large and pretty slow. You know, if you're setting all these things at compile time, the compiler should know everything at once. You know, it's going to have an impact on compilation times. I've had some people from the industry inquire about it and play around with it. I don't know if anybody ever used it in a commercial game. I've had some people tell me that they really liked the ideas and they kinda stole them for their own, you know, frameworks and things like that. But they didn't like the reliance on compilation time. So they made that the kind of trace all at runtime and things like that. And then presented it at a few conferences had some good feedback from the industry and things like that. But overall, it was mostly like a very, let's say, exploratory, kind of like paper where this is what you could do if you are infinite compilation times is what what you can experiment with. Now take this information and turn it into something a little bit more limited, much more appliable to the industry. At least that was my goal, and I think it's exceeded up what what I wanted to. Does that answer your question?
+
+Anne van Ede  14:59  
+It answers my question. So he tell me how, if and how you are going to use ECS?
+
+Vittorio Romeo  15:08  
+I don't use it, currently. It was an academic project from my like, my particular research was an academic project from was was like, five years ago, six years ago. I can't remember anymore. But yeah, it's been a while ago. Currently, I've been dabbling in game development a bit, but haven't done any particular project that requires an ECS. Yes, I've been doing some VR stuff, turning like old games into VR. And I've been working on arcade games, those are like, the old games, you don't want to mess with the entity code. And, you know, arcade games, just an array of classes is simple. Like, I didn't really need any ECS, I guess. It's always there in my mind, more and more like not just ECS as a single thing. But the concept of data oriented programming does shape the way I do things, like even at work, for example, when we have kind of like, you know, large influx of data, financial data, if it's another way to parse and whatever, I feel people just doing OOP stuff is going to be terribly slow, hard to test them, whatever. But using ECS in the past has shaped the way I think, and I try to think about in terms of data rather than objects, which I think has been very beneficial. 
+
+Anne van Ede  16:23  
+Okay. Have you in the past worked with any other ECS implementations, except for ECST?
+
+Vittorio Romeo  16:32  
+Let me think about it. I've used unity a bit, but it was very long time ago. And I had the previous prototypes I mentioned, actually have some games made with them. And they were like, imagine just ECS separation of entities, components and systems, but components all derived from a base class, and they have a virtual update and a virtual draw function. So pretty limited in that sense. But still, you have the composition benefits of that. So I work with with those, but I never actually, I don't think I've ever used third party ECS, I'm always hand writen things myself.
+
+Anne van Ede  17:12  
+Okay, can you tell me in one or two sentences, the biggest advantage you see of ECS?
+
+Vittorio Romeo  17:21  
+Okay. So, in general, like for any particular project, is that?
+
+Anne van Ede  17:26  
+okay, just your or your experience, just from your point of view, the biggest advantage.
+
+Vittorio Romeo  17:32  
+So I will say, it gives you a very nice separation of concerns. So you know, if you have done in your code, it elicits a lot of good things, for example, it's easier to reason about your code, easier to parallelize, easier to test, which seems like kind of like trivial. But if you compare that to, you know, cramming everything into a class, then you actually see how much better it is. So separation of concerns, that's pretty much the first thing. And the second thing is performance. Even with, you know, a naive implementation, if you compare having cache friendly data for your physics code, compared to sticking everything into base classes, and having that virtual overhead, is just going to be a lot faster. So I think ECS wins, both in terms of like elegance and performance. So I see no reason not to use it unless your scope is very narrow.
+
+Anne van Ede  18:27  
+I see. In the same way, can you tell me the biggest disadvantage of ECS you see?
+
+Vittorio Romeo  18:37  
+I guess. So for small things, when you don't need ECS, it can be overkill. But I guess that's like a general statement, right. But I've seen like, some people just obsess over it right. And even if they could solve the problem in a different way, get good Performance and Results. Sometimes, you know, trying to make everything fit into the style of ECS, might be detrimental. The other issues I would say is when you have very specific interactions between entities, I, there's some games where, where, you know, it's not about having a lot of entities of the same type is more likely a lot of very different entities. Maybe a small number of them in total. But they all interact with each other in very peculiar ways. If you think about puzzle games and things like that, so at that point, you are going to need entity, A to know about entity B, you want Entity B to know about entity C. You still get that kind of like mess of references, because that's the nature of the game. And having an ECS doesn't really help. So maybe for some games, it is more appropriate to use a pointer based approach, or use a base class based approach for things like that. I guess one of the drawback is you need to plan ahead and you need to have some sort of project where this kind of like laying things out separately is feels natural It's hard to explain. But for some projects, that's just not the case.
+
+Anne van Ede  20:05  
+I understand. Okay, then we're through introductory questions. And the next sections are in four pieces. General ECS designc component design specificc code base conversion and large code bases and coding slash naming conventions. For those four, please just explain it like I'm five. So something that you might think is very trivial might be exactly what I need to hear. Okay, one piece of information I'm still missing. So just explain, you know, from basis up. Right, so through the introduction, I noticed that maybe the questions won't be that much that because you say you have never made a game before, but you have made some stress tests and stuff you made some games with in "ECS". So I'm just going to ask them and see where it goes. Sure. When you're making an ECS design, can you walk me through the steps you take to create that design?
+
+Vittorio Romeo  21:12  
+Okay, let me think about it. I need to go back a few years. 
+
+Anne van Ede  21:16  
+Yes. That's Okay.
+
+Vittorio Romeo  21:20  
+Okay, so, first of all, you know, it might seems pretty simple. But you have to have an idea in mind of what you want the game to be and what you want the the logic to be liked. So I would say at first, I need to have some sort of like, even if not a design document, if it's just in my head, I need to have an idea of the design of the game. So what are the types of entities that are going to be there? What is the user going to do with them? how they interact with each other? And what do I want to happen in practicing in the game? Once I have that I need to start thinking about, I like to think about systems first. And I like to think about systems because they are what dictates the logic, right? So for example, if I'm going to have a physics simulation, I'm going to have some sort of system that first deals with the physics calculations, they're going to have a sort of system that deals with a collision detection. And then again, I want to do some collision resolution, and then maybe one of deals with particles and sound effects and things like that. So I want to identify what are the pieces of logic that can be isolated in a system? And now they like, what are the dependencies between them? Right? So once I know that, and I can think about a physics system, then it's more like of, I guess, a bit of trial and error, a bit of art to figure out what the components should be. Because in the end, there's no real, you know, canonical way of doing this, as I mentioned before, you could have a single component that contains position, velocity and acceleration, or you could have a component for each, right. So it depends a bit on your framework, for example, in the case of ECST, that doesn't really matter. Because if you want them to be together, or want them to be separate, I just need to change a  switch the complitation flags, and that's it. But if you're using something that, you know, forces every class to be a component, and every component has a particular layout in memory, that might also be something that you have to consider. So I would start from the logic, I know, I need the physics calculations, what do the physics calculation need, we need to know position, velocity, acceleration, and then I think about access patterns, right? If the system is going to be the, let's say, the hot loop of my program, and I'm going to have 1000s of entities, and most of the entries are going to be are belong to the system? How do I envision the data being accessed? So when it gets a physics, you know, every single entity is going to have to care about all three things, right? So it might be worthwhile to put them in the same, the same component to ensure that they are close in memory and things like that. Yeah, regarding entities, entities for me, I've always been like, you know, just numerical integers. So they're just dumb ideas. So there's not really any thought that goes into that is most you know, these IDs is an entity it is composed of these components, and automatically, if it matches any system that can support those, it's going to be part of a system, the system is gonna execute some logic into it. So I would say that would be my, my, my approach system design first, then think about the systems and think about memory layout and components for access patterns.
+
+Anne van Ede  24:21  
+That's a very clear answer. Thank you. Can you tell me the biggest misconception you had when you started ECS, something thought this is going to work or this is going to do this or help with this. And it turned out it didn't.
+
+Vittorio Romeo  24:39  
+So at the beginning, there was a lot of confusion for me regarding a bit of the pieces, right, when, like I was confused with it. People say entity component system, right. So I was confused about the role of a system. And as I mentioned at the beginning, I had some prototypes where I didn't really have a system at all. The components themselves have data and logic entities were still numerical IDs. And, you know, I lost the advantage of the separation of concerns. But on the other hand, it might be a little bit simpler for some kind of games to have components deal with themselves. So I guess one of the major misconceptions is that there is one size fits all. I feel like it's more of a philosophy, right, try to do it data oriented, try to do a separation of concerns. But I have never really, at least I'm convinced there is no canonical way of doing it. The other misconception might be, does it have to be performant, does it have to be fast, does it have to be cache friendly. It's a benefit you can get out of the approach. But still, I believe that if you follow the right principles, and you think about, you know, how do I compartmentalize my problem and whatever, I can also do it with pointers. You can also do it with base classes and things like that. There's nothing that prevents you from having something like a system base class, a component base class and dealing with polymorphism, and things like that. I don't think it's the most elegant solution. But I still think it's an ECS. I would say that, for me, the more dogmatic form of ECS is data oriented add the system concept as part of your implementation as something that is an independent piece that deals with the update logic or drawing logic of some set of entities that have some set of components. But it doesn't have to be that way. So my misconception at the beginning was probably not understanding how the pieces fit together, and that there is no real single way of doing it. 
+
+Anne van Ede  26:40  
+Okay, can you tell me something for ECS design in general, something to absolutely avoid?
+
+Vittorio Romeo  26:48  
+Are you talking about when you're designing a framework or designing a game with ECS.
+
+Anne van Ede  26:55  
+Mostly the game. But if you have some very cool insight on the making of a framework, then that's fine, too.
+
+Vittorio Romeo  27:01  
+Okay. So let me think about it. So there was a game I was working on. A while ago, this was with the other ECS, the one that was pointer based. And I feel like this was one of those games where you have a lot of relationships between entities. So for example, if I had something like an enemy that was holding a gun, and they were separate entities, I want to be than them to be linked together, right? Because the enemy with ID five is holding the gun, with ID seven, so that you have to be in the same position they have to update together, things like that. So one of the things I found problematic in that in that aspect was how do I make this, like close relationship fit into the idea of an ECS, I remember use pointers. So a component could have a pointer to another component, which wasn't great, especially when I got to the point of serialization, like, if I want to save the game, how do we actually specify, you know, that this is linked to that it's annoying, you have to like convert a pointer to something else and figure it out. So I would say, if you're the sort of issues, there's two techniques I've seen in the past, first one would be, never use any sort of pointers or addresses, all indices, all IDs, all numerical things, and then have them into buffers that are linear. So when you basically want to save your game, or do networking, you just literally send the ID and it's gonna kind of work out. The drawback of that is, of course, you need to think a bit about a strategy of pre allocating these IDs, reclaiming them when an entity is dead and stuff like that. So there's a bit of thought involved that you wouldn't have with pointers, but it kind of works. And the other thing I've seen up, which I've not personally tried is having an event system as part of your ECS. So if you have this kind of problem, where you want is to communicate, I've seen some games and some applications have the basic idea of when ECS systems and whatever. And then they have this thing called an event which you can fire from any entity or any component or from any system. And then other systems can pick it up. So if you think about it, like an event loop, like in networking, like nodeGS, and things like that is kind of the same idea. Anywhere through this event loop, you can fire another event, and then somebody is going to pick it up later. So for example, if you want to link two entities together, when you create the parent entity, you can say, hey, I want to create a child entity attached to me as an event. And then on the next iteration of the loop, game loop, whatever. Some systems will pick that up, create the entity and it has the information it needs to have to to make them work together. So that's something that I find interesting, I haven't tried it myself. And maybe it's isomorphic to have some sort of like, another system with a component that represents the event data, let me try to explain it. Imagine you have this event, right when you say create entity attached to parent entity a right rather than an event system, that's just general you could Have a component which you call something like creation entity event, and then a system that only deals with that. And that's going to be what responsed to the event. So I guess the reason why some frameworks opt for the event system, rather than doing that is that if you have a lot of type of events, they're all small and easy to handle, you don't want to have n systems, you just want to have a single one that deals with everything, when naturally in the same place, so I guess those were two, kind of like roadblocks I found.
+
+Anne van Ede  30:32  
+Okay. So you think that we should avoid links, as much as possible is that the take away? 
+
+Vittorio Romeo  30:40  
+Depends what you define on a link. I think that if your game is going to have to support saving and loading and networking or anything like that, as soon as you get addresses, as soon as you get pointers into a game logic and memory layout of the game entities, there's gonna be trouble, you know, you're gonna have to figure out how to serialize a relationship with addresses into some something that that you can deserialize back into addresses. It's not impossible, but it's just a pain. So I would say you gotta need links, like any game, but those non trivial logic has links between entities, the way you represent them is important. And I think using numerical IDs, keeping it simple, keeping it in position that can be you know, mem copy to a buffer, that's the way to go most of the times.
+
+Anne van Ede  30:52  
+Okay, and then we're going to the next couple of questions. And that's about component design specifically. And I know you already mentioned it in the previous part, but we're going to go deeper on it now. You say, you said, when it doesn't really matter if your data is grouped together or not, because in ECST is just flipping a switch, and it's flipped around. However, sometimes it can be beneficial to merge them together. And at what point, would you consider splitting up the data? Instead of keeping them together?
+
+Vittorio Romeo  32:11  
+So you are coming from the perspective of I have like this huge class with a lot of things. When when do I decide to split?
+
+Anne van Ede  32:18  
+Yes. How do I split the data into groups? 
+
+Vittorio Romeo  32:21  
+Okay. I guess the only objective answer I have to this is, again, memory access patterns, right? If you have your gimbal. Let's say you have like this entity in your game, and it's just a single class and inside as position, velocity, acceleration, then you have your 3d mesh, then you have your texture, then you have health points and attack points and whatever. You know, if you have all of those, and most of the time spent in your game loop is actually just the physics part of it just iterating over every entity and updating the physics because the rest has been done at a lot lower frequency, or you don't need to care about attack until you actually are in a fight or things like that, then for each single iteration, for each single entity you iterate on, you are wasting a lot of space in memory, which we don't really care about, because memory is cheap. But once you understand the memory hierarchy, once you understand how the CPU cache works, and things like that, you are basically destroying your performance. So I guess for me, splitting data into separate units, is something that needs to come primarily from memory access patterns. If you know that you can make better usage of your cache by separating things in separate you know, containers and things like that, then that's probably the first thing you should think about. The other. The other point, which is also important, but I feel like it's a bit more general, is, again, separation of concerns. So once you are in the industry for a long time, you really understand how important it is to be able to test everything separately. Now how important it is for each small piece to perform a single action do it well, and integrated with other pieces. This especially applies to my daily job, right? But even for games, if you're gonna have some sort of like, you know, reusable component, if it's like that things, you can basically apply to multiple parts of your games. And also you want to test separately. That's also a good prompt to split things together. If you want to test your physics calculation, why do you need to care about your health points or your 3d mesh or your texture? So it takes a bit of ingenuity a bit of like creativity to say, what are the pieces I need for various part of my program? Like I don't have an algorithm to figure it out. It's mostly been intuition. But thinking about access patterns and thinking about testing in isolation, I think those two things are great making you understand whento split and when not to do that.
+
+Anne van Ede  35:00  
+Just to recap, first, you look at access patterns to see what is used together, and what is not used together and split it on that. Secondly, you look at domain boundaries, as I call them. So split like physics stays with physics, but doesn't care about anything else. So keep that out of that. So, and that ties into testing, because you usually test one concern. So you cut along the domain boundaries, if there's like any doubt in the access pattern. Is that?
+
+Vittorio Romeo  35:34  
+Yeah, yeah, I would say that's, that's pretty accurate. I think it's not just one after the other is more like a combination of two, you know, yeah. At least that's how I've done it. Yeah.
+
+Anne van Ede  35:46  
+Okay. Right. How do you decide when you want to combine two components?
+
+Vittorio Romeo  36:02  
+I guess. So one of the answers I will give you like, practically is trial and error. Because of my frame. You know, for example, My my, my experiment, how I'm looking at right now have like three structs, one for position, one for velocity, one for acceleration. And I remember quite clearly that if I switch them from each one, every set a separate array, into each one being in the same array, I get a small performance boost. So access patterns, again, that's one of the most important things, surprisingly, not as significant as I thought, because you know, if you're reading position array, put that line in cache, then you read, the other one for the line cache, and so on, is still gonna end up being quite cache friendly. But you might lose a bit of performance, like at the boundaries of each cache line. So it's not that big of a deal. But again, access patterns are primarily what what matters here. If I have to, you know, guess a bit and use my intuition or my experience, I would also say, convenience matters. If you want to have something like, again, if you're talking about domain boundaries, and I think that's something that makes a lot of sense, right? If you find yourself using things often together, even if performance doesn't matter, imagine your game as like, 20 enities right, for your own convenience for your sake of work and things like that. Things that are commonly used together should probably be together. And I think he helps out with, you know, the clarity of your code, how easy it is to change and things like that. So I guess there's a lot involved into making these decisions. But if I had to pick two, I would probably say, again, access patterns, and then convenience and flexibility that are the main things.
+
+Anne van Ede  37:47  
+Okay. This question might not apply. When you're creating components, do you consider low level stuff like readwrite separation, hot cold separation, or cache alignment? 
+
+Vittorio Romeo  38:03  
+This is what I mean by access patterns, right? So mostly cache, mostly, I feel like that's the biggest bottleneck, right? As soon as you have a cache miss, and you go main memory in a loop, that's definitely a performance. So I definitely consider in terms of access patterns, what is going to go into cache? and in what order is everything that I want to read at a certain point in time gonna be in the cache at a point in time? So it is one of the considerations I make? What were the other things that you mentioned?
+
+Anne van Ede  38:34  
+read-write separation for components and cache alignment?
+
+Vittorio Romeo  38:39  
+Alignment, hasn't really big, been big of a deal? You know, it's do you what will kind of promise you upward alignment, right? If everything is in a linear array, and the thing is a struct is going to be aligned, because the compiler does that for you? So is there anything particularly one about alignment are you thinking of?
+
+Anne van Ede  39:02  
+what I meant is like, you make sure that three whole components can fit in a cache or two whole and not like two in half, or three and a half. So you make sure that this like, it's always aligned with the cache or a new cache line, always start with a new component. That's what I had in mind
+
+Vittorio Romeo  39:22  
+You can make an effort. I guess you can make an effort for that, I feel like once we get into the territory of like a few bites here, and they're being wasted. I guess it would only matter for like, games where you have a lot of entities and it needs to be as fast as possible. And I also feel like it's a bit hard to judge these things unless you profile them with, you know, some profiler that does patch simulation and things like that. Personally, I achieved levels of performance I desire just by thinking about what's in the cache at the right time. I felt that would be the most optimal, you know, way of doing it, but it hits the spot.
+
+Anne van Ede  40:06  
+Okay. Right, you already answered that one. How do you keep your component design organized and legible for other programmers and yourself your future shelf?
+
+Vittorio Romeo  40:20  
+Okay, um, I guess the answer will give you this answer to this question is not different from what I would give to a question regarding software engineering practices in general, right. I like to keep it simple. There's something that I kind of had to unlearn over the years, you know, when I started was like, into these, let's try to use as many features as possible in the language. So to leverage all those things, which you know, it can be fun, but you need to understand that not everybody knows all the feature. And sometimes it can actually obfuscate your code. So try to keep it simple. And especially in the context of game development, and component based programming, as I mentioned before, serialization and working are important. So it kind of like lends itself to become basic structs, without really any layer of nesting, or anything like that, you just want your data to be as flat as possible, which achieves the goal of keeping it simple, and also makes it easier to serialize, and network and whatever. So that's the first thing. And then in general, in general, like I like to follow good coding practices, I want to document what a component is supposed to do, I want to document each field or component, I want to have tests, if I want to test one or more components, either in isolation or together. Again, even a test driver can be documentation, if you are not sure how something works, if the English part is not clear, just go look at the test drive. And you see, oh, this is what it's doing. I get it now. Right. So all these things, I would say are part of my answer. But they are not really specific to ECS. I will do this even in, you know, finance software or something.
+
+Anne van Ede  41:54  
+Yes. So you're you're basically ECS already helps you keep it clean, in and of its own. So yeah,
+
+Vittorio Romeo  42:03  
+yeah, I would say that my ECS experience shaped the way I write other code as well, in a good way.
+
+Anne van Ede  42:09  
+Yeah. Okay, if you had had to put it to a few rules, what rules would you create to guide the creation of components? So your your like mental rules you follow when you create components?
+
+Vittorio Romeo  42:26  
+Is this different from the question regarding design steps? Remember what I told you about I think about systems design access patterns? Are you trying to ask a different question or?
+
+Anne van Ede  42:38  
+Well, this is more specific to components. You already said, the the order, sometimes people give the same answers as they gave before, but sometimes they gave different answers. That's why I asked this, like, slightly different question, the more like the question of how do you split up data? So the separation of concerns and stuff like that? So your your mental rules, when you create components? What's the most important thing, the first thing? Like the access patterns, for example, what's the first thing that you find important, the most important thing when you're creating components, and then so on?
+
+Vittorio Romeo  43:18  
+I guess it will still be kind of like a tie between access patterns and domain specific things being together, I, I don't really follow any rule split this way. For me, it's more like a refining process, you know, I have an idea of what the entity should do. I have an idea what the system should do, then, how can I design my component in such a way that it works with the rest of the systems, and also has decent access patterns, and kind of make sense on its own, right, I want you to be like a logical piece of data that has a real world meaning, let's put it this way. So it's kind of like what you would do in oop, you know, you're gonna have your person class is gonna have a name is going to have an age and stuff like that. But rather than looking from the perspective of, I want to present everything in the same place, is more like how do I present properties that are closely accessed together, and also related to each other in terms of real world concepts. And there is no really, I mean, I cannot give you like a rule. It's a bit of a balancing act, right? Because if you want to represent the real world concept, you would just put everything in the same class, just to the access patterns, you might end up with like tons of different small, tiny components. And at that point, it will be overwhelming to work with, right so I guess you need some balance that that's what I would say. 
+
+Anne van Ede  44:53  
+Okay. Right, for component design, Specific. So component design is something that I should absolutely avoid when doing my components.
+
+Vittorio Romeo  45:08  
+Absolutely avoid, it's pretty, it's pretty strong, right?
+
+Anne van Ede  45:11  
+Your oppinion, it's strictly your opinion. So something and that can be like pet peeves, you seen someone do something all the time, and you're just annoyed at what they do something or something structural that you just 
+
+Vittorio Romeo  45:23  
+Okay, I would probably say two things, if you have something in your component to identify a particular component, then it's probably a red flag. You know, if you have something like a component, and inside your component, you have something like, instance ID, and then somewhere in your code you have, okay, if I go over this componentand and instance ID is 5, I'm gonna do something special, then that kind of like is disrupting the pattern. I'm not saying never do it, because there's always a place where you want to do some hacks, and it makes sense and whatever. But in general, in general, like, if you want to represent that, you probably want a separate type of component or separate system. And maybe that component might inherit from the previous component, I'm talking about structure, no, that's not polymorphic inheritance, they're gonna get all the fields but you know, it's gonna be a different type, something like that. So having some sort of like, hey, um, component number five, inside of a component self is something that I think is a huge red flag. And the other thing I mentioned it before, is anything that deals with machine memory layout, in terms of like, if you have pointers, if you have things that are like resource, you don't want to have a mutex component. And as an extreme example, right, you don't want to have anything that is tied to the machine, you just want it to be row data. And any place where you need to basically interface that with a machine, you try to isolate as much as possible from from components themselves, systems might be a better place to do those things. Because systems, you know, don't need, you don't need to serialize a system, right? You could have a mutex in a system, you could have a file opening system or something like that. So keep the side effects and all that stuff. And all the machine related things to systems and keep your components as dumb as possible. That's what I would say.
+
+Anne van Ede  47:11  
+Okay, that's a very clear answer. Right, I need to ask a small question before I can ask the actual question. I'm aware of basically three ways to keep track of the components. archetype, which is unitys version, sparse sets, which is ENTT and some others. And big array, which is basically an dumb version of sparse arrays, sparse sets, what type or another type does ECST use to store its components
+
+Vittorio Romeo  47:51  
+Only spart sets, so I've been using sparse sets of integers. And so the way the way it works is, as I mentioned, in the beginning, you have to know all the component types in advance at compilation time, when you have that information, you know, the number and what ECST does, it produces a bit set, which is big enough to hold one bit per component. And that's going to be like the signature of an entity, then systems also have a bit set, which represents actually multiple bitsets. So you can have a system that says, I work with other entities that have components B, and C, but not component E and F, something like that. So we're gonna make this rules to match entities to systems. And then each entity again is dumb ID plus a bit set a represents the component that is currently has. So limitations of this approach is that an entity can have a single component of each type, you cannot have multiple components of the same type, but I never really needed that. And in generally, under the hood is all sparse sets. So I found that was affective. I am not, I knew about archetypes. And I'm not sure what I don't remember what Unity does in particular. But I've seen some other ECS systems, there was one which was quite famous recently, I think it has been used in Minecraft or something, I can't remember the name anymore, but it's an open source project. And they use archetypes. And they use something called groups as well and things like that. And basically, what they allow you to do is if you know in advance, that you're going to have a lot of entities that have these set of components, they basically allow you to specify that during your your setup of your ECS. And they produce special data structures, assuming that those things will be close together in memory. So it's kinda like an optimization they use. It doesn't change the way you design it, which is cool is more like I know I'm gonna have a, b and d, often in the same entity. So I'm gonna tell you that and then you do whatever you want under the hood to make that faster. And I think that's called groups. And I don't remember the name of the thing, but I might I might link it to you later if you if you want to know. Yeah. Yeah, that's pretty much it. I don't really know of any other way of dealing with these things.
+
+Anne van Ede  50:02  
+The funny thing is you already answered my main question. So I don't know how you did that. But my main question was like, how do you design for the different implementation types? Because there's disadvantages and advantages to both Oh, yeah, I already spoke to him. But he uses sparse sets as well.
+
+Vittorio Romeo  50:24  
+But he also has, he has this group's concept. And there's some blog posts that I've read from him, which are really interesting. I don't remember exactly how groups work, but it does something under the hood that makes it you know, if your entities are likely to have those components, the data layout is going to be generated for you is going to be on average faster, if you specify those things. So I think he he ENTT has a lot of very interesting ideas in that.
+
+Anne van Ede  50:50  
+Yeah, yes, I already spoke to him is actually the first or second person I spoke to. Right. So the but you already said a disadvantage of sparse it. So you already answered my question. So let's just go on then. Have you ever, like ported an object oriented code base to a version of ECS?
+
+Vittorio Romeo  51:23  
+I would say as a real project. No, I have done. I've done some examples for my talks were I presented the same scenario in OOP and ECS. And I showed the difference in performance and the difference how you would write it, but I, I never did any porting. And I, I would be very scared of doing anything like that. Might as well, you know, tear it down, and rewrite. It does the same thing. 
+
+Anne van Ede  51:52  
+Yeah. Okay, then I'll just skip those questions, because they are like specifically on converting, you have to convert? Then you're going on to the last like section section? Do you have any coding naming conventions you usefor components or systems or naming components or systems?
+
+Vittorio Romeo  52:13  
+In the past, I've used namespaces. So I used to put all components in a component namespace or the systems system namespace. I would say, I'm rethinking that approach. namespaces. Like, I've been in the standards committee as well discussing things with c++, ISO people and things like that. One of the reasons why the standard library, for example, doesn't really have many nested namespace is that, there's some This is c++ specific. So this may not apply if you're not in c++. But yeah, namespaces have some issues with. There's something called ADL in c++. I am not sure if you are familiar with that argument about the lookup ADL in c++, which is argument dependent lookup and things like that. There's some, if you start nesting namespaces over and over again, there might be some surprising results as part of our resolution and things like that, when you have like the same name, multiple namespaces, or things like that, or when you have a namespace, and ADL kicks in when you don't want it to. So I would say, if I had to revisit what I've done. Nowadays, I might consider having a naming convention. For example, every component starts with a C, every system serves an S, which seems the same as having a namespace that does that. But there are some implications, as I mentioned before, in how the language works, the c++ specific, if I had a way to group things together without having to change their name, and not think about the technical implications, I would use that. So that's why I reached out for namespaces in the first place. In general, I'm not a fan of Hungarian notation or anything like that. I don't really like when the name of something tells me what it is, right? I don't want a component tell me it is a component, I'd rather know that it's a component because it's part of some component group or something like that. But nonetheless, reality is not always, you know, elegant isn't always nice, you have to consider that there's a compiler, the compiler is gonna be things and sometimes you have to give up your dreams, right? Accept that you might want to use a prefix. So in the past, I use namespaces. Nowadays, I will probably use a naming convention. That's my answer. 
+
+Anne van Ede  54:29  
+Okay. Any Do you use any other? Wow. Today, it's very difficult to ask questions. They use any other kind of naming conventions around ECS or coding conventions.
+
+Vittorio Romeo  54:45  
+Not particular to the to the ECS pieces, but like, in general, or what?
+
+Anne van Ede  54:52  
+Well, they can be how you name variables of components or stuff like that. Just around The ECS system, not not c++ General, but a little bit more specific.
+
+Vittorio Romeo  55:09  
+Ah, again, the answer I will give you is, is not specific to ECS problem problems, I would say, in general, I like to use snake case, lowercase, I like to prefix data members with a leading underscore, just make sure that I know their data members when we're reading in the code. And I like to keep names informative, as short as possible without losing information. Let's put it this way. Maybe one thing that might be interesting to know is I like strong type defs. a lot. Are you aware with that concept? Yes, yeah. So for example, for entity IDs, rather than using a plain int, I actually had a strong type test for that. So that makes sure that I didn't make any mistake, for example, passing it to somewhere functional expected something not to be an ID or something like that. So strong type defs, I've seen that helps a lot into keeping things tidy and avoiding this kind of like implicit conversion issues and things like that. And then consistent naming for data members and things like that, for example, like the leading underscore also helps out. So yeah, that's, that's what I would say,
+
+Anne van Ede  56:13  
+Okay, I'm the we are through the normal sections, and just some closing things. Any general ECS things that I need to avoid? Like, again, pet piece, structural problems, things you feel frustrated with? This, let it all out.
+
+Vittorio Romeo  56:35  
+I guess I've been frustrated a bit with, like, how to deal with rendering. The thing about ECS, it seems very clean. When you talk about the logic of a of a game, where application, once rendering gets into the mix, it seems like you're making a little bit more dirty. I don't know if that makes sense to you. But for example, I have this beautiful particle simulation, every component is that data for a simulation, and then when I get to the point, I need to render it, I wish I could do it in like, a very simple fashion where like, Okay, my system gets an input of positions, and spits out a bunch of vertices, right. But just that doesn't work. Because if you just create the vertices, every single frame is going to be bad for performance, you need to cache that information somehow. So you're gonna have a component that is basically represents the vertices for something, and then you're gonna need to send that to the GPU somehow. So it's not really a pet peeve, but more like, you need to, you need to design for the beginning with the idea that you are going to end up rendering these things at some point or the other. And that might affect the elegance of your components and the way you designed beforehand. So for example, what I did for the particle simulation, I, I ended up having a component for the color of the particle component for the circle shape, which was a radius. And then when I was drawing it, I didn't want to make a circle every single time, right? I want it to be cached somewhere so that it doesn't destroy performance. So I ended up having a component that contained the data that needs to be rendered. And then the system that does the rendering will just update the data rather than producing it from scratch every single time. So that's something that I found a bit annoying, but it's the way it is. I've also experimented with producing the vertices on the spot. And, again, it depends on on what performance you want to reach, what kind of level you want to have. That works. I remember that worked quite, quite well, but if you want the extra performance, you don't want to basically is allocations just like writing this data every single frame, you want it to be somewhere stable in memory, and then you know, you go to the GPU and you say, this array has all the vertices data just draw this array, or something like that.
+
+Anne van Ede  59:00  
+Okay, is there anything else you think is important? Around ECS or component design that I haven't asked about?
+
+Vittorio Romeo  59:11  
+What a broad question.
+
+Anne van Ede  59:12  
+Yeah, just just like anything you thought like, oh, you're missing that question. Just that kind of question.
+
+Vittorio Romeo  59:18  
+Let me think about it. Let me scroll through my old code. It's been a while. Should have asked me this question five years ago. What were you doing?
+
+Anne van Ede  59:33  
+five years ago, starting my bachelor's?
+
+Vittorio Romeo  59:35  
+Okay.
+
+Anne van Ede  59:35  
+Actually, five years ago, I hadn't started started my bachelors yet. So high school exams.
+
+Vittorio Romeo  59:42  
+Good time.
+
+Anne van Ede  59:44  
+Yeah, at least. I mean, I could still go to my exams. I suppose that that's better than people doing it now. Because of COVID that's just weird.
+
+Vittorio Romeo  59:57  
+I have something maybe it's not what you had in mind, but one of the things I think is also important is designing for customization and scripting, which is something that that can be, can be a challenge if you have a gaming in general, but even more with an ECS. So what I'm talking about is imagine you're like this very nice system with your physics component, your drawing component, whatever, then you want to add some scripting, right? How do you do it? You could have a script component, and the script component contains an arbitrary script. And then you have a system at the end that runs the script. But then how does that the script access the rest of the components, things like that. I've also seen ECSes which are completely data driven. So there is no component class in the source code. You define components at runtime and they build the buffers from the it's like kinda like Google protobuf. You familiar with that? Right, what? Google protobuf? You know, protobuf,
+
+Anne van Ede  1:00:58  
+I don't know.
+
+Vittorio Romeo  1:01:02  
+Well, when you're microservices, right, and you want Microsoft to communicate with each other, you need a schema. And a schema represents the data layout that the service is going to be communicating with. protobuf is something like that you have this special domain specific language in some file to specify Oh, this particular request to the service is going to have one int, 10 floats and then one Boolean, right? Yes. And that's in a file. That's separate, right. And I've seen some ECSes, I don't remember the name. So don't ask me about that. But what they do is like you specify the components as part of this runtime data. And then you load them into the system, the system during runtime will build the data structures that can hold these components. And you basically get this kind of like, huge flexibility, because now everything is like outside of your source code is also very good for iteration speed in terms of like development. But you lose the type safety, you lose possible optimization opportunities, like vectorization, and things like that. However, it makes it really easy for user defined content to appear. Like if you want to have a new component as a user of the game, just write it up. And then you link it in with something. So one of the games that does this, or something similar to this is Factorio. I dont know if you heard of the game? 
+
+Anne van Ede  1:02:15  
+Yeah, I know. 
+
+Vittorio Romeo  1:02:17  
+So addicting. It ruined my life. But yeah, 
+
+Anne van Ede  1:02:20  
+I had to stop playing it at some point, I had to I had to deinstall it from my computer. Yeah, that, 
+
+Vittorio Romeo  1:02:25  
+Yeah, it's problematic. So it's a drug. But what they do, for example, for modding purposes, like components are identified with strings, right. And if you want to make a mod for factorial, you can literally have your mod, say something like, oh, if this entity has a component, which is named with a string, then add these fields with the entity and do something else, is also to make out and make mods interoperate. If you know there's going to be contribute to mods, you can actually code for it and say, if this component is component coexist, then do something else, right. So it's very flexible, but it's all string based, which means you're going to have that kind of like performance overhead of having to parse the strings and things like that. But it pays off, because you get this nice modability. What they to do in Factorio, actually is kind of hybrid, they have a bunch of hard coded components, you know, for belts and things on the belts, that needs to be as fast as possible, right? But there's gonna be all in c++. And then for things that are like, you know, interactions between the player and switches and whatever, or the spidertron or whatever that can be written into separate language, so it doesn't need to speak. And I think like a hybrid approach is probably a very smart thing to do variable modability without losing performance that much. But also be a consideration. I would I would tell people, like if you ever expect your game to be customizable, think about how do we make it data driven without destroying performance?
+
+Anne van Ede  1:03:49  
+That's gonna be a fun one to explain. Now make it data oriented and data driven. 
+
+Vittorio Romeo  1:03:55  
+But not too much. 
+
+Anne van Ede  1:03:56  
+Yes. For most people, this two are the same thing. So I hope I don't have to explain that. At some point in my life. I'll probably will have to in my thesis presentation, though, but well 
+
+Vittorio Romeo  1:04:11  
+You have to defend yourself. 
+
+Anne van Ede  1:04:12  
+Yeah. There's always people ask those kind of questions like, why is that? What does that happen? What does that have to do with that? And there's nothing? It's not the same. It's not the same thing. Well, that is it for my normal questions. The only three questions I have left is, one; Would you like to be updated on my research?
+
+Vittorio Romeo  1:04:39  
+Yeah, absolutely. Sounds very interesting.
+
+Anne van Ede  1:04:41  
+With the possibility of Would you like to get my paper at the end? 
+
+Vittorio Romeo  1:04:46  
+Yeah, definitely.
+
+Anne van Ede  1:04:48  
+Well actually is the fourth question? The second the third is, is it okay, if I add you on LinkedIn? 
+
+Sure. 
+
+And the fourth question this time, is the last one is the question. Is there anyone else you think I should talk to? Except for skypjack?
+
+Vittorio Romeo  1:05:05  
+Yes, go jack was probably my first choice. Let me think about about it. And I'll come back to you. Yeah, I remember talked to people. Back in the day, I was really kind of like what you're doing right now. I didnt go through the effort of setting up calls, anything like that. It's just like plain old emails and hoping for the best. But I remember I talked to some really smart people back in the day and I got really good insight. So I'll go back and take a look at what what people I talked to just give you a list, you probably talked to all of them, but we'll see. Okay,
+
+Anne van Ede  1:05:37  
+that's fine. Yeah. Thank you very much. That would be a great help.
+
+Vittorio Romeo  1:05:42  
+No problem. It was a pleasure, then. 
+
+Anne van Ede  1:05:45  
+Yeah. Are there any questions you have for me?
+
+Vittorio Romeo  1:05:49  
+Uh, not really. I'll just reach out if I have any question. Okay. And looking forward to see your paper.
+
+Anne van Ede  1:05:55  
+Yeah. Then I want to thank you very much for your time and wish you a good day.
+
+Vittorio Romeo  1:06:00  
+You too. Cheers. 
+
+Anne van Ede  1:06:02  
+Okay. Bye 
+
+Vittorio Romeo  1:06:03  
+Bye bye.
+
+Transcribed by https://otter.ai

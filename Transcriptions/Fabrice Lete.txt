@@ -1,0 +1,535 @@
+Anne van Ede  0:00  
+Get that started. Um, do you have any questions for me before we get started?
+
+Fabrice Lete  0:08  
+Um, well, just the, so you're doing a PhD or a master thesis?
+
+Anne van Ede  0:16  
+It's my master's
+
+Fabrice Lete  0:17  
+Master's Master's. Okay. And it's at? Well, I don't know what kind of study track you're in. Exactly. It's related to video games in particular.
+
+Anne van Ede  0:27  
+Yes, the University of Utrecht that where I am has a specific games and media technology track. But it's basically you can choose any course that's also just in in normal computer science. And it just sounds fancier. So I have a background in both normal I took all the normal computer science courses with some extras in graphics and optimization. 
+
+Fabrice Lete  0:57  
+Alright, 
+
+Anne van Ede  0:58  
+basically, that's where I'm at.
+
+Fabrice Lete  1:00  
+Okay, cool. And so how long will you be working on this?
+
+Anne van Ede  1:05  
+Well, I've been working since November, and I'll be working until June July. 
+
+Fabrice Lete  1:11  
+Okay. I'm, I dont don't have other preliminary questions, but I'll probably have some more later.
+
+Anne van Ede  1:24  
+Okay, then I'll just get started. I put these questions in like five subjects first, just introduction questions, then ECS design in general. And then component design, more specific, code base conversion, and coding/naming conventions. So we'll just get started with the first, Can you tell me how you first got started with ECS?
+
+Fabrice Lete  1:49  
+Are you mean me, personally, or the company
+
+Anne van Ede  1:50  
+You yourself? How you got introduced to it? 
+
+Fabrice Lete  1:54  
+Oh, well, I guess that's, um, so I worked as a as a game developer for about 10 years. And then I switch to, to teaching for a few years, before coming back to the to the industry. And when coming back to the industry, I mean, I worked for another company for a little bit, and then I joined unity. But so from this background in games development, I tend to use mostly object oriented programming. But I've seen a lot of issues, a lot of the issues that come with it, like you have some rigid hierarchy. And just when you need to change things to accommodate changes in the game design, just having this rigid hierarchy gets gets in the way. And so what you end up with frequently is that the initial plan does not really match the implementation that you have at the end. And so you have just a lot of functionalities that tend to bubble up in the hierarchy. And you end up with classes that can do a lot more than what is actually required by the, by the, the, the, the initial purpose of the of the class. So in other words, everything tends to turn into a mess after a while. And so it's Yeah, it's a bit frustrating. And I guess it's some sort of trap that a lot of programmers fall into it in beginning of their career. I don't know if it's specific to video games, or if it's everywhere the same. But you just try to you just try to abstract things as much as possible to have some sort of clean model. And actually, this abstraction becomes one of the main issues with the code base, because the reality of the problem does not match your abstraction. And you end up with special cases everywhere. And so yeah, I've, I noticed that one way of dealing with that was to actually simplify things and to flatten the hierarchy and to avoid multiple inheritance and things like this and just have as few levels as possible, and use composition. And so the use of composition is something which is very frequent in the games industry. And I started switching to to that. And when I finally joined unity, I discovered ECS. And so that was three years ago. And yeah, I started using it. And I thought that this was really, yeah, really, it really looked like the thing I was looking for. It really felt intuitive. And it really felt like it was not abstracting the things that matter in terms of performance. So in other words, by putting the data at the center of the scene, it really allows you to think in terms of, of bandwidth, of cache, what am I using and so on. And in terms of iterations. And so yeah, optimizing for transformation that just felt pretty natural. And so yeah, I had the opportunity to work on that. And I kind of steered my, my way in unity to, to work with that team. So I was not specially hired to work on ECS. I just
+
+Anne van Ede  5:11  
+rolled into it
+
+Fabrice Lete  5:12  
+rolled into it. And I stayed there because I liked it.
+
+Anne van Ede  5:16  
+Okay, and can you tell me how you currently use ECS? or work with ECS?
+
+Fabrice Lete  5:23  
+Well, the the roll changed a lot over the years, because three years ago, it was still the beginning of ECS, I think the main effort for ECS at Unity started four years ago. So it was still really early in the process. And we had, I don't know, maybe 20 people max, working on ECS at the time. So it was a bit of a bit of everything at the beginning. So we are mostly, I'd say demo driven. At the time, we were working on what we called mega city, I guess you've seen this demo. And so I, yeah, I just work on whatever had to be done at the time on on mega city. And then after that, we, we get, well, we started growing, and then we reached the point where actually I was trying to figure out with a colleague, how many people we had working on the dots architecture teams. And it looks like it should be somewhere between 70 and 100 people. So not only our team grew, but also the team grew a lot in the in the US. And so the this, the small team in Europe that I'm part of, ended up being in charge of one particular part of the of the picture, which is the conversion. And so what we what we call conversion is a conversion of data. So since unity is fundamentally and so it's initially a game object engine, but it's also a Game Object Editor. And we we tried for, for a while to to check what a pure ECS editor would look like. And it was promising. But the problem is that this would be way too big a thing to to develop and maintain at this point. So that was dropped. And we kept the idea of using the current Game Object Editor, but to just have a way of converting these game objects into into ECS data. But so it's still only about the data. Because I mean, the big advantage of game objects is their flexibility. And so that's perfect for human facing things. So in the editor, you can just organize your stuff in the scenes in a in a in a hierarchy and things like this. And then we just bake the whole thing into data, which is optimized for runtime. And so we ended up in charge. So me and my team ended up in charge of maintaining that, that conversion. And something which is pretty important for for us is what we call live conversion, which is something that simply keeps doing the conversion as you are modifying your game objects. So if you are in unity, in a scene and you move a game object, well immediately the system will detect that this game object and only this game object has changed. And it will only reconvert this one and then patch the ECS data with this one. So we are not reconverting the whole scene all the time. And so that, that works pretty, pretty well. And pretty reliably now, even on large scenes. But then, we are currently we're organizing this, this team. So practically, that means breaking up the team and just re assigning the people to, to to other teams, it's part of a big reorg at Unity. And for myself, what I will likely end up with is a team in charge of education. So mostly focused on helping internal developers. So unity, and unity developers working at Unity on dots to help everyone transition to this to this new way of of writing code. And I guess that over time, this will evolve into a more outward facing role and turn into the education of our customers. But so for now, yeah, that that is what I'm doing. These days. It's helping unity developers get started with dots. So with the core of dots, so entities, jobs, burst and these kind of things. And now we are also working on some trainings around the netcode. So dots multiplayer. And I guess that we will keep working on more more variants of that training. I can see something like about networking or something about streaming or animation? I don't know. It depends on the on the demand.
+
+Anne van Ede  10:09  
+Yeah. Cool. So have you worked with any other ECS implementations outside of unity?
+
+Fabrice Lete  10:21  
+No, not really. Some, a few things were leaning towards that. When I was when I was still working in the video games industry. So we had a few few parts of the code base, if you, if you squint hard enough, it might look a bit like ECS, but that there was not a proper ECS implementation.
+
+Anne van Ede  10:42  
+That's okay, that's just so I can, you know, organize my results later. Can you tell me in one or two sentences, the biggest advantage you see ECS?
+
+Fabrice Lete  10:54  
+I think that there are two categories of advantages. One is all about performance. And that's usually the visible part of the iceberg or the the attractive thing in there. So everything that has to do with memory, locality and cache, coherency, and that sort of stuff, and vectorization opportunities, and so on. But the other part is really about the flexibility in the in the design, there was one, one example I took in a presentation I recently did, which is just if you look at a real time strategy game, and I took a screenshot of like one of the older Command and Conquer games, and you have a bunch of units. And if you try to represent that, as an OOP hierarchy, well, you will try to group these things in categories and with hierarchy between these categories. And you might say, Okay, I have soldiers, so bipeds that have a certain mode of locomotion, and then I have vehicles, so that could be two categories, and then in the vehicles, and I have tanks and jeeps. And so you will end up with this certain class hierarchy. And then, after a bit of time, you will start noticing a bunch of things that are orthogonal to that hierarchy, like, oh, but one of my soldiers has the same kind of weapon, which is also on one of my jeeps. So how do I represent that? Should it be something outside of the hierarchy? Should it be something which is higher in the hierarchy? Does it mean that the hierarchy should be a bit differently. And then as you keep going, you will notice there are a bunch of things which are just orthogonal, which do not follow that that hierarchy. And there's simply no right way of organizing this in a pure, hierarchical way. And this, I guess, is a problem that pretty much every game developer ran into. And so at some point, and so we found different ways of dealing with that, like components, which are optional. But in the end, if you start looking at your whole design, as a set of features, and you can just mix and match, depending on your use case, it's it's very flexible, it's very powerful. It's just like you, you have a database. And this is how you store the data that you need. And you just group it, and you don't have this sort of top most constraint that will guide the rest. And so I think that this is also the other big category of advantages of ECS is that it just gives you a more powerful way of expressing your your intent. But it's also very, very different from the classical OOP approach, which is why that's thing which is convenient and powerful, can feel like, like, annoying or distracting or problematic to, to people who try to apply this OOP design to that. So yeah, that's really the two big things. performance and the flexibility of the design.
+
+Anne van Ede  14:18  
+Are you kind of already started answering it, but my next question is, in the same way, can you say the biggest disadvantage you see in ECS, biggest disadvantages?
+
+Fabrice Lete  14:28  
+It's the unfamiliarity, like, I guess a large proportion of programmers in every field, are very, very used to thinking in an object oriented fashion. And so when you when you try to get to ECS, it feels like you're, you're thrown back 20 years in the past, and you don't have any of the tools that you, that you know, and so yeah, it's very, it's very disconcerting. It feels like you You're starting from from scratch again. And something that we noticed, but I guess that at this point, it's still anecdotal evidence, we would have to try that on on much larger groups to, to figure it out properly. But it looks like someone who is a complete beginner in programming, we'll probably manage to start programming in a DOD, in an ECS way, with less issues than someone who already has some experience in OOP, because coming from the OOP background, you sort of have to unlearn a bunch of a bunch of good, practices or patterns and idioms that you've been applying to your career. While if you start from scratch, then you just been told this is how things work. It feels natural. So I sometimes compare it with if you if you take a Windows user who's been only using Windows for 20 years, and then you put him in front of a Mac, that will be a really, really confusing experience. And same thing with someone who's been only using Mac. But then if you take a complete, complete beginner who never touched a computer, it will not matter what it starts with, no. I still do it this way.
+
+Anne van Ede  16:26  
+I've been in that situation. For the Windows versus Mac. Specifically, you don't know where the close button is. You always go to the wrong side of the screen. That that one really messed me up many times. And also
+
+Fabrice Lete  16:42  
+certainly was I was hired at some point as a as a developer in the video game company that was mostly working on iPhone games. And so I was put in front of a Mac for the first time in my life. And the thing is that I literally had to ask how to turn the machine on. Because the power button is behind the screen. I was not expecting it there. And I'm sure that at this point, they thought Well, that's a strong hire we got there. He really knows his stuff.
+
+Anne van Ede  17:06  
+Yeah. Yeah, that that happened to also actually on a Windows PC, it was a HP. But it was a it's called a sprocket. And it's a touchscreen, but also a projector that projects on your like on your keyboard, you could say on the on the desktop. So you can have like an interactive desktop, you have a touchscreen on your, on your, on your desktop and on your screen. But it was also like a Mac, it was a one, a computer and a screen and everything was in one. So I was like how do I how do I turn this thing on? I remember that too. That's a good first impression.
+
+Fabrice Lete  17:47  
+It's a good analogy for for ECS. It's perfectly normal to be completely lost at the beginning.
+
+Anne van Ede  17:54  
+Okay, and then we're through the introduction, questionaries, uhm, questions, we're getting right into it now, for these next questions, please explain it to me like five, something that you might think is so obvious that you wouldn't even mention it might be exactly that piece of information I'm still missing? And maybe not. But you know, just explain all of it. Again, if it doesn't suit you, just tell me. So, um, when you're making an ECS design, can you walk me through the steps you take from the original data or the plan to the finalized design?
+
+Fabrice Lete  18:32  
+So, making an ECS design from scratch? 
+
+Anne van Ede  18:35  
+Yes
+
+Fabrice Lete  18:36  
+So not starting from an existing?
+
+Anne van Ede  18:38  
+or Well, from an existing just the how you gather data and how you, you know what steps you that's basically the same from a game from scratch, I suppose.
+
+Fabrice Lete  18:49  
+So what, what we usually do is try to gather all the, all the information that we need to, to represent the problem or to represent the simulation that we have. But usually, the first step will be to just ignore the concepts of systems, entities components, we just try to list all the things that we need. And we also make sure to not list things that we don't need yet. So that's the that's a almost a trivial observation. But it happens so many times. And the the way we put it is that if you, if you solve for problems that you don't have, well, you are creating new problems that you definitely have. So it's, it's an important thing to try to not anticipate, at least not too much what you might need later. And just focus on the problem at hand. And also, make sure that you exploit any kind of bias that you might have in your in your data. So just look at what you want to work with. And see for example, if 90% of the things have a certain shape. And 10% is a collection of other stuff, it makes sense to focus on that 90% first and ignore the rest for now. And you will just eventually add it as some, some special cases or whatever. But so just look for the most common thing. So if you imagine the end result, if you imagine the game, and if you look at it, what is the first thing that you will see? And what is the thing that will happen? Most of the time, if you just had a snapshot of two seconds of the game? What What would you say, What's happening there? That's typically the thing that you should start with. And so what would you need to represent that information? And also, what is the what is the representation of that information, which is the most convenient for the kind of transformation that you're going to do? And typically, this is going to be something which is as compact as possible. So it's also important to know, what is the range of all the values that you have? If you are storing a position, it's important to figure out what is the scale? So is it representing something which is human scaled? So we're talking about centimeters and meters? Or is it something at the scale of a planet? It defines the amount of bits and precisions that you will that you will need? Do you? Yep, how many different values can you take? is it's a Boolean? Is it an enumeration on a finit sets is it's a counter that can grow infinitely, and so on, until you just try to come up with the list of all these bits of information, which seem, which are obviously necessary for what you're going to do. And then the next step would be to think in terms of transformations. So now that I have the information that represents my simulation, what kinds of things are happening. And so the the tricky part there, and something that we try to get people to think about during the training is to try to avoid when you're describing the data and the transformation, try to avoid terms which are gameplay related. So if you have to, say realtime strategy game, try to avoid talking in terms of there is a tank there is, I know, there is a bridge, and the tank goes over the bridge. Because in this situation, what exactly is a tank in terms of data, you might end up discussing the design with someone who has a different representation of what kind of data represents a tank. So it's important to go down to the most fundamental concepts of it. And it's more like, we have something that has a position that has a velocity, and that has a certain shape, which is moving towards something else in which it should fit, which has a certain position, which is not moving, which has a certain width. And so one is a tank, one is a bridge, but the only things which are important, there are these position, orientation, velocity in one case. And what's interesting there is that by doing this, you will notice that there are a bunch of properties of that tank that are completely irrelevant to the problem of driving towards the bridge and driving over the bridge. The fact that the tank is a turret or the fact that the tank has a as a few people in it and so on are completely irrelevant. And so you will start defining your system. So your transformation in sets of only the data which is relevant for the problem and good approach. And the good effect in doing that is that you should start noticing a bunch of similarities between things that from the outside look very different. And I don't know, you may notice that the the movement of that tank or the bridge, has a lot of similarities with I don't know the the movement of let's say some some, I don't know some some some NPC civilian, which is moving into a building. Even though they're completely different types of units, completely different types of buildings, completely different type of ways that they are controlled. One is just a background animation, and the other one is controlled by the player. Fundamentally, when it comes to moving something into something else, and doing pathfinding, it's going to be exactly the same. And so being able to express these transformations in a way which is orthogonal to what would have been objects and classes is is pretty powerful. But so it's also an iterative process because when describing these transformations, you will also notice That's Oh, I need some piece of information that were not part of my previous analysis. And so you will get back to the to that list. But after a few, back and forth, you should have something which gives you a pretty good picture of all the pieces of information you need, all the transformations you're going to do, and all the relationships between these transformations and these pieces of information. And from that, you will have opportunities of grouping things together. And you might say, Oh, these two things are systematically used together. So it might make sense to make them a single component. But then, logically, now, what represents a tank, what represents a unit, what represents a bridge, and you will see how the components should be grouped logically as entities to represent these gameplay concepts that you need in your, in your game. And so that's, that's typically the way that we that we approach it, it's really try to, yeah, try to go from the bottom up, instead of doing a top down analysis. And so it's always top down in the way that you look at the thing and its globality, and then you try to drill into it. But it's really not. Well, we try to avoid starting with the design at the top, it's really we start at the top just to figure out all the components. And then when we once we have the components, then we build the the architecture previously.I dont know if it was exactly explained like your five, but. 15? 
+
+Anne van Ede  26:31  
+That's, it's, yeah, I understand. So basically, you first take the like the objects as you as it would have been, and then you completely break it apart for all data, you put the functionality aside for a minute, you just look at the data, and the data of all objects, you find similarities, and you kind of pre group them, then you take the systems back, look at how they connect to the components, and then you can group more of the data into components. And then you basically from there, you have the components, and then you go back up to the entities. Is that a good?
+
+Fabrice Lete  27:13  
+The the idea really the thing that we try to, to stress is to try to abandon that, that concept of object early on. So and I'm not even talking about object oriented programming here. But just in terms of real world objects. So if you're, if you're looking at any game, any thing that would be visible in the game, it's very natural to think of it as some sort of some sort of unit. Like if you have a piece of furniture, in your first person shooter game, it's natural to think as the visual, the physics, the the impact on AI, and so on, all of these things as being just one concept. But we really tried to break that down and say that, yeah, something that interacts physically? Well, in terms of what the physics engine will do, let's say a chair, and a character, or chair, and even unit might have more similarities than you would have between two, two characters. Yeah. Every, every different aspect of the game, we'll look at the data along the different axis, and on these axes, things that might intuitively look very dissimilar, are actually really close.
+
+Anne van Ede  28:47  
+I like how you described it a minute ago as a bag of features.
+
+Fabrice Lete  28:52  
+Sorry?
+
+Anne van Ede  28:53  
+As a bag of features. 
+
+Fabrice Lete  28:54  
+Yes, yeah, that's, um, 
+
+Anne van Ede  28:55  
+So, you have different bags of features. And then the feature would be physics interaction, or rendering or I don't know, user input. But you look at the entities as a bag of features instead of as an object. I like that way of thinking about, it is a good explanation.
+
+Fabrice Lete  29:15  
+If I can just add this, there's a colleague of mine found a really good analogy for what an entity is compared to the components. And she used the example of a key ring. And so all the keys are the components. And the ring is the entity because that really gives the impression that the the entity does not contain anything. The entity is just a link between a certain set of components.
+
+Anne van Ede  29:39  
+That's a very good,
+
+Fabrice Lete  29:40  
+I think it's a good 
+
+Anne van Ede  29:41  
+Yeah,
+
+Fabrice Lete  29:42  
+it's a good intuitive illustration of it.
+
+Anne van Ede  29:44  
+Yeah, that's a good one I need. Right. Um, what was the biggest misconception that you had when you started with ECS design something that you thought would work or a process that you thought would work and it turned out didn't work?
+
+Fabrice Lete  30:01  
+Mmm hmm. That's a, that's a good question. And there's one thing that comes to mind. I don't know if it's directly related to to ECS. But it's, I guess it's close, close enough. But it's maybe the, let's say, when it comes to performance, what matters the most in a in a modern computer. I think that's the the most visible and obvious thing that makes a modern computer fast, is typically the multi core. And so thinking in terms of, I'm running multiple threads in parallel, so it's gonna be faster, and is something that's, yeah, that that, that seems like a good a good default to me. And if I had to optimize some some part of a program, that would have probably been the first thing that I'm looking for, is how to split the work over multiple threads. And working on ECS, I really, I mean, that really changed my perception that it's actually the data layout that has the most, the biggest impact on all this. And I guess that we, we all went through this at some some point, like you, you have a piece of code, and you would like to make it faster. And so it's single threaded, so you turn it into something which is multi threaded, and then you run it on a machine that has 20 cores. And then you measure the speed. And you see that it's like three times faster. Like why is it three and not 20? And, and yeah, very often, your code is slower than a single threaded code is slow, just because it does something which is really bad in terms of memory usage. And so making something bad 20 times does not really make it much better. And so I would say that yeah, it's important when you're trying to make something fast to just put multi trading out of the equation, and just get back to a single thread, optimize that single treads. Yeah, and that mostly involves memory access patterns, and vectorization eventually. And once you have something which is really fast as a single threaded, then you can switch to the to the multi threading. So I don't know if it's really specific to to ECS. But I would say that this was probably a misconception that I still had when I when I started working on this, which is that, yeah, multi threading has a huge impact. But it will not help with the more fundamental problems. And these are, have probably an even bigger impact on performance. But I don't know if that's just close enough to what you're expected. 
+
+Anne van Ede  33:10  
+Yeah. Actually it is. I know, at least one co worker right now at the company, I'm at who has that misconception. And so being, I know, that is right, but having, you know, I can show him. Not only I think this, he also thinks that that would be it's very helpful to show him in the end, it's actually very good answer. Can you tell me something to absolutely avoid from pet peeves, you have, on ECS design, pet peeves you have, or structural things that go wrong? That you see?
+
+Fabrice Lete  33:45  
+I'm almost certain that what I'm going to say is something that Steve told you already, because we spent a lot of time together discussing that. But when when you have someone who has an OOP background, that starts with ECS, they will probably try to reproduce the OOP patterns that they had. And so we've seen things like people trying to reintroduce the idea of dynamic dispatch, and so virtual functions and polymorphism and all these things on top of ECS, which is like, I mean, that's, that's a terrible idea. Because you end up with the worst of both worlds, you have something which is very fragmented, and so you give up on all the performance benefits. But on top of that, you have the less familiar syntax of ECS. So you have something which is just as slow but much harder to work with. And so that, I would say that is the main thing that we that we should prevent. And probably the only way of preventing it is through education examples and good practice and things like this. Because Yeah, it's a very natural thing. And I guess Every time you you transition to a new technology, you tend to do the same thing. So when I started working with C sharp, well, coming from a c++ background, I was basically writing c++ with the C sharp syntax. And it was definitely weird. And I, yeah, I think a lot of people just do that they start writing ECS code. No, they just start writing OOP with an ECS syntax. And that is the main fundamental thing. That that's that's a whole category of issues in itself. But that's Yeah, that's what I would say is. Okay, I'm curious. Did Steve say the same thing?
+
+Anne van Ede  35:45  
+Pretty much, Yeah. Yeah. He worded it differently, but it came down to the same thing. Yeah. So your work has, has had value, you taught him. It worked. The next questions are more specifically, on component design as that is what my thesis will focus on most. And so there's a bunch of more specific questions. I know you already answered these. Broadly, in the first question, I asked about the steps, but I need more specifics. When you're creating components, when do you decide to split up the data to make two different components versus leaving them together in one?
+
+Fabrice Lete  36:38  
+it will always depend on the way that these components are used. The default choice should always be to split things as much as possible. And up to a certain degree, of course, you're not going to split your 3d vector in three components. But unless you are completely sure that every time you access the components, you need all the the elements, all the all the fields in that component, it's usually better to split it. Because a component where all the fields have a component will be contiguous in memory. And so if you are doing a transform that only needs parts of each components, what you will do is you just skip all the other ones, but they are still been loaded into the into the cache. So you're just wasting bandwidth. And I've seen a few research, or maybe just one research paper that looked at commercial games on cell phones, I think. And they were trying to measure how much cache bandwidth was wasted. In other words, how much stuff was loaded into the cache, and never used before it got flushed out of the cache? And I think that's it, it was more than half of so I'm tempted to say something like 60 or 70%. But then I don't remember well enough, but it was at least half of all the memory loaded is just discarded. And so if you put things which are which do not really which are not processed together in a components, this is what will what will happen. And this is something that happens very, very frequently with structurial object oriented programming. And, yeah, it's a big waste of performance. And it's a big waste of power as well, which is pretty relevant when you're talking about handheld and battery powered things. Because just moving memory around, consumes power. And so if you do it for no reason, you're just wasting the lifetime of the device. So yeah, I don't know, of some sort of tool that would allow you to figure that out. Exactly. Some sort of cache profiling tool would be would be nice, I guess, to spot which components are too big for their own good. But for now, it's mostly a matter of just eyeballing the code. Yeah. And a very large component is always suspicious. I would say that the the only counter example The only good good use case for very large components are Singleton's. So you typically always end up having to store your configuration data or Yeah, like the, or input data or things like this somewhere. And so if you store it as a component, well, if you're storing, for example, the let's say the the input data, data, sorry, for a gamepad. You might have one component with a bunch of fields, like one field per button or things like this. But I would say in the worst case, you will end up with maybe four of these components. So in this case, of course, it's an error. But anything which is used at scale really should be the smallest units, which is useful to any transform. There is, there is another limit to take into consideration consideration there, which is that's typically a memory controller will be able to read from different locations in memory in parallel. And so you have like multiple prefetching lines, and everything works well. But there is a limit to how many you can have, which really depends on the kind of chip that you use. But yeah, if you have a transform that needs to read from 20 different components at the same time, that is probably not going to work well. But this is likely symptomatic, of, of, of another design problem, which is that your transform is probably trying to do too much. That would be another anti pattern in ECS, is to have like this sort of a super system that does the whole game, and consumes every component around that's, yeah, that's a different problem. So yeah.
+
+Anne van Ede  41:09  
+Okay, 
+
+Fabrice Lete  41:09  
+Splitting the components, as much as possible is always a good default.
+
+Anne van Ede  41:14  
+In the same way, when do you decide to merge two components?
+
+Fabrice Lete  41:22  
+Um, well, we, we don't do that frequently, I would say. But that would be basically the inverse of, of my, of my previous previous answer, which is when you when you have things which are obviously always used together. But the thing is that if you have, so let's say, two components, which are always systematically used together, they could be one, but there is also no harm in having them be two separate components, it maybe makes the code a little bit more complicated. But in terms of performance, unless you are in this anti pattern of having a system that consumes a really big set of components, that will probably not have an impact. So it's probably in terms of just cleaning up the code. And you might say, Oh, these things really belong together. So I'm going to put them together. So it's a bit more readable. But yeah, it's a there are a lot less technical issues that will arise, having too much, having components splits too much than having components merged too often. So yeah, I don't really have a really good, good answer for this one. Because it's, yeah, it's almost a matter of taste, I would say, if you think it's more reasonable to make them to put them together, and if they always use together, do it, but then there's no, there's no strong, I would say technical arguments to to do it.
+
+Anne van Ede  43:08  
+Yeah, I am glad that you give this answer because I always thought that, if you have two components that are always read together, that means you have to read two cache lines at once. And that might cause more contention in cache. But you say that you can have just fetch multiple cache lines at the same time. I didn't know that that wouldn't be a problem. I thought that if you have two components that are always read together, it would be better to merge them because then you have just one cache line that you have to pull in. But apparently that's not a problem,
+
+Fabrice Lete  43:45  
+though, because if you're processing an array, if you let's say you have two components, and each component is 32 bits. Well, if they are separate, they are in two arrays. And so a cache line, a cache line of 64 bytes will contain 16 of these components. And so if you're processing these two arrays in parallel, every cache line comes with 16 components, but you need to load two cache lines of 16 components. Now, if you have these two components, which are merged, now one component is 64 bits. And so you only have eight components in a cache line. But sure, you load only one cache line, but you only got eight entities. And so you will need to be sure if you're I mean, if the arrays have the same size, that would still be the same amount of of memory that has to be loaded. So in the end, it doesn't doesn't really have an impact.
+
+Anne van Ede  44:50  
+Does it also matter the size of your cache because if you have a very, very, very, very small level one cache, then it might be better to have just one cache line. Otherwise your cache line might be pushed out by something else that's happening. Is that something that would matter? Or is it just so small that it would never happen? Or not on modern PCs?
+
+Fabrice Lete  45:11  
+I guess it's always possible to find some edge case where it would have an impact. But yeah, that would be I would be surprised that it that it would really have any kind of measurable impact in, in in, in, in a normal use case. Because in the end, yeah, what, what really matters is to not load useless data into your cache. So if you, if you load two cache lines of useful data at the same time, or load them one after the other, that will still be the same thing. Since it's not like it's always going to be used the same cache line, because the, the cache line where the memory will end up depends on the address on the hash of the address. So it will anyway go from from line to line and it will all anyway eject from the from the cache. lines, which are the, how do you call that again, like the the the least order, the cache line that hasn't been touched for the longest time is the one that is going to be evicted. If it matches one of the addresses that can, last in first out Yeah. Yeah. So I guess it will be it will have the executive same thing. But I don't think that the difference will be observable in any way.
+
+Anne van Ede  46:42  
+Then I have one more question on this tangent, because I've been thinking about this one for a while. And I thought maybe you can help me. If you have multiple cores, and you all read from the same cache line, you will still have readwrite contention in your cache. And every time you change something on one core, you have to map it back to the and everything has to be updated.
+
+Fabrice Lete  47:03  
+If they write to it.
+
+Anne van Ede  47:04  
+Yes, if you write to it, indeed, would this also be would also impact the choice to merge them or not? Because if you have 16 items in there, the chance that one of those are written to in another core is higher than if you have just eight.
+
+Fabrice Lete  47:20  
+So there, the answer, I guess, is really well depends a lot on the way that we've implemented ECS at unity. Because we we store all the components in what we call chunks, which are blocks of contiguous memory, there are always 16 kilobytes for now. And so when we, when we process entities, we always make sure that we dispatch the set of entities, and the set of components to be processed over threads, by chunks. So chunks is like the the unit of processing that all jobs will do. Sometimes it can be just part of a chunk. But yeah, to simplify, but it's your it's always a unit of work. And so we will never have multiple threads trying to use the same chunk in parallel. And so we did that explicitly to avoid the problem that you just described. So if a thread is accessing a chunk, sorry, and modifying data in there, the thread knows that it's the only one currently doing that. Because otherwise, if we had like, two threads, accessing the same chunk, and trying to interleave their changes, that that would be really bad indeed, because every time something writes to it, it would just flush the cache line on the other cores. And so that that's contention. And so no, we not only we do that, so we dispatch on a chunk basis. But we also use a way of doing the load balancing between the threads, which is based on the work stealing. So the idea is that we don't have just a big queue of chunks. And then we dispatch a chunk one by one to all the threads. And we dispatch ranges of chunks to all the threads. So they already in a way know what's coming. And it's only when some threads are done with their work. And there are some other threads, which still have stuff to process that we do that work stealing. So we just go into the set of things which are still waiting for the other threads. And then we take half of that, of that remaining sets and dispatch it over the other threads and so on. But so yeah, we we avoid contention, by the way that we store the data, which maybe does not apply to the other ECS implementations that you that you studied, but I yeah, I don't really know much about those.
+
+Anne van Ede  49:48  
+Okay. I was thinking about this for maybe a year and a half now since I started working with ECS is like, wait, doesn't that like how does that work? How does How do you make sure it doesn't You know, shoot itself in its foot, like when it does multi threading with ECS? You finally you answered my question. So thank you. Right, so my next question kind of comes into this, do you take into account low level stuff like read-write separation, hot cold separation or cache alignment when you make components.
+
+Fabrice Lete  50:23  
+At the point where you make components? Not? Well, the only thing that you will have what you just enumerated, the only thing that we would worry about, or that the, the programmer writing ECS code would have to worry about is the read writes separation. Because every time you query a set of components, that one of your systems is going to process, you have to express if the components will be read from or written to. And this is information, which is important for the system to schedule all the jobs. Because, of course, you can have as many jobs as you want to read from the same thing at the same time. But if there is one that writes to it, then it It causes some synchronization. And so if you have components, where I mean, it comes back to your previous question about what do you use to decide if you want to split a component or not. But if you have a component, where, indeed, you need to always process, the whole set of fields in that components, but some of these fields will be written to and some other fields will be only read from i, yeah, it probably makes sense to still split it into, so that when doing that sort of processing, processing, sorry, we can be a bit more granular than saying, okay, we will modify that stuff. Now we can see, we will modify that part of the components and write to the other part of the components. So we cannot do it outside granularity, which is smaller than the component itself. So that would be another reason for splitting things into. But that's the only thing that people would have to worry about. Because things like cache line alignments, or page alignment and things like this are sorry, concerns which are handled by the, the memory manager. So the way that we allocate the chunks, so we know that's something that we that we take care of internally, because it has performance impact on some platforms. But it also has correctness impact on some other platforms. So if you have an ARM processor, and you try to do unaligned reads, that will just not work that will crash. So it's also
+
+Anne van Ede  52:49  
+Does that mean that you use padding to make sure that every cache, like it, taht its cache aligned?
+
+Fabrice Lete  52:56  
+Yes, it can contain some padding. The other places where we have some padding is that since the the chunks are always 16 kilobytes, and they have to contain finite finite, sorry, a finite finite
+
+Anne van Ede  53:13  
+I think finite
+
+Fabrice Lete  53:14  
+finite amount of of entities, I mean, nothing guarantees that the set of components on an entity will, the size of the set of components in an entity will be, the size of the chunk will be a multiple of the size of all the components. So there will always be some some padding in there. And we want all the chunks to be to be aligned to boundaries. So there is a bit of padding in there. There can also be padding in your in your components. But yeah, it's it is definitely a good idea to avoid that padding as much as possible, because well, padding is useless memory that will also be loaded in the in the cache. But the only padding that we use internally is the one into into chunks. So it's it's really small, and it's only at the end of the chunk. So it has no no impact. But yeah, it it would probably be a bad idea to create a component that contains like a float, a char, a float, a char, float a char. And but yeah, in, in what we've seen, did not really. I mean, it was not a frequent, frequent issue. And it's also an issue which is pretty easy to spot. But yeagm avoiding padding is probably more important than worrying about alignment. Because
+
+Anne van Ede  54:44  
+Yeah, but the one one stems from the other I suppose if it's not a cache line there is padding, in this case at least. Lee. So that would be that could be a reason to merge two components or to split two components up I suppose. If you have like We know there's going to be padding, and you have one value that you know is always used together, you can merge them, it might create less padding.
+
+Fabrice Lete  55:12  
+Yes, but it could, it could also be an argument for splitting components. So if you have a if you have a component that is 48 bits, because it contains a float and a short, well, either you can add another short in there to fill the gap. Or you can just split this in one component that contains a float and one component that contains a short. So the two two approaches are equally valid. But I will be more concerned about bringing into the components something that does not really belong, rather than splitting the things like dividing. 
+
+Anne van Ede  55:53  
+Okay. I think that this as low level as we get today, we're going to get up a bit. He, well, we already answered that question. All right. The next one is how do you keep component design legible and organized for other programmers?
+
+Fabrice Lete  56:15  
+This one might still be a bit of an of an open discussion, what we what we use right now, in the context of the training, is what we call the data worksheet, which is just a fancy name for for spreadsheets where we put all the all the components that we are going to use. And we also try to, to record some information about how frequent these components are, and how frequently they change how big they are, what are they used for and so on. And so we try to keep that overview. And so it's it's part of the exercise when we do these these trainings. And we asked the the attendees to keep the document in sync with their code, to have this sort of a plan of what's going on. But now in practice, it's I personally think that it's not an ideal representation for that. It's better than nothing. But it's still not very, it's hard to to get another view by just looking at the document, you really have to read and process it. It's not very visual. So one way of doing it is to turn that into maybe some sort of a box and arrows representation, but then we don't really have any normalized way of doing that either. So I would say that for now. Yeah, we we're probably still looking for for a good way of representing this at scale. Because, of course, on a small example, it's always possible to come up with something that really illustrates it well. But if you take like a typical commercial game, and you want to answer the question, okay, what is a good overview for the ECS design in this thing? Yeah, that that will be that will be tricky. So, yeah, I don't really have an answer on this, except that I would like to explore better ways of representing this. One thing that I think has, has potential, but I don't know how well it scales is to just represent things as a matrix. Like you have one axis, which is the components and one axis, which is the types of entities or the what we would call the archetypes in the unity terminology. I think that would be a good way of visualizing this, because you can then do about the same thing with systems. And systems can also be represented as this sort of matrix that you have all the components and all the queries that your systems are doing. But concretely, right now, what we tend to use a lot is just tooling that we have in unity. So we have a team in charge of what we call dots editor, which might be a term which is a bit confusing, because it's not really an editor. It's more like a set of additional additional windows and tools that sit on top of the existing editor that allows you to visualize your, your systems, your your entities, the results of conversion and so on. And, yeah, this made a lot of progress recently. And it's, it's very, I would say, very, very user friendly. Not a lot of things are user friendly in dots right now, but at least this part makes it pretty, pretty easy to get a good overview of what's what's going on in all your all your data. But yeah, this this definitely needs a lot of improvements, especially on the design phase.
+
+Anne van Ede  59:56  
+Yeah, hopefully, by the end of my thesis, I will have a, an example of a better representation, hopefully, but the matrix idea is good. I also saw one of the authors have their own ECS system, he also gives classes to students about ECS. And he made like a top to bottom was like the the entities, and then the components underneath it. And then on the side, they had on the left side, they had the systems and mapped to which components they use. There was also in one image, you can instantly see all these entities have these components. And these systems use these entities was also very nice. So it's like a matrix, but instead of the one axis being it like it like an extra axis, but it was very visually, it was very easy to see. I dont know if I have an image of this. I think I screenshoted this. My Computer wants to help me.
+
+Fabrice Lete  1:01:05  
+Because the thing is that the the systems will use a subset of the components from each entity. So as you said, it's a it's a third axis.
+
+Anne van Ede  1:01:15  
+Yeah, I got it here. Let's see if I can share my screen. Okay, I still see it. This image. Thank you. It's not extremely sharp. But can you read it?
+
+Fabrice Lete  1:01:41  
+Yes.
+
+Anne van Ede  1:01:43  
+So can you also see my mouse? 
+
+Fabrice Lete  1:01:45  
+Yeah.
+
+Anne van Ede  1:01:45  
+Okay, then I can point. So at the top, there's like the entities. And for every entity, there's whether or not it has a component or not. And on the left side, it has the systems that map to which component and this one uses two components. And this one uses one component. So you have in one diagram, basically, of course, it will get a little bit messier if it has more entities or more systems, but you have in one diagram, you have everything
+
+Fabrice Lete  1:02:14  
+that with, with that sort of diagram, for example, how would you represent the fact that the rendering system also needs to position for example,
+
+Anne van Ede  1:02:27  
+then you do like an extra, you
+
+Fabrice Lete  1:02:28  
+would also have this?
+
+Anne van Ede  1:02:29  
+Yeah, you have these nice double arrows. So in this case, he explained it like this, because this is his first step in his design. So he first tries to do one system one component, and then goes from there, he has a different way of doing it. So that's why he first now has only one system, one component, but if you mix that up, it's different. But this is one that I thought was very easy to understand visually. 
+
+Fabrice Lete  1:02:57  
+Yeah, I guess that's um, but no, the thing is that this works for an example. But that that would never work for visualizing proper extraction, and then you would have so many so many arrows in there that I think it would probably have something to be something interactive, like, you can just select the systems and then it shows you the view only for that system.
+
+Anne van Ede  1:03:26  
+That is what I hope to do
+
+Fabrice Lete  1:03:28  
+That's sort of the sort of matrix view is, is great. But what I'm, what I miss, it might be the too specific, but What I miss is some way of conveniently generating that sort of a presentation. Because right now, what I do is that I just open the Google Slides or whatever. And then I start creating my little box and my little arrows. And so when you're just illustrating an example, it's fine. But when you're just iterating on the design, and you just want to see what it looks like, I guess I just miss some tool to go from a text representation to that sort of, of, of representation.
+
+Anne van Ede  1:04:12  
+Yeah, I understand I'm
+
+Fabrice Lete  1:04:14  
+Some sort of design language for ECS.
+
+Anne van Ede  1:04:17  
+I'm currently I'm not entirely happy with it yet, but I'm still exploring it. The Visual Studio directed graph markup language, I think the DGML. Yes, that one to create. I'm currently in my tool, I input the object oriented code, and my output would be a component design. So I'm going to go even one step further. But I think if I use this graph correctly, I can, you know, I can input the components as well, at some point in the future. And then it will generate the same graph because the underlying architecture is the same thing of my tool.
+
+Fabrice Lete  1:05:02  
+Actually, it's it's funny that you mentioned that because that's, that's something that I tried to I don't know if you've heard of unity that we have this, what we call the hack weeks. So every year, we gather the whole company in one place, and we just try out ideas. And so two years ago, I worked with a few with a few colleagues on the ADF, visualizing, sorry, system dependencies. And we use DGMLs for that. And so we applied it to the, to the entities codebase. And the problem was that, or maybe it's just another way of how to do it, is to do the layout of the of the DGML, because you can, you can ask Visual Studio to automatically layout the thing. But we had so many nodes and so many arrows that you just, I mean, by default, it ends up with a sort of a ball of twine. And then when it tries to lay it out properly, it just ends up in something which is either completely stretched along one axis or so. Yeah,
+
+Anne van Ede  1:06:09  
+yeah. I'm still struggling with that one.
+
+Fabrice Lete  1:06:11  
+The only result that we managed to get this to have something that's Yeah, showed us that we had way a lot more dependencies and relationships than we thought. But that really did not help figure out what was going on. So it's, yeah, it's it's, it's close, somewhere that's, that is in the right direction. But I don't know if DGML will be the right tool.
+
+Anne van Ede  1:06:36  
+No, I, I just found out groups. And that does make it better. Because you can just like in my case, I'm right now I have like the current situation, that's what I can map to my DGML. And I've like class and every method and every field in it. And I can make the class a group, and then everything goes underneath it. So I can collapse it. And then I just see the class and then I can uncollapse it, I suppose, and then I can see everything inside. So if I, I hope if I do that, right, I can sort of make it more readable and organized, though. But I somewhere I am a little bit afraid that I have to find something else. But I was just started with this because they the visualization is like one tiny part of my entire structure right now. So if I want to visualize it differently, I just have to swap out one class, basically one file in my project and different visualization. And it is good to go. But maybe I should ask the rest of my questions. But it is an interesting tangent, though. The, the visualization. Right. So if you had to put it down to a few rules to, for example, the ones you're you're training, a few rules on how to create components, what would be like, the first thing you need to do is this. And the second thing you need to do is make sure that there isn't isn't this, what would those rules be?
+
+Fabrice Lete  1:08:20  
+Well, but the thing is that the previous steps of figuring out the data, figuring out the transforms, and then grouping the data based on their their use, that tends to, I mean the output of that process is a very unambiguous definition of what a component should be. So the, the rules. I don't know if they're, I mean, the only rules I can think of that were not part of the of these previous stages of analysis, but that only apply to unity is that we have different types of components. So we have the regular components, which are just a struct. So, some blittable memory, we have what we call the tag components, which are components that do not contain anything, they only affect the archetype, we have the shared components, we have to managed components, we have the chunck components and so on. And so I guess that there there could be some rules there on what type of of components things should be. And the rules would probably be to avoid as much as possible the shared components, because they have a significant impact on the amount of fragmentation that you will have in your in your chunks. The other rule would be, yeah, probably related to the to the padding that we that we discussed before. Just like if you don't have any obvious waste in there. We we discussed it before, but trying to be as compact as possible. So when you know the range of values that something can take, and it makes sense to pick the right data type to represent that. So, do you really need 32 bits of precision for storing that thing, maybe eight or 16 are enough. What else, the thing that we try to avoid as much as possible is putting functions or, I mean, member functions on components. Because, I mean, there's nothing too fundamentally wrong with it. But it tends to encourage a bit too much the idea of doing things one by one. And most of the advantage of of DOD, and ECS come from processing everything as arrays, as batches. And to always consider doing something on one item to be the exception. And the rule is always deal with a batch of things. But so if you start having helper functions, or member functions, obviously, these functions will only deal with one object at a time. I mean, the case of member functions, and so that kind of gets in the way of that, that design. So then you can always say, Yeah, but the compiler will probably be smart enough to to inline that that call and it will be fine. But yeah, the compiler helps, but it's not doing magic anyway. So the more the more layers you add to your code, the harder it will be for the compiler to to to be smart about it. So yeah, the only thing that we would say, are okay, as member functions are just casting functions. So, for example, that's, that's also very specific to dots. But when you have in an I elements buffer, so which is for creating arrays of components, and it's sometimes interesting to have an automatically, an implicit cast operator that extracts the useful value from inside your components, that just makes it a little bit more compact. And, yeah, that's that might be the only exception of things that we would consider a good practice in terms of functions in components. Other rules about components? Nothing, nothing comes to mind.
+
+Anne van Ede  1:12:53  
+Those are already very good rules, so. Right. Unity uses archetypes, and there's some disadvantage to it. What are some things that you need to avoid because unity uses archetypes?
+
+Fabrice Lete  1:13:14  
+just to remark about archetypes is that we kind of regret that thing, because it's, it's fundamentally not an archetype. It's not when an architect means in English, but we're stuck with it. So, yeah, just a componentset in the end. And so, so, so the question is about things to, to avoid, in the context of archetypes?
+
+Anne van Ede  1:13:41  
+yes. Because, just the way I'm thinking, because the way archetypes is made, if you add a component, a new archetype is made, if you have a lot of archetypes, that would be bad for the performance, and memory and everything, because the archetypes just keep exploding, something like that, along those lines of thinking.
+
+Fabrice Lete  1:14:03  
+So, if you have too many archetypes, it probably means that your entities are spread over all of these archetypes and since chunks cannot be shared between archetypes, it means that you you have a lot of fragmentation in your chunks. And the the worst possible situation for ECS is where every chunk contains a single entity, because then every single memory access becomes a random memory access. So this is a disaster for the for the cache. So too many archetypes and too many structural changes. So a structural changes is every time you add or remove components, and you cause your data to be moved from one archetype to the other. So these things are are antipatterns we have one thing that is coming and that will mitigate this problem and it's optional components or bit-enabled components. I don't know if we settled on on a name, which is the ability to do a bunch of things which are currently only possible through structural changes without structural changes. So you would have a components, which is always there, but will sometimes be ignored, and sometimes not. So of course, it's always a trade off, because now you have some sort of dead weight or some padding that will end up in your cache. But when you have something that needs a component to be added and removed very frequently, might make sense to just keep it there. And avoid moving all the rest all the time. But Oh, yeah. having too many archetypes and having too many shared components is definitely something that would that would cause problem. I know that we had some issues as well. The, I guess this has been fixed. But we had like some something that we grow, quad, quadratically with the amount of archetypes. And so we ended up generating a crazy amount of archetypes that had that had a big impact on performance. But there's also, yeah, I guess that this one is a is a very interesting point, which is that we tend to think as an entity as one thing in the game. And so it's difficult to get a game and say, okay, in my example of an RTS, the bridge is an entity, the tank is an entity, the that NPC is an entity, the player itself is an entity and so on. But that works well for things which are reasonably simple. But you will always have a few things which have much, much bigger complexity, like the player, or the interface and things like this. And so if you end up with an entity, which is like a huge constellation of components, well, nothing, nothing enforces the fact that one logical thing should be one entity. So entities are just a different way of grouping things together. But you can still have layer on top of that. And so it would be perfectly fine to say that the main player is just a collection of, I dont know, 50 different entities. And there is one entity which has to do with the way a player is rendered one entity which has to do with the way the player interacts with the AI and so on. And so, yeah, maybe another thing to keep an eye on there is to make sure that you don't have like that sort of, yeah, Master entities that have so many responsibilities, that they end up having an archetype, which is so big, that in the end, you have only one of these entities in a chunk. Or even worse that an entity does not even fit in a chunk anymore. So we did not have a case yet. But I know that in some cases. And I dont know if it's still happening. But in A2 we had things that were so big, so that it, A2 isone of the internal projects that we're working on. But one of the I mean, we can have entities in there, which are several kilobytes, so you end up just having a few in a in a chunk. So yeah, that probably means that it's time to split those entities into multiple, multiple sub entities. That requires a bit more housekeeping, but it's just a different another layer of organizing your data. So you have the component layer, the entity layer, and then something else which is not really provided by ECS, but which is the responsibility of the game logic. So yeah, gigantic archetypes are, I would say, problematic.
+
+Anne van Ede  1:18:56  
+You also mentioned that along with too many archetypes or you said also too many shared components. Can you explain to me how that is a problem?
+
+Fabrice Lete  1:19:08  
+So in the way that shared components are implemented in in dots, one chunk can only have one common value per shared components for all the entities which are in the chunk. So it means that if you have one shared component in your archetype, you have like one axis on which your chunks will be split. So when you add an entity, what the manager will do is to check what is the value of that shared component for that entity, and then we find the chunk that has this value and we add the entity in there. So you have as many buckets as you have values for the shared component. Now if you have two shared components, Each each chunk will have two shared component values. And now when you add an entity, it has to match the value of these two shared components at the same time. So it's like you added a new axis. So instead of having just a, an array of buckets, you know, have a 2d matrix of buckets. And every time you add a shared component to your archetype, you add one new dimension to this matrix, which might be fine if your matrix is really, really sparse, and you just have a few combinations which are effective. But potentially, you might end up with a lot of fragmentation there. And so I often illustrate this by taking like the worst possible idea, which is to say, What if the position would be a the shared components, it is, every single object is like its own will will require its own chunk, and you have like a complete fragmentation of everything. So you should always be very careful when you're introducing a shared components in terms of thinking, what is the distribution of values on my objects? And if you say, Okay, I have like a 20 different values, and I have 1000s of objects. Yeah, it sounds reasonable. It's a bit like a, like deciding on the on hash function in a hash map. And you want to make sure that you get you at least enough things for per bucket. But if you, if you like, yeah my shared components is float, or just an integer, integer that can take any value, but potentially, 4 billion values. And so if the chance of having multiple entities sharing the same value is very low, that's probably a very, very good reason for not using a shared component. And so yeah, the the range of values and the amount of shared components on the same entity, these two will have an impact. And it's a it's a bit tricky, because if you do that, you will notice decreased performance, but it will not really be that obvious. So that's why we have some, some tooling coming from the dots team as well, to visualize your memory usage in ECS, and see that it will have some sort of quick overview of how much fragmentation is happening.
+
+Anne van Ede  1:22:28  
+Okay, thank you for that. Is there something general about designing components specifically, for example, to avoid fragmentation, but also for other things, something to absolutely avoid?
+
+Fabrice Lete  1:22:40  
+I don't really see stuff that I haven't covered. With the with the previous previous answers. No, well, it's just trying to, I mean, each type of component has different costs. And so tag components have an almost trivial cost. Regular components are pretty performant. But then when you go to shared components, chunk components, and you have the worst of them all, which are managed components. And so managed components are just sort of a escape hatch, from the world of pure unmanaged ECS stuff. And so they are just class instances. And so they come with all the all the the problematic issues, the problematic aspects of classes, heap allocations, and references and so on. But they are still very convenient, because sometimes you just have some sort of data that you cannot store in a different way. And so they have their use. But it's, I would say, it's always about entering the picking or going for one component type of or another conscious, conscious choice, that you, you know, really why you're doing that, or why you're trading performance for convenience. And not do it, yeah, and unintentionally. But I mean, in terms of other Yeah, big General, cause for concern I ran out of ideas.
+
+Anne van Ede  1:23:26  
+That's okay. It's just like a general mop up question. Basically. mop everything else up. Right, so. All right. I actually do have one as a part of my formal questions. I have a lot of non formal questions for you. Steve said that right now there is no way to remove an archetype once it's created. Is that still correct?
+
+Fabrice Lete  1:25:07  
+Yep. That's, that's the case, there's no, no collection of unused archetypes. Which is Oh, actually, yeah, there is one thing, which is maybe more related to your to your previous question, but I just thought about it because of this one, which is that when you're creating a new entity, you can either create an archetype and say, Okay, here are all the components I want to have there, then you create the entity and then you write the values in there, that's the right way of doing it. The wrong way of doing it, which is unfortunately, a bit more intuitive, is to create an empty entity, entities do not contain a thing, but just an entity doesn't have any components. And then you add the components to it, one by one. And when you do that, you have like the thing which is jumping around in memory from archetype to archetype. And so not only it's a lot of extra moves, because it's like, I call that snowball initialisation, because you start rolling a small ball, and then it grows bigger and bigger and bigger as it moves. But so not only it's a lot of movement in memory, but also it creates like a trail of useless archetypes. In its in its in its weak. And so yeah, these useless archetypes will never be destroyed. So that's a bit annoying, because every time you have a query, queries run against the set of archetypes. And so they will have to go over all of these and skip them. So yes, the the problem with getting rid of archetypes is that I think that archetypes have to be uniquely identified. And yeah, I don't I don't remember precisely why. It's a complicated problem to get rid of the archetypes. But I just remember that it is. Because it's really feels like, well, we should just delete them. And that's it. But no, actually, it's a lot more involved. Unfortunately, I don't remember why.
+
+Anne van Ede  1:27:15  
+Because I can think of reasons why you'd want to get rid of your, of your archetypes. Even if you can't do it like, like a garbage collection thing. If you have to do it manually even then there would be reasons why you
+
+Fabrice Lete  1:27:30  
+We do it when we serialize stuff. So if you if you save things to the disk, and then load them back, or if you move something to a different world that will indeed not copy the unused archetypes. So technically, it's possible. Of course, it's possible that the problem is that it is expensive. And yeah, I could I could not justify why it is expensive anymore.
+
+Anne van Ede  1:28:00  
+That's okay. The next couple of questions are actually I need to ask a question before I can ask the questions. Do you have experience with converting an existing object oriented code base to ECS or data oriented code base?
+
+Fabrice Lete  1:28:17  
+Well, no, that's the and that's, I think that's the case for most of the people who are working in at Unity and working on dots, with, with customers and so on. Because converting something that already exists into into DOD, is a really complicated thing, because it's not some sort of conversion that you can do progressively. That's also the reason why you will find a lot of customers, which are currently using a subset of what we do, namely jobs and burst. But the transition to entities is really, really involved. And so you have too pick a thing to convert and completely converted before you have something usable. And so that's, that's a big investment. And that's also a gamble. Because what if it doesn't work, that would have been very expensive to to yeah to just scrap it in the end. So what we, what we see a lot more are people who just create something from scratch, sometimes the whole game more frequently a subset of the game, because they worked on previous games, and they know that okay, this part tends to be very expensive and could use a good refactoring. And so they just take inspiration from what they've done before, but they still build it from scratch. So it's not converting an OOP code base. But it's, yeah, it's more like making a new design, using the things that have been learned with the previous OOP design, but it's really not the conversion. And I don't even know if that will be a use case. It's It's a bit like, how do you convert a game that uses one engine to a game that uses a different engine. And typically, you convert the data, sure. But the code, well, you basically just reimplement it with the with the new engine, so you, you take the existing one as a reference of what you want. And sometimes you use it as a, as some sort of test to make sure that what you recreated matches what you had before. But really transitioning. I mean, if you do it, there is a big risk that you will end up with something that, yeah, it's a bit like a reimplementing OOP on top of ECS, you end up with something which is completely mismatched. And you have like something that emulates the old architecture with the new architecture. And that's usually not a good way to go if you if you want something, which is performant. So now, I think that starting, taking inspiration from an existing design to create a new one is more frequent use case for what we have now.
+
+Anne van Ede  1:31:15  
+Okay, I can skip most of those questions, then. It is a use case, however, I've seen it done once very successfully. And it was a crowd simulation game, or, yeah, it was not a game. It's a simulation software. And they went from like 1000, agents on screen to 100,000 agents on screen. And so they did it very successfully. So and the company I'm at right now would be, they can't start from scratch, their software is too big, it would take three years to rebuild everything. So they just won't start. But they would do it in bits and pieces. And I was wondering, I know it's bad, before I asked the question. But to help the conversion, you say member functions in components are bad, but could that maybe help with the conversion when you first port the objects to components with member functions. And then once everything is over to components and systems, you can gradually change from the functions in the components to the systems.
+
+Fabrice Lete  1:32:23  
+That would work. But the thing is that the these functions will be in the so if these functions are in the components, and if the components have been trimmed down to be just one slice of information. I mean, these functions will look very, very different from what you had in object oriented programming. Let's say that you you had a function in one of your enemy units, that does the movement of the units, that function was typically using a bunch of data points in your in your unit, like the position, the velocity, the collision data, and so on. Now, if you take that function, you cannot just take it and put it in the transform components, because there you only have the position, you don't have the rest. So you would either end up with functions that take a bunch of different components, and then do the thing, which is good, because that's basically what a job in the system would be in the end. So that's a perfectly reasonable intermediate step. But then if you put the function in the components, that would mean that the function will need a way to access the other components. And so accessing the other components from one components is something you do all the time in unity classic, but it's something that you cannot do with with ECS because, well simply because the component does not know the entity it belongs to. So it can't find its siblings. So I don't, I don't really see how that would work, to kind of say,
+
+Anne van Ede  1:34:06  
+Okay, then the other question the first guy I spoke is implementing an c++ ECS, I think for Minecraft, and they are also converting it step by step. And he gave another way of doing it. He said you take one transform basically. So calculating the velocity. The first thing that comes to mind, you leave everything in the object and the update method and everything you leave it in place, but you have separate of it, you have a system running with that one component which is the velocity, it updates the velocity and writes it back to a like an interface between the system and the object. So that you can change out pieces of the object. First the velocity then position change, then maybe I don't know some calculations on which color it is, I don't know, you can change them out, side by side. And then once everything is moved to an entity, component or system, you can remove the object, would that also be possible in unity? Or does it just not interface?
+
+Fabrice Lete  1:35:18  
+Well, that's something we did at some point when communicating with the renderer, because the renderer that we use in unity is still I mean, it. It's not a dots, it's not an ECS renderer. So we have this communication between the, between the two, the ECS part and, and the native renderer. And so we we did something close to what you described with things like lights and cameras and things like this. And it can actually be really really simple, which is that you have your object representation, and then you have your components, and you just copy one into the other, then do the ECS part of it, and then just copy the results back. That works really well. But not in terms of performance. 
+
+Anne van Ede  1:36:05  
+No, no.
+
+Fabrice Lete  1:36:05  
+in terms of checking the correctness. That's sure that that sounds like a good, a good way to to proceed and do the progressive, progressive conversion. But the thing is that, yeah, this copy is stupidly expensive compared to the rest. And so all the ll I mean, all the performance benefits that you have coming from ECS are completely wasted on that on that copy. 
+
+Anne van Ede  1:36:34  
+No, no, I understand that.
+
+Fabrice Lete  1:36:35  
+to ensure content correctness during conversion, yeah, that's sounds perfectly fine.
+
+Anne van Ede  1:36:39  
+If just know that you won't get performance until you're all done. That's okay. But in this case, the company I'm working at the, they make training software for policemen and fire workers, and they need to update their software once a year and bring two service packs out one year. So they need to be able to implement new features and work on it and, and the change cannot just be okay, now we're stopped developing and in two years time, we have the entire new system. So if you can change it step by step, knowing that you won't get a performance gain until you're all done, it would still help them because then then there would be possible for them to convert otherwise, there's just not a possibility,
+
+Fabrice Lete  1:37:20  
+Iit can be worse than not having a performance gain, it can actually decrease the performance. But the thing though, when you said before that the company would not be able to transition the whole codebase to ECS at once. That's, that's fine, we have a bunch of customers who are doing this, my point in saying that you need to you typically start from scratch, is that you start from scratch on the thing that you want to convert. And so if you just want to convert one small part of the of the simulation, it's possible, but it's just like, the progressive transition of that small part of the simulation is usually a bit a bit tricky if you want to keep it fully functional and performant at the same time. But it's it's really interesting to find in, in a game in a simulation, or whatever the part that can be kind of, well, the part that's satisfies mostly two constraints. One, it is a performance bottleneck. So it would benefit from optimisation. And the second is that it is kind of isolated from the rest. So I don't know the specifics of the simulation you're working on. But let's say that if you have this sort of a crowd simulation, and they are little interactions between the rest of the simulation and that crowd, so maybe the rest of the simulation provides the environment in which the crowd has to move. But the crowd itself is not going to have an impact. Like it's more like a one way sync or whatever. And so maybe you don't even need to have a representation of the crowds. In the object oriented world, the only thing that you need to give as as, as as data to to drive the ECS simulation would be, yeag, the description of the environment or the the initial localization of the crowd or whatever. And then after that, it's kind of managed internally by the little simulation. Well, if you can have this and reduce the amount of communication required by the two, that's that's ideal. And we've seen this in some some customer projects were they just implement the most expensive part of their game with ECS, and the rest was traditional OOP. 
+
+Anne van Ede  1:39:45  
+So you would try to 
+
+Fabrice Lete  1:39:46  
+I can not go into specifics but
+
+Anne van Ede  1:39:48  
+no, no, I understand that. So you would find not so much as in like I said, the the functionality but more like specific Objects I suppose, and object groups, like like the the, the, the crowd, and leave them as is, built next to it a new system, and then swap them out. Is that correct?
+
+Fabrice Lete  1:40:16  
+Yep, that's also that's a good way because transitioning anything to ECS is currently still a risk. So it might end up not working or being worse than the than the previous one. And so if you have something that can really be isolated from your simulation, and that you can just swap one implementation for the for the other. Yeah, that's definitely a really good candidate. Unfortunately, it really depends on the code bases. But in in games, we tend to do to see this a lot towards the end of developments, that you just need to ship the thing. And so whatever, whatever allows that is fair game. And so you start having like a lot of interdependencies between everything and everything. And once you get to this stage, it's really hard or, or almost impossible to just remove a part of the thing to without the rest falling apart. So.
+
+Anne van Ede  1:41:12  
+I can imagine that happening here, too. Yeah.
+
+Fabrice Lete  1:41:16  
+Yeah, and for many customers, it's really, I would say it's rather infrequents for big companies to really start game from scratch, they usually tend to reuse a lot of things that they've done on the previous game, or they use a previous game as some sort of prototyping ground for the new game. And yeah, they always have to deal with that sort of tangled mess. But generally, at the beginning of a project, it will start by trying to trim down a bit all these interdependencies and to isolate things a bit more. And this is a good opportunity to, to, to try converting parts of it. Totally depends project from projects.
+
+Anne van Ede  1:41:58  
+Okay, and then my last section, the coding slash naming conventions, do you advertise or prefer some coding, or naming conventions in components or systems?
+
+Fabrice Lete  1:42:16  
+I know that we have some some coding conventions in the dots code base. But right now, it's all over the place. So we we, we try to apply it to the to the new code. But otherwise, I guess the the rule that prevailed so far is that when you're modifying a file, try to align with the current convention that was in that file. But so it really lacks coherency. So I would also say that the feels to me, like, we should almost have two coding conventions, one coding convention, which is for getting started in examples, something which is very explicit and redundant. And then another one for production code, where you don't want that extra redundancy everywhere. So for example, putting the name components in the name of a component type is something that we recommend to avoid in production code. But I know that when I'm making samples, I systematically put components in the name of the components and the entity in the names of entities and everything, because then you can just take a small code snippet, and you don't need to know about the rest of the project, you can just look at the name of things and say, Okay, this is a component, this is an entity. So, yeah, there is this coding convention file that I, I think I can I can send you, which is in the, the GitHub repository for dots. But yeah, we would like to enforce it at some point, but we are still far from doing it. And I guess that the default is also that something that we don't especially mention, we just fall back into the Microsoft C sharp coding convention. But as I found that they are not, not really conventions, I guess that the the point of coding convention is to just help with the context. And the context will really depend a lot more on the game than it does on the, on the ECS framework itself. So, and I also know that most game developers out there have their own coding conventions anyway. So No, I don't. I don't think we have really not only we have not really settled on anything, but I don't think we try to encourage people to do similar stuff. It's more like for internal consistency, we would like to have this connection. But no.
+
+Anne van Ede  1:45:04  
+If you can send me that file, that would be very helpful.
+
+Fabrice Lete  1:45:07  
+Yeah. Just to get it, I will send it to you over over slack.
+
+Anne van Ede  1:45:19  
+Yeah. Then we're at the very, very end. Is there anything else you've seen regarding ECS? Or component design that you think I should absolutely avoid?
+
+Fabrice Lete  1:45:42  
+I don't know, I don't have anything else to add. But I think that the the one who probably has the best view on things to avoid is Steve, because he's been reviewing a bunch of customer projects. And yeah, it's, it's, it's always really interesting to see experienced developers start with ECS, on their own, because they start with a bunch of assumptions that do not apply. And the they end up in, in weird places. And Steve has collected a lot of information about that, I guess he probably sent you the link to the best practice guide. Where he collected, well, he collected advice on how to deal with all these weird situations in in others. So that's definitely a good, a really good reference. And yeah, that, yeah, that I would say that, it's really about trying to, to, to get people back to the the fundamental pillars of, of DOD, which are, think about your data. So that's really the most important and it's so it's think and not prioritize data, because they are still always use cases where the code will be more important than the data. But where we just want to the message to be is that in many cases, the data is the most important part. So just look at what you're dealing with. And also look about your data. So the specifics of it, any kind of, of things that you can exploit in the in the shape of your current data, is probably a good thing to exploit. And then be careful of not creating problems that you don't have. And also, software is not a platform. So it's, it's interesting to look at code in the abstract. But unless you measure the performance of stuff, you only have a vague idea of what might be expensive and what is not. And it's often very surprising. So measure what's happening all the time. And keep track of the potential regressions and progressions as well. It's, it's a bit silly, but something I've seen many times, it's like, yeah, some some developer looks at a piece of code and goes like that, that looks slow, I can make it better. You refactor the whole thing. And then you have different code. And you're convinced that it works better. And so you just leave it there. But actually, if you measure the performance before and the performance after, sometimes by optimizing something, you end up making it slower, and more complicated. And I've seen this happen. But yeah, just measuring things before and after taking action is an is a really fundamental. And yeah, and it's, it's also, it's way more than than performance. So equating ECS and DODwith cache performance is, is missing a big part of the picture. It's really about making it it's just a different tool to to build an architecture and reason about your your project. So it comes with performance benefits, but it also comes with other benefits in terms of flexibility, maintainability Oh, and there's something that tends to work really well with ECS is that ECS really gives you a data contract. So your systems will communicate with each other through the data. So we're in an OOP, architecture, the contract is more in the function calls and in the class definitions. And so what is very frequent in OOPis that you decide that Oh, actually, you need one extra piece of data, sure. But then you end up changing like a whole chain of function calls, because you need to forward that information all the way. And so you end up refactoring a bunch of things for just changing one thing at the beginning and at the end that you have to do the whole, the whole pipe between. With ECS, this tends to work a lot better. Because if you need some data somewhere, well, you just add it to the entity, and then it shows up at the other end, then you don't have to worry about what's in between. And that works well for dispatching work in a team. Because you can say, Alright, we need that feature. And so for now, we're just going to fake it. And so we just have a system that takes the right inputs, generate the right output, but just do something silly, something trivial. And now, we just have like this sort of functional placeholder. And at the same time, you have another team, which is working on the real thing. And once it's done, well, you just swap it because it has the same input, same output, the same characteristics. And surely, it always requires a bit more work to integrate in it. But it tends to be a lot easier to merge work with an ECS architecture than it is with with OOP, you don't have like this nightmare merge sessions where all the function calls changed in different conflicting ways. No, you just have more or less data. And yeah, that that tends to to be another big advantage. But then, yeah, the most visible part is always the performance, because that's the thing, which is the easiest to demonstrate and to impress people with, like you put something on the screen, which is 100 times what was possible before. That's a good way of grabbing attention. But in the long run, yeah, the rest is probably more more important.
+
+Anne van Ede  1:51:42  
+Yeah. Okay. Um, then I have that's, that's it for my normal interview. I have a one question I wrote down. When we're talking about creating components, you mentioned a paper...
+
+Fabrice Lete  1:52:01  
+About the amount of memory which is not in the cache and discarded?
+
+Anne van Ede  1:52:07  
+Yes. Could you, do, you can find the paper?
+
+Fabrice Lete  1:52:12  
+I can probably find it back.
+
+Anne van Ede  1:52:14  
+Can you send that one to me as well. might be useful. I need to make a bunch of references. So it would be nice to add one, I suppose. I haven't read enough papers yet.
+
+Fabrice Lete  1:52:29  
+It's a short one. If I remember, remember, well, so.
+
+Anne van Ede  1:52:32  
+Okay. Then I have three closing questions. One, would you like to be updated on my progress of my thesis?
+
+Fabrice Lete  1:52:42  
+Oh, yes. Please.
+
+Anne van Ede  1:52:43  
+With the possibility of getting my paper at the end?
+
+Fabrice Lete  1:52:47  
+Oh, yeah. Because I, yeah, the thing that you're that you're working on is really, really close to the things I'm interested by and directly apply to the kind of work I'm doing and that I will do even more going forward. So everything about helping people coming with coming up with a good design making it understandable. Helping people get started. So yeah, that that's really in line, so I'm really interested. busy.
+
+Anne van Ede  1:53:16  
+Okay, then the next one. Can I add you on LinkedIn?
+
+Fabrice Lete  1:53:21  
+Oh, sure. Go ahead. Um, yeah. I don't post anything on LinkedIn, but I definitely use it a lot of address book.
+
+Anne van Ede  1:53:31  
+Yeah, exactly. Yeah. I probably will post something about it at the end of my thesis or something. So but usually not. And third, are there any people you think I should talk to?
+
+Fabrice Lete  1:53:47  
+Well, you already spoke with Steve. You're going to speak to speak sorry, with with Brian. Um, well, it's, it's mostly a matter of availability. So I will, I would, I would check with with them first. Well, I know someone who's really, really involved in education and helping people get started with their, with their design and understanding what we're doing and so on. And it's Elora, I'm going to butcher her last name because Im not sure how to pronounce it, Krzanich but she's in. So she's in the US. But so I think it would still be possible if you Yeah, if you did interview in late in the day. I'm almost certain that she would be very interested in talking with you. So I will, I will check with her.
+
+Anne van Ede  1:54:58  
+You can also send me her slack tag, and I can contact her directly? That's fine, too. 
+
+Fabrice Lete  1:55:05  
+Okay. 
+
+Anne van Ede  1:55:08  
+That's the same thing I did with Steve.
+
+Fabrice Lete  1:55:11  
+She will probably have some suggestions of other people who might be interested in talking with you. But yeah.
+
+Anne van Ede  1:55:20  
+Anyone else?
+
+Fabrice Lete  1:55:23  
+Well, now for the other one, I was, of course, thinking about Mike Acton. The thing is that he's is spread pretty thin these days, for work reasons and personal reasons. I also I hope, well, I think because he just became a father for the second time recently. So I think he has a lot of a lot on his hands. So I will I will check, but really no, no guarantees there. It would. Yeah. It would definitely be cool. I guess if you, you know, who he is.
+
+Anne van Ede  1:55:57  
+yes. Yes, I know. Yeah. Yeah. 
+
+Fabrice Lete  1:56:00  
+But he's, yeah, he's really cool. And really, really open. And, and, and accessible. He has a, he has this, this image of being a bit, how do I say, a bit blunt and rough. And, but he's a really cool guy, actually. So. But yeah, like, I know he has so much to deal with these days, that will probably be really tricky to, to get his time. I can ask. Yeah.
+
+Anne van Ede  1:56:32  
+Yes, please. And then I have a more personal question, wel not that personal. You say you work at a Europe based ECS team? Where would that be?
+
+Fabrice Lete  1:56:50  
+So the team is, was initially based in Copenhagen. And this is where I was working until up to the beginning of the end of the world, where I had to move back home and I'm in Belgium now. But so yeah, there is a small pure was a pure dots team in in Europe, that which is currently re dispatched or other teams. So it still exists in, in name, but that's that will change. But we also have teams which are working on packages, which are built directly on top of ECS in Copenhagen, so we have the part of the team in charge of physics, and the part of the team in charge of networking. And then finally, we also have in Finland, the team, which is in charge of what we call the hybrid renderer, which is the bridge between ECS and the native render of unity. So in total, that should be about 20 people in Europe, compared to at least 50 in the US. But right now, well, of course, everyone is working from home. And a significant part of these teams is distributed, like the networking team is and everyone is working from home all the time. Which is a good matchup. For the physics team. I think that they are pretty much scattered as well. The hybrid rendering team is really based in, I dont remember in which city in Finland, but they still work from the same office. myself, I'm in Belgium, and I, so my contract was officially switched to a full time remote. So I'm staying here. And I also think that unity will change the way that we are organized to have more and more people working remote. I guess it's all the big companies are doing this right now. So, so that we are ready for the next pandemic. So yeah, if what was your question about if you could meet the teams physically at some point or?
+
+Anne van Ede  1:59:15  
+not so much that it's just at some point after I graduate, I have to find a job and working on the ECS team or related to ECS would be awesome. So that's basically where my question came from. Like I only I know that there's like distributed teams of unity all over the world, but I didn't know that they were like, like Copenhagen would was a was a hotspot for ECS development compared to other offices. So
+
+Fabrice Lete  1:59:51  
+Copenhagen is like the the birthplace of of unity. And if now the center of operation moves to San Francisco, this is really where the company started. And this is still the biggest European implantation of unity. The problem, though is that we have more and more people. And a large amount of the people working with dots from the Copenhagen office will be working remote, either full time or, sorry, I forgot, but the burst team, so the compiler team is also mostly based in Europe. But they are all over the place. So they are working from home as well. So yeah. I don't know if there will be that many people actually working on sites. But in terms of hiring for dots in Europe, I'm sure that they will definitely be opportunities. Soon. So we are currently we're organizing everything. But so. Yeah. So normally you're graduating? This year, July? Yeah. Okay. I think that this would be a good a good time to start to start the discussion there. But, yeah, the the question in terms of would that involve moving to Copenhagen? Yeah, that that will still be to to be figured out. That would definitely be an option. But it's a matter of how interesting it would be for you. Because, I mean, it's still nice to go to the office. It's a really cool one. And everyone is, is very friendly and welcoming there. But if in the end, it's for you to work remotely from the Unity office. But yeah, I think that would definitely be a good thing. And Copenhagen is nice. And as Hmm, I don't think that we have an office in the in the Netherlands.
+
+Anne van Ede  2:02:09  
+Our support is from Belfast.
+
+Fabrice Lete  2:02:16  
+I don't know where it is exactly. 
+
+Anne van Ede  2:02:19  
+In the middle, smack in the middle. South East of Amsterdam, basically.
+
+Fabrice Lete  2:02:35  
+So it's still quite a way up there. So yeah, there're there're offices in Germany, but they're very small. In Belgium, there is one in Gent which is probably the closest one to you, but they're not directly involved with anything dots related. So
+
+Anne van Ede  2:03:00  
+I'm not against moving, altough only my English is probably better than my, that would be my Denmark. So it would be easier living in an English speaking country for me.
+
+Fabrice Lete  2:03:18  
+Probably more people, more English speakers in Copenhagen than there are Danish speakers at this point. Every everybody speaks English all the time. And at the company and outside, you can go to any, any shop, any restaurant, any bar anything, and everyone speaks perfect English. So for all practical purposes, you can consider Denmark as an English speaking country. Okay, well, at least Copenhagen, it's probably a different story. If you go to the countryside. That would definitely not be a concern.
+
+Anne van Ede  2:03:51  
+Okay, that's good to know. Then I think I'm through my questions. Do you have any questions for me?
+
+Fabrice Lete  2:04:00  
+No. Yeah. Well, aside from keeping me updated on your on your on your progress, I'm really really curious about it. And do you, I guess you already did your internship, like last year or something like this? Um, well, an internship at unity is not?
+
+Anne van Ede  2:04:22  
+Well, no, 
+
+Fabrice Lete  2:04:22  
+No. Are you're currently doing your intership with that company which Yeah, sorry. Sorry.
+
+Anne van Ede  2:04:26  
+Yeah. We don't have like an internship internship. It's like a research internship if you do an intership, so your research can be at a company or not. But there's not like a separate required internship. internship. So, so slightly different for us.
+
+Fabrice Lete  2:04:44  
+Alright, cool. And yeah, just one one last thing. I guess we'll have other opportunities to discuss that but if you if you apply at Unity for ECS dots roll Make sure to reach out directly to the people that you've been in contact with at Unity. Because if you go to the classic route of reaching recruiters, and they get a ton of applications, especially from from from people straight out of school, and so there is a high risk that you're that your application will just get lost in the, in the tsunami of applications that we receive. So it's important to, to, to directly grab the attention of the of people from the inside, so we can ping the recruiters to to look for you.
+
+Anne van Ede  2:05:37  
+Okay, thank you for the advice.
+
+Fabrice Lete  2:05:41  
+All right. Well,
+
+Anne van Ede  2:05:42  
+I want to thank you again for your time.
+
+Fabrice Lete  2:05:44  
+Oh, you're welcome. Thanks for the chat. It's always fun to to answer that sort of questions. So, yeah, and yeah, I'll follow up on the on a few things. So sending you the coding standard documents, trying to find back the link about the the paper on the cache waste, for lack of a better term. And I will put you in contact with Elora and check what's possible, was like, 
+
+Anne van Ede  2:06:13  
+Yes. Thank you. 
+
+Fabrice Lete  2:06:16  
+Thanks, and have a good day. 
+
+Anne van Ede  2:06:17  
+Have a nice day. Bye.
+
+Fabrice Lete  2:06:20  
+Bye
+
+Transcribed by https://otter.ai

@@ -1,0 +1,565 @@
+
+Steve McGreal  0:00  
+mean, the engineers in our team help out. I ISS integrated success service customers used to be called enterprise support, and professional services, which is, like, I guess, kind of like contracting or consulting. So we kind of go in, like, in bed with, with, with teams and, you know, actually kind of do do coding work and kind of optimization work with them for anything from like, a week or two or three up to, like, a whole, you know, half of the two years that I spent working in customer service with a single customer, you know, just like a year being part of their team. So the reason that I The reason that the guide came together, I'm not claiming that I'm some kind of massive expert on like, data oriented design, I don't, I've been my background is in making games, but mostly kind of object oriented. You know, I was never the kind of the, necessarily that the low level engine optimization guy that kind of wrote the graphics. It's more like, this is stuff that I've learned over the last couple of years. And, and I've learned it from from, you know, actually sort of seeing how customers are using dots. And I kind of thought they gave me like a slightly different perspective to maybe the the dots r&d team themselves, who I guess maybe do have a background in data oriented design, who I think had kind of have their own ideas about what is what is important, what is correct. And, but then not necessarily kind of understand what that looks like in the world, right, because a lot of the a lot of the tests are sort of Boyd's megacity, like kind of variations on like, here's a million spinning cubes. Yeah, and Big Bill games like that. So no,
+
+Anne van Ede  2:05  
+no. So that's perfect. Because like I said, If I get a lot of different opinions about it, I spoke to several guys who made a C sharp or c++ own implementation of ECS. Some on the same archetypes, but others on other techniques. So then I get, like, a good overview of, of, of opinions. So I created an interview. Because I'm doing scientific research, I have to, you know, process and stuff. So it will be open questions. And I created them as general as possible because I'm speaking to so many different kinds of people and different kinds of experience. I created them as open as possible, but still specific enough to get information. If they don't specifically suit you. Just tell me so and we can change the question or answer however you see it. We scheduled I don't know how long you scheduled with most of
+
+Steve McGreal  3:07  
+I put an hour in I don't know, I don't know how long you normally need? 
+
+Anne van Ede  3:12  
+Well, usually I started with an hour and you usually ran like way long. So it's now an hour and a half to two hours most times because we'd like discussion and stuff. And would that be a problem if we ran long?
+
+Steve McGreal  3:24  
+Um, uh, yeah, I think two hours would be okay. I don't like I mean, I have like other things I have to do to do. So that would probably be kind of the maximum. And if I started rambling, like tell me to shut up. I use lots of words.
+
+Anne van Ede  3:41  
+That's okay. And I noticed that sometimes when people ramble on a single question, they answer three other questions down the line, so that's fine. That's fine. Also, I wanted to use because I do a scientific research. I would like to use your name in the report. So they know that I didn't ask my next door neighbor for his opinion and stuff.Would that be okay? 
+
+Steve McGreal  4:02  
+That's fine.
+
+Anne van Ede  4:03  
+Okay, for the same reason, or not exactly the same reason I would like to record this meeting. So I can type it out later strictly for that. I just.
+
+Steve McGreal  4:11  
+Yeah, okay.
+
+Anne van Ede  4:12  
+I wont spread it anywhere just for my notes. That's it on my end. Do you have any questions for me before we get started?
+
+Steve McGreal  4:22  
+I don't think so. I don't kind of. Interested to see what the questions are. I'm interested to find out where the research is going like yes, Like when you first when you first mentioned this idea of like automatically converting OOP to DOD that the initial kind of response was like skepticism, right? Because if there was an automated process for doing that, it would happen in a compiler we would just build tools to do that. Yeah, sounds like you're you're looking at something different. There's a tool where you have to have like human interaction and thought, which I think is much more realistic. So
+
+Anne van Ede  5:00  
+yeah, yeah, the the idea that you can convert it automatically. That's right now it's a fairy tale. And I would just want to educate them and help them. And so they don't need to have all the knowledge of experts when they start. Right. So for the first few questions, just like warming up, can you tell me how you first got started with ECS?
+
+Steve McGreal  5:24  
+My first encounter with ECS was an internal training session at Unity, which would have been early 2019. So I don't know if you've had any interactions with Fabrice. he's a he's a he's part of unitys internal dots team. And he provides a lot of our internal training. So we spent a week in a small group of us spent a week in Copenhagen in learning just the fundamentals of like, how you construct a job, like how unitys ECS implementation works with laying out chunks and this kind of stuff. So I think by the end of it, we'd built you know, a sort of demo with whatever it was 100,000 spinning cubes, running very quickly. So that was the that was the first interaction. And then not not very long after that, I kind of ended up starting a year long customer engagement from about March 2019, to March, April 2020. Where they identified that they needed dots for the performance for what it was that they wanted to achieve, they realized that they needed some help building that because it was very new, and because they didn't know it. And I was one of the people that got drafted into help with that. And was and I had to be quite honest with them, like, you know, that I will be learning this, like alongside you. You know, we had, we had through me, we had access to the dots team. So we were able to find that information quicker than maybe the customer could have done on their own.
+
+Anne van Ede  7:15  
+Okay, can you tell me how you currently use ECS?
+
+Steve McGreal  7:20  
+Um, so I don't build a lot of stuff in ECS myself, except for very simple kind of test projects and benchmark projects. And I'd like to, I just don't have a lot of time. So primarily, it's I mean, you know, for the for the best practice guide, things like that. It's a, I went and built some projects to, to check and verify and record particular performance characteristics of different like usage patterns. And then just to make some very simple kind of example, code of like, a cant remember what was in there, like, here's, here's a bunch of flowers in the field turning towards the sun. And here's like, a sphere culling algorithm. Yeah. So yeah, I don't build. I haven't built large scale projects on my own.
+
+Anne van Ede  8:20  
+That's okay. Thats totaly okay. Um, have you worked with any other ECS implementations outside of unity?
+
+Steve McGreal  8:30  
+Um, no, is the short answer, I have worked with code that that was built around the idea of working on large buffers of things. To avoid cache misses, and to kind of make that code performant. So like, audio processing is a really good example of that sort of thing, right? Because you just have like, just a buffer of like, PCM sample data, and you've got some filter that just iterates along the buffer. So I've, I've come into contact with similar ideas, but I've not really used a fully fledged ECS implementation except for unitys one. 
+
+Anne van Ede  9:11  
+Okay. Can you tell me in one or two sentences, your biggest The biggest advantage you see of ECS?
+
+Steve McGreal  9:21  
+The biggest advantage, I think is, is performance. And it's just a simple way like you can, you can use an awful lot more of the time and power available in the CPU. Because it's by minimizing cache misses, you're doing much more actual work instead of waiting for data. And because the way that you structure your data to enable that makes it much easier to build multi threaded code and use all of the cores in the CPU.
+
+Anne van Ede  9:55  
+Okay, anything else or
+
+Steve McGreal  9:58  
+As a side benefit, I would say Although, although there is a certain learning curve in moving from like an object oriented mindset to a data oriented one, if you can make that jump, personally, I find the data oriented, almost easier to understand like it's it's, it's a paradigm that once you can get used to the idea of it feels much more natural, because it's kind of what CPUs do anyway. And that allows a lot more flexibility and maintainability in your code.
+
+Anne van Ede  10:47  
+Okay, in the same way, can you tell me one or two sentences, the biggest disadvantage of ECS?
+
+Steve McGreal  10:52  
+Sure. So I mean, I mentioned the learning curve. And I think that's the big, in the sense that object oriented programming is by far the most common and popular paradigm that is taught in programming and that people kind of use in real world situations. And so it can be a challenge to unlearn that. I think there are also specific, like specific things that ECS implementations or certainly Unity's ECS implementation doesn't do very well, right now. It's built around this idea of iterating on linear buffers of things. The minute that you have to get some kind of like n squared sort of thing where you have like, so like, the Boyd's is a good example, or I've done things with like particle systems, like fluid dynamics, and things where you have a particle, and you have to check all of the neighbors within a particular radius to do something. And you kind of have to build like custom data structures to like interrogate that space. Because, you know, the top level, you're iterating through all the particles. On the next level down, you're iterating through, I guess all the particles again. And that's, that's, it's really easy to break performance, that way. Yeah, quite a difficult problem to solve and to understand.
+
+Anne van Ede  12:28  
+I totally agree with that one. Yeah, I personally had that one, too. Right. So now we are through the introduction questions. We're getting right into it. For these next questions, please keep in mind, just answer it like in five, what you might think so obvious that you wouldn't mention it might be exactly what I need. The one thing that blows my mind. Who knows? I actually had that a few times that people started explaining it when I asked and then, right, so this and this and this and this. So just everything that comes up. Again, if the question doesn't really suit, you just tell me and I will change it. I split it in roughly three parts. The first is the ECS design as a general, second is more specific on component design. And the third is more on conversion, coding and naming of stuff. Okay, coding conventions and naming conventions that difficult word. So for ECS design, when you're making an ECS design or changing to an ECS design, like you did for the client, can you walk me through the steps you take to create that design? 
+
+Steve McGreal  13:41  
+Wow. That's a surprisingly tricky question. So I mean, I suppose the the best practice guide, and actually some other internal training that I've had advocates that you start with the data design, and I think that's the idea I think. So, you start with what am I what am I trying to simulate what I want to see on screen? What is the data that I need to represent the variables in that system? How can I represent those variables in a in a blittableway? How can I remove reference types as much as possible? And then I guess, how can I How can I specify the systems that will provide the data pipeline that operates on that, like what what needs to happen to the data and in what order? Pardon me. And I guess then the idea is that that would lead you towards an idea about how The data is going to be packaged and arranged. And that's, that's kind of it like I think if you know and understand all that stuff and the scale of the data and how it's going to be accessed and how often the rest of the design kind of falls out of that. And the code itself, I think is quite relatively trivial, then because you've already broken the the problem down into lots of kind of quite small steps.
+
+Anne van Ede  15:31  
+So you first start with the data, then you go to the components, and then you go to,
+
+Steve McGreal  15:39  
+yeah, what
+
+Anne van Ede  15:40  
+the process that needs to happened on the data, and then you go to the systems. Is that.
+
+Steve McGreal  15:44  
+No quite, I think, I think you start with the data, you think about the systems that will operate on that data. And that gives you an idea about which pieces of data that you you may want to bring together, like what what things get processed at the same time. So I think you have to understand the systems before you can understand how to pack the data into components to be processed by the systems. So it's like data, systems, then components? Okay. That's what we do.
+
+Anne van Ede  16:18  
+No, that's that's very clear. Um, yeah, okay, you answer those two? Oh, what's the biggest misconception you had when you started creating an ECS, like when you first started learning it? And you thought like, Oh, this is going to work? And you did it and think oh, no, that that, that does not work at all.
+
+Steve McGreal  16:38  
+Biggest misconception. So there's two related ones. One, I think is coming from an object oriented background. There is a tendency to sort of start drawing, like a UML diagram where you kind of have like, here's my system, and there's a black box, and it has inputs and outputs. And I'm interested in the interactions between systems. I don't think that's the focus. And I think when you but I think when you start to do that, the problem is certainly the problem that I've run into a few times is that you immediately want to add object oriented concepts to that, right. So I've seen a few times, people say, how do we add polymorphism? To components? How do we make a component generic, where we can kind of change the data, but have systems process them in the same way without knowing what the data is? You can't, you shouldn't don't do that. The related thing is, is a more a more general extension of that idea, just just that there are a lot of object oriented concepts that are not useful in the data oriented world, and you have to learn to leave behind, right? So inheritance polymorphism, reference types, also, like, those kind of container classes, because in object oriented world, it can look like really efficient data design, to put something in a dictionary to say, I've got this key, the dictionary gives me very fast lookup to a value. This is efficient. And it's not efficient. Right.
+
+Anne van Ede  18:38  
+It's efficient in certain situations, but not everything 
+
+Steve McGreal  18:41  
+Where you don't care about the catch. Yeah. And if you don't care about the cash, you're not doing data oriented design, you're not building ECS system. That's the whole point. But it's, that's, that's a concept that can take a little while to learn. And I've seen very, very smart people take a while to really properly understand. So, does that kind of answer the question?
+
+Anne van Ede  19:09  
+It does, also kind of answer this the next but I'm still going to ask it. Can you tell me something to absolutely avoid with ECS something else that you haven't mentioned?
+
+Steve McGreal  19:27  
+Something else to avoid? I would say with unitys, unitys implementation of ECS. I can't speak for others. So if you understand that you're trying to minimize cache misses, you're most of the way there. The other thing that is a kind of hidden problem that can really come and bite is about sync points. Right? So you're scheduling all of this asynchronous work and sooner or later, you need the results of that work. And so like either explicitly or implicitly youre telling all of these jobs that you've launched, to like complete and stop and the main thread is going to wait for that work to be completed. So that you can do something that requires the main thread because you have to use a reference type or interface with object oriented things, or you just like you've, you've queued up a bunch of structural changes early in the frame, and then later in the frame, you want to be able to respond to those, you don't want to wait till next frame, you have a sync point in the middle. And those are amazingly bad for performance. Or they can be I think those that's the other thing to kind of bear in mind when you're designing these systems is how do I minimize those? How do I kind of group those all together into one place in the frame? and not have you know, launch jobs complete once jobs complete? So yeah, I would say that, I don't know if that's the case in other ECS implementations, but in unitys, that's a real problem.
+
+Anne van Ede  21:04  
+Yeah. Okay, for the next questions are about component design. And I just realized some of these questions kind of overlap with the answer you've already given in the Best Practices Guide. What didyou say? 
+
+Steve McGreal  21:19  
+It's because I rambled, you see. slightly, so.
+
+Anne van Ede  21:21  
+no, in the in the book, you wrote that one, you answered some of those questions that are in my interview, but I'm still going to have to ask them, sometimes you give slightly different answers. And that's okay. So I'm just going to ask them, and we'll see where it goes. I, I bottled up beforehand, so I'm prepared. Well, it's my sixth interview now. So at some point I was halfway through, and my bottle was just out of reach of my earphones. So I had to, you know, take them out for a second to get my next bottle. So now I put them next to me.
+
+Steve McGreal  22:17  
+Yes, sorry.
+
+Anne van Ede  22:18  
+Yeah. Um, when you're creating components? How do you decide how to split up the data, or when to split up the data into components?
+
+Steve McGreal  22:29  
+So this touches on what I mentioned before, but I think what goes into a component is not what makes a nice, logical, human understandable, let's put this data together, because that's what we would do with an object. A component should be what is a collection of pieces of data that will always or I guess, almost always be processed together. And that's, that's kind of it really, because if you so if you have a system that's operating on a number of components, and only half the data in those components is being accessed and used by that system, filled the cache line with the other half of the data that you're not using, you can get far fewer of those components into the cache line at once. The CPU memory cache system is having to do more work to keep that sort of the the cache lines filled with data that you're actually using. So I think that's the primary concern is this is why I said you go from data to systems to components because you have to understand the systems and their data access patterns. So that you can build the components to to best match your needs.
+
+Anne van Ede  23:56  
+So you split up data or put together data based on how they're used in systems.
+
+Steve McGreal  24:00  
+Yes, yes. Yeah. So you it's, so you end up with components that are perhaps not the most human intuitive collections of data, but they're what works best for the CPU. In my experience, that tends to lead to a larger number of smaller components. Then you might have in object oriented code where you might bundle more data together into an object.
+
+Anne van Ede  24:36  
+And say, for example, you have two components, that they're always used together, but they're very small, would you put them together because they're always used together or we could just leave them apart because they are smaller components that way.
+
+Steve McGreal  24:54  
+If they were always used together. Then I would be inclined to bundle those together into a single component. The difficulty becomes what do you call the component if those if those pieces of data aren't related? Yeah. From a data access point of view, I think that's what makes sense.
+
+Anne van Ede  25:12  
+Okay, um, do you consider low level stuff like readwrite separation and cache alignment when you create components?
+
+Steve McGreal  25:24  
+Ooh, good question. Read write separation. So like, yes, certainly, I would want to think when I'm thinking about the access patterns of systems, accessing data, I would want to think about what data is being read and what data has been written or could be written. And make sure that that's expressed either in the data or in the the way that the system's access that data. So yes, like, I would consider that. Cache alignment? is one of those things like yeah, I probably should. I don't know that it's something that I think consciously about, I suppose. I suppose some of those come from habit from from older habits of object oriented code, actually, this idea that this idea of just like, how do you pack a structure so that it kind of so that it fits efficiently into some kind of nice power of two size, I don't know exactly how structures sizes work in C sharp, in fact, but I know in kind of c++, there will be there will be padding inserted, like between pieces of data, or at the end of the structure to pad out or some kind of nice, aligned size. And I think you can like instinctively learn over time to kind of try and build your structures in a way that that will minimize that padding and maximize the amount of data usage. So yeah, I guess. It's not something I think about consciously very much. I've just done that for years. So.
+
+Anne van Ede  27:20  
+Okay, any other low level stuff you sub/consciously consider?
+
+Steve McGreal  27:30  
+That's a really broad question, then it's kind of difficult to know how to answer. I guess no. Like, I mean, I think I think in terms of what's what's gonna allow for the most kind of parallelism, I suppose. But you know, those that I think there's a higher level concepts than like, what, what is the specific CPU architecture? Huh? Which, like, I mean, definitely, there are people on DOTs the team, and they're definitely sort of data oriented design advocates that will say, you absolutely have to consider that. Other than, like, How many? How many cores have I got to play with? I don't think deeply about CPU architecture. 
+
+Anne van Ede  28:18  
+Okay. How do you keep component design organized and legible for other programmers?
+
+Steve McGreal  28:31  
+Good question. I think mainly, that's about really careful naming conventions and just making sure that you're very clear about what what each of the pieces of data in the component represents and what it's for. And then you know, what the component as a whole is for. But that's a really general answer.
+
+Anne van Ede  28:59  
+Well, then I'm just going to skip ahead to the my second to last questions. What kind of naming conventions do you use? Now we're talking about it. Do you put like a component or system after a system or component or what kind of?
+
+Steve McGreal  29:17  
+I've done? I've done different things on different projects because I've generally, for me, I've been trying to work within the coding conventions of the customers that I'm working with. Some of them will put you know, like a will start component names with a sort of an upper class, upper case C, C my position, C position whatever. I have tended not to embellish those things, too. So a component is just it's just the name of a struct, there's no particular and system is I would say I've been about about 50/50, between just giving it a class name, and maybe appending system on the end, just to be clear that that's what it is. And then I mean, other sort of coding convention stuff, you know, like, I don't really do, I don't really do like Hungarian notation or anything like that. I kind of figured that.
+
+Anne van Ede  30:41  
+Ho wait, which is the Hungarian, I, there are so many.
+
+Steve McGreal  30:44  
+If you have an integer, you would start that with like, an i.
+
+Anne van Ede  30:48  
+O. That's that one. Yeah, correct. Yeah. Okay. Got it. So many naming conventions and names and some overlap. So
+
+Steve McGreal  30:55  
+yeah, yeah. It's the one way you kind of try to incorporate, like, the data type into the variable name. 
+
+Anne van Ede  31:03  
+Yeah. 
+
+Steve McGreal  31:04  
+Is it feels to me like a very, very old fashioned convention in, in, in reasonably strongly typed languages like C sharp or c++ like you dont, the compiler will tell you if you've got a typo. So that's kind of it really. The only I tend to Yeah, I tend to flag like private variables of things in general, were just like an underscore. I mean, I guess you don't really have private data on the component. But maybe in a system, you might have some data. If that's private, I would put an underscore in front of it just to kind of highlight that. But I mean, it seems like the real question that you're kind of coming to is like, it's not so much like, how do you kind of embellish these names, but just like, how do you choose a good name in the first place? I don't probably know how to answer that.
+
+Anne van Ede  31:59  
+Both. Really? 
+
+Steve McGreal  32:00  
+Yeah. Okay, so in terms of embellishment, I'll do whatever the customer is doing, because I want to fit in with that stuff. But my, my personal preference is to is to use very little of that. Choosing names for things. With a system, it's not so bad, because you can kind of you can kind of think, Well, what does this system do that should already be in your data design, that should lead you fairly naturally towards a name, right? Because it's descriptive. components are a little bit harder, because you're trying to you've packed this data in a way that is that is that is efficient for systems to access means that they don't necessarily represent like a single really easily human understandable concept. Or the idea of naming components is something that we have to do, because that's the language we kind of want to do, because we're humans, and we want to make it human readable. But it's also kind of like an object oriented idea. Yeah, I made an object. Now, what do we call the object? I don't know. It doesn't. It doesn't map as neatly to the world that we're trying to simulate. So that's a that's a long winded way of saying that, I think it's a difficult problem, and I don't necessarily have any brilliant wisdom. 
+
+Anne van Ede  33:44  
+Well, it's like I said, it's in part the the embellishment, as you call it, an impart how do you choose a good name? And obviously, my tool will need user input for that later. But I can try and distill some kind of, okay, the system has these in these in these variables in them, maybe you can call them something like this. But the most part is, how do you choose a embellishment system, basically, because in this case, I'm doing my thesis at a company, and they will change gradually to ECS. And that might take like two or three years, so they need to have a way to distinguish between the old systems or the old mono behaviors and the new systems and components. So they need a way to embellish it to make sure that everyone knows, these are the ECS documents, hands off, something like that. So that's why I'm asking for these kinds of things. And many people have different this is the first time we had the capital C at the at the beginning. That's the first time I heard that one.
+
+Steve McGreal  34:53  
+More like EC, one of the customers, so entity component, EC and then the name and then I They did they did like ES for the system. I think so that that was that was one customer that did that did make that differentiation. I suppose what I would do if I was building a tool, like you're building is I would allow that to be customizable.
+
+Anne van Ede  35:19  
+Yes. But in this case yet the customers have never done this before. So if you can give them several options, like you can use this, this or this, and then they can choose, but they then know what's possible. Like, the options.
+
+Steve McGreal  35:33  
+Yeah, yeah. So yeah. So you could you can if you if the tool could like, specify a string, that could maybe go at the beginning or at the end of a component, and then a system then they could choose to kind of put those those strings in or not, or just leave them blank. So for me, I would mostly leave them blank. And as I say that I might put system at the end of a system name. But in general, my preference is kind of nothing, or the, I guess the minimum possible like EC and ES, are okay. 
+
+Anne van Ede  36:10  
+Yeah, I quite like them actually.
+
+Steve McGreal  36:13  
+because they're because they're small, right? Like they tell, they tell you what the thing is, this is a component, this is a system. And like, and I guess an entity component, an entity system, this is where unity gets confusing, because it already has a concept of components. Right? The ones that go on game objects. So yeah, I can see why you would want to differentiate between those.
+
+Anne van Ede  36:36  
+Right? Um, then we're going back to the questions where we left off, before the naming conventions. If you had to put your creation of components down to a few rules, like the rules you follow in your head, when you're creating them, what would those few rules be? The first most important thing when you're creating components is.
+
+Steve McGreal  37:03  
+So I think we've covered some of this right, like so I think, firstly, you have to decide what goes into a component. And that depends on data access patterns. So we can say that we've covered that, when I guess when I'm creating the data inside that component. We talked about cache lines and about just like, and that's just it, I think a lot of us just about how you arrange the data and the component types first. And if you've got like a little bool or a kind of, you know, just a single kind of bytes at the end, like you would put that probably at the end of the structure rather than in the middle. Yeah. So that's, I guess, that's what goes in. That's how you put in. Yeah, I would, I would make sure that it is a a struct full of blittable data, like if I have to have reference types, I would not generally mix Reference Type data with in the same component as blittable data. Because I would not want to write systems that to mix those two things, I would want to keep those separate so that I could I could process the blittable data very quickly. And know that the reference types I'll deal with later in slower parts of the pipeline. And then I would try to make sure that everything had a good name. But as we said, That's not an easy problem to solve. In a general kind of here as a rule to do that, sort of way. So yeah.
+
+Anne van Ede  38:56  
+Can you elaborate a little bit on the you said the how you put it in? So what kind of data would you put at the beginning of a component? And what at the end, you said the Boolean at the end that how can you explain a little bit more? 
+
+Steve McGreal  39:08  
+Okay, well, so again, this is where, like, so I don't, I don't know how this works. This is a part of the language that I don't fully understand and never checked. So maybe, sort of displaying my ignorance here. In so in c++, for instance, the tendency of the compiler is to want to align data structures on four byte boundaries, right? So if you have just a bunch of integers or floats or whatever, they're they're four bytes each there, well, maybe not. 32 bit numbers, they kind of pack quite kind of nicely together. But if you have like a Like a Boolean, or like a just like a, an eight bit, you know, a byte followed by an int. In c++, what what would happen is that says, Okay, this is assuming 32 bit systems, I'm just kind of showing my age here, like, silently invisibly, there would be like three bytes of kind of padding, packed in there, so that this integer could be on a four byte boundary. So now you're now your total. Yeah, and if you have, if you have bigger kind of structures, where you're where you're mixing and matching, these kind of data, types of different sizes, you can end up with a much bigger structure than you expect, because of all this pading. Whereas if you're, if you're taking those, like so I guess my rule of thumb is that the data types that I think will be larger in memory, I would tend to pack tend to put first in the structure with the idea of just kind of a, you get that you get that that alignment with no padding kind of being introduced. And if there is any padding that has to go in, it kind of goes in at the end. So if the eight bit data type is the last thing, then maybe you get three bytes of padding. So the whole structure is, is packed out to like a four byte boundary. I don't it's as I say, I don't even know if that happens in C, in C sharp or if it's, you know, if I have a I have an integer and then a char, whether that would just be like, yes, this is a five byte structure, whether it padds to eight bytes, I don't know. Does that make sense?
+
+Anne van Ede  41:41  
+Yeah, it makes sense. I know. I know of padding. But I've only been taught it to do it manually, when it suited my needs. So I didn't know that a compiler could do that for you. And that that might cause some problems. So I I know of the padding and the alignment and stuff. Like how I didn't know that compilers could do that in c++, but I don't know in C sharp either, if they still do that, but
+
+Steve McGreal  42:07  
+I think in I suspect, like, I wouldn't want to speculate whether or not C sharp. And again, it's like C sharp in general versus, like unitys sort of compiler stack. And like, what that does, in this specific case. But I guess even if there's if there's no padding goes in, you're probably paying a performance cost, right? Because I think CPUs are kind of built to read data based on these kind of boundaries, where it's if you've got, so if I'm reading four bytes, or probably eight bytes now because it's like 64 bit, the datatype. Somewhere in there is the one byte that I care about. There's got to be some operation somewhere that kind of masks and bit shifts that before it gets you gets into the kind of format that you want. Whereas if it's kind of on a boundary, you can just kind of get the data straight away. Is my understanding. But my understanding is incomplete. I'm not an expert at that.
+
+Anne van Ede  43:05  
+No but, it's, it's, it's interesting, to say the least. But some of the implementations of ECS are also in c++, so then it's very relevant. So thank you for that. Right, can you tell me something to absolutely avoid when designing components? Like I said, some of these questions overlap because some people, answer like the first question with half and then the second question, you need the second question, and some like don't.
+
+Steve McGreal  43:35  
+think so. So okay, so we've covered a few things that, like, I guess learn more about this more notes myself learn more about this kind of byte alignment stuff. I said, like, don't, I generally avoid mixing reference types and value types. But I think the system design and the idea about like, like avoiding sync points should drive you away from that anyway. Other things to not do.
+
+Anne van Ede  44:06  
+And it can be pet pieves too. Like you've seen people doing it, like ah please dont do that.
+
+Steve McGreal  44:12  
+Yes, I've seen people do that I've done it myself, and then learned and then changed it. I think the example in the best practice guide is kind of quite close to something that happened to me in reality where you had components and systems that manage like, like a character's AI state and then played an animation or could could set animation triggers relating to that AI state. But if you try to process that data together in one system, that system has to be has to run on the main thread can't be burst compiled because you're interfacing with that, like non threadsafe object oriented unity API. And you want to do that as little as possible. And when you do do that, you wanna group together in frame, which means that the other data in that component needs to come out and be a separate component that you can process separately. But we've kind of talked about that. Other things to absolutely avoid, like strings to represent anything. But again, that's kind of reference types. Like I kind of, I kind of hate strings in German, in terms of, like, even even outside of ECS, like, it's just a terrible way to represent data, unless it's something that you're going to print on the screen. Or I guess, if it's a file path. Anything else should be a hash or something. I can't think of any other things to avoid really. That's, that's kind of it. Like if it's if the data is all blittable. And it's all stuff that you know, that you're going to need together. And the data types are sensible, you know, don't use a double when a float will do the job or whatever, then that's all I can think of.
+
+Anne van Ede  46:16  
+Okay, um, the next questions is, more, question, not questions, is more about the implementation. So unity uses archetypes in, like I said, this one, I know you mentioned in your article. So but I'm still going to ask it. How do you design specifically for archetypes? So what would you avoid or do, do do? Because it's archetypes you're using?
+
+Steve McGreal  46:42  
+A, that's kind of that's kind of broad as well, like. So I mean, archetypes in Unity ECS are sort of an automatic thing, right? Like an archetype is anytime unity encounters an entity with a particular selection of components, or shared components with a particular data. That becomes a new archetype, which can be, which can become a problem if you have a very large number of archetypes. So the article, the best practice guide talks about how you shouldn't do things like create an entity, and then like add a particular type of component, add another one, add another one, because what happens is that every line of code there, you create a new archetype. Even if it even if that kind of an object with that archetype only exists for that line of code, because you're about to add another component and change it, that thing then becomes, becomes part of unity ECSs internal data structures. And when it's running an entity query, entity queries are very fast. But we'll,  backtrack a bit. The reason that entity queries are fast, is because the work done to make them fast happens during structural changes, right, which is why structural changes are bad, but structural changes get worse when you have a very large number of archetypes. Because you have a company you have a you have an entity that you made a structural change to you've added or removed the component. Now ECS has to work out like well, what archetype is this thing? Now, right? And what like, entity queries will include that thing in its new archetype or not include that thing. And so it has to go and look up basically, amongst all other kind of known archetypes. So the larger the bigger the number of archetypes that it has to search through to kind of go What is this thing? Have I seen it before? What queries relate to it? The just the slower that process becomes. So yeah, so the guide talks about basically avoiding excessive numbers of archetypes that you're not actually using, because there's no real, like unity doesn't clear that stuff up. It doesn't kind of go I'm not seeing for a while, forget about it. Like if it sees one does it it's part of the data structure, and it stays there, at least in the current implementation.
+
+Anne van Ede  49:23  
+Right. So if you have to choose like you have the company in my head right now has a lot of different objects. And then the choice could be at some point, okay, do I create another entity or another component that will create another archetype? Because I need a specific character here? Or do I merge two components, which means that only half the component data is used, that means I have less archetypes?
+
+Steve McGreal  49:50  
+Oh, I see. Um,
+
+Anne van Ede  49:53  
+It's not always a clear cut choice.
+
+Steve McGreal  49:57  
+It's not and there's often not Some of the single best answer there. Like, I guess the point that I was trying to make about archetypes was dont, was to not have like excessive archetypes. Like if you're simulating something that has entities that are just kind of different the way it makes most sense to have these entities being chosen from a pool of a large number of archetypes, because you have a lot of small components that they get together, then I think that's kind of that's probably right. And then, rather than rather than merging components, because you're worried about the archetypes, I'm not sure that I would, I certainly haven't seen a situation in the wild where the number of archetypes that were actually being used was a problem. And that were the solution was to merge components. Because I think, because I think when you merging components you are you're reducing the usable data in cache line for the systems to access those components. And that's going to hurt you from a performance standpoint. So then I think the trick becomes if you have a very large number of archetypes, you think, how do I avoid the cost of structural changes? Which I think goes up with a large number of archetypes. I don't think I mean, like the tests that I did for the best practice guide don't really reflect that. That's like a whole other dimension to the test that I didn't really look at. But it just kind of means that there then I think the rules to avoid structural changes, or to group structural changes become more important, right? Because that large number of archetypes impacts on the cost of those things. That was the hardest section of the guide to write, by the way, because there's all this stuff about like adding and removing tag components is a structural change. So less expensive structural change than adding or removing components that contain actual data. Because you're not, depending on how you do it. Because you're not necessarily like physically moving entities around between different chunks, you might just be taking this whole chunk and saying, I'm adding a tag component. That means I can just leave this chunk as is we'll just change the archetype that it represents. But then, yeah, it's still like this, the cost is still not nothing. But then you will see, it can give you benefits in terms of filtering for archetypes that have or don't have that tag component. can make other entity queries or other things that need to process their data to be able to. Yeah, so it's like, it's a really difficult problem. Basically.
+
+Anne van Ede  53:11  
+I like asking difficult questions.
+
+Steve McGreal  53:14  
+Yeah. That's probably the best I can give you in terms of in terms of general advice like, beyond that. It's like,
+
+Anne van Ede  53:28  
+it would be nice if you could like manually discard an archetype you're not, you know, you're not going to use anymore. That would be a nice feature in Unity ECS
+
+Steve McGreal  53:36  
+you. Yeah. Yeah.
+
+Anne van Ede  53:43  
+I can understand if you cant do it for a while, but if you know, you're not going to use it any more than just let me let me delete it. I didn't know that a unity still kept those.
+
+Steve McGreal  53:56  
+Yeah, it's, I mean, most of the ECS implementation under the hood, so you've got like stuff like the the burst compiler, which as far as I'm concerned is magic. 
+
+Anne van Ede  54:04  
+Yes. 
+
+Steve McGreal  54:05  
+Right. Like,
+
+Anne van Ede  54:06  
+Automagic is the word we used to.
+
+Steve McGreal  54:09  
+Yeah, automagic, right. But But then, like the rest of what's going on under the hood with ECS. And with the job system is I think for almost all of it, it's like, what is this? What is the simplest way that we could code this? That gives that kind of behavior, right? Because I think because I think simple is fast. And also because of simple as simple like the development team behind us is not enormous. And they've got a lot to build. So I think they're trying to keep it simple. So So yeah, there is a there's a data structure of archetypes and things get added to it when new archetypes are encountered, and there just isn't a way to clear that up. Because how do you do it right? Do you say do you say We will automatically clear out archetypes if we haven't seen them for a certain amount of time, or a certain number of frames. And then you know, if a new archetype comes along, that is the same as what we deleted, we just recreate it. Well, now you're having to track the age of every archetype, right? That's more data, it's more process. Yeah, per frame cost that you've just added, that wouldn't have been there. If the archetype is just sat there, they just sat there as a data structure, they don't need to be processed. Except when a structural change happens. So and I think, you know, a manual thing of saying, I don't need this archetype anymore. Forget about it, I think would be a nice feature. And maybe we'll see that at some point. But I guess in the meantime, if you know that, there are archetypes that you might see for a bit, and then never see again, maybe just, maybe just don't make those archetypes.
+
+Anne van Ede  55:56  
+No, no, no, in case in case. Like you said that you create an archetype and you're adding you're adding you're adding you know that you're not going to use the original, that would be stupid, but I cant think of a situation right now. But I know, like, the company makes training simulations for like police and fire workers. And so they have like, a lot, a lot of different types of people, injured people running people, scared people, stuff like that. So they can create the whole scene of, of the simulation. And I don't know, maybe the fire is resolved, and then all the scared people go away, because they're not scared anymore. Okay, something like that I can, that's the best I can do right now then, you know, you wont see scared people anymore.
+
+Steve McGreal  56:41  
+where you have a scene where there are people running from a fire, and that is their archetype is like, what it allows them to do that. Yeah. And then you finish that simulation, and you do a scene of a car crash. Yeah. Right. And you don't and there's no farms, no people running, but you still have that archetype around. Because
+
+Anne van Ede  57:00  
+at that point, it would be nice to say, okay, just forget about them, because I'm not going to use anymore. We're moving on to the next stage of the simulation. Just clean up the mess.
+
+Steve McGreal  57:11  
+I agree with you. 
+
+Anne van Ede  57:13  
+Yeah.
+
+Steve McGreal  57:15  
+I understand the need for that. And I think that that would be nice. It would be nice when moving between scenes in unity to have the option to clear some data. One of the things that I found the hardest to understand, first getting into ECS, is that systems just run. Right? Like, if you create a system, that system is going to exist in every scene, like it's going to start up when your application starts up. And it's gonna run or not run, if nothing matches the query, but it's gonna check. Forever. 
+
+Anne van Ede  57:49  
+Yeah
+
+Steve McGreal  57:50  
+So if you, if you if you're making scenes with 100, different scenarios, with systems, that process like specific things, they're always going to be there. Like, if you go and run one of those scenarios and create things without archetype. They're always going to be there. You know, until you shut the application down. And that's weird. I agree. That's kind of a strange implementation detail. I don't have an answer for you there because I don't like I'm not on that team. I don't I don't build those things.
+
+Anne van Ede  58:24  
+Um, we've come to the last section. If I'm not mistaken, you just said that the company or the client you worked at you helped create a ECS design, where there previously wasn't?
+
+Steve McGreal  58:44  
+So yeah, so I had a few customer engagements, you're talking about the one that I spent a year with, right? 
+
+Anne van Ede  58:50  
+Or? Well, yes. 
+
+Steve McGreal  58:51  
+Okay. So yeah, the long. So the question is, like, did like What was that? What was that process? Right? Like, what like,
+
+Anne van Ede  59:01  
+yeah, like the the conversion from what you had to what you wanted.
+
+Steve McGreal  59:07  
+So what they had was a proprietary c++ engine that they built in previous games. And they were making a new game, and they were making it in unity, because because the maintenance costs of the c++ engine had got too high for them, and they needed to sort of wipe that technical debt. So in that sense, we were building a dots ECS projects from the ground up, we weren't converting object oriented code to ECS. But we were building on top of what they had for, for, they built up over and over of yours in terms of their, their kind of tribal knowledge of the best kind of data structures to solve the sorts of problems that they have. So this was, I don't want to get too specific, because that's not really what I do believe this does NDA and things, but like, so is a voxel based game. So imagine something like Minecraft. Where your, your your world representation is, is voxels. And so they built voxel engines previously. So they knew the best and that's like a very particular type of data structure, right. And so they were able to kind of they've, they figured out like, we know what data structures work, we know what kind of operations work on these data structures, like we built this, we've built this multi threaded system in the past that operates on this data, we just need to work out how to express this in ECS. So that was, I mean, that was that engagement, I have done other things were like, I'm not sure that I've done a customer engagement where we've like, ported oop code to, to dots, it's more than like, it's a continuation of like a previous project. So like, in that case was a c++ engine, there was another customer that I that I had dealings with where they've made a previous game in unity. That was all object oriented. they'd encountered some performance limitations and couldn't simulate as much of the world as they wanted to. So for the sequel, I suppose you would say they tried to build a dots implementation, that I guess that was a bit more like trying to port from oop, because they had this sense, they again, they had the sense of how they wanted to build their world and build the simulation, they'd already done it. I guess in a much more object oriented way. So for that one, they were trying to, they're trying to work out to express that in ECS, they run into quite a lot of trouble with that one, because they they had downloaded the packages and read the documentation. And the Best Practices Guide kind of talks about customers who started using the API without fully understanding the difference between object oriented programming and DOD. This was one of those customers, they were trying to introduce polymorphism and components and trying to do it like expressing things in terms of deeply nested dictionaries and thinking that that was like efficient data design. Like I would absolutely not say that they were, they, they were very, very smart individuals. But they just hadn't understood that they were stepping into a different paradigm. I'm sorry, I don't know. Like, this is me just kind of rambling, generally about some customers.
+
+Anne van Ede  1:03:02  
+Well, when you let's go with the the game, they ported from previous unity to ECS unity, okay? Or Well, the sequel, then? How do you decide that you port the entire game? Or did you port like part because not always you can port everything.
+
+Steve McGreal  1:03:19  
+So that that engagement was not I was not really working with them on the port I was I worked with them for about two or three weeks to look at what they had done. assess it, make some suggestions. So I didn't do any of the porting. I kind of got to mess around in their in their code and see what they've done. Yeah, their intention was I mean, they like they were pretty much building as much of that as possible in ECS. There are always things like, like the the the dots animation package is not, I don't think is production ready. and various other parts of like, things that you kind of would want to do with unity that already exist, but that don't have necessarily a kind of a dots representation. So there's always going to be that interface where you kinda have this, or at least for now, you have this this line where, where this is game object playing animations, or this is, you know, traditional navmesh or whatever. And then over here is the dots, we are doing the simulation, but they wanted as much as possible to go into that.
+
+Anne van Ede  1:04:32  
+How would you or how did they make sure that the interface between the ECS part and an analysis part doesn't drain your performance?
+
+Steve McGreal  1:04:44  
+They did not do a good job of this.
+
+Anne van Ede  1:04:47  
+Okay.
+
+Steve McGreal  1:04:49  
+But like working with them, and looking at this stuff was part of where these ideas came from. Like, to be honest, is that the combination of those two kind of customer engagements that I mentioned this, this this very long This kind of shorter one, both and this. So the longer one had this terrible problem with mixing, you know, nice splittable, parallelizable jobs and systems with sync points. And that was bad, right? And this other customer that were doing the sequel to that game. I mean, they were they had trouble getting away from reference data types at all. So almost all of their systems kinda have this had that the overhead of using reference types, not being able to use bursts or being stuck on the main thread like. So when I talk about when I think about the cost of the interface between dots code, and object oriented code, it hasn't come up for me as a major concern, because I think that's always going to be an improvement to the alternative, when you mix, mix the stuff up, I like there is always going to be like a point of the start of the frame where you want to take some data from object oriented, well, that's going to be a lot of cache misses, that's going to be very slow. But hopefully, you can pack that into some component data that you can then operate on very quickly. And then at the end, if you need to reflect that reflect is the wrong word. But you know, if you to, to turn that data out of your pipeline back into the object oriented representation, so the process at the start in the end, is always going to be slow, because you can't make it fast because it can't be fixed. That's what cache misses from object oriented programming. That's what that is. So yeah, that was a long way of saying I don't, I wouldn't really worry about it that much. So long as you're clear about where those lines of separation are, you just have to pay the cost, right? But it means that everything in between can be fast. And the only way to not pay that cost to the interface code is to not have the interface code and to not interface with the object oriented world, which means essentially, whatever it is, that's that's here on the outside of your transformation pipeline that you need to access, you need to build that in dots and bring it into your pipeline, which could be depending on what it is quite a major task, unfortunately
+
+Anne van Ede  1:07:32  
+Yeah. So when you're creating, these questions are slightly different, I don't know if there's like a really a different answer to what you said before. But the original question was, when you split the How do you split the refactor into sub parts, so you can like, still perform the conversion into, in steps. In this case, it was aimed at when you're still need a working product in between, in your case you you create an entirely new game. Yeah. And then at the end, it needs to be delivered. But how do you put it into steps? So you can see that it works behind? Yeah, after each step? How do you split it up?
+
+Steve McGreal  1:08:14  
+So you're talking about like a use case where you've built an entirely object oriented product, and you've identified in the profiler, this particular step, like takes up a lot of the frame time, we'd like to convert this to ECS leave everything else the same, and just have like, the same behavior but faster performance?
+
+Anne van Ede  1:08:39  
+Well, exactly. In this case of the well, let's just on my, my situation, this software that needs to be ordered, is gigantic. And so we need to split it up in parts and have, you know, merge it in part, so that the still implementation, the dark can still be featured implemented in the old part while it's being ported. Because we cannot say okay, it's not going to be worked on for half year while we ported and after half a year, okay, now it's open again, do some, they need to be able to work on it while its being ported. That's why it's going to take two or three years probably. So how do you split it up? The refactor of stuff you do want to do? How do you split it up so that you have like manageable ports? like tiny ports?
+
+Steve McGreal  1:09:32  
+That's a really good question. I think it's, I like I'm not gonna have a really good answer for you. I think it's depends a lot on the specifics of, of the project. Like I think I guess the you you would need to be driven by. So I think there's two there's two things that would there's two ways to go about choosing like which Part of those things, you're going to convert, at which point. So for a game project where it's where you're making that switch to dots primary for sort of performance reasons. And where you don't necessarily have those kind of constraints of scale and of needing to maintain old workflows as much, I would be driven by the profile, right? So just go look at the profiler timeline and kind of see what's taking the longest and go I want to make a system that does that. And work out what the input and output data are. And then, you know, you can kind of because the idea is, so it's like, trying to think of a good example. Say physics, for instance, right? Like your physics simulation is really slow, when you've established that actually, if that was just like a dots physics simulation, that would be much faster. And so then you kind of build something that goes, right, I have all these objects, or rigid bodies, or whatever these kind of physics representations, I'm gonna build a system that takes that from the object oriented scene, packs that into, like component data, runs the like, a dots physics simulation, on that. And maybe that maybe that transfer into dots only needs to happen after a scene loads, for instance, that's like a one time thing. And you're running the dots physics. And you have some systems that kinda, to map like position data, back to your object oriented scene. So from the point, the workflow point of view of the author, you're still building the same types of objects, you're still seeing them simulated in the frame. And nothing's changed, except maybe the performance has got better. So I get so that's that's the first thing that's that's one way that you choose is based on performance. The other way, I think probably in the bigger, more complex projects, it might be driven by what's possible. What parts of this of this simulation can be, can we go and create like a drop in replacement for with minimal disruption to the authoring process? And to the workflows of other people kind of working on this? And that's quite a project specific question. I guess, like without knowing a lot more about the projects, I'm not sure how much general advice I could give on that, because I don't know how these how these scenes are constructed and simulated. Does that make sense?
+
+Anne van Ede  1:12:58  
+Yeah, that makes sense. Yeah. Lets see, right.
+
+Through my normal questions, now, it's just like the the closing question, anything that you consider important for ECS or component design that I haven't talked about? Or asked about?
+
+Steve McGreal  1:13:22  
+That's good.
+
+Anne van Ede  1:13:27  
+Because I try to do my best with these questions. But
+
+Steve McGreal  1:13:31  
+yeah, like nothing. Nothing really springs to mind, like, I think. I think we're covered pretty much what I know about component design. Yeah, I mean, I suppose the only other thing would be if you're getting into like, so this is the last section of the Best Practices Guide talks about the burst compiler and unity mathematics and like simd data optimizations. Now, obviously, if you're getting into if you're getting into kind of doing simd, and like intrinsics and stuff, that will, that will possibly influence your component design. Why so there's two schools of thought there one is you design the components, as if theyre normal components but then when you have a when you have a system and you have a job that that you want to be that you want to optimize and be particularly efficient, you take that component data, you pack it in some other way. And then you process that. And now I guess you want to unpack then. And depending on the situation, that can still be, there can still be an optimization. But obviously, you have this packing And unpacking process, so maybe the maybe it'd be even faster to somehow express that in the component data in the first place. And you know, not have to do that conversion at that point, presumably, you have to do that conversion at some other point. But maybe that's less frequent, or whatever.
+
+Anne van Ede  1:15:23  
+So you would have, if I understand correctly, you would have like, one component that is like, four different entities linked to one component or something? 
+
+Steve McGreal  1:15:33  
+That's Yeah, right. So that's one possible Yeah. way of doing it, right. So if you if you are doing I mean, I'm thinking particularly, it'd be for things that you would want to be very, very scalable. Well, I said, like, if we're doing Boyd's, right, oh well, oh no thats been kind of done, but I'm just like, Well, you know, some some kind of particle system or something where you have just a huge number of things that you're simulating and you don't particularly care about being able to pick out an entity that is like a specific thing, you've just got kind of got this massive data, that's kind of quickly, maybe that is the best representation, maybe you have an entity where you have a component, or collection of components that represents four particles, rather than one. Because maybe that is, the most efficient way of doing it, even if it's kind of like is counter intuitive. To think like an entity should be a particle. But again, the guide talks about not everything has to be an entity, an entity is a kind of a human concept. And it only really exists in ECS at all, because there are occasional times when you need to pick out a specific thing and say, I want that set of data for that one thing. But it's something that's I mean, that's you would generally want to avoid that, right? Like what you actually what you're actually doing is building systems to process combinations of component data. Most of the time, you don't care about the particular entities, they just like the the fact that there appear to be coherent, persistent, entities on the screen is kind of largely like an illusion, right? Like it's an emergent behavior that comes from just process data. So in cases where you have these kind of very large, like homogenous groups of entities, maybe then the component data is based around what is the most efficient? What is the most efficient representation of that for a particular simd optimized job or series of jobs? That's quite extreme, though. Right? Like, I think that's probably if you were going to do that that's something that you would probably you're in the realms of hand optimization there, you're probably not in the realms of let's make a tool to provide some initial suggestions for OOP conversion. Right, so I think it is a consideration. But I think it's one that may fall, like out of scope of the kind of work that you're looking at. 
+
+Anne van Ede  1:18:25  
+Far, far out ofscope.
+
+Steve McGreal  1:18:27  
+Yeah, okay. Cool. I like I think, even for me,
+
+Anne van Ede  1:18:30  
+It is still interesting,
+
+Steve McGreal  1:18:32  
+what I, what I was doing, if I'm doing some kind of customer engagement, or designing a particular simulation looks like set of components and systems to do something. Probably that initial data design process wouldn't include that sort of thing. Well, that would be something that I would maybe like convert to, later on once I'd seen the thing running once I had a reference implementation once I was able to profile it and say, this system processes a lot of data and I wanted to be faster. Yeah. Then I might go, what is what is simd, they're like, how might I rearrange my component data to better see that? way? Its way kind of down the path.
+
+Anne van Ede  1:19:20  
+Yeah, yeah. No. That's about it for for my question. So I'll just in my, in my research, what I originally wanted to do with on the one hand, just like do analysis on the code itself, and on the other hand profile to see where it would be best suited and how much performance you would possibly gain. I had to entirely skip that last part because it was too much. So right now I'm just doing the analysis. And the it's funny that you said that when you create systems and components, when you do the design, you do data systems components. And that's basically what my tool also does. So I do syntax and semantic analysis on C sharp code, in this case, from Visual Studio. And I map from base class to a child class. What data is in which class? And from their methods through the update loop? Where are they used? So then I have on the one hand, the data and how is it grouped for previous object? And then on the other hand, how is it used to what would become systems? Yeah. And then I can like a cross section, I think it's called in English, I don't know. Like, the section of it, and then you figure out like, how are they supposed to be cut so that they're both on the original of object site? And on the new system site? They're properly split? I'm still working on that, though.
+
+Steve McGreal  1:21:02  
+Thats a tricky problem. Like, like, but yeah, I can sort of see how the process would work. Because what you want, you want to make sure that all of the data that is that exists is used in the OOP side, also exists, expressed as components. But that maybe that data has been like rearranged to work with these systems, which I guess then kind of replaces like the methods? Yeah. So as you're creating a suggestion of like, how might you rearrange all of this? But yeah, I mean, you can't then go and automatically generate like the system?
+
+Anne van Ede  1:21:43  
+No, because it also depends heavily on the how clean the code is. So if they there's just an update loop? And there's just one massive update without methods, then how on earth are we going to split it? But if it's slightly split, then you can create systems and then say, Okay, this system is rather big, shouldn't it be split? And if you do that, look at the components this and this and this way? So that's why it's I think it's so important to give explanation on why this design is created, why this plan is created, so that you can all say, Okay, if you want to split it, think about splitting it this and this way.
+
+Steve McGreal  1:22:27  
+So you're, so you're using like, so you're using, you're looking at a method name, you're looking at the data that is accessed and processed in that method, and I guess whether is read only or read-write?
+
+Anne van Ede  1:22:41  
+Yeah, right now,
+
+Steve McGreal  1:22:43  
+Working to
+
+Anne van Ede  1:22:44  
+yeah, I'm working. But I'm setting like, steps. And then if I figured out that's not good enough, go the next step, but right now I'm looking at the parameters that are given to the method.
+
+Steve McGreal  1:22:55  
+So okay,
+
+Anne van Ede  1:22:56  
+so I can see like this method, this data is passed. And then it kind of depends on if it uses, like, global data inside the object, then I have to map that too. But for now, I just keep it to the, because I'm still working towards the end goal. I'm looking at the method, and then the method name, of course, and the data that is passed to, its parameters. And that for now is how I define what data is used by system. And when I get it to work, I want to add more detailed information to it. I am not there yet.
+
+Steve McGreal  1:23:33  
+Yeah. That doesn't cover if there's if there's some data that is. So this is a monobehaviour, or whatever, and the data in the monobehavior, and then you have some some methods as part of the update. And you're not passing data directly to it. But you're just like, you know, here's some private data in behavior, which is being used to get to kind of,
+
+Anne van Ede  1:23:51  
+yeah, that would be the next step. Yeah.
+
+Steve McGreal  1:23:55  
+But then you're using the name of the update method to sort of inform like, what might this system be called? so that hopefully somebody familiar with the original codebase can look at it and go Okay, that's where I implement this, whatever. You look back to the original method, almost and kind of go right I need to do this but for as a system for multiple components.
+
+Anne van Ede  1:24:20  
+As like, far ahead like the perfect in the perfect world. If I have enough time, I would like to create like an almost an interactive program that creates design, but if you tap on a system, you can see where it comes from. And if you tap on a component, you can see where the data is where it went, or if you want the other way around. If you type an object, you can see how it is moved to the new system so you can see next to each other what the old monobehavior is and what the new system slash components would be. And then you can also check that everything is there. Because it's also important.
+
+Steve McGreal  1:25:10  
+Yeah, if you're trying to if you're trying to maintain a particular reference behavior, then yeah,
+
+Anne van Ede  1:25:17  
+and because they are probably going to implement it in steps, I also want to make sure that you can view it as a system by system or monobehavior by monobehavior so that you don't have to see the whole plan when you're just working on this. Yeah, that because my vision, like you can see your detail level and just zoom in or zoom out when you want to have different perspectives on the on the planning and the original code.
+
+Steve McGreal  1:25:43  
+Yeah. Because the, because the conversion process is going to happen. Yeah, step by step. Yeah. Yeah, I suppose the only like the things that maybe we haven't touched on this that concern me, I guess a little about the plan. So firstly, is that like, I guess you want the tool to express this idea of object orientated like a method on an object is kind of saying, I want to process some data for this one object. Whereas a system is always I want to process data for these objects is why it's why the best practice guide says don't put methods on components. You kinda can. But it's, it's a bad way of thinking about it. Because you don't ever really want to be processing like one thing at a time. Like your atomic level is like a buffer of things pretty much right? versus these things, not this thing. Right, and that's it. That's That's, uh, that that process this thing is one thing is a concept that's like really built into object oriented programming and really like the opposite. So I guess yeah, the first thing is, like, how, how do we how do you how do you make sure that the tool expresses that difference? And then the other is like, things which are really easy to do in object oriented to really hard to do in data oriented, which can, which is things like it's like objects interacting, right? Yeah. And is actually something that the DOD does not do great at because Well, certainly, I don't know about, again, other designs. But unitys, ECS has no concept of like event driven stuff with no kinda message passing. It's very difficult to construct queries where like a component that belongs to one entity wants to go and grab data randomly from some other component or some other entity, but there's not really any way of doing that without jumping around, and kind of random access memory and just like, doing terrible things for your performance, what you do if you're building that, as a human from the ground up, is you go well, how do we? How do we manage those interactions? Right? How do we how do we minimize the cost of that? And how do we kind of design the data and the systems that process it? To? Yeah, to try to not do that. Or if we have, if we are going to do that, you know, that like if I need to go and get some particular piece of data from some other component, maybe we can like denormalize and duplicate that data. Or maybe we can have a system that runs first that goes in, like, packs that data into some more like accessible form. So then not doing entity lookups inside another loop, that should be kind of that would be fast if it wasn't for that. And thats like, look, I think that would be very difficult.
+
+Anne van Ede  1:29:19  
+Yeah, there's, every time I talk to someone, I mentally enlarge my future research part because there's tons and tons of things that need to be minded or looked at or can't be done. Or at least not as far as I can think of it right now. And
+
+Steve McGreal  1:29:46  
+I suppose
+
+Anne van Ede  1:29:47  
+I guess I'll just see how far I'll get. Yeah, the the basic, I would be very happy. If I just loaded in some and I get a bad component design that would be like, right now, like Then I am like three quarters of the way of creating a design. And then I can tweak it and change it and improve things and things like this, like, how do you send messages or get data from others? Okay, let's see if we can figure out a way to get that out of the code, or do you need user input? Or if neither of them apply? How can I put a part in my tool that says, Okay, do you have this problem here and here, and here's what you can do with it, but you have to do it manually. And you still have help, because there's so much information on the internet, but finding the right information is very difficult. If I can just put it all into one tool and just help them that would already be helpful, because you can just look like, I have a problem, I want to pass data from one entity to another, okay, these these and these are some things you can consider. But if you do this, this would be a problem. If you do that, that would be a problem. And then you can choose yourself what you want to do. There are lots of steps here.
+
+Steve McGreal  1:30:58  
+Um, yeah. Yeah, I guess I guess I mean, if you can, even if you can get the tool into a state where like, you know, it's where it's, it's parsing these methods. And it's kind of identifies like, well, this is this is operating on data that is part of this like one object, and that you could convert that quite easily to a system that operates on all objects with this particular kind of data. And I can sort of say, that's an easy conversion. But actually, now when we are referencing other objects over searching for other than, you know, like, like, when the scope of the data access pattern becomes something that would be like nonlinear. Even just being able having the tool be able to kind of recognize that and say, like, Hey, this is a this is, like, there is interaction happening here. I need a human. Yeah. But just to be able to identify that and flag down and like, say something sensible about it. Like, I guess you don't need to fix the problem, you just put it I think identifying the problem. Yeah, would be would be super useful. I mean, that would be like,
+
+Anne van Ede  1:32:16  
+the experts standing over your shoulder like
+
+Steve McGreal  1:32:19  
+To analyze code bases. And just to kind of go like, how easy would it be to convert this to dots? And one of my metrics would be, how many of those warnings do I see? Right? Like, this huge amount of interaction? Or actually, there's only a few you could figure out a way to fix those up and the rest of this stuff would kind of like, be pretty easy to convert? I think that's I think that's a really good metric for how, yeah, how easy a particular piece of object oriented code would be to convert to  data into those those number of error? Yeah, well, yeah, the know the number of like, non linear iterations that you have to do. 
+
+Anne van Ede  1:33:03  
+Yeah. Although, it also depends on the implementation you're using. That's why I asked that question. Because unity uses archetypes. And adding and removing components is painful. And but another I think, ENTT, and that literally, E N T T is a c++ implementation, and it uses sparse sets. And it has an entirely different way of storing its components where it's actually very easy and very fast to add or remove components. So that guy said, Okay, if I want to have an event based system, that's totally possible, I'll just add a component to my entity, and then that's an event and then it will be processed, as that event by a system that checks for that specific event.
+
+Steve McGreal  1:33:53  
+Okay, so an event happens to every entity within a particular radius, you just kind of go and stick a component on all those 
+
+Anne van Ede  1:34:00  
+Exactly. And then that system that checks for that event will process all those components as if an event had happened. And that's another way of doing it. But in unity, that would be very costly. And so I want to as the second part I want to do, I want to make sure that you can plug like an a profile in, in this case, unity profile, because that's the one I'm going to be working with. Like you cannot do this and this and this don't randomly add or remove components, that's bad. But if you plug in an ENTT profile, and you want to say okay, I have an event based in unity that would give you a warning but in ENTT you just take Okay, just do this and this and this. So it's also I want to make sure that you can plug and play with it and modify it to what you use and what you cannot use.
+
+Steve McGreal  1:34:53  
+Even then you have to be really careful about generalizations that way. Yeah. I don't I don't think you can say Don't add or remove a component that's bad. How often you adding or removing components? Does that get you in terms of faster entity queries from other systems? Like I think there is, unless you're doing something very simple like fluid simulation, or boyds, or where you just kind of have like a bunch of things that don't really, you know, they simulate, but they don't really change individually. Anything more complex than that, you're almost certainly going to hit a point where it makes more sense than anything else to add or remove. I was really careful in the guide, not to be like ban structural changes, well you can't bann structural change? There are definitely times when those are good things. So in that sense, it's really hard to create a general rule. Right? Because it's about the frequency of those things. And the cost of those things.
+
+Anne van Ede  1:35:57  
+More like a slider. I see in my mind, like a slider. Like it's bad. It's it's not that bad. It's It's very good. It's easy. And then depending on those settings, you get a red warning, or an orange warning, like, do you really want to add a component here? Is this, does it do this, this this this, then maybe not? Do it doesn't do any of that? Okay, fine, just go with it. And that depending on ENTT, you wouldn't even get the warning and a unity with that, like, are you sure you want to do this? Something like that. But again, I don't know how far I can get with this tool, I would very much even if I cant get it all the way, like, finish it after my thesis, because I'll be working on it until like July. But this is like I said, this is something I've been thinking about for two years now. And I finally like get to do it. And it's not going to, you know, vanish from my mind when I'm finished. So I'll want to continue thinking about this problem. And I'm working on it like, okay, right now, for example, a problem I have is nicely did my syntax analysis and my semantic analysis, and I created, like class and method structure, so I can link them to each other. And then I encountered a struct, I was like, crap. Something like that, right? Now I just put it like to do this does not work with structs. And there'll probably be more to do is like, Okay, how do I, for example, someone said, if you have a Boolean in your component, you should you could think about splitting the component into two and then the existence of the component is the Boolean. Okay, how do you detect that? Stuff like that? So there's lots of lots of to Do's, like, the list goes on. And I'll probably get like 10% done, if I can get a basic component design, and then there's so much more that can be considered it would be cool to do. Yeah. I know, it's ambitious. Yeah. So yeah.
+
+Steve McGreal  1:38:06  
+Yeah, but I mean, even like a minimum, minimum implementation of that, that just kind of shows, you know, for a comparatively simple codebase. Like, can Is there a way to analyze that and reason about that, and just like, make some suggestions about what a data oriented, low ECS implementation of that might look like, would be pretty amazing. Like, that's the that will still be, like really useful for assessing codebases and really useful for giving people that kind of first start on what that what those getting, you know, data design worksheets is kind of a thing that I did, which is again, I basically stole that concept from some of our internal training or internal trainings changed in the last couple of years or so. It's kind of like go make 10 100,000 spinning cubes. Now it is, literally, there's a there's a dots samples repo somewhere. I don't know if you've seen this yet. It's very nice. Unity project written in object oriented way. And we spend, you know, our training now is we have some kind of introductory sort of slide talks and presentations. But then it's pick one of those problems, or pick one of those projects, do the data design worksheet for to see like, like, Don't look at the code, look at the behavior, what data do you think you need to create the simulation? And then spend once you've done that, and you've kind of examined that data and systems and come up with ideas for components, go and implement it over two or three days as a group. And what we find is that the implementation if the data designs been done right the implementation is very, very fast. Right? Because you know exactly what components you gonna make you know, that you can you can stub out all of your systems really quickly. And you kind of know what work, all of those systems are going to do. So it's, it's, it's a series of quite simple programming tasks. Yeah, the hard bit is the data design. So if you can have something that helps with that, that helps like, yeah, half of like a table with some kind of notes and warnings, and but you know, they're just like, this tool thinks this is kind of how it might look. Um, that'd be great. And amazing
+
+Anne van Ede  1:40:29  
+the one thing I noticed is, in the company, I talked to the all the programmers before I went in interviews, what they would like to know. And there are like two or three that really know what ECS is about. There's some that know-ish, and then there's one who just doesn't understand, like, where it's coming from, where it goes, where what the integral thing about creating an ECS is all about. And then if you would ask him to do that exercise, uhm, yeah, that might be a problem. So whenever I'm designing, I'm thinking about this guy, like, how can I make him understand? And if he gets sort of understand than everyone else can understand.
+
+Steve McGreal  1:41:19  
+Yeah, it's it's definitely tough, because it's that we slightly said, Yes. I think it's so easy to get stuck in the object oriented mindset to not even be aware that there are other paradigms, so, so to not have that sense of where how far back do you need to step from what you think, you know? Yeah, exactly that access this other place? I was, I mean, I had a lot of skepticism to begin with about ECS and thoughts and how well it would work. Most of that, for me came from misunderstanding how expensive cache misses are. And now that's the that's the fundamental point that I cannot come back to in all of this is like, this is what we're trying to do. We're trying to minimize cache misses, because as it turns out, they're really expensive. Right? And and profilers won't tell you this, right, there is no profiler that I know of, that can tell you how many cache misses are in a particular piece of code, right? They can just tell you how long the code ran, and you don't know how much of that is cache look up, and how much of that is actual work. So it's really easy to kind of go your whole career and never realize how expensive that stuff is, but once you see it, then you kind of go right, I can't eliminate all of these. But I understand that the point of what I'm doing is to eliminate as many of them as possible. And I understand what a cache miss is, because that's really easy. Well, that's just whenever you're going from somewhere in memory to somewhere completely different. Right? If you go from somewhere in memory to the next bit of memory, that's great. And yeah, I think, I don't know if the guide makes that point clearly enough, like I posted about the guide, on the unity forums. I've been following the thread that goes down. And a lot of people are kind of saying, like, they're asking questions, and I'm answering them as best I can. But it almost always comes back to just remember why you're doing this. You're doing this to minimize cache misses. So now you think about how does your data design support? And if you can answer those questions, so what is this data? What are these access points, then the rest of it actually gets kind of easy. But it is yeah, holding on to those core points. I guess.
+
+Anne van Ede  1:43:36  
+I just realized I do have another question. Um, you just mentioned the internal ECS team. Is there anyone? And maybe can you get me into contact with one of those people that I should talk to? Like you, you created this guide? Is there anyone else you know that? Oh, you should talk to that guy?
+
+Steve McGreal  1:43:59  
+Depends on what you'd like to know. If you are, like, I don't want to volunteer anybody's time without asking them because that seems a bit
+
+Anne van Ede  1:44:10  
+Well, I can ask them, but I need to know who they are, I cannot like on this, you know,
+
+Steve McGreal  1:44:17  
+so the person that I interact most with on the dance team is so I mean, obviously, you know, there's there's a number of people responsible for that for a bunch of different areas of dogs in terms of like actually kind of head down developing and I don't know how much of a big general picture you'll get from any one of those like, maybe like I mean, you know, there's the there's the kind of the big famous people at the top right, there's like Mike Acton, Joachim and stuff, who I guess are going to be able to but I mean, there's plenty of Mike Mike Acton talks that you can go view and it was one I saw recently that I liked enough that I have put into the best practice. is going to get updated. One of the updates is that it's going to have another link to a video from someone they did in 2019, which is really good from GDC.
+
+Anne van Ede  1:45:10  
+I think I have seen that one.
+
+Steve McGreal  1:45:12  
+Yeah, the was it building a data oriented future. I thought I thought that was a really clear expression of a bunch of a, bunch of the kind of just the thinking behind data oriented design. So aside from that, I don't know how much of Mike Action you are going to be able to get. My suggestion suggestions there, but the person that I interact with most on that team is a guy called Fabrice. browser. So just looking in the external thoughts channel to see if he's in there. What? Yes, he is. Do you like you wanna name in the chat? or?
+
+Anne van Ede  1:46:04  
+Yeah, that would be nice. Then I can just stalk him, getting pretty good at that.
+
+Steve McGreal  1:46:14  
+Second, like, I don't know how much time he's got, I don't know the stuff but like it, but communicating about dots and about dots best practices is kind of his job. Like he runs all of the internal training.
+
+Anne van Ede  1:46:35  
+Yeah, I am. The company I work at also has like, I don't know, advanced unity support. And that guy is also working on getting me in contact with some people. I don't know if they're the same people because he hasn't said who he's speaking to yet. But maybe I'll be stalking him from two sites. I don't know.
+
+Steve McGreal  1:46:53  
+I've messaged you in Slack, with their Slack usernames, I think they're probably both in that external channel. So I think there's a means of communication there. I can't make any promises about their availability or their time. But I will say that those are the those are the people on the team that I would, who do all of our internal training that have not necessarily they've done all of a kind of documentation and tutorial content that exists so far, but they certainly kind of had a hand in like their job is to communicate about dots. So and they can, and their engineers as well. I mean, they work on it as well. But I think what they found is that this training, and the communication has taken up a lot of their time. They work on it less than they would like to and they talk about it a lot. Yeah. So yeah, I think those those are the people that are trying to reach. Did you because you posted a little while back in the external channel. I think when you got in touch with me directly, I already had some idea that there was Yeah, 25th of January, I just found it.
+
+Anne van Ede  1:48:14  
+Yeah, I did. 
+
+Steve McGreal  1:48:16  
+Yeah, you kind of said like that you were there and that this is what you do. somebody suggested that you speak to Mike Acton.
+
+Anne van Ede  1:48:25  
+Yeah, I can see I'm stalking him right now. he reacted on my message directly to him. But he didn't react on my question to schedule a meeting so. I can kind of understand that but
+
+Steve McGreal  1:48:41  
+He's gonna super busy. I mean, he does, you know, I have seen him make time.
+
+Anne van Ede  1:48:49  
+But he's like, also in like the opposing time zone. He's in California. So it's also difficult to note swiftly reply and stuff.
+
+Steve McGreal  1:48:58  
+Yeah. So there's some there's some some logistical, logistical things there. But he's not a like a completely sort of unapproachable guy. It's just whether or not you can fit something into his calendar.
+
+Anne van Ede  1:49:10  
+That would be cool.
+
+Steve McGreal  1:49:14  
+Fabrice O'Brien, you made find. I think Brian is in America as well. So Bruce is in Belgium, so like Central European.
+
+Anne van Ede  1:49:22  
+That would be nice. I'm Dutch, so we could speak the same language. Depending on where he's from, of course, but
+
+Steve McGreal  1:49:32  
+yeah. Um, yes. So like, 
+
+Anne van Ede  1:49:42  
+Okay. Thank you for that. Um, would you like me to keep you updated on the progress of my research slash send you my report when it's finished?
+
+Steve McGreal  1:49:52  
+Yes, that would be super cool. I'd be really interested in that.
+
+Anne van Ede  1:49:55  
+Okay. And also, can I add you on LinkedIn? So we can stay in contact there.
+
+Steve McGreal  1:49:59  
+Yep, Absolutely. Okay.
+
+Anne van Ede  1:50:01  
+And then that's it for me on my side. Is there anything else you wanted to get off your chest?
+
+Steve McGreal  1:50:12  
+You probably had enough of my thoughts yeah no and it's been. It's been interesting talk. 
+
+Anne van Ede  1:50:24  
+Yeah. Then I want to again thank you very much for your time and wish you a good day.
+
+Steve McGreal  1:50:30  
+Yeah
+
+Anne van Ede  1:50:33  
+Bye
+
+Steve McGreal  1:50:34  
+Bye
+
+Transcribed by https://otter.ai
