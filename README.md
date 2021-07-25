@@ -11,7 +11,7 @@ We demonstrate the effectiveness of this conversion technique by creating an OOD
 
 ## Quick Shortcuts
 * [ENCODE Tool](https://github.com/AnneVanEde/encode)
-* [ENCODE Master Thesis PDF]()
+* [ENCODE Master Thesis PDF](https://github.com/AnneVanEde/MasterThesis/blob/main/ENCODE%20-%20Thesis%20-%20A.E.%20van%20Ede.pdf)
 * [All Interview Transcriptions](https://github.com/AnneVanEde/MasterThesis/tree/main/Transcriptions)
 * [All Created ECS Designs](https://github.com/AnneVanEde/MasterThesis/tree/main/Created%20ECS%20Designs)
 
